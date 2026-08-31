@@ -1,0 +1,2362 @@
+
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryAll
+	text = {
+		trigger = { NOT = { check_variable = { var = cge_overview_history_count value = 0 compare = greater_than } } }
+		localization_key = CGE_HISTORY_ALL_0
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 13 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 14 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 15 compare = equals } }
+		localization_key = CGE_HISTORY_ALL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_count value = 16 compare = greater_than_or_equals } }
+		localization_key = CGE_HISTORY_ALL_16
+	}
+	text = { localization_key = CGE_HISTORY_ALL_0 }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation1
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult1
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_1_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_1_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_1
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation2
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult2
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_2_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_2_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_2
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation3
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult3
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_3_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_3_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_3
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation4
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult4
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_4_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_4_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_4
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation5
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult5
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_5_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_5_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_5
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation6
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult6
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_6_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_6_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_6
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation7
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult7
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_7_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_7_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_7
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation8
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult8
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_8_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_8_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_8
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation9
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult9
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_9_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_9_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_9
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation10
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult10
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_10_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_10_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_10
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation11
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult11
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_11_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_11_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_11
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation12
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult12
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_12_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_12
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_12_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_12
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation13
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult13
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_13_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_13
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_13_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_13
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation14
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult14
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_14_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_14
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_14_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_14
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation15
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult15
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_15_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_15
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_15_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_15
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryOperation16
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_1
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_2
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 3 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_3
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 4 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_4
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_5
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 6 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_6
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_7
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_8
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 9 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_9
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_10
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 11 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_11
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_OPERATION_12
+	}
+	text = { localization_key = CGE_HISTORY_OPERATION_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewHistoryResult16
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_HARSH_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_GAIN_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 2 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_THREAT_LOSS_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_GAIN_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 3 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BLACKMAIL_NONE_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_INTEL_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 4 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_INTERROGATE_FAIL_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 5 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_TRIAL_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_OK_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 6 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXECUTE_FAIL_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 7 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EASED_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 8 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_PROPAGANDA_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_OK_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 9 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_BRIBE_NONE_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 10 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_EXTRACT_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 1 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_OK_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 11 compare = equals } check_variable = { var = cge_overview_history_16_variant value = 2 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_RECRUIT_FAIL_16
+	}
+	text = {
+		trigger = { check_variable = { var = cge_overview_history_16_operation value = 12 compare = equals } }
+		localization_key = CGE_HISTORY_RESULT_POWS_16
+	}
+	text = { localization_key = CGE_HISTORY_RESULT_UNKNOWN }
+}
+
+
+defined_text = {
+	name = CGEGetPOWTemplateName
+	text = {
+		trigger = { exists = event_target:cge_pow_selected_origin }
+		localization_key = CGE_POW_TEMPLATE_SELECTED_ORIGIN
+	}
+	text = { localization_key = CGE_POW_TEMPLATE_FOREIGN_GENERIC }
+}
+
+
+defined_text = {
+	name = CGEGetPOWRecruitableDisplay
+
+	text = {
+		trigger = {
+			check_variable = {
+				var = cge_overview_pow_recruitable_thousands
+				value = 1
+				compare = less_than
+			}
+		}
+
+		localization_key =
+			CGE_POW_RECRUITABLE_DYNAMIC_SMALL
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+
+		localization_key =
+			CGE_POW_RECRUITABLE_DYNAMIC_LARGE
+	}
+}
+
+
+defined_text = {
+	name = CGEGetPOWWeeklyGainDisplay
+
+	text = {
+		trigger = {
+			check_variable = {
+				var = cge_overview_pow_weekly_gain_thousands
+				value = 1
+				compare = less_than
+			}
+		}
+
+		localization_key =
+			CGE_POW_WEEKLY_DYNAMIC_SMALL
+	}
+
+	text = {
+		trigger = {
+			always = yes
+		}
+
+		localization_key =
+			CGE_POW_WEEKLY_DYNAMIC_LARGE
+	}
+}
+
+
+defined_text = {
+	name = CGEGetOverviewSelectedPortraitSprite
+	text = { trigger = { check_variable = { var = cge_overview_selected_runtime_portrait_key value = 0 compare = greater_than } } localization_key = CGE_BR_OV_R_ROUTER }
+	text = { localization_key = CGE_BR_OV_S_ROUTER }
+}
+
+
+defined_text = {
+	name = CGEGetOverviewSelectedRank
+	text = { trigger = { check_variable = { var = cge_overview_selected_rank_key value = 2 compare = equals } } localization_key = CGE_RANK_FIELD_MARSHAL }
+	text = { trigger = { always = yes } localization_key = CGE_RANK_GENERAL }
+}
+
+
+defined_text = {
+	name = CGEGetNativeRowHeldStateName
+	text = {
+		trigger = { check_variable = { var = cge_cge_held_state value = 0 compare = greater_than } }
+		localization_key = "CGE_STATE_[?cge_cge_held_state|0]"
+	}
+	text = { localization_key = CGE_UNKNOWN_LOCATION }
+}
+
+
+defined_text = {
+	name = CGEGetNativeRowLoc_RANK
+	text = { trigger = { check_variable = { var = cge_cge_rank_key value = 2 compare = equals } } localization_key = CGE_RANK_FIELD_MARSHAL }
+	text = { trigger = { always = yes } localization_key = CGE_RANK_GENERAL }
+}
+
+
+defined_text = { name = CGEGetNativeRowOriginFlagSprite text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_ORIGIN_FLAG_IMAGE } }
+defined_text = { name = CGEGetNativeRowCaptorFlagSprite text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_CAPTOR_FLAG_IMAGE } }
+defined_text = { name = CGEGetNativeRowOriginFlagTT text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_ORIGIN_FLAG_TT_CONTENT } }
+defined_text = { name = CGEGetNativeRowHeldFlagTT text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_HELD_FLAG_TT_CONTENT } }
+defined_text = { name = CGEGetNativeRowLoc_PORTRAIT_TT text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_PORTRAIT_TT_CONTENT } }
+
+defined_text = {
+	name = CGEGetNativeRowExecutionRecord
+	text = { trigger = { check_variable = { var = cge_cge_executed value = 0 compare = greater_than } has_variable = cge_cge_execution_date } localization_key = CGE_NATIVE_ROW_EXECUTION_RECORD_DATED }
+	text = { trigger = { check_variable = { var = cge_cge_executed value = 0 compare = greater_than } } localization_key = CGE_NATIVE_ROW_EXECUTION_RECORD_UNDATED }
+	text = { trigger = { always = yes } localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+	name = CGEGetNativeRowLoc_RECRUITED_HANDSHAKE_TT
+	text = { trigger = { has_variable = cge_cge_recruitment_date } localization_key = CGE_NATIVE_ROW_RECRUITED_HANDSHAKE_RECORDED }
+	text = { trigger = { always = yes } localization_key = CGE_NATIVE_ROW_RECRUITED_HANDSHAKE_LEGACY }
+}
+
+defined_text = {
+	name = CGEGetOverviewSelectedExecutionRecord
+	text = { trigger = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } has_variable = cge_overview_selected_execution_date } localization_key = CGE_OVERVIEW_EXECUTION_RECORD_DATED }
+	text = { trigger = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } } localization_key = CGE_OVERVIEW_EXECUTION_RECORD_UNDATED }
+	text = { trigger = { always = yes } localization_key = CGE_EMPTY }
+}
+
+defined_text = { name = CGEGetOverviewSelectedPortraitTooltip text = { trigger = { always = yes } localization_key = CGE_OVERVIEW_SELECTED_PORTRAIT_TT } }
+defined_text = { name = CGEGetPOWRecruiterName text = { trigger = { check_variable = { var = cge_overview_pow_recruiter_slot value = 0 compare = greater_than } } localization_key = CGE_POW_RECRUITER_NAME } text = { trigger = { always = yes } localization_key = CGE_POW_NO_RECRUITER } }
+
+
+
+defined_text = {
+	name = CGEGetExecutionGeneralName
+	text = { trigger = { check_variable = { var = cge_execution_general_display^num value = 0 compare = greater_than } } localization_key = CGE_EXECUTION_GENERAL_NAME_DISPLAY }
+	text = { trigger = { has_event_target = cge_execution_general } localization_key = CGE_EXECUTION_GENERAL_NAME_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+defined_text = {
+	name = CGEGetExecutionOriginNameDef
+	text = { trigger = { check_variable = { var = cge_execution_origin_display^num value = 0 compare = greater_than } } localization_key = CGE_EXECUTION_ORIGIN_NAMEDEF_DISPLAY }
+	text = { trigger = { has_event_target = cge_execution_origin } localization_key = CGE_EXECUTION_ORIGIN_NAMEDEF_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_EVENT_UNKNOWN_COUNTRY }
+}
+
+defined_text = {
+	name = CGEGetExecutionOriginAdjective
+	text = { trigger = { check_variable = { var = cge_execution_origin_display^num value = 0 compare = greater_than } } localization_key = CGE_EXECUTION_ORIGIN_ADJ_DISPLAY }
+	text = { trigger = { has_event_target = cge_execution_origin } localization_key = CGE_EXECUTION_ORIGIN_ADJ_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_EVENT_UNKNOWN_ADJECTIVE }
+}
+
+defined_text = {
+	name = CGEGetExecutionCaptorNameDef
+	text = { trigger = { check_variable = { var = cge_execution_captor_display^num value = 0 compare = greater_than } } localization_key = CGE_EXECUTION_CAPTOR_NAMEDEF_DISPLAY }
+	text = { trigger = { has_event_target = cge_execution_captor } localization_key = CGE_EXECUTION_CAPTOR_NAMEDEF_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_EVENT_UNKNOWN_COUNTRY }
+}
+
+defined_text = {
+	name = CGEGetTrialGeneralName
+	text = { trigger = { check_variable = { var = cge_trial_general_display^num value = 0 compare = greater_than } } localization_key = CGE_TRIAL_GENERAL_NAME_CURRENT }
+	text = { trigger = { has_event_target = cge_trial_general } localization_key = CGE_TRIAL_GENERAL_NAME_TARGET }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+
+defined_text = {
+	name = CGEGetExecutionGeneralRank
+	text = { trigger = { event_target:cge_execution_general = { check_variable = { var = cge_cge_rank_key value = 2 compare = equals } } } localization_key = CGE_RANK_FIELD_MARSHAL }
+	text = { trigger = { always = yes } localization_key = CGE_RANK_GENERAL }
+}
+
+
+
+
+
+

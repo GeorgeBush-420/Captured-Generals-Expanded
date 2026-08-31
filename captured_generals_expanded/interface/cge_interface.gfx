@@ -1,0 +1,183 @@
+spriteTypes = {
+	spriteType = {
+			name = "GFX_cge_dead_entry_overlay"
+			texturefile = "gfx/interface/cge_assets/cge_dead_entry_overlay.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_name_strike_safe_b"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_safe_b.tga"
+			noOfFrames = 22
+		}
+
+		spriteType = {
+			name = "GFX_cge_dead_name_strike_safe_c"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_safe_c.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_name_strike_54"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_54.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_name_strike_90"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_90.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_name_strike_126"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_126.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_name_strike_162"
+			texturefile = "gfx/interface/cge_assets/cge_dead_name_strike_162.tga"
+			noOfFrames = 1
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_checkbox_off"
+			texturefile = "gfx/interface/cge_assets/cge_dead_checkbox_off.tga"
+			noOfFrames = 1
+			effectFile = "gfx/FX/buttonstate.shader"
+		}
+
+
+spriteType = {
+			name = "GFX_cge_dead_portrait_tint"
+			texturefile = "gfx/interface/cge_assets/cge_dead_portrait_tint.tga"
+			noOfFrames = 1
+		}
+
+
+		spriteType = {
+			name = "GFX_cge_executed_blade_cracks"
+			texturefile = "gfx/interface/cge_assets/cge_executed_blade_cracks.tga"
+			noOfFrames = 5
+		}
+
+		spriteType = {
+			name = "GFX_cge_executed_weapon_random"
+			texturefile = "gfx/interface/cge_assets/cge_executed_weapon_random.tga"
+			noOfFrames = 3
+		}
+
+		spriteType = {
+			name = "GFX_cge_executed_skull"
+			texturefile = "gfx/interface/cge_assets/cge_executed_skull.tga"
+			noOfFrames = 1
+		}
+	spriteType = {
+			name = "GFX_cge_history_interior"
+			texturefile = "gfx/interface/cge_assets/cge_history_interior.dds"
+			noOfFrames = 1
+		}
+
+		corneredTileSpriteType = {
+			name = "GFX_cge_history_dotted_line"
+			size = { x = 292 y = 2 }
+			textureFile = "gfx/interface/trait_window/trait_line_dotted_tile_8x8.png"
+			borderSize = { x = 0 y = 0 }
+			tilingCenter = yes
+			effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+		}
+	spriteType = {
+			name = "GFX_cge_overview_cooperation_bar_bg_custom"
+			texturefile = "gfx/interface/cge_assets/cge_overview_cooperation_bar_bg.png"
+			noOfFrames = 1
+		}
+	progressbartype = {
+			name = "GFX_cge_overview_patience_progress"
+			color = { 1.0 1.0 1.0 }
+			colortwo = { 1.0 1.0 1.0 }
+			textureFile1 = "gfx/interface/occupation/resistance_bar_large.dds"
+			textureFile2 = "gfx/interface/occupation/large_bar_empty.dds"
+			size = { x = 340 y = 15 }
+			effectFile = "gfx/FX/progress.lua"
+			horizontal = yes
+			steps = 100
+		}
+
+		progressbartype = {
+			name = "GFX_cge_overview_cooperation_progress"
+			color = { 1.0 1.0 1.0 }
+			colortwo = { 1.0 1.0 1.0 }
+			textureFile1 = "gfx/interface/occupation/compliance_bar_large.dds"
+			textureFile2 = "gfx/interface/occupation/large_bar_empty.dds"
+			size = { x = 340 y = 15 }
+			effectFile = "gfx/FX/progress.lua"
+			horizontal = yes
+			steps = 100
+		}
+	circularProgressBarType = {
+			name = "GFX_cge_overview_30_day_circle"
+			textureFile1 = "gfx/interface/operations/circular_progress_bar_bg.dds"
+			textureFile2 = "gfx/interface/operations/circular_progress_bar.dds"
+			size = 35
+			rotation = 90
+			amount = 120
+		}
+	spriteType = {
+			name = "GFX_cge_recruited_handshake"
+			texturefile = "gfx/interface/cge_assets/cge_recruited_handshake.tga"
+			noOfFrames = 1
+			transparencecheck = yes
+		}
+	spriteType = {
+			name = "GFX_cge_captured_general_icon"
+			texturefile = "gfx/interface/cge_assets/cge_captured_general_icon.tga"
+			noOfFrames = 1
+			effectFile = "gfx/FX/buttonstate.shader"
+		}
+
+		corneredTileSpriteType = {
+			name = "GFX_cge_widget_frame_vanilla"
+			size = { x = 192 y = 192 }
+			textureFile = "gfx/interface/cge_assets/cge_ui_tiled_bg.dds"
+			borderSize = { x = 64 y = 64 }
+			tilingCenter = yes
+			effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+		}
+
+		corneredTileSpriteType = {
+			name = "GFX_cge_window_bg_vanilla"
+			size = { x = 192 y = 192 }
+			textureFile = "gfx/interface/cge_assets/cge_ui_tiled_bg.dds"
+			borderSize = { x = 64 y = 64 }
+			tilingCenter = yes
+			effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+		}
+
+		corneredTileSpriteType = {
+			name = "GFX_cge_panel_bg_vanilla"
+			size = { x = 192 y = 192 }
+			textureFile = "gfx/interface/cge_assets/cge_ui_tiled_bg.dds"
+			borderSize = { x = 64 y = 64 }
+			tilingCenter = yes
+			effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
+		}
+
+		spriteType = {
+			name = "GFX_cge_menu_button_vanilla"
+			texturefile = "gfx/interface/cge_assets/cge_menu_button.dds"
+		}
+
+		spriteType = {
+			name = "GFX_cge_menu_close_button_vanilla"
+			texturefile = "gfx/interface/cge_assets/cge_menu_close_button.dds"
+			noOfFrames = 1
+			effectFile = "gfx/FX/buttonstate.shader"
+		}
+}

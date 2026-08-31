@@ -1,0 +1,1181 @@
+
+cge_clear_slot_data = {
+	meta_effect = {
+		text = {
+	set_variable = { cge_slot_[CGE_SLOT]_patience = 75 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation = 25 }
+	set_variable = { cge_slot_[CGE_SLOT]_blackmail_used = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_operation_pending = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_selected_action = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_timer_days_left = 30 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_timer_progress = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_timer_running = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation_operation_pending = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation_selected_action = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_days_left = 30 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_progress = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_running = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_patience_decay_day_counter = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_eased_patience_protection_days_left = 0 }
+	clear_array = cge_captured_general_display_slot_[CGE_SLOT]
+	clear_array = cge_slot_[CGE_SLOT]_origin_country_display
+	clear_array = cge_slot_[CGE_SLOT]_captor_country_display
+	clear_array = cge_slot_[CGE_SLOT]_origin_country
+	clear_array = cge_slot_[CGE_SLOT]_captor_country
+	clear_variable = cge_slot_[CGE_SLOT]_character_key
+	clear_variable = cge_slot_[CGE_SLOT]_name_order
+	clear_variable = cge_slot_[CGE_SLOT]_rank_key
+	clear_variable = cge_slot_[CGE_SLOT]_held_state
+	clear_variable = cge_slot_[CGE_SLOT]_level
+	clear_variable = cge_slot_[CGE_SLOT]_attack
+	clear_variable = cge_slot_[CGE_SLOT]_defense
+	clear_variable = cge_slot_[CGE_SLOT]_planning
+	clear_variable = cge_slot_[CGE_SLOT]_logistics
+	clear_variable = cge_slot_[CGE_SLOT]_capacity
+	clear_variable = cge_slot_[CGE_SLOT]_attack_bonus
+	clear_variable = cge_slot_[CGE_SLOT]_defense_bonus
+	clear_variable = cge_slot_[CGE_SLOT]_planning_bonus
+	clear_variable = cge_slot_[CGE_SLOT]_logistics_bonus
+	clear_variable = cge_slot_[CGE_SLOT]_trait_count
+	clear_variable = cge_slot_[CGE_SLOT]_trait_1
+	clear_variable = cge_slot_[CGE_SLOT]_trait_2
+	clear_variable = cge_slot_[CGE_SLOT]_trait_3
+	clear_variable = cge_slot_[CGE_SLOT]_trait_4
+	clear_variable = cge_slot_[CGE_SLOT]_trait_5
+	clear_variable = cge_slot_[CGE_SLOT]_trait_6
+	clear_variable = cge_slot_[CGE_SLOT]_trait_7
+	clear_variable = cge_slot_[CGE_SLOT]_trait_8
+	clear_variable = cge_slot_[CGE_SLOT]_capture_order
+	clr_country_flag = cge_has_candidate_[CGE_SLOT]
+	clear_variable = cge_slot_[CGE_SLOT]_runtime_prisoner_id
+	if = {
+		limit = { has_event_target = cge_slot_[CGE_SLOT]_runtime_leader }
+		event_target:cge_slot_[CGE_SLOT]_runtime_leader = {
+			if = {
+				limit = { check_variable = { var = cge_cge_slot_index value = [CGE_SLOT] compare = equals } }
+				set_variable = { cge_cge_slot_index = 0 }
+			}
+		}
+	}
+	clear_global_event_target = cge_slot_[CGE_SLOT]_runtime_leader
+	clear_variable = cge_slot_[CGE_SLOT]_runtime_portrait_key
+	clear_variable = cge_slot_[CGE_SLOT]_executed
+	clear_variable = cge_slot_[CGE_SLOT]_death_weapon_frame
+	clear_variable = cge_slot_[CGE_SLOT]_death_overlay_frame
+	clear_variable = cge_slot_[CGE_SLOT]_character_removed
+
+	clear_variable = cge_slot_[CGE_SLOT]_execution_date
+
+
+	clear_variable = cge_slot_[CGE_SLOT]_recruitment_date
+
+
+	clear_variable = cge_slot_[CGE_SLOT]_recruited
+	clear_variable = cge_slot_[CGE_SLOT]_pow_collaborator
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_initialized
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_spent
+	clear_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+	clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
+	clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
+	clear_variable = cge_slot_[CGE_SLOT]_pow_collaboration_date
+
+
+	clear_variable = cge_slot_[CGE_SLOT]_history_count
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_1_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_2_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_3_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_4_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_5_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_6_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_7_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_8_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_9_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_10_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_11_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_12_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_13_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_14_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_15_cooperation_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_date
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_operation
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_variant
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_patience_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_patience_abs
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_cooperation_dir
+	clear_variable = cge_slot_[CGE_SLOT]_history_16_cooperation_abs
+
+	set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_route = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_reaction = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_severity = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_credibility = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_negotiation = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_publicity = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_completed = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_condemned = 0 }
+	set_variable = { cge_slot_[CGE_SLOT]_trial_plea_days_left = 0 }
+		}
+		CGE_SLOT = "[?cge_slot|.0]"
+	}
+}
+
+cge_copy_slot_data = {
+	set_variable = { var = cge_slot value = cge_copy_dst }
+	cge_clear_slot_data = yes
+	meta_effect = {
+		text = {
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_recruited }
+		set_variable = { var = cge_slot_[DST]_recruited value = cge_slot_[SRC]_recruited }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_collaborator }
+		set_variable = { var = cge_slot_[DST]_pow_collaborator value = cge_slot_[SRC]_pow_collaborator }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_initialized }
+		set_variable = { var = cge_slot_[DST]_pow_clean_initialized value = cge_slot_[SRC]_pow_clean_initialized }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_baseline_highwater }
+		set_variable = { var = cge_slot_[DST]_pow_clean_baseline_highwater value = cge_slot_[SRC]_pow_clean_baseline_highwater }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_bonus_baseline }
+		set_variable = { var = cge_slot_[DST]_pow_clean_bonus_baseline value = cge_slot_[SRC]_pow_clean_bonus_baseline }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_bonus_captured }
+		set_variable = { var = cge_slot_[DST]_pow_clean_bonus_captured value = cge_slot_[SRC]_pow_clean_bonus_captured }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_spent }
+		set_variable = { var = cge_slot_[DST]_pow_clean_spent value = cge_slot_[SRC]_pow_clean_spent }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_clean_recruitable }
+		set_variable = { var = cge_slot_[DST]_pow_clean_recruitable value = cge_slot_[SRC]_pow_clean_recruitable }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_country_recruiter_character_key }
+		set_variable = { var = cge_slot_[DST]_pow_country_recruiter_character_key value = cge_slot_[SRC]_pow_country_recruiter_character_key }
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_country_recruiter_bonus }
+		set_variable = { var = cge_slot_[DST]_pow_country_recruiter_bonus value = cge_slot_[SRC]_pow_country_recruiter_bonus }
+
+
+	}
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_pow_collaboration_date }
+		set_variable = { var = cge_slot_[DST]_pow_collaboration_date value = cge_slot_[SRC]_pow_collaboration_date }
+	}
+
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_recruitment_date }
+		set_variable = { var = cge_slot_[DST]_recruitment_date value = cge_slot_[SRC]_recruitment_date }
+	}
+	set_variable = { var = cge_slot_[DST]_patience value = cge_slot_[SRC]_patience }
+	set_variable = { var = cge_slot_[DST]_cooperation value = cge_slot_[SRC]_cooperation }
+	set_variable = { var = cge_slot_[DST]_blackmail_used value = cge_slot_[SRC]_blackmail_used }
+	set_variable = { var = cge_slot_[DST]_patience_operation_pending value = cge_slot_[SRC]_patience_operation_pending }
+	set_variable = { var = cge_slot_[DST]_patience_selected_action value = cge_slot_[SRC]_patience_selected_action }
+	set_variable = { var = cge_slot_[DST]_patience_timer_days_left value = cge_slot_[SRC]_patience_timer_days_left }
+	set_variable = { var = cge_slot_[DST]_patience_timer_progress value = cge_slot_[SRC]_patience_timer_progress }
+	set_variable = { var = cge_slot_[DST]_patience_timer_running value = cge_slot_[SRC]_patience_timer_running }
+	set_variable = { var = cge_slot_[DST]_cooperation_operation_pending value = cge_slot_[SRC]_cooperation_operation_pending }
+	set_variable = { var = cge_slot_[DST]_cooperation_selected_action value = cge_slot_[SRC]_cooperation_selected_action }
+	set_variable = { var = cge_slot_[DST]_cooperation_timer_days_left value = cge_slot_[SRC]_cooperation_timer_days_left }
+	set_variable = { var = cge_slot_[DST]_cooperation_timer_progress value = cge_slot_[SRC]_cooperation_timer_progress }
+	set_variable = { var = cge_slot_[DST]_cooperation_timer_running value = cge_slot_[SRC]_cooperation_timer_running }
+	set_variable = { var = cge_slot_[DST]_patience_decay_day_counter value = cge_slot_[SRC]_patience_decay_day_counter }
+	set_variable = { var = cge_slot_[DST]_eased_patience_protection_days_left value = cge_slot_[SRC]_eased_patience_protection_days_left }
+	if = {
+		limit = { has_country_flag = cge_has_candidate_[SRC] }
+		set_country_flag = cge_has_candidate_[DST]
+		set_variable = { var = cge_slot_[DST]_character_key value = cge_slot_[SRC]_character_key }
+		set_variable = { var = cge_slot_[DST]_name_order value = cge_slot_[SRC]_name_order }
+		set_variable = { var = cge_slot_[DST]_rank_key value = cge_slot_[SRC]_rank_key }
+		set_variable = { var = cge_slot_[DST]_held_state value = cge_slot_[SRC]_held_state }
+		set_variable = { var = cge_slot_[DST]_level value = cge_slot_[SRC]_level }
+		set_variable = { var = cge_slot_[DST]_attack value = cge_slot_[SRC]_attack }
+		set_variable = { var = cge_slot_[DST]_defense value = cge_slot_[SRC]_defense }
+		set_variable = { var = cge_slot_[DST]_planning value = cge_slot_[SRC]_planning }
+		set_variable = { var = cge_slot_[DST]_logistics value = cge_slot_[SRC]_logistics }
+		set_variable = { var = cge_slot_[DST]_capacity value = cge_slot_[SRC]_capacity }
+		set_variable = { var = cge_slot_[DST]_attack_bonus value = cge_slot_[SRC]_attack_bonus }
+		set_variable = { var = cge_slot_[DST]_defense_bonus value = cge_slot_[SRC]_defense_bonus }
+		set_variable = { var = cge_slot_[DST]_planning_bonus value = cge_slot_[SRC]_planning_bonus }
+		set_variable = { var = cge_slot_[DST]_logistics_bonus value = cge_slot_[SRC]_logistics_bonus }
+		set_variable = { var = cge_slot_[DST]_trait_count value = cge_slot_[SRC]_trait_count }
+		set_variable = { var = cge_slot_[DST]_trait_1 value = cge_slot_[SRC]_trait_1 }
+		set_variable = { var = cge_slot_[DST]_trait_2 value = cge_slot_[SRC]_trait_2 }
+		set_variable = { var = cge_slot_[DST]_trait_3 value = cge_slot_[SRC]_trait_3 }
+		set_variable = { var = cge_slot_[DST]_trait_4 value = cge_slot_[SRC]_trait_4 }
+		set_variable = { var = cge_slot_[DST]_trait_5 value = cge_slot_[SRC]_trait_5 }
+		set_variable = { var = cge_slot_[DST]_trait_6 value = cge_slot_[SRC]_trait_6 }
+		set_variable = { var = cge_slot_[DST]_trait_7 value = cge_slot_[SRC]_trait_7 }
+		set_variable = { var = cge_slot_[DST]_trait_8 value = cge_slot_[SRC]_trait_8 }
+		set_variable = { var = cge_slot_[DST]_capture_order value = cge_slot_[SRC]_capture_order }
+		var:cge_slot_[SRC]_origin_country^0 = { save_event_target_as = cge_copy_origin_country }
+		add_to_array = { array = cge_slot_[DST]_origin_country value = event_target:cge_copy_origin_country }
+		add_to_array = { array = cge_slot_[DST]_captor_country value = THIS }
+		add_to_array = { array = cge_captured_general_display_slot_[DST] value = THIS }
+	}
+	set_variable = {
+		var = cge_slot_[DST]_executed
+		value = cge_slot_[SRC]_executed
+	}
+	set_variable = {
+		var = cge_slot_[DST]_death_weapon_frame
+		value = cge_slot_[SRC]_death_weapon_frame
+	}
+	set_variable = {
+		var = cge_slot_[DST]_death_overlay_frame
+		value = cge_slot_[SRC]_death_overlay_frame
+	}
+	set_variable = {
+		var = cge_slot_[DST]_character_removed
+		value = cge_slot_[SRC]_character_removed
+	}
+	set_variable = {
+		var = cge_slot_[DST]_runtime_prisoner_id
+		value = cge_slot_[SRC]_runtime_prisoner_id
+	}
+	clear_global_event_target = cge_slot_[DST]_runtime_leader
+	event_target:cge_slot_[SRC]_runtime_leader = {
+		save_global_event_target_as = cge_slot_[DST]_runtime_leader
+	}
+	clear_variable = cge_slot_[DST]_runtime_portrait_key
+	if = {
+		limit = {
+			has_variable = cge_slot_[SRC]_runtime_portrait_key
+		}
+		set_variable = {
+			var = cge_slot_[DST]_runtime_portrait_key
+			value = cge_slot_[SRC]_runtime_portrait_key
+		}
+	}
+
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_execution_date }
+		set_variable = {
+			var = cge_slot_[DST]_execution_date
+			value = cge_slot_[SRC]_execution_date
+		}
+	}
+
+
+	if = {
+		limit = { has_variable = cge_slot_[SRC]_history_count }
+		set_variable = { var = cge_slot_[DST]_history_count value = cge_slot_[SRC]_history_count }
+		set_variable = { var = cge_slot_[DST]_history_1_date value = cge_slot_[SRC]_history_1_date }
+		set_variable = { var = cge_slot_[DST]_history_1_operation value = cge_slot_[SRC]_history_1_operation }
+		set_variable = { var = cge_slot_[DST]_history_1_variant value = cge_slot_[SRC]_history_1_variant }
+		set_variable = { var = cge_slot_[DST]_history_1_patience_dir value = cge_slot_[SRC]_history_1_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_1_patience_abs value = cge_slot_[SRC]_history_1_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_1_cooperation_dir value = cge_slot_[SRC]_history_1_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_1_cooperation_abs value = cge_slot_[SRC]_history_1_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_2_date value = cge_slot_[SRC]_history_2_date }
+		set_variable = { var = cge_slot_[DST]_history_2_operation value = cge_slot_[SRC]_history_2_operation }
+		set_variable = { var = cge_slot_[DST]_history_2_variant value = cge_slot_[SRC]_history_2_variant }
+		set_variable = { var = cge_slot_[DST]_history_2_patience_dir value = cge_slot_[SRC]_history_2_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_2_patience_abs value = cge_slot_[SRC]_history_2_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_2_cooperation_dir value = cge_slot_[SRC]_history_2_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_2_cooperation_abs value = cge_slot_[SRC]_history_2_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_3_date value = cge_slot_[SRC]_history_3_date }
+		set_variable = { var = cge_slot_[DST]_history_3_operation value = cge_slot_[SRC]_history_3_operation }
+		set_variable = { var = cge_slot_[DST]_history_3_variant value = cge_slot_[SRC]_history_3_variant }
+		set_variable = { var = cge_slot_[DST]_history_3_patience_dir value = cge_slot_[SRC]_history_3_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_3_patience_abs value = cge_slot_[SRC]_history_3_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_3_cooperation_dir value = cge_slot_[SRC]_history_3_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_3_cooperation_abs value = cge_slot_[SRC]_history_3_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_4_date value = cge_slot_[SRC]_history_4_date }
+		set_variable = { var = cge_slot_[DST]_history_4_operation value = cge_slot_[SRC]_history_4_operation }
+		set_variable = { var = cge_slot_[DST]_history_4_variant value = cge_slot_[SRC]_history_4_variant }
+		set_variable = { var = cge_slot_[DST]_history_4_patience_dir value = cge_slot_[SRC]_history_4_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_4_patience_abs value = cge_slot_[SRC]_history_4_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_4_cooperation_dir value = cge_slot_[SRC]_history_4_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_4_cooperation_abs value = cge_slot_[SRC]_history_4_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_5_date value = cge_slot_[SRC]_history_5_date }
+		set_variable = { var = cge_slot_[DST]_history_5_operation value = cge_slot_[SRC]_history_5_operation }
+		set_variable = { var = cge_slot_[DST]_history_5_variant value = cge_slot_[SRC]_history_5_variant }
+		set_variable = { var = cge_slot_[DST]_history_5_patience_dir value = cge_slot_[SRC]_history_5_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_5_patience_abs value = cge_slot_[SRC]_history_5_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_5_cooperation_dir value = cge_slot_[SRC]_history_5_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_5_cooperation_abs value = cge_slot_[SRC]_history_5_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_6_date value = cge_slot_[SRC]_history_6_date }
+		set_variable = { var = cge_slot_[DST]_history_6_operation value = cge_slot_[SRC]_history_6_operation }
+		set_variable = { var = cge_slot_[DST]_history_6_variant value = cge_slot_[SRC]_history_6_variant }
+		set_variable = { var = cge_slot_[DST]_history_6_patience_dir value = cge_slot_[SRC]_history_6_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_6_patience_abs value = cge_slot_[SRC]_history_6_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_6_cooperation_dir value = cge_slot_[SRC]_history_6_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_6_cooperation_abs value = cge_slot_[SRC]_history_6_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_7_date value = cge_slot_[SRC]_history_7_date }
+		set_variable = { var = cge_slot_[DST]_history_7_operation value = cge_slot_[SRC]_history_7_operation }
+		set_variable = { var = cge_slot_[DST]_history_7_variant value = cge_slot_[SRC]_history_7_variant }
+		set_variable = { var = cge_slot_[DST]_history_7_patience_dir value = cge_slot_[SRC]_history_7_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_7_patience_abs value = cge_slot_[SRC]_history_7_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_7_cooperation_dir value = cge_slot_[SRC]_history_7_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_7_cooperation_abs value = cge_slot_[SRC]_history_7_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_8_date value = cge_slot_[SRC]_history_8_date }
+		set_variable = { var = cge_slot_[DST]_history_8_operation value = cge_slot_[SRC]_history_8_operation }
+		set_variable = { var = cge_slot_[DST]_history_8_variant value = cge_slot_[SRC]_history_8_variant }
+		set_variable = { var = cge_slot_[DST]_history_8_patience_dir value = cge_slot_[SRC]_history_8_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_8_patience_abs value = cge_slot_[SRC]_history_8_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_8_cooperation_dir value = cge_slot_[SRC]_history_8_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_8_cooperation_abs value = cge_slot_[SRC]_history_8_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_9_date value = cge_slot_[SRC]_history_9_date }
+		set_variable = { var = cge_slot_[DST]_history_9_operation value = cge_slot_[SRC]_history_9_operation }
+		set_variable = { var = cge_slot_[DST]_history_9_variant value = cge_slot_[SRC]_history_9_variant }
+		set_variable = { var = cge_slot_[DST]_history_9_patience_dir value = cge_slot_[SRC]_history_9_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_9_patience_abs value = cge_slot_[SRC]_history_9_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_9_cooperation_dir value = cge_slot_[SRC]_history_9_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_9_cooperation_abs value = cge_slot_[SRC]_history_9_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_10_date value = cge_slot_[SRC]_history_10_date }
+		set_variable = { var = cge_slot_[DST]_history_10_operation value = cge_slot_[SRC]_history_10_operation }
+		set_variable = { var = cge_slot_[DST]_history_10_variant value = cge_slot_[SRC]_history_10_variant }
+		set_variable = { var = cge_slot_[DST]_history_10_patience_dir value = cge_slot_[SRC]_history_10_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_10_patience_abs value = cge_slot_[SRC]_history_10_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_10_cooperation_dir value = cge_slot_[SRC]_history_10_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_10_cooperation_abs value = cge_slot_[SRC]_history_10_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_11_date value = cge_slot_[SRC]_history_11_date }
+		set_variable = { var = cge_slot_[DST]_history_11_operation value = cge_slot_[SRC]_history_11_operation }
+		set_variable = { var = cge_slot_[DST]_history_11_variant value = cge_slot_[SRC]_history_11_variant }
+		set_variable = { var = cge_slot_[DST]_history_11_patience_dir value = cge_slot_[SRC]_history_11_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_11_patience_abs value = cge_slot_[SRC]_history_11_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_11_cooperation_dir value = cge_slot_[SRC]_history_11_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_11_cooperation_abs value = cge_slot_[SRC]_history_11_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_12_date value = cge_slot_[SRC]_history_12_date }
+		set_variable = { var = cge_slot_[DST]_history_12_operation value = cge_slot_[SRC]_history_12_operation }
+		set_variable = { var = cge_slot_[DST]_history_12_variant value = cge_slot_[SRC]_history_12_variant }
+		set_variable = { var = cge_slot_[DST]_history_12_patience_dir value = cge_slot_[SRC]_history_12_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_12_patience_abs value = cge_slot_[SRC]_history_12_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_12_cooperation_dir value = cge_slot_[SRC]_history_12_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_12_cooperation_abs value = cge_slot_[SRC]_history_12_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_13_date value = cge_slot_[SRC]_history_13_date }
+		set_variable = { var = cge_slot_[DST]_history_13_operation value = cge_slot_[SRC]_history_13_operation }
+		set_variable = { var = cge_slot_[DST]_history_13_variant value = cge_slot_[SRC]_history_13_variant }
+		set_variable = { var = cge_slot_[DST]_history_13_patience_dir value = cge_slot_[SRC]_history_13_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_13_patience_abs value = cge_slot_[SRC]_history_13_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_13_cooperation_dir value = cge_slot_[SRC]_history_13_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_13_cooperation_abs value = cge_slot_[SRC]_history_13_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_14_date value = cge_slot_[SRC]_history_14_date }
+		set_variable = { var = cge_slot_[DST]_history_14_operation value = cge_slot_[SRC]_history_14_operation }
+		set_variable = { var = cge_slot_[DST]_history_14_variant value = cge_slot_[SRC]_history_14_variant }
+		set_variable = { var = cge_slot_[DST]_history_14_patience_dir value = cge_slot_[SRC]_history_14_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_14_patience_abs value = cge_slot_[SRC]_history_14_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_14_cooperation_dir value = cge_slot_[SRC]_history_14_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_14_cooperation_abs value = cge_slot_[SRC]_history_14_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_15_date value = cge_slot_[SRC]_history_15_date }
+		set_variable = { var = cge_slot_[DST]_history_15_operation value = cge_slot_[SRC]_history_15_operation }
+		set_variable = { var = cge_slot_[DST]_history_15_variant value = cge_slot_[SRC]_history_15_variant }
+		set_variable = { var = cge_slot_[DST]_history_15_patience_dir value = cge_slot_[SRC]_history_15_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_15_patience_abs value = cge_slot_[SRC]_history_15_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_15_cooperation_dir value = cge_slot_[SRC]_history_15_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_15_cooperation_abs value = cge_slot_[SRC]_history_15_cooperation_abs }
+		set_variable = { var = cge_slot_[DST]_history_16_date value = cge_slot_[SRC]_history_16_date }
+		set_variable = { var = cge_slot_[DST]_history_16_operation value = cge_slot_[SRC]_history_16_operation }
+		set_variable = { var = cge_slot_[DST]_history_16_variant value = cge_slot_[SRC]_history_16_variant }
+		set_variable = { var = cge_slot_[DST]_history_16_patience_dir value = cge_slot_[SRC]_history_16_patience_dir }
+		set_variable = { var = cge_slot_[DST]_history_16_patience_abs value = cge_slot_[SRC]_history_16_patience_abs }
+		set_variable = { var = cge_slot_[DST]_history_16_cooperation_dir value = cge_slot_[SRC]_history_16_cooperation_dir }
+		set_variable = { var = cge_slot_[DST]_history_16_cooperation_abs value = cge_slot_[SRC]_history_16_cooperation_abs }
+	}
+	else = {
+		clear_variable = cge_slot_[DST]_history_count
+		clear_variable = cge_slot_[DST]_history_1_date
+		clear_variable = cge_slot_[DST]_history_1_operation
+		clear_variable = cge_slot_[DST]_history_1_variant
+		clear_variable = cge_slot_[DST]_history_1_patience_dir
+		clear_variable = cge_slot_[DST]_history_1_patience_abs
+		clear_variable = cge_slot_[DST]_history_1_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_1_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_2_date
+		clear_variable = cge_slot_[DST]_history_2_operation
+		clear_variable = cge_slot_[DST]_history_2_variant
+		clear_variable = cge_slot_[DST]_history_2_patience_dir
+		clear_variable = cge_slot_[DST]_history_2_patience_abs
+		clear_variable = cge_slot_[DST]_history_2_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_2_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_3_date
+		clear_variable = cge_slot_[DST]_history_3_operation
+		clear_variable = cge_slot_[DST]_history_3_variant
+		clear_variable = cge_slot_[DST]_history_3_patience_dir
+		clear_variable = cge_slot_[DST]_history_3_patience_abs
+		clear_variable = cge_slot_[DST]_history_3_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_3_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_4_date
+		clear_variable = cge_slot_[DST]_history_4_operation
+		clear_variable = cge_slot_[DST]_history_4_variant
+		clear_variable = cge_slot_[DST]_history_4_patience_dir
+		clear_variable = cge_slot_[DST]_history_4_patience_abs
+		clear_variable = cge_slot_[DST]_history_4_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_4_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_5_date
+		clear_variable = cge_slot_[DST]_history_5_operation
+		clear_variable = cge_slot_[DST]_history_5_variant
+		clear_variable = cge_slot_[DST]_history_5_patience_dir
+		clear_variable = cge_slot_[DST]_history_5_patience_abs
+		clear_variable = cge_slot_[DST]_history_5_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_5_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_6_date
+		clear_variable = cge_slot_[DST]_history_6_operation
+		clear_variable = cge_slot_[DST]_history_6_variant
+		clear_variable = cge_slot_[DST]_history_6_patience_dir
+		clear_variable = cge_slot_[DST]_history_6_patience_abs
+		clear_variable = cge_slot_[DST]_history_6_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_6_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_7_date
+		clear_variable = cge_slot_[DST]_history_7_operation
+		clear_variable = cge_slot_[DST]_history_7_variant
+		clear_variable = cge_slot_[DST]_history_7_patience_dir
+		clear_variable = cge_slot_[DST]_history_7_patience_abs
+		clear_variable = cge_slot_[DST]_history_7_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_7_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_8_date
+		clear_variable = cge_slot_[DST]_history_8_operation
+		clear_variable = cge_slot_[DST]_history_8_variant
+		clear_variable = cge_slot_[DST]_history_8_patience_dir
+		clear_variable = cge_slot_[DST]_history_8_patience_abs
+		clear_variable = cge_slot_[DST]_history_8_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_8_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_9_date
+		clear_variable = cge_slot_[DST]_history_9_operation
+		clear_variable = cge_slot_[DST]_history_9_variant
+		clear_variable = cge_slot_[DST]_history_9_patience_dir
+		clear_variable = cge_slot_[DST]_history_9_patience_abs
+		clear_variable = cge_slot_[DST]_history_9_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_9_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_10_date
+		clear_variable = cge_slot_[DST]_history_10_operation
+		clear_variable = cge_slot_[DST]_history_10_variant
+		clear_variable = cge_slot_[DST]_history_10_patience_dir
+		clear_variable = cge_slot_[DST]_history_10_patience_abs
+		clear_variable = cge_slot_[DST]_history_10_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_10_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_11_date
+		clear_variable = cge_slot_[DST]_history_11_operation
+		clear_variable = cge_slot_[DST]_history_11_variant
+		clear_variable = cge_slot_[DST]_history_11_patience_dir
+		clear_variable = cge_slot_[DST]_history_11_patience_abs
+		clear_variable = cge_slot_[DST]_history_11_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_11_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_12_date
+		clear_variable = cge_slot_[DST]_history_12_operation
+		clear_variable = cge_slot_[DST]_history_12_variant
+		clear_variable = cge_slot_[DST]_history_12_patience_dir
+		clear_variable = cge_slot_[DST]_history_12_patience_abs
+		clear_variable = cge_slot_[DST]_history_12_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_12_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_13_date
+		clear_variable = cge_slot_[DST]_history_13_operation
+		clear_variable = cge_slot_[DST]_history_13_variant
+		clear_variable = cge_slot_[DST]_history_13_patience_dir
+		clear_variable = cge_slot_[DST]_history_13_patience_abs
+		clear_variable = cge_slot_[DST]_history_13_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_13_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_14_date
+		clear_variable = cge_slot_[DST]_history_14_operation
+		clear_variable = cge_slot_[DST]_history_14_variant
+		clear_variable = cge_slot_[DST]_history_14_patience_dir
+		clear_variable = cge_slot_[DST]_history_14_patience_abs
+		clear_variable = cge_slot_[DST]_history_14_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_14_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_15_date
+		clear_variable = cge_slot_[DST]_history_15_operation
+		clear_variable = cge_slot_[DST]_history_15_variant
+		clear_variable = cge_slot_[DST]_history_15_patience_dir
+		clear_variable = cge_slot_[DST]_history_15_patience_abs
+		clear_variable = cge_slot_[DST]_history_15_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_15_cooperation_abs
+		clear_variable = cge_slot_[DST]_history_16_date
+		clear_variable = cge_slot_[DST]_history_16_operation
+		clear_variable = cge_slot_[DST]_history_16_variant
+		clear_variable = cge_slot_[DST]_history_16_patience_dir
+		clear_variable = cge_slot_[DST]_history_16_patience_abs
+		clear_variable = cge_slot_[DST]_history_16_cooperation_dir
+		clear_variable = cge_slot_[DST]_history_16_cooperation_abs
+	}
+
+	set_variable = { var = cge_slot_[DST]_trial_stage value = cge_slot_[SRC]_trial_stage }
+	set_variable = { var = cge_slot_[DST]_trial_route value = cge_slot_[SRC]_trial_route }
+	set_variable = { var = cge_slot_[DST]_trial_reaction value = cge_slot_[SRC]_trial_reaction }
+	set_variable = { var = cge_slot_[DST]_trial_severity value = cge_slot_[SRC]_trial_severity }
+	set_variable = { var = cge_slot_[DST]_trial_credibility value = cge_slot_[SRC]_trial_credibility }
+	set_variable = { var = cge_slot_[DST]_trial_negotiation value = cge_slot_[SRC]_trial_negotiation }
+	set_variable = { var = cge_slot_[DST]_trial_publicity value = cge_slot_[SRC]_trial_publicity }
+	set_variable = { var = cge_slot_[DST]_trial_completed value = cge_slot_[SRC]_trial_completed }
+	set_variable = { var = cge_slot_[DST]_trial_condemned value = cge_slot_[SRC]_trial_condemned }
+	set_variable = { var = cge_slot_[DST]_trial_plea_days_left value = cge_slot_[SRC]_trial_plea_days_left }
+		}
+		SRC = "[?cge_copy_src|.0]"
+		DST = "[?cge_copy_dst|.0]"
+	}
+	set_variable = { var = cge_slot value = cge_copy_dst }
+	cge_mirror_slot_to_character = yes
+}
+
+cge_mirror_slot_to_character = {
+	meta_effect = {
+		text = {
+			if = {
+				limit = { has_event_target = cge_slot_[CGE_SLOT]_runtime_leader }
+				var:cge_slot_[CGE_SLOT]_origin_country^0 = { save_event_target_as = cge_mirror_origin }
+				var:cge_slot_[CGE_SLOT]_captor_country^0 = { save_event_target_as = cge_mirror_captor }
+				event_target:cge_slot_[CGE_SLOT]_runtime_leader = {
+					set_variable = { cge_cge_slot_index = [CGE_SLOT] }
+					clear_array = cge_cge_origin_country
+					clear_array = cge_cge_captor_country
+					add_to_array = { array = cge_cge_origin_country value = event_target:cge_mirror_origin }
+					add_to_array = { array = cge_cge_captor_country value = event_target:cge_mirror_captor }
+				}
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_character_key }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_character_key value = PREV.cge_slot_[CGE_SLOT]_character_key } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_character_key } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_name_order }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_name_order value = PREV.cge_slot_[CGE_SLOT]_name_order } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_name_order } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_rank_key }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_rank_key value = PREV.cge_slot_[CGE_SLOT]_rank_key } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_rank_key } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_held_state }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_held_state value = PREV.cge_slot_[CGE_SLOT]_held_state } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_held_state } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_level }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_level value = PREV.cge_slot_[CGE_SLOT]_level } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_level } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_attack }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_attack value = PREV.cge_slot_[CGE_SLOT]_attack } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_attack } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_defense }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_defense value = PREV.cge_slot_[CGE_SLOT]_defense } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_defense } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_planning }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_planning value = PREV.cge_slot_[CGE_SLOT]_planning } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_planning } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_logistics }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_logistics value = PREV.cge_slot_[CGE_SLOT]_logistics } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_logistics } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_capacity }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_capacity value = PREV.cge_slot_[CGE_SLOT]_capacity } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_capacity } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_attack_bonus }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_attack_bonus value = PREV.cge_slot_[CGE_SLOT]_attack_bonus } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_attack_bonus } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_defense_bonus }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_defense_bonus value = PREV.cge_slot_[CGE_SLOT]_defense_bonus } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_defense_bonus } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_planning_bonus }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_planning_bonus value = PREV.cge_slot_[CGE_SLOT]_planning_bonus } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_planning_bonus } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_logistics_bonus }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_logistics_bonus value = PREV.cge_slot_[CGE_SLOT]_logistics_bonus } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_logistics_bonus } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_count }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_count value = PREV.cge_slot_[CGE_SLOT]_trait_count } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_count } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_1 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_1 value = PREV.cge_slot_[CGE_SLOT]_trait_1 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_1 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_2 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_2 value = PREV.cge_slot_[CGE_SLOT]_trait_2 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_2 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_3 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_3 value = PREV.cge_slot_[CGE_SLOT]_trait_3 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_3 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_4 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_4 value = PREV.cge_slot_[CGE_SLOT]_trait_4 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_4 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_5 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_5 value = PREV.cge_slot_[CGE_SLOT]_trait_5 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_5 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_6 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_6 value = PREV.cge_slot_[CGE_SLOT]_trait_6 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_6 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_7 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_7 value = PREV.cge_slot_[CGE_SLOT]_trait_7 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_7 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trait_8 }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trait_8 value = PREV.cge_slot_[CGE_SLOT]_trait_8 } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trait_8 } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_capture_order }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_capture_order value = PREV.cge_slot_[CGE_SLOT]_capture_order } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_capture_order } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_runtime_prisoner_id }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_runtime_prisoner_id value = PREV.cge_slot_[CGE_SLOT]_runtime_prisoner_id } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_runtime_prisoner_id } }
+if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_runtime_portrait_key }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_runtime_portrait_key value = PREV.cge_slot_[CGE_SLOT]_runtime_portrait_key } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_runtime_portrait_key } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience value = PREV.cge_slot_[CGE_SLOT]_patience } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation value = PREV.cge_slot_[CGE_SLOT]_cooperation } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_executed }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_executed value = PREV.cge_slot_[CGE_SLOT]_executed } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_executed } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_recruited }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_recruited value = PREV.cge_slot_[CGE_SLOT]_recruited } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_recruited } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_pow_collaborator }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_pow_collaborator value = PREV.cge_slot_[CGE_SLOT]_pow_collaborator } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_pow_collaborator } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_death_overlay_frame }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_death_overlay_frame value = PREV.cge_slot_[CGE_SLOT]_death_overlay_frame } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_death_overlay_frame } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_death_weapon_frame }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_death_weapon_frame value = PREV.cge_slot_[CGE_SLOT]_death_weapon_frame } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_death_weapon_frame } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_execution_date }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_execution_date value = PREV.cge_slot_[CGE_SLOT]_execution_date } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_execution_date } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_recruitment_date }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_recruitment_date value = PREV.cge_slot_[CGE_SLOT]_recruitment_date } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_recruitment_date } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_progress }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience_timer_progress value = PREV.cge_slot_[CGE_SLOT]_patience_timer_progress } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience_timer_progress } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_days_left }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience_timer_days_left value = PREV.cge_slot_[CGE_SLOT]_patience_timer_days_left } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience_timer_days_left } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_running }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience_timer_running value = PREV.cge_slot_[CGE_SLOT]_patience_timer_running } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience_timer_running } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_progress }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation_timer_progress value = PREV.cge_slot_[CGE_SLOT]_cooperation_timer_progress } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation_timer_progress } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_days_left }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation_timer_days_left value = PREV.cge_slot_[CGE_SLOT]_cooperation_timer_days_left } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation_timer_days_left } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_running }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation_timer_running value = PREV.cge_slot_[CGE_SLOT]_cooperation_timer_running } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation_timer_running } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_stage }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_stage value = PREV.cge_slot_[CGE_SLOT]_trial_stage } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_stage } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_route }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_route value = PREV.cge_slot_[CGE_SLOT]_trial_route } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_route } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_reaction }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_reaction value = PREV.cge_slot_[CGE_SLOT]_trial_reaction } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_reaction } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_severity }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_severity value = PREV.cge_slot_[CGE_SLOT]_trial_severity } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_severity } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_credibility }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_credibility value = PREV.cge_slot_[CGE_SLOT]_trial_credibility } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_credibility } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_negotiation }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_negotiation value = PREV.cge_slot_[CGE_SLOT]_trial_negotiation } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_negotiation } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_publicity }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_publicity value = PREV.cge_slot_[CGE_SLOT]_trial_publicity } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_publicity } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_completed }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_completed value = PREV.cge_slot_[CGE_SLOT]_trial_completed } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_completed } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_condemned }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_condemned value = PREV.cge_slot_[CGE_SLOT]_trial_condemned } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_condemned } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_trial_plea_days_left }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_trial_plea_days_left value = PREV.cge_slot_[CGE_SLOT]_trial_plea_days_left } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_trial_plea_days_left } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience_operation_pending }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience_operation_pending value = PREV.cge_slot_[CGE_SLOT]_patience_operation_pending } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience_operation_pending } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_patience_selected_action }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_patience_selected_action value = PREV.cge_slot_[CGE_SLOT]_patience_selected_action } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_patience_selected_action } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation_operation_pending }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation_operation_pending value = PREV.cge_slot_[CGE_SLOT]_cooperation_operation_pending } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation_operation_pending } }
+		if = {
+			limit = { has_variable = cge_slot_[CGE_SLOT]_cooperation_selected_action }
+			event_target:cge_slot_[CGE_SLOT]_runtime_leader = { set_variable = { var = cge_cge_cooperation_selected_action value = PREV.cge_slot_[CGE_SLOT]_cooperation_selected_action } }
+		}
+		else = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clear_variable = cge_cge_cooperation_selected_action } }
+			}
+		}
+		CGE_SLOT = "[?cge_slot|.0]"
+	}
+}
+
+cge_init_slot = {
+	meta_effect = {
+		text = {
+	if = {
+		limit = {
+			has_country_flag = cge_has_candidate_[CGE_SLOT]
+			NOT = { has_variable = cge_slot_[CGE_SLOT]_name_order }
+		}
+		set_variable = { cge_slot_[CGE_SLOT]_name_order = 1000000 }
+		event_target:cge_slot_[CGE_SLOT]_runtime_leader = { cge_identify_character_on_from_base = yes }
+		if = {
+			limit = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_variable = cge_registry_name_order } }
+			set_variable = { var = cge_slot_[CGE_SLOT]_name_order value = event_target:cge_slot_[CGE_SLOT]_runtime_leader.cge_registry_name_order }
+		}
+	}
+	if = {
+		limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience = 50 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_blackmail_used }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_blackmail_used = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_operation_pending }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience_operation_pending = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_selected_action }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience_selected_action = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_days_left }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience_timer_days_left = 30 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_progress }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience_timer_progress = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_timer_running }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_patience_timer_running = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation_operation_pending }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation_operation_pending = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation_selected_action }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation_selected_action = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_days_left }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_days_left = 30 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_progress }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_progress = 0 }
+		}
+		if = {
+			limit = {
+				NOT = { has_variable = cge_slot_[CGE_SLOT]_cooperation_timer_running }
+			}
+			set_variable = { cge_slot_[CGE_SLOT]_cooperation_timer_running = 0 }
+		}
+	}
+	if = { limit = { NOT = { has_variable = cge_slot_[CGE_SLOT]_patience_decay_day_counter } } set_variable = { cge_slot_[CGE_SLOT]_patience_decay_day_counter = 0 } }
+	if = { limit = { NOT = { has_variable = cge_slot_[CGE_SLOT]_eased_patience_protection_days_left } } set_variable = { cge_slot_[CGE_SLOT]_eased_patience_protection_days_left = 0 } }
+		}
+		CGE_SLOT = "[?cge_slot|.0]"
+	}
+	cge_mirror_slot_to_character = yes
+}
+
+cge_init_slots = {
+	for_loop_effect = {
+		start = 1
+		end = cge_captured_general_count
+		compare = less_than_or_equals
+		value = cge_slot
+		cge_init_slot = yes
+	}
+}
+
+cge_rebuild_display_unsorted = {
+	clear_array = cge_general_display_characters
+	set_variable = { cge_visible_count = 0 }
+	for_loop_effect = {
+		start = 1
+		end = cge_captured_general_count
+		compare = less_than_or_equals
+		value = cge_slot
+		cge_init_slot = yes
+		meta_effect = {
+			text = {
+				if = {
+					limit = {
+						has_country_flag = cge_has_candidate_[CGE_SLOT]
+						OR = {
+							has_country_flag = cge_show_executed_generals
+							NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
+						}
+					}
+					add_to_array = { array = cge_general_display_characters value = event_target:cge_slot_[CGE_SLOT]_runtime_leader }
+					add_to_variable = { cge_visible_count = 1 }
+				}
+			}
+			CGE_SLOT = "[?cge_slot|.0]"
+		}
+	}
+	set_variable = { var = cge_alive_captured_general_count value = cge_visible_count }
+}
+
+cge_load_candidate_sort_key = {
+	meta_effect = {
+		text = {
+			if = { limit = { check_variable = { var = cge_sort_field value = 1 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_level } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 2 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_name_order } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 3 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_attack } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 4 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_defense } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 5 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_planning } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 6 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_logistics } }
+			else_if = { limit = { check_variable = { var = cge_sort_field value = 7 compare = equals } } set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_capacity } }
+			else = { set_variable = { var = cge_candidate_key value = cge_slot_[CGE_SLOT]_capture_order } }
+			set_variable = { var = cge_candidate_order value = cge_slot_[CGE_SLOT]_capture_order }
+		}
+		CGE_SLOT = "[?cge_slot|.0]"
+	}
+}
+
+cge_consider_sort_candidate = {
+	meta_effect = {
+		text = {
+			if = {
+				limit = {
+					has_country_flag = cge_has_candidate_[CGE_SLOT]
+					OR = { has_country_flag = cge_show_executed_generals NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } }
+					event_target:cge_slot_[CGE_SLOT]_runtime_leader = { NOT = { check_variable = { var = cge_cge_sort_epoch value = ROOT.cge_sort_epoch compare = equals } } }
+				}
+				cge_load_candidate_sort_key = yes
+				if = {
+					limit = { check_variable = { var = cge_best_found value = 0 compare = equals } }
+					set_variable = { cge_best_found = 1 }
+					set_variable = { var = cge_best_key value = cge_candidate_key }
+					set_variable = { var = cge_best_order value = cge_candidate_order }
+					event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_event_target_as = cge_sort_best_character }
+				}
+				else_if = {
+					limit = {
+						OR = {
+							AND = { check_variable = { var = cge_sort_desc value = 0 compare = greater_than } check_variable = { var = cge_candidate_key value = cge_best_key compare = greater_than } }
+							AND = { NOT = { check_variable = { var = cge_sort_desc value = 0 compare = greater_than } } check_variable = { var = cge_candidate_key value = cge_best_key compare = less_than } }
+							AND = { check_variable = { var = cge_candidate_key value = cge_best_key compare = equals } check_variable = { var = cge_candidate_order value = cge_best_order compare = less_than } }
+						}
+					}
+					set_variable = { var = cge_best_key value = cge_candidate_key }
+					set_variable = { var = cge_best_order value = cge_candidate_order }
+					event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_event_target_as = cge_sort_best_character }
+				}
+			}
+		}
+		CGE_SLOT = "[?cge_slot|.0]"
+	}
+}
+
+cge_sort_display = {
+	clear_array = cge_general_display_characters
+	add_to_variable = { cge_sort_epoch = 1 }
+	set_variable = { cge_sort_passes = cge_captured_general_count }
+	for_loop_effect = {
+		start = 1
+		end = cge_sort_passes
+		compare = less_than_or_equals
+		value = cge_sort_pass
+		set_variable = { cge_best_found = 0 }
+		for_loop_effect = {
+			start = 1
+			end = cge_captured_general_count
+			compare = less_than_or_equals
+			value = cge_slot
+			cge_consider_sort_candidate = yes
+		}
+		if = {
+			limit = { check_variable = { var = cge_best_found value = 0 compare = greater_than } }
+			add_to_array = { array = cge_general_display_characters value = event_target:cge_sort_best_character }
+			event_target:cge_sort_best_character = { set_variable = { var = cge_cge_sort_epoch value = ROOT.cge_sort_epoch } }
+		}
+	}
+	set_variable = { var = cge_alive_captured_general_count value = cge_general_display_characters^num }
+}
+
+cge_list_init_slots = { cge_init_slots = yes }
+cge_list_rebuild = { cge_rebuild_display_unsorted = yes }
+cge_list_refresh = { cge_reapply_sort = yes }
+cge_list_sync = { cge_init_slots = yes cge_reapply_sort = yes }
+cge_list_sync_unsorted = { cge_init_slots = yes cge_rebuild_display_unsorted = yes }
+
+
+cge_cycle_sort_field = {
+	if = {
+		limit = { check_variable = { var = cge_sort_field value = cge_sort_requested_field compare = equals } }
+		if = {
+			limit = { check_variable = { var = cge_sort_desc value = 0 compare = greater_than } }
+			set_variable = { cge_sort_desc = 0 }
+		}
+		else = {
+			set_variable = { cge_sort_field = 8 }
+			set_variable = { cge_sort_desc = 0 }
+		}
+	}
+	else = {
+		set_variable = { var = cge_sort_field value = cge_sort_requested_field }
+		set_variable = { cge_sort_desc = 1 }
+	}
+	cge_sort_display = yes
+	clear_variable = cge_sort_requested_field
+}
+
+cge_reapply_sort = {
+	if = {
+		limit = {
+			has_variable = cge_sort_field
+			check_variable = { var = cge_sort_field value = 0 compare = greater_than }
+		}
+		cge_sort_display = yes
+	}
+	else = {
+		set_variable = { cge_sort_field = 8 }
+		set_variable = { cge_sort_desc = 0 }
+		cge_sort_display = yes
+	}
+}
+
+
+
+cge_sort_level_click = { set_variable = { cge_sort_requested_field = 1 } cge_cycle_sort_field = yes }
+cge_sort_name_click = { set_variable = { cge_sort_requested_field = 2 } cge_cycle_sort_field = yes }
+cge_sort_attack_click = { set_variable = { cge_sort_requested_field = 3 } cge_cycle_sort_field = yes }
+cge_sort_defense_click = { set_variable = { cge_sort_requested_field = 4 } cge_cycle_sort_field = yes }
+cge_sort_planning_click = { set_variable = { cge_sort_requested_field = 5 } cge_cycle_sort_field = yes }
+cge_sort_logistics_click = { set_variable = { cge_sort_requested_field = 6 } cge_cycle_sort_field = yes }
+cge_sort_capacity_click = { set_variable = { cge_sort_requested_field = 7 } cge_cycle_sort_field = yes }
+
+
+

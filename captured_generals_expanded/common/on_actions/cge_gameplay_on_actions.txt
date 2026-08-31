@@ -1,0 +1,110 @@
+on_actions = {
+	on_deployed_leader_defeated = {
+			effect = {
+				if = {
+					limit = {
+						can_be_captured = yes
+						FROM = { is_ai = no }
+					}
+
+					cge_register_capture = yes
+				}
+			}
+		}
+	on_daily = {
+		effect = {
+			every_country = {
+							limit = {
+								is_ai = no
+								NOT = {
+									has_country_flag = cge_numeric_registry_initialized
+								}
+							}
+
+							set_country_flag = cge_numeric_registry_initialized
+						}
+			if = {
+				limit = { is_ai = no }
+				cge_daily_update_captured_generals = yes
+				if = {
+					limit = { has_country_flag = cge_show_overview_window }
+					cge_sync_patience_decay = yes
+					cge_refresh_selected_cache = yes
+					cge_update_timer_frames = yes
+				}
+			}
+			if = {
+							limit = {
+								is_ai = no
+								check_variable = {
+									var = cge_captured_general_count
+									value = 0
+									compare = greater_than
+								}
+							}
+
+							add_to_variable = {
+								var = cge_pow_weekly_tick_days
+								value = 1
+							}
+
+							if = {
+								limit = {
+									check_variable = {
+										var =
+											cge_pow_weekly_tick_days
+
+										value = 7
+										compare = equals
+									}
+								}
+
+								set_variable = {
+									cge_pow_weekly_tick_days = 0
+								}
+
+								log = "CGEPOW_TRUE_WEEKLY_TICK"
+
+								cge_pow_weekly_update = yes
+
+								if = {
+									limit = {
+										has_country_flag =
+											cge_show_overview_window
+
+										has_variable =
+											cge_overview_selected_slot
+									}
+
+									cge_pow_refresh_ui = yes
+									cge_refresh_selected_cache = yes
+								}
+							}
+						}
+		
+
+}
+	}
+	on_state_control_changed = {
+		effect = {
+			FROM.FROM = { save_event_target_as = cge_changed_prison_state }
+
+			every_country = {
+				limit = {
+					is_ai = no
+					check_variable = { var = cge_captured_general_count value = 0 compare = greater_than }
+					NOT = { has_country_flag = cge_state_rescue_refresh_pending }
+				}
+
+				for_loop_effect = {
+					start = 1
+					end = cge_captured_general_count
+					compare = less_than_or_equals
+					value = cge_slot_iter
+					set_variable = { var = cge_slot_arg value = cge_slot_iter }
+					cge_slot_rescue_probe = yes
+				}
+			}
+		}
+	}
+}

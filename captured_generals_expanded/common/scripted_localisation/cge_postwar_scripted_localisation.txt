@@ -1,0 +1,44 @@
+
+defined_text = {
+	name = CGEGetPostwarSelectedGeneralName
+	text = { trigger = { check_variable = { var = cge_postwar_general_display^num value = 0 compare = greater_than } } localization_key = CGE_POSTWAR_SELECTED_GENERAL_NAME_DISPLAY }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+
+defined_text = {
+	name = CGEGetPostwarCandidate1Name
+	text = { trigger = { has_event_target = cge_postwar_candidate_1 } localization_key = CGE_POSTWAR_CANDIDATE_1_NAME_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+
+defined_text = {
+	name = CGEGetPostwarCandidate2Name
+	text = { trigger = { has_event_target = cge_postwar_candidate_2 } localization_key = CGE_POSTWAR_CANDIDATE_2_NAME_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+
+defined_text = {
+	name = CGEGetPostwarCandidate3Name
+	text = { trigger = { has_event_target = cge_postwar_candidate_3 } localization_key = CGE_POSTWAR_CANDIDATE_3_NAME_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_UNKNOWN_GENERAL }
+}
+
+
+
+defined_text = {
+	name = CGEGetPostwarSelectedOriginNameDef
+	text = { trigger = { check_variable = { var = cge_postwar_destination_display^num value = 0 compare = greater_than } } localization_key = CGE_POSTWAR_DESTINATION_NAMEDEF_CURRENT }
+	text = { trigger = { check_variable = { var = cge_postwar_origin_display^num value = 0 compare = greater_than } } localization_key = CGE_POSTWAR_ORIGIN_NAMEDEF_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_POSTWAR_UNKNOWN_COUNTRY }
+}
+
+defined_text = {
+	name = CGEGetPostwarSelectedOriginAdjective
+	text = { trigger = { check_variable = { var = cge_postwar_destination_display^num value = 0 compare = greater_than } } localization_key = CGE_POSTWAR_DESTINATION_ADJ_CURRENT }
+	text = { trigger = { check_variable = { var = cge_postwar_origin_display^num value = 0 compare = greater_than } } localization_key = CGE_POSTWAR_ORIGIN_ADJ_CURRENT }
+	text = { trigger = { always = yes } localization_key = CGE_POSTWAR_UNKNOWN_ADJECTIVE }
+}
+

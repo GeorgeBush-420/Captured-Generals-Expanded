@@ -1,0 +1,594 @@
+add_namespace = cge_postwar
+
+country_event = {
+	id = cge_postwar.1
+	hidden = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = { check_variable = { var = cge_postwar_origin_queue^num value = 0 compare = greater_than } }
+			var:cge_postwar_origin_queue^0 = { save_global_event_target_as = cge_postwar_origin }
+			remove_from_array = { array = cge_postwar_origin_queue index = 0 }
+			cge_postwar_begin_origin = yes
+		}
+		else = {
+			clear_array = cge_postwar_origin_queue
+			clr_country_flag = cge_postwar_queue_active
+		}
+	}
+}
+
+country_event = {
+	id = cge_postwar.2
+
+	title = CGE_POSTWAR_REPATRIATION_TITLE
+	desc = CGE_POSTWAR_REPATRIATION_DESC
+
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = "CGE_POSTWAR ordinary repatriation event displayed."
+	}
+
+	option = {
+		name = CGE_POSTWAR_REPATRIATION_OK
+
+		ai_chance = {
+			factor = 1
+		}
+
+		hidden_effect = {
+
+			clr_country_flag = cge_postwar_ordinary_event_pending
+
+			var:cge_postwar_destination_display^0 = {
+				save_global_event_target_as = cge_postwar_destination
+			}
+
+			log = "CGE_POSTWAR ordinary repatriation acknowledged; resuming postwar processing."
+
+			cge_postwar_begin_origin_core = yes
+		}
+	}
+}
+
+country_event = {
+	id = cge_postwar.3
+
+
+	title = CGE_POSTWAR_FATE_TITLE
+	desc = CGE_POSTWAR_FATE_RETURN_DESC
+
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+		cge_postwar_prepare_event = yes
+	}
+	option = {
+		name = CGE_POSTWAR_FATE_RETURN_OVERRULE
+
+		custom_effect_tooltip = CGE_POSTWAR_FATE_RETURN_OVERRULE_TT
+
+		ai_chance = {
+			factor = 0
+		}
+
+		hidden_effect = {
+
+			add_political_power = -100
+
+			cge_postwar_halve_stats = yes
+
+			cge_postwar_reimprison = yes
+
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		name = CGE_POSTWAR_FATE_RESPECT_WISH
+
+		custom_effect_tooltip = CGE_POSTWAR_FATE_RETURN_RESPECT_TT
+
+		ai_chance = {
+			factor = 1
+		}
+
+		hidden_effect = {
+			cge_postwar_send_home = yes
+		}
+	}
+}
+
+country_event = {
+	id = cge_postwar.4
+	title = CGE_POSTWAR_AUTONOMY_TITLE
+	desc = CGE_POSTWAR_AUTONOMY_DESC
+	picture = GFX_report_event_generic_soldiers_surrendering
+	is_triggered_only = yes
+
+
+	immediate = {
+		cge_postwar_prepare_event = yes
+	}
+	option = {
+		trigger = {
+			any_owned_state = {
+				is_core_of = event_target:cge_postwar_origin
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+			}
+		}
+		name = CGE_POSTWAR_AUTONOMY_ACCEPT
+		custom_effect_tooltip = CGE_POSTWAR_AUTONOMY_ACCEPT_TT
+		ai_chance = { factor = 1 }
+		hidden_effect = { cge_postwar_restore_origin_as_puppet = yes }
+	}
+
+	option = {
+		trigger = {
+			has_political_power > 99.999
+			any_owned_state = {
+				is_core_of = event_target:cge_postwar_origin
+				NOT = { is_core_of = ROOT }
+				NOT = { is_claimed_by = ROOT }
+			}
+		}
+		name = CGE_POSTWAR_AUTONOMY_DENY
+		custom_effect_tooltip = CGE_POSTWAR_AUTONOMY_DENY_TT
+		ai_chance = { factor = 0 }
+		hidden_effect = {
+			add_political_power = -100
+			cge_postwar_reimprison = yes
+			cge_postwar_finish_origin = yes
+		}
+	}
+
+	option = {
+		trigger = {
+			NOT = {
+				any_owned_state = {
+					is_core_of = event_target:cge_postwar_origin
+					NOT = { is_core_of = ROOT }
+					NOT = { is_claimed_by = ROOT }
+				}
+			}
+		}
+		name = CGE_POSTWAR_AUTONOMY_IMPOSSIBLE
+		custom_effect_tooltip = CGE_POSTWAR_AUTONOMY_IMPOSSIBLE_TT
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			cge_postwar_reimprison = yes
+			cge_postwar_finish_origin = yes
+		}
+	}
+}
+
+country_event = {
+	immediate = {
+		cge_postwar_prepare_event = yes
+		clr_country_flag = cge_postwar_waiting_for_governor
+
+		log = "CGE_POSTWAR governor proposal displayed."
+	}
+
+	id = cge_postwar.5
+	title = CGE_POSTWAR_GOVERNOR_PROPOSAL_TITLE
+	desc = CGE_POSTWAR_GOVERNOR_PROPOSAL_DESC
+	picture = GFX_report_event_generic_soldiers_surrendering
+	is_triggered_only = yes
+	option = {
+		name = CGE_POSTWAR_GOVERNOR_PROPOSAL_YES
+		ai_chance = { factor = 1 }
+		hidden_effect = {
+			set_variable = { cge_postwar_governor_cursor = 0 }
+			clr_country_flag = cge_postwar_governor_not_first_page
+			cge_postwar_build_governor_page = yes
+			country_event = { id = cge_postwar.6 }
+		}
+	}
+	option = {
+		name = CGE_POSTWAR_GOVERNOR_PROPOSAL_NO
+		ai_chance = { factor = 0 }
+		hidden_effect = { cge_postwar_scan_collaborators = yes }
+	}
+}
+
+country_event = {
+	id = cge_postwar.6
+
+	title = CGE_POSTWAR_GOVERNOR_SELECT_TITLE
+	desc = CGE_POSTWAR_GOVERNOR_SELECT_DESC
+
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+		cge_postwar_prepare_event = yes
+	}
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_1
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_1
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_1_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_1
+			}
+
+			var:cge_postwar_candidate_1_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_2
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_2
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_2_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_2
+			}
+
+			var:cge_postwar_candidate_2_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_3
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_3
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_3_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_3
+			}
+
+			var:cge_postwar_candidate_3_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			OR = {
+				has_country_flag = cge_postwar_governor_has_more
+				has_country_flag = cge_postwar_governor_not_first_page
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_NAV
+
+		hidden_effect = {
+
+			if = {
+				limit = {
+					has_country_flag = cge_postwar_governor_has_more
+				}
+
+				set_country_flag = cge_postwar_governor_not_first_page
+
+				cge_postwar_build_governor_page = yes
+
+				log = "CGE_POSTWAR governor navigator advanced page."
+
+				country_event = {
+					id = cge_postwar.7
+				}
+			}
+
+			else = {
+
+				set_variable = {
+					cge_postwar_governor_cursor = 0
+				}
+
+				clr_country_flag = cge_postwar_governor_not_first_page
+
+				cge_postwar_build_governor_page = yes
+
+				log = "CGE_POSTWAR governor navigator cycled to first page."
+
+				country_event = {
+					id = cge_postwar.7
+				}
+			}
+		}
+	}
+
+
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					has_country_flag = cge_postwar_governor_has_more
+					has_country_flag = cge_postwar_governor_not_first_page
+				}
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANCEL
+
+		hidden_effect = {
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+}
+
+
+country_event = {
+	id = cge_postwar.99
+
+	hidden = yes
+	is_triggered_only = yes
+
+	immediate = {
+		clr_country_flag = cge_postwar_event_scan_scheduled
+
+		log = "CGE_POSTWAR deferred peace scan for [ROOT.GetName]."
+
+		cge_postwar_watch_tick = yes
+	}
+}
+
+
+country_event = {
+	id = cge_postwar.7
+
+	title = CGE_POSTWAR_GOVERNOR_SELECT_TITLE
+	desc = CGE_POSTWAR_GOVERNOR_SELECT_DESC
+
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_1
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_1
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_1_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_1
+			}
+
+			var:cge_postwar_candidate_1_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_2
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_2
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_2_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_2
+			}
+
+			var:cge_postwar_candidate_2_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			check_variable = {
+				var = cge_postwar_candidate_slot_3
+				value = 0
+				compare = greater_than
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANDIDATE_3
+		custom_effect_tooltip = CGE_POSTWAR_GOVERNOR_CANDIDATE_3_TT
+
+		hidden_effect = {
+			set_variable = {
+				var = cge_postwar_selected_slot
+				value = cge_postwar_candidate_slot_3
+			}
+
+			var:cge_postwar_candidate_3_display^0 = {
+				save_global_event_target_as = cge_postwar_general
+			}
+
+			cge_postwar_appoint_selected_governor = yes
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+
+
+	option = {
+		trigger = {
+			OR = {
+				has_country_flag = cge_postwar_governor_has_more
+				has_country_flag = cge_postwar_governor_not_first_page
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_NAV
+
+		hidden_effect = {
+
+			if = {
+				limit = {
+					has_country_flag = cge_postwar_governor_has_more
+				}
+
+				set_country_flag = cge_postwar_governor_not_first_page
+
+				cge_postwar_build_governor_page = yes
+
+				log = "CGE_POSTWAR governor navigator advanced page."
+
+				country_event = {
+					id = cge_postwar.6
+				}
+			}
+
+			else = {
+
+				set_variable = {
+					cge_postwar_governor_cursor = 0
+				}
+
+				clr_country_flag = cge_postwar_governor_not_first_page
+
+				cge_postwar_build_governor_page = yes
+
+				log = "CGE_POSTWAR governor navigator cycled to first page."
+
+				country_event = {
+					id = cge_postwar.6
+				}
+			}
+		}
+	}
+
+
+	option = {
+		trigger = {
+			NOT = {
+				OR = {
+					has_country_flag = cge_postwar_governor_has_more
+					has_country_flag = cge_postwar_governor_not_first_page
+				}
+			}
+		}
+
+		name = CGE_POSTWAR_GOVERNOR_CANCEL
+
+		hidden_effect = {
+			cge_postwar_scan_collaborators = yes
+		}
+	}
+}
+
+country_event = {
+	id = cge_postwar.8
+
+
+	title = CGE_POSTWAR_FATE_TITLE
+	desc = CGE_POSTWAR_FATE_STAY_DESC
+
+	picture = GFX_report_event_generic_soldiers_surrendering
+
+	is_triggered_only = yes
+
+
+
+	immediate = {
+		cge_postwar_prepare_event = yes
+	}
+	option = {
+		name = CGE_POSTWAR_FATE_STAY_OVERRULE
+
+		custom_effect_tooltip = CGE_POSTWAR_FATE_STAY_OVERRULE_TT
+
+		ai_chance = {
+			factor = 0
+		}
+
+		hidden_effect = {
+
+			add_political_power = -100
+
+			cge_postwar_send_home = yes
+		}
+	}
+
+
+	option = {
+		name = CGE_POSTWAR_FATE_RESPECT_WISH
+
+		custom_effect_tooltip = CGE_POSTWAR_FATE_STAY_RESPECT_TT
+
+		ai_chance = {
+			factor = 1
+		}
+
+		hidden_effect = {
+			cge_postwar_keep_selected_general = yes
+		}
+	}
+}

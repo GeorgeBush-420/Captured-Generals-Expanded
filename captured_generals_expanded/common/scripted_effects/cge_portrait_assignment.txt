@@ -1,0 +1,352 @@
+
+cge_assign_owner_portrait = {
+	if = {
+		limit = { NOT = { has_variable = cge_runtime_portrait_key } }
+		cge_assign_fallback_portrait = yes
+	}
+}
+
+cge_assign_fallback_portrait = {
+	if = {
+		limit = { is_female = yes }
+		cge_assign_female_portrait = yes
+	}
+	else = {
+		cge_assign_runtime_portrait_male_pool = yes
+	}
+}
+
+cge_assign_runtime_portrait_male_pool = {
+	if = {
+		limit = { OWNER = { tag = AFG } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 1 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 2 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 3 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 4 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = ENG } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 85 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 86 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 87 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 88 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 89 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 90 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 91 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 92 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 93 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 94 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = ETH } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 101 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 102 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 103 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 104 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = FIN } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 181 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 182 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 183 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 184 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 185 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 186 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 187 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = FRA } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 192 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 193 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 194 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 195 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 196 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 197 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 198 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 199 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 200 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = GER } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 204 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 205 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 206 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 207 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 208 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 209 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 210 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 211 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 212 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = ITA } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 234 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 235 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 236 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 237 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 238 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 239 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 240 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 241 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = JAP } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 245 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 246 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 247 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 248 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 249 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 250 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 251 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 252 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 253 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = JOR } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 257 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = PER } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 258 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 259 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = PHI } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 261 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 262 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 263 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = RAJ } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 267 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 268 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = SAF } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 273 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 274 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = SAU } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 280 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 281 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 282 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = SMI } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 426 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 427 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = SOV } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 459 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 460 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 461 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 462 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 463 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 464 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 465 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 466 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 467 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = USA } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 471 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 472 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 473 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 474 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 475 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 476 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 477 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 478 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 479 } }
+		}
+	}
+	else = {
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 1 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 2 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 3 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 4 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 11 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 12 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 13 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 14 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 56 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 57 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 58 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 59 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 60 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 61 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 85 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 86 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 87 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 88 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 89 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 90 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 91 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 92 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 93 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 94 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 101 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 102 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 103 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 104 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 115 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 116 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 117 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 118 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 119 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 120 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 121 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 122 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 123 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 124 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 125 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 181 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 182 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 183 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 184 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 185 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 186 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 187 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 192 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 193 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 194 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 195 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 196 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 197 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 198 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 199 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 200 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 204 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 205 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 206 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 207 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 208 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 209 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 210 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 211 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 212 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 234 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 235 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 236 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 237 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 238 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 239 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 240 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 241 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 245 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 246 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 247 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 248 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 249 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 250 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 251 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 252 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 253 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 257 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 258 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 259 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 261 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 262 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 263 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 267 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 268 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 273 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 274 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 280 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 281 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 282 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 426 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 427 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 437 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 438 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 439 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 440 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 441 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 459 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 460 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 461 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 462 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 463 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 464 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 465 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 466 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 467 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 471 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 472 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 473 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 474 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 475 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 476 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 477 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 478 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 479 } }
+		}
+	}
+}
+
+cge_assign_female_portrait = {
+	if = {
+		limit = { OWNER = { tag = ETH } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 98 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 99 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 100 } }
+		}
+	}
+	else_if = {
+		limit = { OWNER = { tag = ITA } }
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 226 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 227 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 228 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 229 } }
+		}
+	}
+	else = {
+		random_list = {
+			1 = { set_variable = { cge_runtime_portrait_key = 98 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 99 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 100 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 226 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 227 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 228 } }
+			1 = { set_variable = { cge_runtime_portrait_key = 229 } }
+		}
+	}
+}

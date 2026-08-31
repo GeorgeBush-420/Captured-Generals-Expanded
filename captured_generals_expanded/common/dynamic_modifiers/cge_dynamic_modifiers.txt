@@ -1,0 +1,15 @@
+
+cge_cooperation_consumer_goods_penalty = {
+	enable = { always = yes }
+	consumer_goods_factor = cge_cooperation_consumer_goods_factor
+}
+
+cge_patience_interrogation_pp_penalty = {
+	enable = { always = yes }
+	political_power_factor = cge_patience_interrogation_pp_factor
+}
+
+cge_patience_trial_consumer_goods_penalty = {
+	enable = { always = yes }
+	consumer_goods_factor = cge_patience_trial_consumer_goods_factor
+}

@@ -1,0 +1,8 @@
+
+cge_refresh_list_after_change = {
+	cge_refresh_alive_count = yes
+
+	cge_list_sync = yes
+
+	add_to_variable = { cge_main_window_dirty = 1 }
+}

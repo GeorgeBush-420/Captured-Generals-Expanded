@@ -1,0 +1,243 @@
+
+cge_is_selected_harsh = {
+	check_variable = { var = cge_cache_patience_pending value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_patience_action value = 1 compare = equals }
+	check_variable = { var = cge_cache_patience_timer value = 0 compare = greater_than }
+}
+
+
+cge_is_selected_eased = {
+	check_variable = { var = cge_cache_cooperation_pending value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_cooperation_action value = 1 compare = equals }
+	check_variable = { var = cge_cache_cooperation_timer value = 0 compare = greater_than }
+}
+
+
+cge_can_selected_blackmail_balance = {
+	NOT = { check_variable = { var = cge_cache_blackmail value = 0 compare = greater_than } }
+}
+
+
+cge_can_harsher_confinement = {
+	cge_is_selected_actionable = yes
+	political_power > 49.999
+	NOT = { cge_is_selected_eased = yes }
+}
+
+cge_can_threaten = {
+	cge_is_selected_actionable = yes
+	command_power > 9.999
+}
+
+cge_can_blackmail = {
+	cge_is_selected_actionable = yes
+	cge_can_selected_blackmail_balance = yes
+	political_power > 99.999
+}
+
+cge_can_interrogate = {
+	cge_is_selected_actionable = yes
+}
+
+cge_can_trial = {
+	NOT = { cge_trial_complete = yes }
+	cge_is_selected_actionable = yes
+	political_power > 99.999
+}
+
+cge_can_execute = {
+	cge_is_selected_actionable = yes
+	cge_can_selected_execute = yes
+	political_power > 199.999
+}
+
+cge_can_patience_operation = {
+	OR = {
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 1 compare = equals } cge_can_harsher_confinement = yes }
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 2 compare = equals } cge_can_threaten = yes }
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 3 compare = equals } cge_can_blackmail = yes }
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 4 compare = equals } cge_can_interrogate = yes }
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 5 compare = equals } cge_can_trial = yes }
+		AND = { check_variable = { var = cge_overview_patience_selected_action value = 6 compare = equals } cge_can_execute = yes }
+	}
+}
+
+cge_patience_70_days = {
+	OR = {
+		check_variable = { var = cge_overview_patience_selected_action value = 3 compare = equals }
+		check_variable = { var = cge_overview_patience_selected_action value = 4 compare = equals }
+	}
+}
+
+cge_patience_140_days = {
+	check_variable = { var = cge_overview_patience_selected_action value = 5 compare = equals }
+}
+
+cge_cooperation_70_days = {
+	OR = {
+		check_variable = { var = cge_overview_cooperation_selected_action value = 2 compare = equals }
+		check_variable = { var = cge_overview_cooperation_selected_action value = 4 compare = equals }
+		check_variable = { var = cge_overview_cooperation_selected_action value = 6 compare = equals }
+	}
+}
+
+cge_is_selected_recruited = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_recruited value = 0 compare = greater_than }
+}
+
+
+cge_is_selected_bribed = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_bribed value = 0 compare = greater_than }
+}
+
+
+cge_is_selected_actionable = {
+	cge_is_selected_alive = yes
+	NOT = { cge_is_selected_recruited = yes }
+}
+
+cge_can_eased_confinement = {
+	cge_is_selected_alive = yes
+	political_power > 49.999
+	NOT = { cge_is_selected_harsh = yes }
+}
+
+cge_can_propagandize = {
+	cge_is_selected_alive = yes
+}
+
+cge_can_bribe = {
+	cge_is_selected_alive = yes
+	NOT = { cge_is_selected_bribed = yes }
+}
+
+cge_can_extract_intel = {
+	cge_is_selected_alive = yes
+	check_variable = { var = cge_overview_cooperation value = 49.999 compare = greater_than }
+	check_variable = { var = cge_overview_patience value = 24.999 compare = greater_than }
+	command_power > 9.999
+}
+
+cge_can_recruit_general = {
+	cge_is_selected_actionable = yes
+	political_power > 199.999
+	OR = {
+		AND = {
+			check_variable = { var = cge_overview_cooperation value = 74.999 compare = greater_than }
+			check_variable = { var = cge_overview_patience value = 49.999 compare = greater_than }
+		}
+		AND = {
+			cge_trial_plea_active = yes
+			check_variable = { var = cge_overview_cooperation value = 49.999 compare = greater_than }
+			check_variable = { var = cge_overview_patience value = 24.999 compare = greater_than }
+		}
+	}
+}
+
+cge_can_recruit_pows = {
+	cge_is_selected_alive = yes
+	check_variable = { var = cge_overview_cooperation value = 99.999 compare = greater_than }
+	check_variable = { var = cge_overview_patience value = 75 compare = greater_than }
+	NOT = { cge_pow_unlocked = yes }
+}
+
+cge_can_cooperation_operation = {
+	OR = {
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 1 compare = equals }
+			cge_can_eased_confinement = yes
+		}
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 2 compare = equals }
+			cge_can_propagandize = yes
+		}
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 3 compare = equals }
+			cge_can_bribe = yes
+		}
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 4 compare = equals }
+			cge_can_extract_intel = yes
+		}
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 5 compare = equals }
+			cge_can_recruit_general = yes
+		}
+		AND = {
+			check_variable = { var = cge_overview_cooperation_selected_action value = 6 compare = equals }
+			cge_can_recruit_pows = yes
+		}
+	}
+}
+
+cge_is_selected_alive = {
+	NOT = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } }
+}
+
+
+cge_is_selected_executed = {
+	check_variable = { var = cge_cache_executed value = 0 compare = greater_than }
+}
+
+
+cge_can_selected_blackmail = {
+	NOT = { cge_blackmail_done = yes }
+	NOT = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } }
+	NOT = { check_variable = { var = cge_cache_blackmail value = 0 compare = greater_than } }
+}
+
+
+cge_can_selected_execute = {
+	NOT = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } }
+	NOT = { check_variable = { var = cge_cache_patience value = 0 compare = greater_than } }
+	NOT = { check_variable = { var = cge_cache_cooperation value = 0 compare = greater_than } }
+}
+
+
+cge_blackmail_done = {
+	OR = {
+		check_variable = { var = cge_overview_history_1_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_2_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_3_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_4_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_5_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_6_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_7_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_8_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_9_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_10_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_11_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_12_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_13_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_14_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_15_operation value = 3 compare = equals }
+		check_variable = { var = cge_overview_history_16_operation value = 3 compare = equals }
+	}
+}
+
+cge_pow_unlocked = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	NOT = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } }
+	check_variable = { var = cge_cache_pow_collab value = 0 compare = greater_than }
+}
+
+cge_pow_collaborator = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	NOT = { check_variable = { var = cge_cache_executed value = 0 compare = greater_than } }
+	NOT = { check_variable = { var = cge_cache_recruited value = 0 compare = greater_than } }
+	check_variable = { var = cge_cache_pow_collab value = 0 compare = greater_than }
+}
+
+
+
+cge_trial_complete = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_trial_done value = 0 compare = greater_than }
+}
+
+cge_trial_plea_active = {
+	check_variable = { var = cge_cache_valid value = 0 compare = greater_than }
+	check_variable = { var = cge_cache_trial_plea_days value = 0 compare = greater_than }
+}
