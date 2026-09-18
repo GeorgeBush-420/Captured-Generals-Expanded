@@ -6,8 +6,8 @@ from ParadoxParser.ParadoxNodes import GenericBlock, GenericKeyValue, GenericStr
 from ParadoxParser.queries import find_node, find_nodes, all_nodes
 
 #### EDIT these
-SOURCE_MOD_FOLDER = "/mnt/RAID/Projects/extremis-ultimis-dev/eu"
-COMPAT_PATH_FOLDER = "/mnt/RAID/Projects/extremis-ultimis-dev/CGE-Patch"
+SOURCE_MOD_FOLDER = "/mnt/RAID/SteamLibrary/steamapps/common/Hearts of Iron IV"
+COMPAT_PATH_FOLDER = "/mnt/RAID/Projects/Captured-Generals-Expanded/captured_generals_expanded"
 
 #DO NOT TOUCH
 SOURCE_MOD = Path(SOURCE_MOD_FOLDER)
@@ -23,13 +23,13 @@ def get_portrait(block):
             return find_node(army_portraits_b, GenericKeyValue, "large")
 
 def build_portrait_icon(name, texture):
-    icon = GenericBlock("sprtitetype")
-    icon_name = GenericKeyValue("name", GenericString(name))
+    icon = GenericBlock("spritetype")
+    icon_name = GenericKeyValue("name", GenericString(f"GFX_{name}"))
     icon_path = GenericKeyValue("texturefile", GenericString(texture))
     icon.nodes = [icon_name, icon_path]
     return icon
 
-
+#TODO this parses incorrectly
 def build_character_trigger(characters):
     def get_character_check_individual(char):
         return GenericBlock("check_variable",
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             CHARACTER_FILES[file.name] = file_obj
 
             #overwrite (storing paths)
-            if not (len(file_obj.nodes) >= 1 and file_obj.nodes[0].key == "characters"):
+            if not (len(file_obj.nodes) >= 1 and (isinstance(file_obj.nodes[0], GenericBlock) and file_obj.nodes[0].key == "characters")):
                 CHARACTER_FILES.pop(file.name)
                 print(f"{file.name} is not a character file?")
                 continue
@@ -66,16 +66,13 @@ if __name__ == "__main__":
                 char_name = node.key
                 CHARACTERS.append(char_name)
                 instances = find_nodes(node, GenericBlock, "instance")
-                if instances:
-                    portrait_kv = get_portrait(instances)
-                else:
-                    portrait_kv = get_portrait(node)
+                portrait_kv = get_portrait(node)
 
                 if portrait_kv:
                     file_change_counter =+ 1
                     portrait_path = portrait_kv.get_value()
-                    portrait_key = f"{char_name}_portrait"
-                    portrait_kv.value.value = portrait_key
+                    portrait_key = f"GFX_{char_name}_portrait"
+                    portrait_kv.value.value = GenericToken(portrait_key)
                     PORTRAITS[portrait_key] = portrait_path
             if file_change_counter > 0:
                 file_obj.to_pdx_file()
