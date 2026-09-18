@@ -1,0 +1,168 @@
+add_namespace = cge_risk
+add_namespace = cge_debug
+country_event = {
+    id = cge_risk.1
+    title = CGE_RISK_SUICIDE_TITLE
+    desc = CGE_RISK_SUICIDE_DESC
+    picture = GFX_cge_risk_death
+    is_triggered_only = yes
+    option = {
+        name = CGE_RISK_SUICIDE_ACK
+        custom_effect_tooltip = CGE_RISK_LOSS_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    clr_country_flag = cge_risk_notice_pending
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_risk_1
+        }
+    }
+}
+country_event = {
+    id = cge_risk.2
+    title = CGE_RISK_ESCAPE_TITLE
+    desc = CGE_RISK_ESCAPE_DESC
+    picture = GFX_cge_risk_escape
+    is_triggered_only = yes
+    option = {
+        name = CGE_RISK_ESCAPE_ACK
+        custom_effect_tooltip = CGE_RISK_ESCAPE_LOSS_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    clr_country_flag = cge_risk_notice_pending
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_risk_2
+        }
+    }
+}
+country_event = {
+    id = cge_debug.1
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            set_variable = {
+                cge_risk_debug_type = 1
+            }
+            set_variable = {
+                cge_risk_debug_age = 101
+            }
+            cge_risk_debug_prepare = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_debug_1
+        }
+    }
+}
+country_event = {
+    id = cge_debug.2
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            set_variable = {
+                cge_risk_debug_type = 2
+            }
+            set_variable = {
+                cge_risk_debug_age = 101
+            }
+            cge_risk_debug_prepare = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_debug_2
+        }
+    }
+}
+country_event = {
+    id = cge_debug.3
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            set_variable = {
+                cge_risk_debug_type = 1
+            }
+            set_variable = {
+                cge_risk_debug_age = 100
+            }
+            cge_risk_debug_prepare = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_debug_3
+        }
+    }
+}
+country_event = {
+    id = cge_debug.4
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            set_variable = {
+                cge_risk_debug_type = 2
+            }
+            set_variable = {
+                cge_risk_debug_age = 100
+            }
+            cge_risk_debug_prepare = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_debug_4
+        }
+    }
+}

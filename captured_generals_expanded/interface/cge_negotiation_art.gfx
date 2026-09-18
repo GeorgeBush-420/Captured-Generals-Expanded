@@ -1,0 +1,22 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_cge_negotiation_correspondence"
+        texturefile = "gfx/event_pictures/report_event_generic_read_write.dds"
+    }
+    spriteType = {
+        name = "GFX_cge_negotiation_ultimatum"
+        texturefile = "gfx/event_pictures/report_event_lithuanian_ultimatum.dds"
+    }
+    spriteType = {
+        name = "GFX_cge_negotiation_agreement"
+        texturefile = "gfx/event_pictures/report_event_SWE_saltsjobaden.dds"
+    }
+    spriteType = {
+        name = "GFX_idea_cge_reparations_received"
+        texturefile = "gfx/interface/cge_assets/cge_reparations_received.tga"
+    }
+    spriteType = {
+        name = "GFX_idea_cge_reparations_paid"
+        texturefile = "gfx/interface/cge_assets/cge_reparations_paid.tga"
+    }
+}

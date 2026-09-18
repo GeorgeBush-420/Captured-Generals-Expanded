@@ -1,0 +1,13 @@
+ideas = {
+	country = {
+		cge_pow_collaboration_network = {
+			picture = cge_pow_collaboration_network
+			allowed = { always = no }
+			allowed_civil_war = { always = no }
+			removal_cost = -1
+			modifier = {
+				custom_modifier_tooltip = CGE_POW_COMPLIANCE_SPIRIT_TT
+			}
+		}
+	}
+}

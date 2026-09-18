@@ -1,0 +1,1590 @@
+cge_resolve_return_country = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_return_captor
+        clr_country_flag = cge_return_country_found
+        clr_country_flag = cge_return_country_is_subject
+        set_variable = {
+            cge_return_best_score = -1
+        }
+        event_target:cge_return_origin = {
+            save_event_target_as = cge_return_destination
+        }
+        cge_return_follow_successors = yes
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            event_target:cge_return_origin = {
+                var:original_tag = {
+                    if = {
+                        limit = {
+                            any_owned_state = {
+                                always = yes
+                            }
+                            NOT = {
+                                has_war_with = event_target:cge_return_captor
+                            }
+                            NOT = {
+                                tag = event_target:cge_return_captor
+                            }
+                        }
+                        save_event_target_as = cge_return_destination
+                        event_target:cge_return_captor = {
+                            set_country_flag = cge_return_country_found
+                        }
+                    }
+                }
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            every_country = {
+                limit = {
+                    any_owned_state = {
+                        always = yes
+                    }
+                    NOT = {
+                        has_war_with = event_target:cge_return_captor
+                    }
+                    check_variable = {
+                        var = original_tag
+                        value = event_target:cge_return_origin.original_tag
+                        compare = equals
+                    }
+                }
+                set_variable = {
+                    var = cge_return_candidate_score
+                    value = num_owned_states
+                }
+                if = {
+                    limit = {
+                        is_subject_of = event_target:cge_return_captor
+                    }
+                    add_to_variable = {
+                        cge_return_candidate_score = 10000
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_candidate_score
+                            value = event_target:cge_return_captor.cge_return_best_score
+                            compare = greater_than
+                        }
+                    }
+                    save_event_target_as = cge_return_destination
+                    event_target:cge_return_captor = {
+                        set_variable = {
+                            var = cge_return_best_score
+                            value = PREV.cge_return_candidate_score
+                        }
+                        set_country_flag = cge_return_country_found
+                    }
+                }
+                clear_variable = cge_return_candidate_score
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            every_country = {
+                limit = {
+                    is_subject_of = event_target:cge_return_captor
+                    any_owned_state = {
+                        is_core_of = event_target:cge_return_origin
+                    }
+                    NOT = {
+                        has_war_with = event_target:cge_return_captor
+                    }
+                    event_target:cge_return_captor = {
+                        NOT = {
+                            has_country_flag = cge_return_country_found
+                        }
+                    }
+                }
+                save_event_target_as = cge_return_destination
+                event_target:cge_return_captor = {
+                    set_country_flag = cge_return_country_found
+                }
+            }
+        }
+        if = {
+            limit = {
+                event_target:cge_return_destination = {
+                    is_subject_of = event_target:cge_return_captor
+                }
+            }
+            set_country_flag = cge_return_country_is_subject
+        }
+        clear_variable = cge_return_best_score
+    }
+}
+cge_return_bind_native_identity = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_return_native_general
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_found
+                check_variable = {
+                    var = cge_return_identity_key
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            event_target:cge_return_destination = {
+                every_army_leader = {
+                    include_invisible = yes
+                    limit = {
+                        is_unit_leader = yes
+                        OR = {
+                            AND = {
+                                has_variable = cge_cge_character_key
+                                check_variable = {
+                                    var = cge_cge_character_key
+                                    value = event_target:cge_return_captor.cge_return_identity_key
+                                    compare = equals
+                                }
+                            }
+                            AND = {
+                                has_variable = cge_registry_character_key
+                                check_variable = {
+                                    var = cge_registry_character_key
+                                    value = event_target:cge_return_captor.cge_return_identity_key
+                                    compare = equals
+                                }
+                            }
+                        }
+                    }
+                    cge_return_bind_current_native = yes
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_return_native_bound
+                        value = 0
+                        compare = equals
+                    }
+                    OR = {
+                        AND = {
+                            check_variable = {
+                                var = cge_return_identity_key
+                                value = 0
+                                compare = greater_than
+                            }
+                            check_variable = {
+                                var = cge_return_identity_key
+                                value = 724
+                                compare = less_than
+                            }
+                        }
+                        check_variable = {
+                            var = cge_return_identity_key
+                            value = 725
+                            compare = equals
+                        }
+                    }
+                }
+                meta_effect = {
+                    text = {
+                        event_target:cge_return_destination = {
+                            cge_return_bind_native_key_[KEY] = yes
+                        }
+                    }
+                    KEY = "[?cge_return_identity_key|.0]"
+                }
+            }
+        }
+    }
+}
+cge_return_bind_native_prisoner_id = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_return_native_general
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_found
+                check_variable = {
+                    var = cge_return_lookup_prisoner_id
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            event_target:cge_return_destination = {
+                every_army_leader = {
+                    include_invisible = yes
+                    limit = {
+                        is_unit_leader = yes
+                        has_variable = cge_cge_runtime_prisoner_id
+                        check_variable = {
+                            var = cge_cge_runtime_prisoner_id
+                            value = event_target:cge_return_captor.cge_return_lookup_prisoner_id
+                            compare = equals
+                        }
+                        check_variable = {
+                            var = cge_cge_captor_country^num
+                            value = 0
+                            compare = greater_than
+                        }
+                        var:cge_cge_captor_country^0 = {
+                            tag = event_target:cge_return_captor
+                        }
+                    }
+                    event_target:cge_return_captor = {
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_return_native_bound
+                                    value = 0
+                                    compare = equals
+                                }
+                            }
+                            add_to_array = {
+                                array = cge_return_native_general
+                                value = PREV
+                            }
+                            set_variable = {
+                                cge_return_native_bound = 1
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+cge_return_resolve_batch_destination = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        var:cge_return_batch_origin^0 = {
+            save_event_target_as = cge_return_origin
+        }
+        cge_resolve_return_country = yes
+        event_target:cge_return_destination = {
+            save_global_event_target_as = cge_postwar_destination
+        }
+        clear_array = cge_postwar_destination_display
+        add_to_array = {
+            array = cge_postwar_destination_display
+            value = event_target:cge_return_destination
+        }
+        clr_country_flag = cge_postwar_destination_found
+        clr_country_flag = cge_postwar_destination_is_subject
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_found
+            }
+            set_country_flag = cge_postwar_destination_found
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_is_subject
+            }
+            set_country_flag = cge_postwar_destination_is_subject
+        }
+    }
+}
+cge_return_begin_batch = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_return_captor
+        cge_return_resolve_batch_destination = yes
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_batch_kind
+                    value = 1
+                    compare = equals
+                }
+            }
+            cge_return_begin_ordinary_batch = yes
+        }
+        else_if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_batch_kind
+                    value = 2
+                    compare = equals
+                }
+            }
+            cge_return_begin_recruited_batch = yes
+        }
+        else = {
+            cge_return_begin_ordinary_batch = yes
+        }
+    }
+}
+cge_return_prepare_ordinary_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_return_slot_prepared = 0
+        }
+        clear_array = cge_return_native_general
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        set_variable = {
+            cge_return_identity_key = 0
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[SLOT]
+                        OR = {
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            has_country_flag = cge_negotiation_binding_custody
+                        }
+                        check_variable = {
+                            var = cge_slot_[SLOT]_return_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        var:cge_slot_[SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_return_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[SLOT]_civil_war_successor^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            var:cge_slot_[SLOT]_origin_country^0 = {
+                                exists = yes
+                            }
+                        }
+                        if = {
+                            limit = {
+                                has_variable = cge_slot_[SLOT]_runtime_leader
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                if = {
+                                    limit = {
+                                        is_unit_leader = yes
+                                        is_general_captured = no
+                                    }
+                                    save_event_target_as = cge_return_role_character
+                                    event_target:cge_return_captor = {
+                                        set_variable = {
+                                            cge_return_role_slot = [SLOT]
+                                        }
+                                        cge_return_stage_role_from_slot = yes
+                                    }
+                                    cge_return_clear_character_status = yes
+                                    cge_return_unlock_if_hidden = yes
+                                    event_target:cge_return_captor = {
+                                        set_variable = {
+                                            cge_slot_[SLOT]_return_ready = 1
+                                        }
+                                        set_variable = {
+                                            cge_return_slot_prepared = 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_return_slot_prepared
+                                    value = 0
+                                    compare = equals
+                                }
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_character_key
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                has_country_flag = cge_return_country_found
+                            }
+                            set_variable = {
+                                var = cge_return_identity_key
+                                value = cge_slot_[SLOT]_character_key
+                            }
+                            cge_return_bind_native_identity = yes
+                            if = {
+                                limit = {
+                                    check_variable = {
+                                        var = cge_return_native_bound
+                                        value = 1
+                                        compare = equals
+                                    }
+                                }
+                                var:cge_return_native_general^0 = {
+                                    if = {
+                                        limit = {
+                                            is_unit_leader = yes
+                                            is_general_captured = no
+                                        }
+                                        save_event_target_as = cge_return_role_character
+                                        event_target:cge_return_captor = {
+                                            set_variable = {
+                                                cge_return_role_slot = [SLOT]
+                                            }
+                                            cge_return_stage_role_from_slot = yes
+                                        }
+                                        cge_return_clear_character_status = yes
+                                        cge_return_unlock_if_hidden = yes
+                                        event_target:cge_return_captor = {
+                                            set_variable = {
+                                                cge_slot_[SLOT]_return_ready = 1
+                                            }
+                                            set_variable = {
+                                                cge_return_slot_prepared = 1
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else = {
+                        if = {
+                            limit = {
+                                has_variable = cge_slot_[SLOT]_runtime_leader
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                if = {
+                                    limit = {
+                                        is_unit_leader = yes
+                                        is_general_captured = no
+                                    }
+                                    save_event_target_as = cge_return_role_character
+                                    event_target:cge_return_captor = {
+                                        set_variable = {
+                                            cge_return_role_slot = [SLOT]
+                                        }
+                                        cge_return_stage_role_from_slot = yes
+                                    }
+                                    cge_return_clear_character_status = yes
+                                    cge_return_unlock_if_hidden = yes
+                                    event_target:cge_return_captor = {
+                                        set_variable = {
+                                            cge_slot_[SLOT]_return_ready = 1
+                                        }
+                                        set_variable = {
+                                            cge_return_slot_prepared = 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            SLOT = "[?cge_return_work_slot|.0]"
+        }
+        clear_variable = cge_return_identity_key
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        clear_array = cge_return_native_general
+    }
+}
+cge_return_begin_ordinary_batch = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_return_reconcile_dead_origins = yes
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_return_work_slot
+            cge_return_prepare_ordinary_slot = yes
+        }
+        cge_return_remove_ready_slots = yes
+        cge_return_finish_batch = yes
+    }
+}
+cge_return_begin_recruited_batch = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_found
+            }
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_return_work_slot
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                has_country_flag = cge_has_candidate_[SLOT]
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_return_pending
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                has_variable = cge_slot_[SLOT]_runtime_leader
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                cge_return_clear_character_status = yes
+                                set_nationality = event_target:cge_return_destination
+                            }
+                            set_variable = {
+                                cge_slot_[SLOT]_return_ready = 1
+                            }
+                            clear_variable = cge_slot_[SLOT]_runtime_leader
+                        }
+                    }
+                    SLOT = "[?cge_return_work_slot|.0]"
+                }
+            }
+        }
+        cge_return_remove_ready_slots = yes
+        cge_return_finish_batch = yes
+    }
+}
+cge_return_remove_ready_slots = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_country_flag = cge_roster_batch_removal
+        set_country_flag = cge_return_metadata_only_cleanup
+        set_variable = {
+            var = cge_return_remove_index
+            value = cge_captured_general_count
+        }
+        while_loop_effect = {
+            limit = {
+                check_variable = {
+                    var = cge_return_remove_index
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_return_slot_is_ready = 0
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            check_variable = {
+                                var = cge_slot_[SLOT]_return_ready
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            cge_return_slot_is_ready = 1
+                        }
+                    }
+                }
+                SLOT = "[?cge_return_remove_index|.0]"
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_return_slot_is_ready
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                set_variable = {
+                    var = cge_release_slot_to_remove
+                    value = cge_return_remove_index
+                }
+                cge_release_remove_selected_slot = yes
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_batch_kind
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    set_country_flag = cge_postwar_ordinary_repatriated
+                    set_country_flag = cge_postwar_repatriated_any
+                }
+            }
+            subtract_from_variable = {
+                cge_return_remove_index = 1
+            }
+        }
+        clr_country_flag = cge_return_metadata_only_cleanup
+        clr_country_flag = cge_roster_batch_removal
+        clear_variable = cge_return_slot_is_ready
+        clear_variable = cge_return_remove_index
+        cge_refresh_list_after_change = yes
+    }
+}
+cge_return_finish_batch = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_return_clear_working_data = yes
+        clear_array = cge_return_batch_origin
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_batch_kind
+                    value = 2
+                    compare = equals
+                }
+            }
+            clear_variable = cge_return_batch_kind
+            clr_country_flag = cge_postwar_waiting_for_general_decision
+            clear_global_event_target = cge_postwar_general
+            cge_postwar_scan_collaborators = yes
+        }
+        else = {
+            clear_variable = cge_return_batch_kind
+        }
+    }
+}
+cge_return_stamp_civil_war_successor_slots = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_return_cw_stamp_slot = 1
+        }
+        while_loop_effect = {
+            limit = {
+                check_variable = {
+                    var = cge_return_cw_stamp_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            OR = {
+                                AND = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_origin_country^num
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                    var:cge_slot_[SLOT]_origin_country^0 = {
+                                        has_country_flag = cge_return_cw_loser_marker
+                                    }
+                                }
+                                AND = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_civil_war_successor^num
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                    var:cge_slot_[SLOT]_civil_war_successor^0 = {
+                                        has_country_flag = cge_return_cw_loser_marker
+                                    }
+                                }
+                            }
+                        }
+                        clear_array = cge_slot_[SLOT]_civil_war_successor
+                        add_to_array = {
+                            array = cge_slot_[SLOT]_civil_war_successor
+                            value = event_target:cge_return_civil_war_winner
+                        }
+                    }
+                }
+                SLOT = "[?cge_return_cw_stamp_slot|.0]"
+            }
+            add_to_variable = {
+                cge_return_cw_stamp_slot = 1
+            }
+        }
+        clear_variable = cge_return_cw_stamp_slot
+    }
+}
+cge_return_record_civil_war_successor = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        ROOT = {
+            save_event_target_as = cge_return_civil_war_winner
+        }
+        FROM = {
+            save_event_target_as = cge_return_civil_war_loser
+            set_country_flag = cge_return_cw_loser_marker
+            clear_array = cge_return_civil_war_successor
+            add_to_array = {
+                array = cge_return_civil_war_successor
+                value = event_target:cge_return_civil_war_winner
+            }
+        }
+        every_country = {
+            limit = {
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_return_stamp_civil_war_successor_slots = yes
+        }
+        event_target:cge_return_civil_war_loser = {
+            clr_country_flag = cge_return_cw_loser_marker
+        }
+    }
+}
+cge_return_follow_successors = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_return_captor
+        set_variable = {
+            var = cge_return_path_country
+            value = event_target:cge_return_origin
+        }
+        clear_array = cge_return_visited_countries
+        set_country_flag = cge_return_follow_next
+        while_loop_effect = {
+            limit = {
+                has_country_flag = cge_return_follow_next
+            }
+            clr_country_flag = cge_return_follow_next
+            if = {
+                limit = {
+                    NOT = {
+                        is_in_array = {
+                            array = cge_return_visited_countries
+                            value = var:cge_return_path_country
+                        }
+                    }
+                }
+                add_to_array = {
+                    array = cge_return_visited_countries
+                    value = var:cge_return_path_country
+                }
+                var:cge_return_path_country = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_civil_war_successor^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        var:cge_return_civil_war_successor^0 = {
+                            save_event_target_as = cge_return_link_successor
+                            if = {
+                                limit = {
+                                    any_owned_state = {
+                                        always = yes
+                                    }
+                                    NOT = {
+                                        has_war_with = event_target:cge_return_captor
+                                    }
+                                }
+                                save_event_target_as = cge_return_destination
+                                event_target:cge_return_captor = {
+                                    set_country_flag = cge_return_country_found
+                                }
+                            }
+                        }
+                        event_target:cge_return_captor = {
+                            set_variable = {
+                                var = cge_return_path_country
+                                value = event_target:cge_return_link_successor
+                            }
+                            set_country_flag = cge_return_follow_next
+                        }
+                    }
+                }
+            }
+        }
+        clear_variable = cge_return_path_country
+        clear_array = cge_return_visited_countries
+    }
+}
+cge_return_clear_character_status = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_character_flag = cge_captured_by_player
+        clr_character_flag = cge_bribed_by_player
+        clr_character_flag = cge_recruited_by_player
+        clr_character_flag = cge_pow_recruitment_unlocked
+        clr_character_flag = cge_pow_compliance_registered
+        clr_character_flag = cge_pow_compliance_registered_v2
+        clr_character_flag = cge_postwar_war_pending
+        clr_character_flag = cge_postwar_fate_processed
+    }
+}
+cge_return_clear_working_data = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_return_native_general
+        clear_variable = cge_return_identity_key
+        clear_variable = cge_return_native_bound
+        clear_variable = cge_return_work_slot
+        clear_variable = cge_return_slot_prepared
+        clear_variable = cge_return_slot_is_ready
+        clear_variable = cge_return_lookup_prisoner_id
+    }
+}
+cge_return_resolve_dead_successor = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_return_dead_successor_found
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_slot_[SLOT]_civil_war_successor^num
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    var:cge_slot_[SLOT]_civil_war_successor^0 = {
+                        if = {
+                            limit = {
+                                any_owned_state = {
+                                    always = yes
+                                }
+                            }
+                            if = {
+                                limit = {
+                                    NOT = {
+                                        has_war_with = event_target:cge_return_captor
+                                    }
+                                }
+                                save_event_target_as = cge_return_dead_successor
+                                event_target:cge_return_captor = {
+                                    set_country_flag = cge_return_dead_successor_found
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            SLOT = "[?cge_return_dead_scan_slot|.0]"
+        }
+    }
+}
+cge_return_bind_non_successor_copy = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_return_native_general
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        event_target:cge_return_dead_successor = {
+            set_country_flag = cge_return_cw_search_exclude
+        }
+        event_target:cge_return_captor = {
+            set_country_flag = cge_return_cw_captor_marker
+        }
+        every_country = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_cw_search_exclude
+                }
+            }
+            every_army_leader = {
+                include_invisible = yes
+                limit = {
+                    is_unit_leader = yes
+                    OR = {
+                        AND = {
+                            has_variable = cge_cge_character_key
+                            check_variable = {
+                                var = cge_cge_character_key
+                                value = event_target:cge_return_captor.cge_return_identity_key
+                                compare = equals
+                            }
+                        }
+                        AND = {
+                            has_variable = cge_registry_character_key
+                            check_variable = {
+                                var = cge_registry_character_key
+                                value = event_target:cge_return_captor.cge_return_identity_key
+                                compare = equals
+                            }
+                        }
+                        AND = {
+                            event_target:cge_return_captor = {
+                                check_variable = {
+                                    var = cge_return_lookup_prisoner_id
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            has_variable = cge_cge_runtime_prisoner_id
+                            check_variable = {
+                                var = cge_cge_runtime_prisoner_id
+                                value = event_target:cge_return_captor.cge_return_lookup_prisoner_id
+                                compare = equals
+                            }
+                            check_variable = {
+                                var = cge_cge_captor_country^num
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_cge_captor_country^0 = {
+                                has_country_flag = cge_return_cw_captor_marker
+                            }
+                        }
+                    }
+                }
+                cge_return_bind_current_native = yes
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_native_bound
+                    value = 0
+                    compare = equals
+                }
+                OR = {
+                    AND = {
+                        check_variable = {
+                            var = cge_return_identity_key
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_return_identity_key
+                            value = 724
+                            compare = less_than
+                        }
+                    }
+                    check_variable = {
+                        var = cge_return_identity_key
+                        value = 725
+                        compare = equals
+                    }
+                }
+            }
+            meta_effect = {
+                text = {
+                    every_country = {
+                        limit = {
+                            NOT = {
+                                has_country_flag = cge_return_cw_search_exclude
+                            }
+                        }
+                        cge_return_bind_native_key_[KEY] = yes
+                    }
+                }
+                KEY = "[?cge_return_identity_key|.0]"
+            }
+        }
+        event_target:cge_return_dead_successor = {
+            clr_country_flag = cge_return_cw_search_exclude
+        }
+        event_target:cge_return_captor = {
+            clr_country_flag = cge_return_cw_captor_marker
+        }
+    }
+}
+cge_return_prepare_dead_reconcile_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_negotiation_offer_before_reconcile = yes
+        set_variable = {
+            cge_return_dead_slot_ready = 0
+        }
+        set_variable = {
+            cge_return_dead_character_action = 0
+        }
+        set_variable = {
+            cge_return_dead_winner_found = 0
+        }
+        set_variable = {
+            cge_return_dead_loser_found = 0
+        }
+        set_variable = {
+            cge_return_dead_slot_qualifies = 0
+        }
+        set_variable = {
+            cge_return_identity_key = 0
+        }
+        set_variable = {
+            cge_return_lookup_prisoner_id = 0
+        }
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        clear_array = cge_return_native_general
+        clr_country_flag = cge_return_dead_successor_found
+        clr_country_flag = cge_return_country_found
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[SLOT]
+                        OR = {
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            has_country_flag = cge_negotiation_binding_custody
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[SLOT]_pow_collaborator
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        check_variable = {
+                            var = cge_slot_[SLOT]_civil_war_successor^num
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    set_variable = {
+                        cge_return_dead_slot_qualifies = 1
+                    }
+                    set_variable = {
+                        var = cge_return_identity_key
+                        value = cge_slot_[SLOT]_character_key
+                    }
+                    set_variable = {
+                        var = cge_return_lookup_prisoner_id
+                        value = cge_slot_[SLOT]_runtime_prisoner_id
+                    }
+                }
+            }
+            SLOT = "[?cge_return_dead_scan_slot|.0]"
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_dead_slot_qualifies
+                    value = 1
+                    compare = equals
+                }
+            }
+            cge_return_resolve_dead_successor = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_return_dead_successor_found
+                }
+                event_target:cge_return_dead_successor = {
+                    save_event_target_as = cge_return_destination
+                }
+                set_country_flag = cge_return_country_found
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_identity_key
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    cge_return_bind_native_identity = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 0
+                            compare = equals
+                        }
+                        check_variable = {
+                            var = cge_return_lookup_prisoner_id
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    cge_return_bind_native_prisoner_id = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        cge_return_dead_winner_found = 1
+                    }
+                    var:cge_return_native_general^0 = {
+                        save_event_target_as = cge_return_dead_winner_character
+                    }
+                }
+                cge_return_bind_non_successor_copy = yes
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        cge_return_dead_loser_found = 1
+                    }
+                    var:cge_return_native_general^0 = {
+                        save_event_target_as = cge_return_dead_loser_character
+                    }
+                }
+                event_target:cge_return_dead_successor = {
+                    save_event_target_as = cge_return_destination
+                }
+                clr_country_flag = cge_return_country_found
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_dead_winner_found
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        cge_return_dead_slot_ready = 1
+                    }
+                    set_variable = {
+                        cge_return_dead_character_action = 3
+                    }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_dead_loser_found
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    event_target:cge_return_dead_loser_character = {
+                        save_event_target_as = cge_return_dead_character
+                    }
+                    set_variable = {
+                        cge_return_dead_slot_ready = 1
+                    }
+                    set_variable = {
+                        cge_return_dead_character_action = 2
+                    }
+                }
+            }
+            else = {
+                cge_return_bind_non_successor_copy = yes
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    var:cge_return_native_general^0 = {
+                        if = {
+                            limit = {
+                                is_general_captured = no
+                            }
+                            save_event_target_as = cge_return_role_character
+                            event_target:cge_return_captor = {
+                                set_variable = {
+                                    var = cge_return_role_slot
+                                    value = cge_return_dead_scan_slot
+                                }
+                                cge_return_stage_role_from_slot = yes
+                            }
+                            cge_return_clear_character_status = yes
+                            cge_return_unlock_if_hidden = yes
+                            event_target:cge_return_captor = {
+                                set_variable = {
+                                    cge_return_dead_slot_ready = 1
+                                }
+                                set_variable = {
+                                    cge_return_dead_character_action = 0
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        clear_variable = cge_return_identity_key
+        clear_variable = cge_return_lookup_prisoner_id
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        clear_array = cge_return_native_general
+        clr_country_flag = cge_return_dead_successor_found
+        clr_country_flag = cge_return_country_found
+    }
+}
+cge_return_reconcile_dead_origins = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            save_event_target_as = cge_return_captor
+            clr_country_flag = cge_return_dead_repatriated_any
+            set_variable = {
+                var = cge_return_dead_scan_slot
+                value = cge_captured_general_count
+            }
+            while_loop_effect = {
+                limit = {
+                    check_variable = {
+                        var = cge_return_dead_scan_slot
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                cge_return_prepare_dead_reconcile_slot = yes
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_dead_slot_ready
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_dead_character_action
+                                value = 3
+                                compare = equals
+                            }
+                        }
+                        event_target:cge_return_dead_winner_character = {
+                            save_event_target_as = cge_return_role_character
+                        }
+                        set_variable = {
+                            var = cge_return_role_slot
+                            value = cge_return_dead_scan_slot
+                        }
+                        cge_return_stage_role_from_slot = yes
+                    }
+                    else_if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_dead_character_action
+                                value = 2
+                                compare = equals
+                            }
+                        }
+                        event_target:cge_return_dead_character = {
+                            save_event_target_as = cge_return_role_character
+                        }
+                        set_variable = {
+                            var = cge_return_role_slot
+                            value = cge_return_dead_scan_slot
+                        }
+                        cge_return_stage_role_from_slot = yes
+                    }
+                    set_variable = {
+                        var = cge_release_slot_to_remove
+                        value = cge_return_dead_scan_slot
+                    }
+                    set_country_flag = cge_return_metadata_only_cleanup
+                    cge_release_remove_selected_slot = yes
+                    clr_country_flag = cge_return_metadata_only_cleanup
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_dead_character_action
+                                value = 3
+                                compare = equals
+                            }
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_return_dead_loser_found
+                                    value = 1
+                                    compare = equals
+                                }
+                            }
+                            event_target:cge_return_dead_loser_character = {
+                                cge_return_clear_character_status = yes
+                                retire = yes
+                            }
+                        }
+                        event_target:cge_return_dead_winner_character = {
+                            cge_return_clear_character_status = yes
+                            if = {
+                                limit = {
+                                    is_general_captured = yes
+                                }
+                                release_from_captivity = yes
+                            }
+                            cge_return_force_unrestricted_transferred_role = yes
+                        }
+                    }
+                    else_if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_dead_character_action
+                                value = 2
+                                compare = equals
+                            }
+                        }
+                        event_target:cge_return_dead_character = {
+                            cge_return_clear_character_status = yes
+                            set_nationality = event_target:cge_return_dead_successor
+                            if = {
+                                limit = {
+                                    is_general_captured = yes
+                                }
+                                release_from_captivity = yes
+                            }
+                            cge_return_force_unrestricted_transferred_role = yes
+                        }
+                    }
+                    else_if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_return_dead_character_action
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        event_target:cge_return_dead_character = {
+                            cge_return_clear_character_status = yes
+                            if = {
+                                limit = {
+                                    is_general_captured = yes
+                                }
+                                release_from_captivity = yes
+                            }
+                        }
+                    }
+                    set_country_flag = cge_return_dead_repatriated_any
+                }
+                subtract_from_variable = {
+                    cge_return_dead_scan_slot = 1
+                }
+            }
+            if = {
+                limit = {
+                    has_country_flag = cge_return_dead_repatriated_any
+                }
+                country_event = {
+                    id = cge_postwar.2
+                    hours = 1
+                }
+            }
+            clr_country_flag = cge_return_dead_repatriated_any
+            clear_variable = cge_return_dead_scan_slot
+            clear_variable = cge_return_dead_slot_ready
+            clear_variable = cge_return_dead_character_action
+            clear_variable = cge_return_dead_winner_found
+            clear_variable = cge_return_dead_loser_found
+            clear_variable = cge_return_dead_slot_qualifies
+        }
+    }
+}
+cge_return_retry_pending = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = cge_return_batch_kind
+                }
+            }
+            clr_country_flag = cge_return_recovery_origin_found
+            set_variable = {
+                cge_return_recovery_slot = 1
+            }
+            while_loop_effect = {
+                limit = {
+                    check_variable = {
+                        var = cge_return_recovery_slot
+                        value = cge_captured_general_count
+                        compare = less_than_or_equals
+                    }
+                    NOT = {
+                        has_country_flag = cge_return_recovery_origin_found
+                    }
+                }
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                has_country_flag = cge_has_candidate_[SLOT]
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_return_pending
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_origin_country^num
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_origin_country^0 = {
+                                save_event_target_as = cge_return_recovery_origin
+                            }
+                            if = {
+                                limit = {
+                                    NOT = {
+                                        any_enemy_country = {
+                                            check_variable = {
+                                                var = original_tag
+                                                value = event_target:cge_return_recovery_origin.original_tag
+                                                compare = equals
+                                            }
+                                        }
+                                    }
+                                }
+                                set_country_flag = cge_return_recovery_origin_found
+                            }
+                        }
+                    }
+                    SLOT = "[?cge_return_recovery_slot|.0]"
+                }
+                add_to_variable = {
+                    cge_return_recovery_slot = 1
+                }
+            }
+            if = {
+                limit = {
+                    has_country_flag = cge_return_recovery_origin_found
+                }
+                set_variable = {
+                    cge_return_batch_kind = 1
+                }
+                clear_array = cge_return_batch_origin
+                add_to_array = {
+                    array = cge_return_batch_origin
+                    value = event_target:cge_return_recovery_origin
+                }
+                cge_return_begin_batch = yes
+            }
+            clr_country_flag = cge_return_recovery_origin_found
+            clear_variable = cge_return_recovery_slot
+            clear_global_event_target = cge_return_recovery_origin
+        }
+    }
+}

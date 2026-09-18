@@ -1,0 +1,27 @@
+add_namespace = cge_custody
+country_event = {
+    id = cge_custody.1
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_global_flag = cge_custody_sync_pending
+                        has_global_flag = cge_custody_settlement_pending
+                    }
+                }
+                cge_custody_sync_world = yes
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_custody_1
+        }
+    }
+}

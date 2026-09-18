@@ -1,0 +1,901 @@
+defined_text = {
+    name = CGEGetPortraitTotal0
+    text = { trigger = { check_variable = { var = cge_portrait_total_0 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_0_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_0 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_0_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal1
+    text = { trigger = { check_variable = { var = cge_portrait_total_1 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_1_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_1 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_1_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal2
+    text = { trigger = { check_variable = { var = cge_portrait_total_2 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_2_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_2 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_2_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal3
+    text = { trigger = { check_variable = { var = cge_portrait_total_3 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_3_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_3 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_3_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal4
+    text = { trigger = { check_variable = { var = cge_portrait_total_4 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_4_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_4 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_4_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal5
+    text = { trigger = { check_variable = { var = cge_portrait_total_5 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_5_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_5 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_5_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal6
+    text = { trigger = { check_variable = { var = cge_portrait_total_6 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_6_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_6 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_6_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal7
+    text = { trigger = { check_variable = { var = cge_portrait_total_7 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_7_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_7 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_7_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal8
+    text = { trigger = { check_variable = { var = cge_portrait_total_8 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_8_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_8 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_8_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal9
+    text = { trigger = { check_variable = { var = cge_portrait_total_9 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_9_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_9 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_9_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal10
+    text = { trigger = { check_variable = { var = cge_portrait_total_10 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_10_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_10 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_10_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal11
+    text = { trigger = { check_variable = { var = cge_portrait_total_11 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_11_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_11 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_11_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal12
+    text = { trigger = { check_variable = { var = cge_portrait_total_12 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_12_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_12 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_12_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal13
+    text = { trigger = { check_variable = { var = cge_portrait_total_13 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_13_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_13 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_13_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal14
+    text = { trigger = { check_variable = { var = cge_portrait_total_14 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_14_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_14 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_14_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal15
+    text = { trigger = { check_variable = { var = cge_portrait_total_15 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_15_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_15 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_15_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal16
+    text = { trigger = { check_variable = { var = cge_portrait_total_16 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_16_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_16 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_16_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal17
+    text = { trigger = { check_variable = { var = cge_portrait_total_17 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_17_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_17 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_17_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal18
+    text = { trigger = { check_variable = { var = cge_portrait_total_18 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_18_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_18 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_18_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal19
+    text = { trigger = { check_variable = { var = cge_portrait_total_19 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_19_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_19 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_19_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal20
+    text = { trigger = { check_variable = { var = cge_portrait_total_20 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_20_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_20 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_20_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal21
+    text = { trigger = { check_variable = { var = cge_portrait_total_21 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_21_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_21 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_21_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal22
+    text = { trigger = { check_variable = { var = cge_portrait_total_22 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_22_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_22 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_22_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal23
+    text = { trigger = { check_variable = { var = cge_portrait_total_23 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_23_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_23 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_23_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal24
+    text = { trigger = { check_variable = { var = cge_portrait_total_24 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_24_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_24 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_24_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal25
+    text = { trigger = { check_variable = { var = cge_portrait_total_25 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_25_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_25 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_25_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal26
+    text = { trigger = { check_variable = { var = cge_portrait_total_26 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_26_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_26 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_26_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal27
+    text = { trigger = { check_variable = { var = cge_portrait_total_27 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_27_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_27 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_27_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal28
+    text = { trigger = { check_variable = { var = cge_portrait_total_28 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_28_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_28 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_28_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal29
+    text = { trigger = { check_variable = { var = cge_portrait_total_29 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_29_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_29 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_29_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal30
+    text = { trigger = { check_variable = { var = cge_portrait_total_30 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_30_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_30 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_30_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal31
+    text = { trigger = { check_variable = { var = cge_portrait_total_31 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_31_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_31 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_31_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal32
+    text = { trigger = { check_variable = { var = cge_portrait_total_32 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_32_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_32 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_32_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal33
+    text = { trigger = { check_variable = { var = cge_portrait_total_33 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_33_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_33 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_33_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal34
+    text = { trigger = { check_variable = { var = cge_portrait_total_34 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_34_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_34 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_34_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal35
+    text = { trigger = { check_variable = { var = cge_portrait_total_35 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_35_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_35 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_35_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal36
+    text = { trigger = { check_variable = { var = cge_portrait_total_36 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_36_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_36 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_36_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal37
+    text = { trigger = { check_variable = { var = cge_portrait_total_37 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_37_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_37 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_37_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal38
+    text = { trigger = { check_variable = { var = cge_portrait_total_38 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_38_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_38 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_38_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal39
+    text = { trigger = { check_variable = { var = cge_portrait_total_39 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_39_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_39 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_39_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal40
+    text = { trigger = { check_variable = { var = cge_portrait_total_40 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_40_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_40 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_40_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal41
+    text = { trigger = { check_variable = { var = cge_portrait_total_41 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_41_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_41 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_41_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal42
+    text = { trigger = { check_variable = { var = cge_portrait_total_42 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_42_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_42 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_42_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal43
+    text = { trigger = { check_variable = { var = cge_portrait_total_43 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_43_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_43 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_43_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal44
+    text = { trigger = { check_variable = { var = cge_portrait_total_44 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_44_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_44 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_44_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal45
+    text = { trigger = { check_variable = { var = cge_portrait_total_45 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_45_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_45 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_45_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal46
+    text = { trigger = { check_variable = { var = cge_portrait_total_46 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_46_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_46 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_46_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal47
+    text = { trigger = { check_variable = { var = cge_portrait_total_47 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_47_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_47 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_47_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal48
+    text = { trigger = { check_variable = { var = cge_portrait_total_48 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_48_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_48 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_48_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal49
+    text = { trigger = { check_variable = { var = cge_portrait_total_49 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_49_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_49 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_49_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal50
+    text = { trigger = { check_variable = { var = cge_portrait_total_50 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_50_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_50 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_50_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal51
+    text = { trigger = { check_variable = { var = cge_portrait_total_51 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_51_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_51 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_51_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal52
+    text = { trigger = { check_variable = { var = cge_portrait_total_52 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_52_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_52 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_52_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal53
+    text = { trigger = { check_variable = { var = cge_portrait_total_53 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_53_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_53 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_53_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal54
+    text = { trigger = { check_variable = { var = cge_portrait_total_54 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_54_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_54 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_54_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal55
+    text = { trigger = { check_variable = { var = cge_portrait_total_55 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_55_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_55 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_55_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal56
+    text = { trigger = { check_variable = { var = cge_portrait_total_56 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_56_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_56 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_56_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal57
+    text = { trigger = { check_variable = { var = cge_portrait_total_57 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_57_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_57 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_57_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal58
+    text = { trigger = { check_variable = { var = cge_portrait_total_58 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_58_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_58 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_58_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal59
+    text = { trigger = { check_variable = { var = cge_portrait_total_59 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_59_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_59 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_59_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal60
+    text = { trigger = { check_variable = { var = cge_portrait_total_60 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_60_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_60 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_60_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal61
+    text = { trigger = { check_variable = { var = cge_portrait_total_61 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_61_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_61 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_61_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal62
+    text = { trigger = { check_variable = { var = cge_portrait_total_62 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_62_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_62 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_62_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal63
+    text = { trigger = { check_variable = { var = cge_portrait_total_63 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_63_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_63 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_63_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal64
+    text = { trigger = { check_variable = { var = cge_portrait_total_64 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_64_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_64 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_64_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal65
+    text = { trigger = { check_variable = { var = cge_portrait_total_65 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_65_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_65 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_65_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal66
+    text = { trigger = { check_variable = { var = cge_portrait_total_66 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_66_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_66 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_66_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal67
+    text = { trigger = { check_variable = { var = cge_portrait_total_67 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_67_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_67 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_67_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal68
+    text = { trigger = { check_variable = { var = cge_portrait_total_68 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_68_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_68 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_68_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal69
+    text = { trigger = { check_variable = { var = cge_portrait_total_69 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_69_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_69 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_69_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal70
+    text = { trigger = { check_variable = { var = cge_portrait_total_70 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_70_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_70 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_70_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal71
+    text = { trigger = { check_variable = { var = cge_portrait_total_71 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_71_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_71 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_71_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal72
+    text = { trigger = { check_variable = { var = cge_portrait_total_72 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_72_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_72 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_72_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal73
+    text = { trigger = { check_variable = { var = cge_portrait_total_73 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_73_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_73 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_73_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal74
+    text = { trigger = { check_variable = { var = cge_portrait_total_74 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_74_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_74 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_74_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal75
+    text = { trigger = { check_variable = { var = cge_portrait_total_75 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_75_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_75 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_75_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal76
+    text = { trigger = { check_variable = { var = cge_portrait_total_76 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_76_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_76 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_76_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal77
+    text = { trigger = { check_variable = { var = cge_portrait_total_77 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_77_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_77 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_77_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal78
+    text = { trigger = { check_variable = { var = cge_portrait_total_78 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_78_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_78 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_78_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal79
+    text = { trigger = { check_variable = { var = cge_portrait_total_79 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_79_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_79 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_79_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal80
+    text = { trigger = { check_variable = { var = cge_portrait_total_80 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_80_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_80 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_80_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal81
+    text = { trigger = { check_variable = { var = cge_portrait_total_81 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_81_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_81 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_81_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal82
+    text = { trigger = { check_variable = { var = cge_portrait_total_82 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_82_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_82 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_82_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal83
+    text = { trigger = { check_variable = { var = cge_portrait_total_83 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_83_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_83 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_83_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal84
+    text = { trigger = { check_variable = { var = cge_portrait_total_84 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_84_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_84 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_84_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal85
+    text = { trigger = { check_variable = { var = cge_portrait_total_85 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_85_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_85 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_85_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal86
+    text = { trigger = { check_variable = { var = cge_portrait_total_86 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_86_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_86 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_86_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal87
+    text = { trigger = { check_variable = { var = cge_portrait_total_87 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_87_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_87 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_87_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal88
+    text = { trigger = { check_variable = { var = cge_portrait_total_88 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_88_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_88 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_88_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal89
+    text = { trigger = { check_variable = { var = cge_portrait_total_89 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_89_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_89 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_89_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal90
+    text = { trigger = { check_variable = { var = cge_portrait_total_90 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_90_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_90 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_90_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal91
+    text = { trigger = { check_variable = { var = cge_portrait_total_91 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_91_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_91 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_91_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal92
+    text = { trigger = { check_variable = { var = cge_portrait_total_92 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_92_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_92 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_92_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal93
+    text = { trigger = { check_variable = { var = cge_portrait_total_93 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_93_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_93 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_93_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal94
+    text = { trigger = { check_variable = { var = cge_portrait_total_94 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_94_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_94 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_94_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal95
+    text = { trigger = { check_variable = { var = cge_portrait_total_95 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_95_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_95 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_95_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal96
+    text = { trigger = { check_variable = { var = cge_portrait_total_96 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_96_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_96 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_96_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal97
+    text = { trigger = { check_variable = { var = cge_portrait_total_97 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_97_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_97 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_97_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal98
+    text = { trigger = { check_variable = { var = cge_portrait_total_98 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_98_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_98 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_98_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal99
+    text = { trigger = { check_variable = { var = cge_portrait_total_99 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_99_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_99 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_99_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal100
+    text = { trigger = { check_variable = { var = cge_portrait_total_100 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_100_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_100 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_100_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal101
+    text = { trigger = { check_variable = { var = cge_portrait_total_101 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_101_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_101 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_101_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal102
+    text = { trigger = { check_variable = { var = cge_portrait_total_102 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_102_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_102 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_102_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal103
+    text = { trigger = { check_variable = { var = cge_portrait_total_103 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_103_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_103 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_103_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal104
+    text = { trigger = { check_variable = { var = cge_portrait_total_104 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_104_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_104 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_104_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal105
+    text = { trigger = { check_variable = { var = cge_portrait_total_105 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_105_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_105 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_105_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal106
+    text = { trigger = { check_variable = { var = cge_portrait_total_106 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_106_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_106 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_106_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal107
+    text = { trigger = { check_variable = { var = cge_portrait_total_107 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_107_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_107 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_107_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal108
+    text = { trigger = { check_variable = { var = cge_portrait_total_108 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_108_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_108 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_108_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal109
+    text = { trigger = { check_variable = { var = cge_portrait_total_109 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_109_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_109 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_109_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal110
+    text = { trigger = { check_variable = { var = cge_portrait_total_110 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_110_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_110 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_110_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal111
+    text = { trigger = { check_variable = { var = cge_portrait_total_111 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_111_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_111 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_111_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal112
+    text = { trigger = { check_variable = { var = cge_portrait_total_112 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_112_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_112 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_112_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal113
+    text = { trigger = { check_variable = { var = cge_portrait_total_113 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_113_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_113 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_113_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal114
+    text = { trigger = { check_variable = { var = cge_portrait_total_114 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_114_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_114 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_114_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal115
+    text = { trigger = { check_variable = { var = cge_portrait_total_115 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_115_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_115 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_115_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal116
+    text = { trigger = { check_variable = { var = cge_portrait_total_116 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_116_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_116 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_116_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal117
+    text = { trigger = { check_variable = { var = cge_portrait_total_117 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_117_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_117 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_117_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal118
+    text = { trigger = { check_variable = { var = cge_portrait_total_118 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_118_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_118 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_118_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal119
+    text = { trigger = { check_variable = { var = cge_portrait_total_119 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_119_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_119 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_119_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal120
+    text = { trigger = { check_variable = { var = cge_portrait_total_120 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_120_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_120 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_120_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal121
+    text = { trigger = { check_variable = { var = cge_portrait_total_121 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_121_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_121 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_121_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal122
+    text = { trigger = { check_variable = { var = cge_portrait_total_122 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_122_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_122 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_122_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal123
+    text = { trigger = { check_variable = { var = cge_portrait_total_123 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_123_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_123 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_123_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal124
+    text = { trigger = { check_variable = { var = cge_portrait_total_124 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_124_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_124 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_124_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal125
+    text = { trigger = { check_variable = { var = cge_portrait_total_125 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_125_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_125 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_125_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPortraitTotal126
+    text = { trigger = { check_variable = { var = cge_portrait_total_126 value = 0 compare = greater_than } } localization_key = CGE_PORTRAIT_TOTAL_126_POS }
+    text = { trigger = { check_variable = { var = cge_portrait_total_126 value = 0 compare = less_than } } localization_key = CGE_PORTRAIT_TOTAL_126_NEG }
+    text = { localization_key = CGE_EMPTY }
+}
+
+defined_text = { name = CGEGetPortraitTotalsChunk0 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_0 } }
+defined_text = { name = CGEGetPortraitTotalsChunk1 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_1 } }
+defined_text = { name = CGEGetPortraitTotalsChunk2 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_2 } }
+defined_text = { name = CGEGetPortraitTotalsChunk3 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_3 } }
+defined_text = { name = CGEGetPortraitTotalsChunk4 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_4 } }
+defined_text = { name = CGEGetPortraitTotalsChunk5 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_5 } }
+defined_text = { name = CGEGetPortraitTotalsChunk6 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_6 } }
+defined_text = { name = CGEGetPortraitTotalsChunk7 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_7 } }
+defined_text = { name = CGEGetPortraitTotalsChunk8 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_8 } }
+defined_text = { name = CGEGetPortraitTotalsChunk9 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_9 } }
+defined_text = { name = CGEGetPortraitTotalsChunk10 text = { localization_key = CGE_PORTRAIT_TOTAL_CHUNK_10 } }
+defined_text = { name = CGEGetPortraitTotals text = { localization_key = CGE_PORTRAIT_TOTALS } }

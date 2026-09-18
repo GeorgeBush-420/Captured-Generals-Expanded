@@ -1,0 +1,15 @@
+add_namespace = cge_profile
+
+country_event = {
+    id = cge_profile.1
+    hidden = yes
+    is_triggered_only = yes
+    immediate = { cge_profile_disable = yes }
+}
+
+country_event = {
+    id = cge_profile.2
+    hidden = yes
+    is_triggered_only = yes
+    immediate = { cge_profile_enable = yes }
+}

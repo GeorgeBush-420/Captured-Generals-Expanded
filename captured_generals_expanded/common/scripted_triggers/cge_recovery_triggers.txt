@@ -1,0 +1,10 @@
+cge_recovery_terms_valid = {
+    has_country_flag = cge_recovery_active
+    check_variable = { var = cge_recovery_count value = 0 compare = greater_than }
+    has_variable = cge_recovery_partner
+    var:cge_recovery_partner = {
+        exists = yes
+        NOT = { tag = PREV }
+        NOT = { has_war_with = PREV }
+    }
+}

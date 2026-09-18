@@ -1,0 +1,6 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_CGE_Douglas_MacArthur"
+        texturefile = "gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds"
+    }
+}

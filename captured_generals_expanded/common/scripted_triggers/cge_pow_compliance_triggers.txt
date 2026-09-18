@@ -1,0 +1,9 @@
+cge_pow_compliance_state_active = {
+    has_resistance = yes
+    check_variable = { var = cge_pow_compliance_state_gain value = 0 compare = greater_than }
+    CONTROLLER = {
+        tag = var:PREV.cge_pow_compliance_beneficiary
+        any_enemy_country = { original_tag = var:PREV.PREV.cge_pow_compliance_state_origin }
+    }
+    OCCUPIED = { original_tag = var:PREV.cge_pow_compliance_state_origin }
+}

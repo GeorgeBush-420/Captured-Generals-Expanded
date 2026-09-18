@@ -1,0 +1,509 @@
+add_namespace = cge_exchange
+country_event = {
+    id = cge_exchange.1
+    title = CGE_EXCHANGE_SELECT_TITLE
+    desc = {
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = greater_than
+            }
+        }
+        text = CGE_EXCHANGE_SELECT_DESC
+    }
+    desc = {
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = equals
+            }
+        }
+        text = CGE_EXCHANGE_EMPTY_DESC
+    }
+    picture = GFX_cge_negotiation_correspondence
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            hidden_effect = {
+                cge_exchange_build_page = yes
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_exchange_1
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANCEL
+        trigger = {
+            check_variable = {
+                var = cge_exchange_offset
+                value = 0
+                compare = equals
+            }
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = greater_than
+            }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_clear_session = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_1
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_1^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 1
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_2
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_2^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 2
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_3
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_3^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 3
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_NAV
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = greater_than
+            }
+            OR = {
+                has_country_flag = cge_exchange_has_more
+                check_variable = {
+                    var = cge_exchange_offset
+                    value = 0
+                    compare = greater_than
+                }
+            }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_next_page = yes
+                    country_event = {
+                        id = cge_exchange.2
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CLOSE
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = equals
+            }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_clear_session = yes
+                }
+            }
+        }
+    }
+}
+country_event = {
+    id = cge_exchange.2
+    title = CGE_EXCHANGE_SELECT_TITLE
+    desc = {
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = greater_than
+            }
+        }
+        text = CGE_EXCHANGE_SELECT_DESC
+    }
+    desc = {
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = equals
+            }
+        }
+        text = CGE_EXCHANGE_EMPTY_DESC
+    }
+    picture = GFX_cge_negotiation_correspondence
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            hidden_effect = {
+                cge_exchange_build_page = yes
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_exchange_2
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_1
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_1^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 1
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_2
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_2^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 2
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CANDIDATE_3
+        trigger = {
+            check_variable = {
+                var = cge_exchange_candidate_3^num
+                value = 0
+                compare = greater_than
+            }
+        }
+        custom_effect_tooltip = CGE_EXCHANGE_PROPOSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    set_variable = {
+                        cge_exchange_choice = 3
+                    }
+                    cge_exchange_choose = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_NAV
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = greater_than
+            }
+            OR = {
+                has_country_flag = cge_exchange_has_more
+                check_variable = {
+                    var = cge_exchange_offset
+                    value = 0
+                    compare = greater_than
+                }
+            }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_next_page = yes
+                    country_event = {
+                        id = cge_exchange.1
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_EXCHANGE_CLOSE
+        trigger = {
+            check_variable = {
+                var = cge_exchange_page_count
+                value = 0
+                compare = equals
+            }
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_clear_session = yes
+                }
+            }
+        }
+    }
+}
+country_event = {
+    id = cge_exchange.3
+    title = CGE_EXCHANGE_ACCEPTED_TITLE
+    desc = CGE_EXCHANGE_ACCEPTED_DESC
+    picture = GFX_cge_negotiation_agreement
+    is_triggered_only = yes
+    option = {
+        name = CGE_EXCHANGE_ACCEPTED_OPTION
+        custom_effect_tooltip = CGE_EXCHANGE_ACCEPTED_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_exchange_stage
+                                value = 2
+                                compare = equals
+                            }
+                        }
+                        add_political_power = 25
+                        cge_exchange_clear_session = yes
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_exchange_3
+        }
+    }
+}
+country_event = {
+    id = cge_exchange.4
+    title = CGE_EXCHANGE_REFUSED_TITLE
+    desc = CGE_EXCHANGE_REFUSED_DESC
+    picture = GFX_cge_negotiation_ultimatum
+    is_triggered_only = yes
+    option = {
+        name = CGE_EXCHANGE_REFUSED_OPTION
+        custom_effect_tooltip = CGE_EXCHANGE_REFUSED_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_exchange_stage
+                                value = 3
+                                compare = equals
+                            }
+                        }
+                        add_political_power = -25
+                        cge_exchange_clear_session = yes
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_exchange_4
+        }
+    }
+}
+country_event = {
+    id = cge_exchange.5
+    title = CGE_EXCHANGE_LAPSED_TITLE
+    desc = CGE_EXCHANGE_LAPSED_DESC
+    picture = GFX_cge_negotiation_correspondence
+    is_triggered_only = yes
+    option = {
+        name = CGE_EXCHANGE_CLOSE
+        custom_effect_tooltip = CGE_EXCHANGE_LAPSED_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_exchange_clear_session = yes
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_exchange_5
+        }
+    }
+}
+country_event = {
+    id = cge_exchange.6
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        clr_country_flag = cge_exchange_cooldown
+    }
+}

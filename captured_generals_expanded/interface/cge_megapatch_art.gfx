@@ -1,0 +1,15 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_cge_suicide_pills"
+        texturefile = "gfx/interface/cge_assets/cge_suicide_pills.tga"
+        noOfFrames = 1
+    }
+    spriteType = {
+        name = "GFX_cge_risk_death"
+        texturefile = "gfx/event_pictures/report_event_generic_funeral.dds"
+    }
+    spriteType = {
+        name = "GFX_cge_risk_escape"
+        texturefile = "gfx/event_pictures/report_event_JAP_prison_release.dds"
+    }
+}

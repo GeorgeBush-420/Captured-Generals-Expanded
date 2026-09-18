@@ -1,0 +1,22 @@
+ideas = {
+    country = {
+        cge_reparations_received_spirit = {
+            picture = cge_reparations_received
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                custom_modifier_tooltip = CGE_REPARATIONS_RECEIVED_BREAKDOWN
+            }
+        }
+        cge_reparations_paid_spirit = {
+            picture = cge_reparations_paid
+            allowed = { always = no }
+            allowed_civil_war = { always = yes }
+            removal_cost = -1
+            modifier = {
+                custom_modifier_tooltip = CGE_REPARATIONS_PAID_BREAKDOWN
+            }
+        }
+    }
+}

@@ -1,0 +1,72 @@
+cge_record_capture_site = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        FROM = {
+            clear_variable = cge_capture_site_pending_state
+            save_event_target_as = cge_capture_site_captor
+        }
+        set_temp_variable = {
+            cge_capture_site_stop = 0
+        }
+        for_each_loop = {
+            array = global.states
+            value = cge_capture_site_probe_state
+            break = cge_capture_site_stop
+            if = {
+                limit = {
+                    is_in_state = var:cge_capture_site_probe_state
+                }
+                var:cge_capture_site_probe_state = {
+                    event_target:cge_capture_site_captor = {
+                        set_variable = {
+                            var = cge_capture_site_pending_state
+                            value = PREV
+                        }
+                    }
+                }
+                set_temp_variable = {
+                    cge_capture_site_stop = 1
+                }
+            }
+        }
+        set_unit_leader_flag = cge_capture_site_subject
+        OWNER = {
+            every_army_leader = {
+                include_invisible = yes
+                limit = {
+                    has_unit_leader_flag = cge_capture_site_subject
+                }
+                clr_unit_leader_flag = cge_capture_site_subject
+                set_variable = {
+                    var = cge_native_captor
+                    value = event_target:cge_capture_site_captor
+                }
+                clear_variable = cge_capture_site_state
+                if = {
+                    limit = {
+                        event_target:cge_capture_site_captor = {
+                            has_variable = cge_capture_site_pending_state
+                        }
+                    }
+                    set_variable = {
+                        var = cge_capture_site_state
+                        value = event_target:cge_capture_site_captor.cge_capture_site_pending_state
+                    }
+                }
+                else = {
+                }
+            }
+        }
+        clr_unit_leader_flag = cge_capture_site_subject
+        FROM = {
+            clear_variable = cge_capture_site_pending_state
+            add_to_variable = {
+                cge_main_window_dirty = 1
+            }
+        }
+    }
+}

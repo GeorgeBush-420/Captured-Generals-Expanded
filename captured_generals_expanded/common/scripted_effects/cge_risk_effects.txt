@@ -1,0 +1,451 @@
+cge_risk_initialize_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_variable = cge_slot_[SLOT]_risk_type
+                        }
+                    }
+                    random_list = {
+                        90 = {
+                            set_variable = {
+                                cge_slot_[SLOT]_risk_type = 0
+                            }
+                        }
+                        5 = {
+                            set_variable = {
+                                cge_slot_[SLOT]_risk_type = 1
+                            }
+                        }
+                        5 = {
+                            set_variable = {
+                                cge_slot_[SLOT]_risk_type = 2
+                            }
+                        }
+                    }
+                }
+            }
+            SLOT = "[?cge_risk_slot|.0]"
+        }
+    }
+}
+cge_risk_observe_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                is_ai = no
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_risk_initialize_slot = yes
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            check_variable = {
+                                var = cge_slot_[SLOT]_risk_type
+                                value = 0
+                                compare = greater_than
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                is_general_captured = yes
+                                NOT = {
+                                    has_character_flag = cge_recruited_by_player
+                                }
+                                NOT = {
+                                    has_character_flag = cge_pow_recruitment_unlocked
+                                }
+                                OR = {
+                                    NOT = {
+                                        has_variable = cge_native_captor
+                                    }
+                                    check_variable = {
+                                        var = cge_native_captor
+                                        value = PREV
+                                        compare = equals
+                                    }
+                                }
+                            }
+                            OR = {
+                                AND = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_risk_type
+                                        value = 1
+                                        compare = equals
+                                    }
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_patience
+                                        value = 0
+                                        compare = less_than_or_equals
+                                    }
+                                }
+                                AND = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_risk_type
+                                        value = 2
+                                        compare = equals
+                                    }
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_cooperation
+                                        value = 0
+                                        compare = less_than_or_equals
+                                    }
+                                }
+                            }
+                        }
+                        if = {
+                            limit = {
+                                NOT = {
+                                    has_variable = cge_slot_[SLOT]_risk_zero_since
+                                }
+                            }
+                            set_variable = {
+                                var = cge_slot_[SLOT]_risk_zero_since
+                                value = global.num_days
+                            }
+                        }
+                        set_variable = {
+                            var = cge_risk_elapsed
+                            value = global.num_days
+                        }
+                        subtract_from_variable = {
+                            var = cge_risk_elapsed
+                            value = cge_slot_[SLOT]_risk_zero_since
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_risk_elapsed
+                                    value = 100
+                                    compare = greater_than
+                                }
+                                NOT = {
+                                    has_country_flag = cge_risk_notice_pending
+                                }
+                                NOT = {
+                                    has_variable = cge_risk_ready_slot
+                                }
+                            }
+                            set_variable = {
+                                cge_risk_ready_slot = [SLOT]
+                            }
+                            set_variable = {
+                                var = cge_risk_ready_order
+                                value = cge_slot_[SLOT]_capture_order
+                            }
+                        }
+                    }
+                    else = {
+                        clear_variable = cge_slot_[SLOT]_risk_zero_since
+                    }
+                }
+                SLOT = "[?cge_risk_slot|.0]"
+            }
+        }
+    }
+}
+cge_risk_resolve_pending = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                has_variable = cge_risk_ready_slot
+                NOT = {
+                    has_country_flag = cge_risk_notice_pending
+                }
+            }
+            set_variable = {
+                var = cge_risk_slot
+                value = cge_risk_ready_slot
+            }
+            set_variable = {
+                var = cge_risk_expected_order
+                value = cge_risk_ready_order
+            }
+            clear_variable = cge_risk_ready_slot
+            cge_risk_observe_slot = yes
+            if = {
+                limit = {
+                    has_variable = cge_risk_ready_slot
+                }
+                save_event_target_as = cge_risk_captor
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_capture_order
+                                    value = cge_risk_expected_order
+                                    compare = equals
+                                }
+                            }
+                            clear_array = cge_risk_general_display
+                            clear_array = cge_risk_origin_display
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                save_event_target_as = cge_risk_general
+                                OWNER = {
+                                    save_event_target_as = cge_risk_origin
+                                }
+                            }
+                            add_to_array = {
+                                array = cge_risk_general_display
+                                value = event_target:cge_risk_general
+                            }
+                            add_to_array = {
+                                array = cge_risk_origin_display
+                                value = event_target:cge_risk_origin
+                            }
+                            set_country_flag = cge_risk_notice_pending
+                            if = {
+                                limit = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_risk_type
+                                        value = 1
+                                        compare = equals
+                                    }
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_suicide = 1
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_executed = 1
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_risk_type = 0
+                                }
+                                clear_variable = cge_slot_[SLOT]_risk_zero_since
+                                set_variable = {
+                                    cge_slot_[SLOT]_patience_operation_pending = 0
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_cooperation_operation_pending = 0
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_patience_selected_action = 0
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_cooperation_selected_action = 0
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_patience_timer_running = 0
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_cooperation_timer_running = 0
+                                }
+                                clr_country_flag = cge_show_overview_window
+                                clear_array = cge_general_display_characters
+                                set_variable = {
+                                    cge_slot_ctx = [SLOT]
+                                }
+                                cge_execute_selected_general = yes
+                                clear_variable = cge_slot_ctx
+                                set_variable = {
+                                    cge_slot = [SLOT]
+                                }
+                                cge_mirror_slot_to_character = yes
+                                country_event = {
+                                    id = cge_risk.1
+                                }
+                            }
+                            else = {
+                                event_target:cge_risk_general = {
+                                    release_from_captivity = yes
+                                    cge_return_clear_character_status = yes
+                                    clear_variable = cge_native_captor
+                                }
+                                event_target:cge_risk_origin = {
+                                    if = {
+                                        limit = {
+                                            exists = yes
+                                        }
+                                        add_war_support = 0.05
+                                    }
+                                }
+                                set_variable = {
+                                    cge_release_slot_to_remove = [SLOT]
+                                }
+                                cge_release_remove_selected_slot = yes
+                                country_event = {
+                                    id = cge_risk.2
+                                }
+                            }
+                            add_political_power = -50
+                            add_war_support = -0.05
+                            if = {
+                                limit = {
+                                    has_government = democratic
+                                }
+                                add_popularity = {
+                                    ideology = democratic
+                                    popularity = -0.05
+                                }
+                            }
+                            else_if = {
+                                limit = {
+                                    has_government = fascism
+                                }
+                                add_popularity = {
+                                    ideology = fascism
+                                    popularity = -0.05
+                                }
+                            }
+                            else_if = {
+                                limit = {
+                                    has_government = communism
+                                }
+                                add_popularity = {
+                                    ideology = communism
+                                    popularity = -0.05
+                                }
+                            }
+                            else_if = {
+                                limit = {
+                                    has_government = neutrality
+                                }
+                                add_popularity = {
+                                    ideology = neutrality
+                                    popularity = -0.05
+                                }
+                            }
+                        }
+                    }
+                    SLOT = "[?cge_risk_slot|.0]"
+                }
+                cge_refresh_list_after_change = yes
+                cge_recalc_patience_modifiers = yes
+                cge_update_consumer_penalty = yes
+            }
+        }
+        clear_variable = cge_risk_ready_slot
+        clear_variable = cge_risk_ready_order
+        clear_variable = cge_risk_expected_order
+    }
+}
+cge_risk_debug_prepare = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_variable = cge_risk_ready_slot
+        clear_variable = cge_risk_ready_order
+        if = {
+            limit = {
+                has_variable = cge_overview_selected_slot
+            }
+            set_variable = {
+                var = cge_risk_slot
+                value = cge_overview_selected_slot
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            NOT = {
+                                has_country_flag = cge_risk_notice_pending
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                is_general_captured = yes
+                            }
+                        }
+                        set_variable = {
+                            var = cge_slot_[SLOT]_risk_type
+                            value = cge_risk_debug_type
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_risk_debug_type
+                                    value = 1
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_slot_[SLOT]_patience = 0
+                            }
+                        }
+                        else = {
+                            set_variable = {
+                                cge_slot_[SLOT]_cooperation = 0
+                            }
+                        }
+                        set_variable = {
+                            var = cge_slot_[SLOT]_risk_zero_since
+                            value = global.num_days
+                        }
+                        subtract_from_variable = {
+                            var = cge_slot_[SLOT]_risk_zero_since
+                            value = cge_risk_debug_age
+                        }
+                        cge_risk_observe_slot = yes
+                    }
+                }
+                SLOT = "[?cge_risk_slot|.0]"
+            }
+            cge_risk_resolve_pending = yes
+            cge_refresh_selected_cache = yes
+        }
+    }
+}

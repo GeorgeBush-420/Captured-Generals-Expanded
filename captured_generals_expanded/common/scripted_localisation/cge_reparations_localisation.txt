@@ -1,0 +1,239 @@
+defined_text = {
+    name = CGEGetReparationsReceiptLine1
+    text = { trigger = { has_variable = cge_reparations_receipt_1_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_1 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine2
+    text = { trigger = { has_variable = cge_reparations_receipt_2_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_2 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine3
+    text = { trigger = { has_variable = cge_reparations_receipt_3_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_3 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine4
+    text = { trigger = { has_variable = cge_reparations_receipt_4_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_4 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine5
+    text = { trigger = { has_variable = cge_reparations_receipt_5_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_5 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine6
+    text = { trigger = { has_variable = cge_reparations_receipt_6_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_6 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine7
+    text = { trigger = { has_variable = cge_reparations_receipt_7_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_7 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine8
+    text = { trigger = { has_variable = cge_reparations_receipt_8_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_8 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine9
+    text = { trigger = { has_variable = cge_reparations_receipt_9_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_9 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine10
+    text = { trigger = { has_variable = cge_reparations_receipt_10_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_10 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine11
+    text = { trigger = { has_variable = cge_reparations_receipt_11_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_11 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine12
+    text = { trigger = { has_variable = cge_reparations_receipt_12_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_12 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine13
+    text = { trigger = { has_variable = cge_reparations_receipt_13_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_13 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine14
+    text = { trigger = { has_variable = cge_reparations_receipt_14_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_14 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine15
+    text = { trigger = { has_variable = cge_reparations_receipt_15_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_15 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine16
+    text = { trigger = { has_variable = cge_reparations_receipt_16_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_16 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine17
+    text = { trigger = { has_variable = cge_reparations_receipt_17_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_17 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine18
+    text = { trigger = { has_variable = cge_reparations_receipt_18_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_18 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine19
+    text = { trigger = { has_variable = cge_reparations_receipt_19_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_19 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsReceiptLine20
+    text = { trigger = { has_variable = cge_reparations_receipt_20_amount } localization_key = CGE_REPARATIONS_RECEIPT_LINE_20 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine1
+    text = { trigger = { has_variable = cge_reparations_payment_1_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_1 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine2
+    text = { trigger = { has_variable = cge_reparations_payment_2_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_2 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine3
+    text = { trigger = { has_variable = cge_reparations_payment_3_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_3 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine4
+    text = { trigger = { has_variable = cge_reparations_payment_4_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_4 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine5
+    text = { trigger = { has_variable = cge_reparations_payment_5_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_5 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine6
+    text = { trigger = { has_variable = cge_reparations_payment_6_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_6 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine7
+    text = { trigger = { has_variable = cge_reparations_payment_7_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_7 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine8
+    text = { trigger = { has_variable = cge_reparations_payment_8_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_8 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine9
+    text = { trigger = { has_variable = cge_reparations_payment_9_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_9 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine10
+    text = { trigger = { has_variable = cge_reparations_payment_10_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_10 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine11
+    text = { trigger = { has_variable = cge_reparations_payment_11_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_11 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine12
+    text = { trigger = { has_variable = cge_reparations_payment_12_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_12 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine13
+    text = { trigger = { has_variable = cge_reparations_payment_13_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_13 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine14
+    text = { trigger = { has_variable = cge_reparations_payment_14_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_14 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine15
+    text = { trigger = { has_variable = cge_reparations_payment_15_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_15 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine16
+    text = { trigger = { has_variable = cge_reparations_payment_16_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_16 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine17
+    text = { trigger = { has_variable = cge_reparations_payment_17_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_17 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine18
+    text = { trigger = { has_variable = cge_reparations_payment_18_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_18 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine19
+    text = { trigger = { has_variable = cge_reparations_payment_19_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_19 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}
+
+defined_text = {
+    name = CGEGetReparationsPaymentLine20
+    text = { trigger = { has_variable = cge_reparations_payment_20_amount } localization_key = CGE_REPARATIONS_PAYMENT_LINE_20 }
+    text = { localization_key = CGE_REPARATIONS_BLANK }
+}

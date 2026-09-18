@@ -1,0 +1,14 @@
+defined_text = {
+    name = CGEGetExchangeAvailability
+    text = { trigger = { has_variable = cge_selected_general var:cge_selected_general = { has_character_flag = cge_exchange_cooldown } } localization_key = CGE_EXCHANGE_COOLDOWN_TT }
+    text = { trigger = { has_country_flag = cge_exchange_active } localization_key = CGE_EXCHANGE_ACTIVE_TT }
+    text = { trigger = { NOT = { cge_exchange_selected_is_prisoner = yes } } localization_key = CGE_EXCHANGE_PRISONER_REQUIRED_TT }
+    text = { trigger = { NOT = { has_any_general_captured_by = var:cge_exchange_ui_partner } } localization_key = CGE_EXCHANGE_NO_HOSTAGE_TT }
+    text = { localization_key = CGE_EXCHANGE_READY_TT }
+}
+
+defined_text = {
+    name = CGEGetExchangeNavigation
+    text = { trigger = { has_country_flag = cge_exchange_has_more } localization_key = CGE_EXCHANGE_NEXT }
+    text = { localization_key = CGE_EXCHANGE_FIRST }
+}

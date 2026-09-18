@@ -1,478 +1,1240 @@
-
 cge_slot_rescue_probe = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = cge_state_rescue_refresh_pending }
-					check_variable = { var = cge_slot_[CGE_SLOT]_character_key value = 0 compare = greater_than }
-					event_target:cge_changed_prison_state = {
-						state = var:PREV.cge_slot_[CGE_SLOT]_held_state
-					}
-				}
-
-				set_country_flag = cge_state_rescue_refresh_pending
-				country_event = { id = cge_state_rescue_refresh.1 hours = 1 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_state_rescue_refresh_pending
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        has_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_country_flag = cge_state_rescue_refresh_pending
+                    country_event = {
+                        id = cge_state_rescue_refresh.1
+                        hours = 1
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_init = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-					OR = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_recruited_by_player }
-					}
-				}
-				event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clr_character_flag = cge_postwar_fate_processed }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_postwar_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_recruited_by_player
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        clr_character_flag = cge_postwar_fate_processed
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_fate = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = cge_postwar_fate_found }
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-					NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-					OR = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_recruited_by_player }
-					}
-					event_target:cge_slot_[CGE_SLOT]_runtime_leader = { NOT = { has_character_flag = cge_postwar_fate_processed } }
-				}
-
-				set_variable = { cge_postwar_selected_slot = [CGE_SLOT] }
-				event_target:cge_slot_[CGE_SLOT]_runtime_leader = {
-					save_global_event_target_as = cge_postwar_general
-					set_character_flag = cge_postwar_fate_processed
-				}
-				set_country_flag = cge_postwar_fate_found
-				set_country_flag = cge_postwar_waiting_for_general_decision
-
-				random_list = {
-					3 = {
-						log = "CGE_POSTWAR_FATE slot=[CGE_SLOT] rolled REPATRIATION."
-						country_event = { id = cge_postwar.3 hours = 1 }
-					}
-					2 = {
-						log = "CGE_POSTWAR_FATE slot=[CGE_SLOT] rolled STAY."
-						country_event = { id = cge_postwar.8 hours = 1 }
-					}
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_postwar_fate_found
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_postwar_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_recruited_by_player
+                            }
+                        }
+                        var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                            NOT = {
+                                has_character_flag = cge_postwar_fate_processed
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_postwar_selected_slot = [CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        save_global_event_target_as = cge_postwar_general
+                        set_character_flag = cge_postwar_fate_processed
+                    }
+                    set_country_flag = cge_postwar_fate_found
+                    set_country_flag = cge_postwar_waiting_for_general_decision
+                    random_list = {
+                        3 = {
+                            country_event = {
+                                id = cge_postwar.3
+                                hours = 1
+                            }
+                        }
+                        2 = {
+                            country_event = {
+                                id = cge_postwar.8
+                                hours = 1
+                            }
+                        }
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_cleanup = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-				}
-				event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clr_character_flag = cge_postwar_fate_processed }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_postwar_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        clr_character_flag = cge_postwar_fate_processed
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_autonomy_candidate = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-					NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-					OR = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_recruited_by_player }
-					}
-				}
-				add_to_array = {
-					array = cge_postwar_autonomy_candidates
-					value = event_target:cge_slot_[CGE_SLOT]_runtime_leader
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_postwar_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_recruited_by_player
+                            }
+                        }
+                    }
+                    add_to_array = {
+                        array = cge_postwar_autonomy_candidates
+                        value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_governor_probe = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-					NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-					OR = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_recruited_by_player }
-					}
-				}
-				set_country_flag = cge_postwar_has_governor_candidate
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            check_variable = {
+                                var = original_tag
+                                value = event_target:cge_postwar_origin.original_tag
+                                compare = equals
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_recruited_by_player
+                            }
+                        }
+                    }
+                    set_country_flag = cge_postwar_has_governor_candidate
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_clear_postwar_flag = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-				event_target:cge_slot_[CGE_SLOT]_runtime_leader = { clr_character_flag = cge_postwar_processed_this_settlement }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        clr_character_flag = cge_postwar_processed_this_settlement
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_arm_origin = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_exact_origin_marker }
-				}
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = { set_country_flag = cge_postwar_was_at_war_with_player }
-				set_country_flag = cge_postwar_watch_active
-				set_country_flag = cge_postwar_exact_origin_matched
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            original_tag = event_target:cge_postwar_detected_origin
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        set_character_flag = cge_postwar_tracking_initialized
+                        set_character_flag = cge_postwar_war_pending
+                    }
+                    set_country_flag = cge_postwar_watch_active
+                    set_country_flag = cge_postwar_exact_origin_matched
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_watch = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-					if = {
-						limit = { has_war_with = event_target:cge_postwar_watch_captor }
-						set_country_flag = cge_postwar_was_at_war_with_player
-						event_target:cge_postwar_watch_captor = { set_country_flag = cge_postwar_watch_has_pending_origin }
-					}
-					else_if = {
-						limit = { has_country_flag = cge_postwar_was_at_war_with_player }
-						event_target:cge_postwar_watch_captor = { set_country_flag = cge_postwar_watch_has_pending_origin }
-					}
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_origin_country^num
+                            value = 0
+                            compare = greater_than
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        var:original_tag = {
+                            save_event_target_as = cge_postwar_watched_origin
+                        }
+                    }
+                    if = {
+                        limit = {
+                            OR = {
+                                var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                    has_country_flag = cge_postwar_was_at_war_with_player
+                                }
+                                event_target:cge_postwar_watched_origin = {
+                                    has_country_flag = cge_postwar_was_at_war_with_player
+                                }
+                                any_enemy_country = {
+                                    original_tag = event_target:cge_postwar_watched_origin
+                                }
+                            }
+                        }
+                        if = {
+                            limit = {
+                                has_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                set_character_flag = cge_postwar_tracking_initialized
+                                set_character_flag = cge_postwar_war_pending
+                            }
+                        }
+                        set_country_flag = cge_postwar_watch_has_pending_origin
+                        set_country_flag = cge_postwar_watch_active
+                    }
+                    else_if = {
+                        limit = {
+                            has_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_postwar_war_pending
+                            }
+                        }
+                        set_country_flag = cge_postwar_watch_has_pending_origin
+                        set_country_flag = cge_postwar_watch_active
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_return_pending
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_country_flag = cge_return_stuck_pending_detected
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_postwar_detect = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					NOT = { has_country_flag = cge_postwar_queue_active }
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-						has_country_flag = cge_postwar_was_at_war_with_player
-						NOT = { has_war_with = event_target:cge_postwar_watch_captor }
-					}
-				}
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-					clr_country_flag = cge_postwar_was_at_war_with_player
-					save_global_event_target_as = cge_postwar_detected_origin
-				}
-				add_to_array = { array = cge_postwar_origin_queue value = event_target:cge_postwar_detected_origin }
-				set_country_flag = cge_postwar_queue_active
-				log = "CGE_POSTWAR detected peace: captor=[ROOT.GetName] origin=[event_target:cge_postwar_detected_origin.GetName]."
-				country_event = { id = cge_postwar.1 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_postwar_queue_active
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_origin_country^num
+                            value = 0
+                            compare = greater_than
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        var:original_tag = {
+                            save_event_target_as = cge_postwar_watched_origin
+                        }
+                    }
+                    if = {
+                        limit = {
+                            OR = {
+                                var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                    has_country_flag = cge_postwar_was_at_war_with_player
+                                }
+                                event_target:cge_postwar_watched_origin = {
+                                    has_country_flag = cge_postwar_was_at_war_with_player
+                                }
+                                AND = {
+                                    has_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                        has_character_flag = cge_postwar_war_pending
+                                    }
+                                }
+                            }
+                            NOT = {
+                                any_enemy_country = {
+                                    original_tag = event_target:cge_postwar_watched_origin
+                                }
+                            }
+                        }
+                        add_to_array = {
+                            array = cge_postwar_origin_queue
+                            value = event_target:cge_postwar_watched_origin
+                        }
+                        set_country_flag = cge_postwar_queue_active
+                        country_event = {
+                            id = cge_postwar.1
+                            hours = 1
+                        }
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_sync_patience_decay = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-
-				if = {
-					limit = {
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } }
-					}
-					set_variable = { cge_overview_patience_weekly_decay = -1 }
-					if = { limit = { check_variable = { var = cge_slot_[CGE_SLOT]_patience value = 75 compare = greater_than } } set_variable = { cge_overview_cooperation_weekly_decay = -0.5 } }
-					else_if = { limit = { check_variable = { var = cge_slot_[CGE_SLOT]_patience value = 50 compare = greater_than } } set_variable = { cge_overview_cooperation_weekly_decay = -1 } }
-					else_if = { limit = { check_variable = { var = cge_slot_[CGE_SLOT]_patience value = 25 compare = greater_than } } set_variable = { cge_overview_cooperation_weekly_decay = -1.5 } }
-					else_if = { limit = { check_variable = { var = cge_slot_[CGE_SLOT]_patience value = 0 compare = greater_than } } set_variable = { cge_overview_cooperation_weekly_decay = -2 } }
-					else = { set_variable = { cge_overview_cooperation_weekly_decay = -3 } }
-				}
-
-				if = {
-					limit = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than }
-						check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 1 compare = equals }
-					}
-					set_variable = { cge_overview_patience_weekly_decay = -2 }
-				}
-
-				if = {
-					limit = {
-						OR = {
-							check_variable = { var = cge_slot_[CGE_SLOT]_eased_patience_protection_days_left value = 0 compare = greater_than }
-							AND = {
-								check_variable = { var = cge_slot_[CGE_SLOT]_cooperation_operation_pending value = 0 compare = greater_than }
-								check_variable = { var = cge_slot_[CGE_SLOT]_cooperation_selected_action value = 1 compare = equals }
-							}
-						}
-					}
-					set_variable = { cge_overview_patience_weekly_decay = 0 }
-				}
-
-				if = {
-					limit = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than }
-						check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals }
-					}
-					set_variable = { cge_overview_patience_weekly_decay = 0 }
-					set_variable = { cge_overview_cooperation_weekly_decay = 0 }
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    if = {
+                        limit = {
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_overview_patience_weekly_decay = -1
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_patience
+                                    value = 75
+                                    compare = greater_than
+                                }
+                            }
+                            set_variable = {
+                                cge_overview_cooperation_weekly_decay = -0.5
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_patience
+                                    value = 50
+                                    compare = greater_than
+                                }
+                            }
+                            set_variable = {
+                                cge_overview_cooperation_weekly_decay = -1
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_patience
+                                    value = 25
+                                    compare = greater_than
+                                }
+                            }
+                            set_variable = {
+                                cge_overview_cooperation_weekly_decay = -1.5
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_patience
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            set_variable = {
+                                cge_overview_cooperation_weekly_decay = -2
+                            }
+                        }
+                        else = {
+                            set_variable = {
+                                cge_overview_cooperation_weekly_decay = -3
+                            }
+                        }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                                value = 0
+                                compare = greater_than
+                            }
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_patience_selected_action
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        set_variable = {
+                            cge_overview_patience_weekly_decay = -2
+                        }
+                    }
+                    if = {
+                        limit = {
+                            OR = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_eased_patience_protection_days_left
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                AND = {
+                                    check_variable = {
+                                        var = cge_slot_[CGE_SLOT]_cooperation_operation_pending
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                    check_variable = {
+                                        var = cge_slot_[CGE_SLOT]_cooperation_selected_action
+                                        value = 1
+                                        compare = equals
+                                    }
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_overview_patience_weekly_decay = 0
+                        }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                                value = 0
+                                compare = greater_than
+                            }
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_patience_selected_action
+                                value = 5
+                                compare = equals
+                            }
+                        }
+                        set_variable = {
+                            cge_overview_patience_weekly_decay = 0
+                        }
+                        set_variable = {
+                            cge_overview_cooperation_weekly_decay = 0
+                        }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_negotiation_refused
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        multiply_variable = {
+                            cge_overview_patience_weekly_decay = 2
+                        }
+                        multiply_variable = {
+                            cge_overview_cooperation_weekly_decay = 2
+                        }
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_domestic_civil_war
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        multiply_variable = {
+                            cge_overview_patience_weekly_decay = 0.5
+                        }
+                        multiply_variable = {
+                            cge_overview_cooperation_weekly_decay = 0.5
+                        }
+                    }
+                    if = {
+                        limit = {
+                            OR = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_overview_patience_weekly_decay = 0
+                        }
+                        set_variable = {
+                            cge_overview_cooperation_weekly_decay = 0
+                        }
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-
-
 cge_slot_pow_load_pool = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin }
-					has_variable = cge_slot_[CGE_SLOT]_pow_clean_initialized
-				}
-				set_variable = { cge_pow_work_initialized = 1 }
-			}
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } has_variable = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater }
-				set_variable = { var = cge_pow_pool_compare value = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater }
-				subtract_from_variable = { var = cge_pow_pool_compare value = cge_pow_work_highwater }
-				if = { limit = { check_variable = { var = cge_pow_pool_compare value = 0 compare = greater_than } } set_variable = { var = cge_pow_work_highwater value = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater } }
-			}
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } has_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline }
-				set_variable = { var = cge_pow_pool_compare value = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline }
-				subtract_from_variable = { var = cge_pow_pool_compare value = cge_pow_bonus_baseline }
-				if = { limit = { check_variable = { var = cge_pow_pool_compare value = 0 compare = greater_than } } set_variable = { var = cge_pow_bonus_baseline value = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline } }
-			}
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } has_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured }
-				set_variable = { var = cge_pow_pool_compare value = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured }
-				subtract_from_variable = { var = cge_pow_pool_compare value = cge_pow_bonus_captured }
-				if = { limit = { check_variable = { var = cge_pow_pool_compare value = 0 compare = greater_than } } set_variable = { var = cge_pow_bonus_captured value = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured } }
-			}
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } has_variable = cge_slot_[CGE_SLOT]_pow_clean_spent }
-				set_variable = { var = cge_pow_pool_compare value = cge_slot_[CGE_SLOT]_pow_clean_spent }
-				subtract_from_variable = { var = cge_pow_pool_compare value = cge_pow_work_spent }
-				if = { limit = { check_variable = { var = cge_pow_pool_compare value = 0 compare = greater_than } } set_variable = { var = cge_pow_work_spent value = cge_slot_[CGE_SLOT]_pow_clean_spent } }
-			}
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } has_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable }
-				set_variable = { var = cge_pow_pool_compare value = cge_slot_[CGE_SLOT]_pow_clean_recruitable }
-				subtract_from_variable = { var = cge_pow_pool_compare value = cge_pow_work_recruitable }
-				if = { limit = { check_variable = { var = cge_pow_pool_compare value = 0 compare = greater_than } } set_variable = { var = cge_pow_work_recruitable value = cge_slot_[CGE_SLOT]_pow_clean_recruitable } }
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_initialized
+                    }
+                    set_variable = {
+                        cge_pow_work_initialized = 1
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater
+                    }
+                    set_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_pow_work_highwater
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_pool_compare
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_pow_work_highwater
+                            value = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline
+                    }
+                    set_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_pow_bonus_baseline
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_pool_compare
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_pow_bonus_baseline
+                            value = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured
+                    }
+                    set_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_pow_bonus_captured
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_pool_compare
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_pow_bonus_captured
+                            value = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_spent
+                    }
+                    set_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_slot_[CGE_SLOT]_pow_clean_spent
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_pow_work_spent
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_pool_compare
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_pow_work_spent
+                            value = cge_slot_[CGE_SLOT]_pow_clean_spent
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        has_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                    }
+                    set_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_pool_compare
+                        value = cge_pow_work_recruitable
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_pool_compare
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_pow_work_recruitable
+                            value = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                        }
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_store_pool = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } }
-				set_variable = { cge_slot_[CGE_SLOT]_pow_clean_initialized = 1 }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater value = cge_pow_work_highwater }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline value = cge_pow_bonus_baseline }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured value = cge_pow_bonus_captured }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_clean_spent value = cge_pow_work_spent }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_clean_recruitable value = cge_pow_work_recruitable }
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_pow_clean_initialized = 1
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_clean_baseline_highwater
+                        value = cge_pow_work_highwater
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_clean_bonus_baseline
+                        value = cge_pow_bonus_baseline
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_clean_bonus_captured
+                        value = cge_pow_bonus_captured
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_clean_spent
+                        value = cge_pow_work_spent
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                        value = cge_pow_work_recruitable
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_clear_recruiter = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } }
-				clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
-				clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
-				clear_variable = cge_slot_[CGE_SLOT]_pow_recruiter_shadow
-				clear_variable = cge_slot_[CGE_SLOT]_pow_recruiter_shadow_bonus
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                    }
+                    clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_capture_order
+                    clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
+                    clear_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
+                    clear_variable = cge_slot_[CGE_SLOT]_pow_recruiter_shadow
+                    clear_variable = cge_slot_[CGE_SLOT]_pow_recruiter_shadow_bonus
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_store_recruiter = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin } }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key value = cge_pow_recruiter_key }
-				set_variable = { var = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus value = cge_pow_recruiter_bonus }
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_country_recruiter_capture_order
+                        value = cge_pow_recruiter_capture_order
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
+                        value = cge_pow_recruiter_key
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
+                        value = cge_pow_recruiter_bonus
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_find_marker = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_pow_work_origin }
-					has_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
-					check_variable = { var = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key value = 0 compare = greater_than }
-				}
-				set_variable = { var = cge_pow_recruiter_key value = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key }
-				if = {
-					limit = { has_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus }
-					set_variable = { var = cge_pow_recruiter_bonus value = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus }
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_pow_country_recruiter_capture_order
+                                value = 0
+                                compare = greater_than
+                            }
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter_key
+                        value = cge_slot_[CGE_SLOT]_pow_country_recruiter_character_key
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter_capture_order
+                        value = cge_slot_[CGE_SLOT]_pow_country_recruiter_capture_order
+                    }
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
+                        }
+                        set_variable = {
+                            var = cge_pow_recruiter_bonus
+                            value = cge_slot_[CGE_SLOT]_pow_country_recruiter_bonus
+                        }
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_find_recruiter = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					check_variable = { var = cge_pow_recruiter_key value = 0 compare = greater_than }
-					check_variable = { var = cge_slot_[CGE_SLOT]_character_key value = cge_pow_recruiter_key compare = equals }
-					NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-				}
-				set_variable = { cge_pow_recruiter_slot_tmp = [CGE_SLOT] }
-			}
-		}
-		CGE_SLOT = "[?cge_pow_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            has_country_flag = cge_pow_work_origin
+                        }
+                        OR = {
+                            AND = {
+                                check_variable = {
+                                    var = cge_pow_recruiter_capture_order
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_capture_order
+                                    value = cge_pow_recruiter_capture_order
+                                    compare = equals
+                                }
+                            }
+                            AND = {
+                                check_variable = {
+                                    var = cge_pow_recruiter_capture_order
+                                    value = 0
+                                    compare = equals
+                                }
+                                check_variable = {
+                                    var = cge_pow_recruiter_key
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_character_key
+                                    value = cge_pow_recruiter_key
+                                    compare = equals
+                                }
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_pow_recruiter_slot_tmp = [CGE_SLOT]
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_slot_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_clear_origin = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-					clr_country_flag = cge_pow_weekly_processed
-					clr_country_flag = cge_pow_work_origin
-				}
-			}
-		}
-		CGE_SLOT = "[?cge_pow_weekly_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        clr_country_flag = cge_pow_weekly_processed
+                        clr_country_flag = cge_pow_work_origin
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_weekly_arg|.0]"
+        }
+    }
 }
-
 cge_slot_pow_weekly = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = {
-					has_country_flag = cge_has_candidate_[CGE_SLOT]
-					OR = {
-						check_variable = { var = cge_slot_[CGE_SLOT]_pow_collaborator value = 0 compare = greater_than }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_pow_recruitment_unlocked }
-					}
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = { NOT = { has_country_flag = cge_pow_weekly_processed } }
-				}
-
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-					set_country_flag = cge_pow_weekly_processed
-					set_country_flag = cge_pow_work_origin
-				}
-
-				log = "CGE_POW_WEEKLY_[CGE_SLOT]"
-				cge_pow_refresh_selected = yes
-				set_variable = { var = cge_pow_current_baseline value = cge_overview_pow_pool_thousands }
-				cge_pow_load_pool = yes
-				cge_pow_find_recruiter_mark = yes
-
-				if = {
-					limit = { check_variable = { var = cge_pow_work_initialized value = 1 compare = less_than } }
-					set_variable = { cge_pow_work_initialized = 1 }
-					set_variable = { var = cge_pow_work_highwater value = cge_pow_current_baseline }
-					set_variable = { var = cge_pow_bonus_baseline value = cge_pow_current_baseline }
-					set_variable = { cge_pow_bonus_captured = 0 }
-					set_variable = { cge_pow_work_spent = 0 }
-					set_variable = { cge_pow_work_recruitable = 0 }
-				}
-				else = { cge_pow_update_baseline = yes }
-
-				cge_pow_calc_work_values = yes
-				set_variable = { var = cge_pow_weekly_delta value = cge_pow_weekly_gain }
-				log = "CGEPOW_TRUE_WEEKLY_BEFORE total=[?cge_pow_work_total] recruitable=[?cge_pow_work_recruitable] remaining=[?cge_pow_work_remaining] weekly=[?cge_pow_weekly_gain] daily=[?cge_pow_weekly_delta]"
-				add_to_variable = { var = cge_pow_work_recruitable value = cge_pow_weekly_delta }
-				cge_pow_calc_work_values = yes
-				log = "CGEPOW_TRUE_WEEKLY_AFTER total=[?cge_pow_work_total] recruitable=[?cge_pow_work_recruitable] remaining=[?cge_pow_work_remaining] weekly=[?cge_pow_weekly_gain]"
-				cge_pow_store_pool = yes
-				var:cge_slot_[CGE_SLOT]_origin_country^0 = { clr_country_flag = cge_pow_work_origin }
-			}
-		}
-		CGE_SLOT = "[?cge_pow_weekly_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_pow_recruitment_unlocked
+                            }
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            NOT = {
+                                has_country_flag = cge_pow_weekly_processed
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        set_country_flag = cge_pow_weekly_processed
+                        set_country_flag = cge_pow_work_origin
+                    }
+                    set_variable = {
+                        cge_slot_ctx = [CGE_SLOT]
+                    }
+                    cge_pow_refresh = yes
+                    clear_variable = cge_slot_ctx
+                    set_variable = {
+                        var = cge_pow_current_baseline
+                        value = cge_overview_pow_pool_thousands
+                    }
+                    cge_pow_load_pool = yes
+                    cge_pow_find_recruiter_mark = yes
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_work_initialized
+                                value = 1
+                                compare = less_than
+                            }
+                        }
+                        set_variable = {
+                            cge_pow_work_initialized = 1
+                        }
+                        set_variable = {
+                            var = cge_pow_work_highwater
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            var = cge_pow_bonus_baseline
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            cge_pow_bonus_captured = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_spent = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_recruitable = 0
+                        }
+                    }
+                    else = {
+                        cge_pow_update_baseline = yes
+                    }
+                    cge_pow_calc_work_values = yes
+                    set_variable = {
+                        var = cge_pow_weekly_delta
+                        value = cge_pow_weekly_gain
+                    }
+                    add_to_variable = {
+                        var = cge_pow_work_recruitable
+                        value = cge_pow_weekly_delta
+                    }
+                    cge_pow_calc_work_values = yes
+                    cge_pow_store_pool = yes
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        clr_country_flag = cge_pow_work_origin
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_pow_weekly_arg|.0]"
+        }
+    }
 }
-
-
 cge_slot_init_death_overlay = {
-	meta_effect = {
-		text = {
-			if = {
-				limit = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-				set_variable = { cge_slot_ctx = [CGE_SLOT] }
-				cge_assign_death_overlay = yes
-				clear_variable = cge_slot_ctx
-			}
-		}
-		CGE_SLOT = "[?cge_slot_arg|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_executed
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_ctx = [CGE_SLOT]
+                    }
+                    cge_assign_death_overlay = yes
+                    clear_variable = cge_slot_ctx
+                }
+            }
+            CGE_SLOT = "[?cge_slot_arg|.0]"
+        }
+    }
 }
-

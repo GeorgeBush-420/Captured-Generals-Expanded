@@ -1,0 +1,10 @@
+spriteTypes = {
+    spriteType = {
+        name = "GFX_idea_cge_pow_collaboration_network"
+        texturefile = "gfx/interface/cge_assets/cge_pow_collaboration.dds"
+    }
+    spriteType = {
+        name = "GFX_cge_pow_collaboration_state"
+        texturefile = "gfx/interface/cge_assets/cge_pow_collaboration_state.dds"
+    }
+}

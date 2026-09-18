@@ -1,0 +1,318 @@
+add_namespace = cge_negotiations
+country_event = {
+    id = cge_negotiations.1
+    title = CGE_NEGOTIATION_REQUEST_TITLE
+    desc = CGE_NEGOTIATION_REQUEST_DESC
+    picture = GFX_cge_negotiation_correspondence
+    is_triggered_only = yes
+    option = {
+        name = CGE_NEGOTIATION_RETURN
+        custom_effect_tooltip = CGE_NEGOTIATION_RETURN_TT
+        ai_chance = {
+            factor = 50
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_return_unconditionally = yes
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_NEGOTIATION_DEMAND
+        custom_effect_tooltip = CGE_NEGOTIATION_DEMAND_TT
+        ai_chance = {
+            factor = 40
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_demand_reparations = yes
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_NEGOTIATION_KEEP
+        custom_effect_tooltip = CGE_NEGOTIATION_REFUSE_TT
+        ai_chance = {
+            factor = 10
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_refuse_return = yes
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_1
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.2
+    title = CGE_NEGOTIATION_ACCEPTED_TITLE
+    desc = CGE_NEGOTIATION_ACCEPTED_DESC
+    picture = GFX_cge_negotiation_agreement
+    is_triggered_only = yes
+    option = {
+        name = CGE_NEGOTIATION_SIGN
+        custom_effect_tooltip = CGE_NEGOTIATION_SIGN_TT
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 4
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_sign_agreement = yes
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_2
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.3
+    title = CGE_NEGOTIATION_REFUSED_TITLE
+    desc = CGE_NEGOTIATION_REFUSED_DESC
+    picture = GFX_cge_negotiation_ultimatum
+    is_triggered_only = yes
+    option = {
+        name = CGE_NEGOTIATION_RETURN_AFTER_REFUSAL
+        custom_effect_tooltip = CGE_NEGOTIATION_RETURN_TT
+        ai_chance = {
+            factor = 75
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 3
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_return_unconditionally = yes
+                    }
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_NEGOTIATION_KEEP_AFTER_REFUSAL
+        custom_effect_tooltip = CGE_NEGOTIATION_REFUSE_TT
+        ai_chance = {
+            factor = 25
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_stage
+                                value = 3
+                                compare = equals
+                            }
+                        }
+                        cge_negotiation_refuse_return = yes
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_3
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.10
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_negotiation_begin_next = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_10
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.12
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_negotiation_resume_after_recovery = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_12
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.11
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_negotiation_receive_response = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_11
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.20
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_reparations_expire_receipt = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_20
+            add_to_variable = { cge_profile_receipts_deferred = 1 }
+        }
+    }
+}
+country_event = {
+    id = cge_negotiations.21
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_reparations_expire_payment = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_negotiations_21
+            add_to_variable = { cge_profile_payments_deferred = 1 }
+        }
+    }
+}

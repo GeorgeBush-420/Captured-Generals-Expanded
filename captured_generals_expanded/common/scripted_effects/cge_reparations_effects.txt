@@ -1,0 +1,890 @@
+cge_reparations_add_claim_value = {
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 1
+                compare = less_than
+            }
+        }
+        set_variable = {
+            cge_reparations_candidate_level = 1
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = cge_reparations_highest_level
+                compare = greater_than
+            }
+        }
+        set_variable = {
+            var = cge_reparations_highest_level
+            value = cge_reparations_candidate_level
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 1
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 2
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 2
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 3
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 3
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 4
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 4
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 6
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 5
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 8
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_candidate_level
+                value = 6
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 10
+        }
+    }
+    else = {
+        add_to_variable = {
+            cge_reparations_claim_strength = 12
+        }
+    }
+}
+
+cge_reparations_finalize_claim = {
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 1
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 13
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 2
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 22
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 3
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 31
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 4
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 44
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 5
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 57
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_highest_level
+                value = 6
+                compare = less_than_or_equals
+            }
+        }
+        add_to_variable = {
+            cge_reparations_claim_strength = 70
+        }
+    }
+    else = {
+        add_to_variable = {
+            cge_reparations_claim_strength = 78
+        }
+    }
+    clamp_variable = {
+        var = cge_reparations_claim_strength
+        min = 0
+        max = 100
+    }
+}
+
+cge_reparations_calculate_terms = {
+    set_variable = {
+        var = cge_reparations_receiver_factories
+        value = num_of_civilian_factories
+    }
+    add_to_variable = {
+        var = cge_reparations_receiver_factories
+        value = num_of_military_factories
+    }
+    event_target:cge_reparations_payer = {
+        set_variable = {
+            var = cge_reparations_factory_probe
+            value = num_of_civilian_factories
+        }
+        add_to_variable = {
+            var = cge_reparations_factory_probe
+            value = num_of_military_factories
+        }
+    }
+    set_variable = {
+        var = cge_reparations_payer_factories
+        value = event_target:cge_reparations_payer.cge_reparations_factory_probe
+    }
+    event_target:cge_reparations_payer = {
+        clear_variable = cge_reparations_factory_probe
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 5
+                compare = less_than_or_equals
+            }
+        }
+        set_variable = {
+            cge_reparations_economic_ceiling = 5
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 20
+                compare = less_than_or_equals
+            }
+        }
+        set_variable = {
+            cge_reparations_economic_ceiling = 10
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 50
+                compare = less_than_or_equals
+            }
+        }
+        set_variable = {
+            cge_reparations_economic_ceiling = 20
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 100
+                compare = less_than_or_equals
+            }
+        }
+        set_variable = {
+            cge_reparations_economic_ceiling = 30
+        }
+    }
+    else_if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 175
+                compare = less_than_or_equals
+            }
+        }
+        set_variable = {
+            cge_reparations_economic_ceiling = 35
+        }
+    }
+    else = {
+        set_variable = {
+            cge_reparations_economic_ceiling = 40
+        }
+    }
+    set_variable = {
+        var = cge_reparations_receiver_percent
+        value = cge_reparations_economic_ceiling
+    }
+    multiply_variable = {
+        var = cge_reparations_receiver_percent
+        value = cge_reparations_claim_strength
+    }
+    divide_variable = {
+        cge_reparations_receiver_percent = 100
+    }
+    round_variable = cge_reparations_receiver_percent
+    clamp_variable = {
+        var = cge_reparations_receiver_percent
+        min = 1
+        max = 40
+    }
+    set_variable = {
+        var = cge_reparations_payer_percent
+        value = cge_reparations_receiver_percent
+    }
+    multiply_variable = {
+        var = cge_reparations_payer_percent
+        value = cge_reparations_receiver_factories
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_factories
+                value = 1
+                compare = less_than
+            }
+        }
+        set_variable = {
+            cge_reparations_ratio_denominator = 1
+        }
+    }
+    else = {
+        set_variable = {
+            var = cge_reparations_ratio_denominator
+            value = cge_reparations_payer_factories
+        }
+    }
+    divide_variable = {
+        var = cge_reparations_payer_percent
+        value = cge_reparations_ratio_denominator
+    }
+    round_variable = cge_reparations_payer_percent
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_payer_percent
+                value = cge_reparations_receiver_percent
+                compare = less_than
+            }
+        }
+        set_variable = {
+            var = cge_reparations_payer_percent
+            value = cge_reparations_receiver_percent
+        }
+    }
+    clamp_variable = {
+        var = cge_reparations_payer_percent
+        min = 1
+        max = 60
+    }
+}
+
+cge_reparations_clear_calculation = {
+    clear_variable = cge_reparations_candidate_level
+    clear_variable = cge_reparations_highest_level
+    clear_variable = cge_reparations_claim_strength
+    clear_variable = cge_reparations_receiver_factories
+    clear_variable = cge_reparations_payer_factories
+    clear_variable = cge_reparations_economic_ceiling
+    clear_variable = cge_reparations_receiver_percent
+    clear_variable = cge_reparations_payer_percent
+    clear_variable = cge_reparations_ratio_denominator
+}
+
+cge_reparations_record_receipt_display = {
+    set_variable = {
+        cge_reparations_display_slot = 0
+    }
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_reparations_display_slot
+                            value = 0
+                            compare = equals
+                        }
+                        NOT = {
+                            has_variable = cge_reparations_receipt_[SLOT]_amount
+                        }
+                    }
+                    set_variable = {
+                        cge_reparations_display_slot = [SLOT]
+                    }
+                }
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_display_slot
+                value = 0
+                compare = greater_than
+            }
+        }
+        meta_effect = {
+            text = {
+                set_variable = {
+                    var = cge_reparations_receipt_[SLOT]_amount
+                    value = cge_negotiation_reparations_percent
+                }
+                set_variable = {
+                    var = cge_reparations_receipt_[SLOT]_partner
+                    value = event_target:cge_negotiation_partner_country
+                }
+                set_variable = {
+                    cge_reparations_receipt_[SLOT]_days = 170
+                }
+            }
+            SLOT = "[?cge_reparations_display_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_slot
+    clear_variable = cge_reparations_display_scan_slot
+}
+
+cge_reparations_record_payment_display = {
+    set_variable = {
+        cge_reparations_display_slot = 0
+    }
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_reparations_display_slot
+                            value = 0
+                            compare = equals
+                        }
+                        NOT = {
+                            has_variable = cge_reparations_payment_[SLOT]_amount
+                        }
+                    }
+                    set_variable = {
+                        cge_reparations_display_slot = [SLOT]
+                    }
+                }
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    if = {
+        limit = {
+            check_variable = {
+                var = cge_reparations_display_slot
+                value = 0
+                compare = greater_than
+            }
+        }
+        meta_effect = {
+            text = {
+                set_variable = {
+                    var = cge_reparations_payment_[SLOT]_amount
+                    value = event_target:cge_negotiation_captor.cge_negotiation_reparations_payer_percent
+                }
+                set_variable = {
+                    var = cge_reparations_payment_[SLOT]_partner
+                    value = event_target:cge_negotiation_captor
+                }
+                set_variable = {
+                    cge_reparations_payment_[SLOT]_days = 170
+                }
+            }
+            SLOT = "[?cge_reparations_display_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_slot
+    clear_variable = cge_reparations_display_scan_slot
+}
+
+cge_reparations_refresh_payment_display = {
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_variable = cge_reparations_payment_[SLOT]_amount
+                    }
+                    set_variable = {
+                        var = cge_reparations_payment_[SLOT]_display_amount
+                        value = cge_reparations_payment_[SLOT]_amount
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_reparations_payments_total
+                                value = 60
+                                compare = greater_than
+                            }
+                        }
+                        multiply_variable = {
+                            var = cge_reparations_payment_[SLOT]_display_amount
+                            value = 60
+                        }
+                        divide_variable = {
+                            var = cge_reparations_payment_[SLOT]_display_amount
+                            value = cge_reparations_payments_total
+                        }
+                        round_variable = cge_reparations_payment_[SLOT]_display_amount
+                    }
+                }
+                else = {
+                    clear_variable = cge_reparations_payment_[SLOT]_display_amount
+                }
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_scan_slot
+}
+
+cge_reparations_clear_receipt_display = {
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                clear_variable = cge_reparations_receipt_[SLOT]_amount
+                clear_variable = cge_reparations_receipt_[SLOT]_partner
+                clear_variable = cge_reparations_receipt_[SLOT]_days
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_scan_slot
+}
+
+cge_reparations_clear_payment_display = {
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                clear_variable = cge_reparations_payment_[SLOT]_amount
+                clear_variable = cge_reparations_payment_[SLOT]_display_amount
+                clear_variable = cge_reparations_payment_[SLOT]_partner
+                clear_variable = cge_reparations_payment_[SLOT]_days
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_scan_slot
+}
+
+cge_reparations_display_daily_tick = {
+    for_loop_effect = {
+        start = 1
+        end = 20
+        compare = less_than_or_equals
+        value = cge_reparations_display_scan_slot
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_variable = cge_reparations_receipt_[SLOT]_days
+                    }
+                    subtract_from_variable = {
+                        cge_reparations_receipt_[SLOT]_days = 1
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_reparations_receipt_[SLOT]_days
+                                value = 0
+                                compare = less_than_or_equals
+                            }
+                        }
+                        clear_variable = cge_reparations_receipt_[SLOT]_amount
+                        clear_variable = cge_reparations_receipt_[SLOT]_partner
+                        clear_variable = cge_reparations_receipt_[SLOT]_days
+                    }
+                }
+                if = {
+                    limit = {
+                        has_variable = cge_reparations_payment_[SLOT]_days
+                    }
+                    subtract_from_variable = {
+                        cge_reparations_payment_[SLOT]_days = 1
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_reparations_payment_[SLOT]_days
+                                value = 0
+                                compare = less_than_or_equals
+                            }
+                        }
+                        clear_variable = cge_reparations_payment_[SLOT]_amount
+                        clear_variable = cge_reparations_payment_[SLOT]_display_amount
+                        clear_variable = cge_reparations_payment_[SLOT]_partner
+                        clear_variable = cge_reparations_payment_[SLOT]_days
+                    }
+                }
+            }
+            SLOT = "[?cge_reparations_display_scan_slot|.0]"
+        }
+    }
+    clear_variable = cge_reparations_display_scan_slot
+    cge_reparations_refresh_receipts = yes
+    cge_reparations_refresh_payments = yes
+}
+
+cge_reparations_grant = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        add_to_array = {
+            array = cge_reparations_receipt_amounts
+            value = cge_negotiation_reparations_percent
+        }
+        add_to_variable = {
+            var = cge_reparations_receipts_total
+            value = cge_negotiation_reparations_percent
+        }
+        cge_reparations_record_receipt_display = yes
+        cge_reparations_refresh_receipts = yes
+        add_dynamic_modifier = {
+            modifier = cge_reparations_received
+        }
+        if = {
+            limit = { NOT = { has_idea = cge_reparations_received_spirit } }
+            add_ideas = cge_reparations_received_spirit
+        }
+        force_update_dynamic_modifier = yes
+        country_event = {
+            id = cge_negotiations.20
+            days = 170
+        }
+        event_target:cge_negotiation_partner_country = {
+            add_to_array = {
+                array = cge_reparations_payment_amounts
+                value = event_target:cge_negotiation_captor.cge_negotiation_reparations_payer_percent
+            }
+            add_to_variable = {
+                var = cge_reparations_payments_total
+                value = event_target:cge_negotiation_captor.cge_negotiation_reparations_payer_percent
+            }
+            cge_reparations_record_payment_display = yes
+            cge_reparations_refresh_payments = yes
+            add_dynamic_modifier = {
+                modifier = cge_reparations_paid
+            }
+            if = {
+                limit = { NOT = { has_idea = cge_reparations_paid_spirit } }
+                add_ideas = cge_reparations_paid_spirit
+            }
+            force_update_dynamic_modifier = yes
+            country_event = {
+                id = cge_negotiations.21
+                days = 170
+            }
+        }
+    }
+}
+cge_reparations_refresh_receipts = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_reparations_received_factor
+            value = cge_reparations_receipts_total
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_received_factor
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_reparations_received_factor = 0
+            }
+        }
+        multiply_variable = {
+            cge_reparations_received_factor = -0.01
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_receipts_total
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = {
+                    has_dynamic_modifier = {
+                        modifier = cge_reparations_received
+                    }
+                }
+            }
+            add_dynamic_modifier = {
+                modifier = cge_reparations_received
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_receipts_total
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = { has_idea = cge_reparations_received_spirit }
+            }
+            add_ideas = cge_reparations_received_spirit
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_receipts_total
+                    value = 0
+                    compare = less_than_or_equals
+                }
+            }
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier = cge_reparations_received
+                    }
+                }
+                remove_dynamic_modifier = {
+                    modifier = cge_reparations_received
+                }
+            }
+            if = {
+                limit = { has_idea = cge_reparations_received_spirit }
+                remove_ideas = cge_reparations_received_spirit
+            }
+            clear_variable = cge_reparations_receipts_total
+            clear_variable = cge_reparations_received_factor
+            clear_array = cge_reparations_receipt_amounts
+            cge_reparations_clear_receipt_display = yes
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+cge_reparations_refresh_payments = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_reparations_paid_factor
+            value = cge_reparations_payments_total
+        }
+        clamp_variable = {
+            var = cge_reparations_paid_factor
+            min = 0
+            max = 60
+        }
+        multiply_variable = {
+            cge_reparations_paid_factor = 0.01
+        }
+        cge_reparations_refresh_payment_display = yes
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_payments_total
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = {
+                    has_dynamic_modifier = {
+                        modifier = cge_reparations_paid
+                    }
+                }
+            }
+            add_dynamic_modifier = {
+                modifier = cge_reparations_paid
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_payments_total
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = { has_idea = cge_reparations_paid_spirit }
+            }
+            add_ideas = cge_reparations_paid_spirit
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_payments_total
+                    value = 0
+                    compare = less_than_or_equals
+                }
+            }
+            if = {
+                limit = {
+                    has_dynamic_modifier = {
+                        modifier = cge_reparations_paid
+                    }
+                }
+                remove_dynamic_modifier = {
+                    modifier = cge_reparations_paid
+                }
+            }
+            if = {
+                limit = { has_idea = cge_reparations_paid_spirit }
+                remove_ideas = cge_reparations_paid_spirit
+            }
+            clear_variable = cge_reparations_payments_total
+            clear_variable = cge_reparations_paid_factor
+            clear_array = cge_reparations_payment_amounts
+            cge_reparations_clear_payment_display = yes
+        }
+        force_update_dynamic_modifier = yes
+    }
+}
+cge_reparations_expire_receipt = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_receipt_amounts^num
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            subtract_from_variable = {
+                var = cge_reparations_receipts_total
+                value = cge_reparations_receipt_amounts^0
+            }
+            remove_from_array = {
+                array = cge_reparations_receipt_amounts
+                index = 0
+            }
+            cge_reparations_refresh_receipts = yes
+        }
+    }
+}
+cge_reparations_expire_payment = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_reparations_payment_amounts^num
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            subtract_from_variable = {
+                var = cge_reparations_payments_total
+                value = cge_reparations_payment_amounts^0
+            }
+            remove_from_array = {
+                array = cge_reparations_payment_amounts
+                index = 0
+            }
+            cge_reparations_refresh_payments = yes
+        }
+    }
+}

@@ -1,1201 +1,1550 @@
 cge_postwar_prepare_event = {
-	clear_array = cge_postwar_general_display
-	clear_array = cge_postwar_origin_display
-	clear_array = cge_postwar_destination_display
-
-	if = {
-		limit = { has_event_target = cge_postwar_general }
-		add_to_array = {
-			array = cge_postwar_general_display
-			value = event_target:cge_postwar_general
-		}
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_general_display^num value = 0 compare = greater_than } }
-			check_variable = { var = cge_postwar_selected_slot value = 0 compare = greater_than }
-			check_variable = { var = cge_postwar_selected_slot value = cge_captured_general_count compare = less_than_or_equals }
-		}
-		meta_effect = {
-			text = {
-				if = {
-					limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-					add_to_array = {
-						array = cge_postwar_general_display
-						value = event_target:cge_slot_[CGE_SLOT]_runtime_leader
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_postwar_selected_slot|.0]"
-		}
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_general_display^num value = 0 compare = greater_than } }
-			check_variable = { var = cge_captured_general_count value = 0 compare = greater_than }
-		}
-		set_temp_variable = { cge_postwar_event_fallback_slot = 1 }
-		meta_effect = {
-			text = {
-				if = {
-					limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-					add_to_array = {
-						array = cge_postwar_general_display
-						value = event_target:cge_slot_[CGE_SLOT]_runtime_leader
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_postwar_event_fallback_slot|.0]"
-		}
-		clear_variable = cge_postwar_event_fallback_slot
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_origin_display^num value = 0 compare = greater_than } }
-			has_event_target = cge_postwar_origin
-		}
-		add_to_array = {
-			array = cge_postwar_origin_display
-			value = event_target:cge_postwar_origin
-		}
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_origin_display^num value = 0 compare = greater_than } }
-			check_variable = { var = cge_postwar_selected_slot value = 0 compare = greater_than }
-			check_variable = { var = cge_postwar_selected_slot value = cge_captured_general_count compare = less_than_or_equals }
-		}
-		meta_effect = {
-			text = {
-				if = {
-					limit = {
-						has_country_flag = cge_has_candidate_[CGE_SLOT]
-						has_variable = cge_slot_[CGE_SLOT]_origin_country
-					}
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-						save_event_target_as = cge_postwar_event_origin_display
-					}
-					add_to_array = {
-						array = cge_postwar_origin_display
-						value = event_target:cge_postwar_event_origin_display
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_postwar_selected_slot|.0]"
-		}
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_origin_display^num value = 0 compare = greater_than } }
-			check_variable = { var = cge_captured_general_count value = 0 compare = greater_than }
-		}
-		set_temp_variable = { cge_postwar_event_fallback_slot = 1 }
-		meta_effect = {
-			text = {
-				if = {
-					limit = {
-						has_country_flag = cge_has_candidate_[CGE_SLOT]
-						has_variable = cge_slot_[CGE_SLOT]_origin_country
-					}
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-						save_event_target_as = cge_postwar_event_origin_display
-					}
-					add_to_array = {
-						array = cge_postwar_origin_display
-						value = event_target:cge_postwar_event_origin_display
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_postwar_event_fallback_slot|.0]"
-		}
-		clear_variable = cge_postwar_event_fallback_slot
-	}
-
-	if = {
-		limit = {
-			NOT = { check_variable = { var = cge_postwar_destination_display^num value = 0 compare = greater_than } }
-			has_event_target = cge_postwar_destination
-		}
-		add_to_array = {
-			array = cge_postwar_destination_display
-			value = event_target:cge_postwar_destination
-		}
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_postwar_general_display
+        clear_array = cge_postwar_origin_display
+        clear_array = cge_postwar_destination_display
+        if = {
+            limit = {
+                has_event_target = cge_postwar_general
+            }
+            add_to_array = {
+                array = cge_postwar_general_display
+                value = event_target:cge_postwar_general
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_general_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        }
+                        add_to_array = {
+                            array = cge_postwar_general_display
+                            value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_postwar_selected_slot|.0]"
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_general_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_temp_variable = {
+                cge_postwar_event_fallback_slot = 1
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        }
+                        add_to_array = {
+                            array = cge_postwar_general_display
+                            value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_postwar_event_fallback_slot|.0]"
+            }
+            clear_variable = cge_postwar_event_fallback_slot
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_origin_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                has_event_target = cge_postwar_origin
+            }
+            add_to_array = {
+                array = cge_postwar_origin_display
+                value = event_target:cge_postwar_origin
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_origin_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            has_variable = cge_slot_[CGE_SLOT]_origin_country
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            save_event_target_as = cge_postwar_event_origin_display
+                        }
+                        add_to_array = {
+                            array = cge_postwar_origin_display
+                            value = event_target:cge_postwar_event_origin_display
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_postwar_selected_slot|.0]"
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_origin_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_temp_variable = {
+                cge_postwar_event_fallback_slot = 1
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            has_variable = cge_slot_[CGE_SLOT]_origin_country
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            save_event_target_as = cge_postwar_event_origin_display
+                        }
+                        add_to_array = {
+                            array = cge_postwar_origin_display
+                            value = event_target:cge_postwar_event_origin_display
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_postwar_event_fallback_slot|.0]"
+            }
+            clear_variable = cge_postwar_event_fallback_slot
+        }
+        if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_postwar_destination_display^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                has_event_target = cge_postwar_destination
+            }
+            add_to_array = {
+                array = cge_postwar_destination_display
+                value = event_target:cge_postwar_destination
+            }
+        }
+    }
 }
-
-
-
 cge_postwar_begin_origin = {
-
-	cge_postwar_resolve_destination = yes
-
-	cge_postwar_repatriate = yes
-
-	if = {
-		limit = {
-			NOT = {
-				has_country_flag = cge_postwar_ordinary_event_pending
-			}
-		}
-
-		cge_postwar_begin_origin_core = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_postwar_resolve_destination = yes
+        cge_postwar_begin_origin_core = yes
+    }
 }
-
 cge_postwar_begin_origin_core = {
-
-	clear_array = cge_postwar_origin_display
-
-	add_to_array = {
-		array = cge_postwar_origin_display
-		value = event_target:cge_postwar_origin
-	}
-
-
-
-
-
-	event_target:cge_postwar_origin = {
-		clr_country_flag = cge_postwar_governor_ready
-
-		if = {
-			limit = {
-				exists = yes
-				is_subject_of = ROOT
-			}
-
-			set_country_flag = cge_postwar_governor_ready
-
-			log = "CGE_POSTWAR origin [THIS.GetName] is a direct subject of [ROOT.GetName]."
-		}
-	}
-
-
-	every_country = {
-		clr_country_flag = cge_postwar_current_origin
-	}
-
-	event_target:cge_postwar_origin = {
-		set_country_flag = cge_postwar_current_origin
-	}
-
-	log = "CGE_POSTWAR processing origin=[event_target:cge_postwar_origin.GetName] captor=[ROOT.GetName]."
-
-	log = "CGE_POSTWAR BEGIN origin=[event_target:cge_postwar_origin.GetName] captor=[ROOT.GetName]."
-	clr_country_flag = cge_postwar_repatriated_any
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-	clr_country_flag = cge_postwar_governor_not_first_page
-	clr_country_flag = cge_postwar_governor_has_more
-	clear_variable = cge_postwar_selected_slot
-	clear_variable = cge_postwar_governor_cursor
-	clear_variable = cge_postwar_candidate_slot_1
-	clear_variable = cge_postwar_candidate_slot_2
-	clear_variable = cge_postwar_candidate_slot_3
-	clear_global_event_target = cge_postwar_general
-	clear_global_event_target = cge_postwar_candidate_1
-	clear_global_event_target = cge_postwar_candidate_2
-	clear_global_event_target = cge_postwar_candidate_3
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_clear_postwar_flag = yes
-	}
-
-
-	if = {
-		limit = { event_target:cge_postwar_origin = { has_war_with = ROOT } }
-		cge_postwar_finish_origin = yes
-	}
-	else_if = {
-		limit = { event_target:cge_postwar_origin = { exists = yes } }
-		cge_postwar_repatriate = yes
-		if = {
-			limit = { has_country_flag = cge_postwar_repatriated_any }
-			country_event = { id = cge_postwar.2 }
-		}
-		else = {
-			cge_postwar_continue_after_ordinary = yes
-		}
-	}
-	else = {
-		cge_postwar_scan_collaborators = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_postwar_origin_display
+        add_to_array = {
+            array = cge_postwar_origin_display
+            value = event_target:cge_postwar_origin
+        }
+        event_target:cge_postwar_origin = {
+            clr_country_flag = cge_postwar_governor_ready
+            if = {
+                limit = {
+                    exists = yes
+                    is_subject_of = ROOT
+                }
+                set_country_flag = cge_postwar_governor_ready
+            }
+        }
+        cge_postwar_mark_origin_family = yes
+        clr_country_flag = cge_postwar_repatriated_any
+        clr_country_flag = cge_postwar_waiting_for_general_decision
+        clr_country_flag = cge_postwar_governor_not_first_page
+        clr_country_flag = cge_postwar_governor_has_more
+        clear_variable = cge_postwar_selected_slot
+        clear_variable = cge_postwar_governor_cursor
+        clear_variable = cge_postwar_candidate_slot_1
+        clear_variable = cge_postwar_candidate_slot_2
+        clear_variable = cge_postwar_candidate_slot_3
+        clear_global_event_target = cge_postwar_general
+        clear_global_event_target = cge_postwar_candidate_1
+        clear_global_event_target = cge_postwar_candidate_2
+        clear_global_event_target = cge_postwar_candidate_3
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_clear_postwar_flag = yes
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_postwar_origin.original_tag
+                                    compare = equals
+                                }
+                            }
+                        }
+                        var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                            clr_character_flag = cge_postwar_war_pending
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_slot_arg|.0]"
+            }
+        }
+        if = {
+            limit = {
+                any_enemy_country = {
+                    check_variable = {
+                        var = original_tag
+                        value = event_target:cge_postwar_origin.original_tag
+                        compare = equals
+                    }
+                }
+            }
+            set_country_flag = cge_postwar_governor_considered
+            cge_postwar_finish_origin = yes
+        }
+        else = {
+            cge_postwar_repatriate = yes
+            cge_postwar_continue_after_ordinary = yes
+        }
+    }
 }
-
 cge_postwar_finish_origin = {
-
-	var:cge_postwar_destination_display^0 = {
-		save_global_event_target_as = cge_postwar_destination
-	}
-
-	if = {
-		limit = {
-			has_country_flag = cge_postwar_destination_is_subject
-
-			NOT = {
-				has_country_flag = cge_postwar_governor_considered
-			}
-		}
-
-		set_country_flag = cge_postwar_governor_considered
-
-		log = "CGE_POSTWAR entering governor path for resolved subject [event_target:cge_postwar_destination.GetName]."
-
-		cge_postwar_offer_governor = yes
-	}
-
-	else = {
-
-		cge_postwar_finish_origin_core = yes
-
-		clr_country_flag = cge_postwar_destination_found
-		clr_country_flag = cge_postwar_destination_is_subject
-		clr_country_flag = cge_postwar_governor_considered
-		clr_country_flag = cge_postwar_ordinary_event_pending
-
-		clear_array = cge_postwar_destination_display
-
-		clear_global_event_target = cge_postwar_destination
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        var:cge_postwar_destination_display^0 = {
+            save_global_event_target_as = cge_postwar_destination
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_postwar_destination_is_subject
+                NOT = {
+                    has_country_flag = cge_postwar_governor_considered
+                }
+            }
+            set_country_flag = cge_postwar_governor_considered
+            cge_postwar_offer_governor = yes
+        }
+        else = {
+            cge_postwar_finish_origin_core = yes
+            clr_country_flag = cge_postwar_destination_found
+            clr_country_flag = cge_postwar_destination_is_subject
+            clr_country_flag = cge_postwar_governor_considered
+            clr_country_flag = cge_postwar_ordinary_event_pending
+            clear_array = cge_postwar_destination_display
+            clear_global_event_target = cge_postwar_destination
+        }
+    }
 }
-
 cge_postwar_finish_origin_core = {
-
-	event_target:cge_postwar_origin = {
-		clr_country_flag = cge_postwar_origin_match
-	}
-
-
-
-	event_target:cge_postwar_origin = {
-	}
-
-	clear_array = cge_postwar_origin_display
-
-
-
-	clr_country_flag = cge_postwar_has_governor_candidate
-
-	event_target:cge_postwar_origin = {
-		clr_country_flag = cge_postwar_governor_ready
-	}
-
-
-	event_target:cge_postwar_origin = {
-		clr_country_flag = cge_postwar_current_origin
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_clear_postwar_flag = yes
-	}
-
-
-	clr_country_flag = cge_postwar_repatriated_any
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-	clr_country_flag = cge_postwar_governor_not_first_page
-	clr_country_flag = cge_postwar_governor_has_more
-	clear_variable = cge_postwar_selected_slot
-	clear_variable = cge_postwar_governor_cursor
-	clear_variable = cge_postwar_candidate_slot_1
-	clear_variable = cge_postwar_candidate_slot_2
-	clear_variable = cge_postwar_candidate_slot_3
-	clear_global_event_target = cge_postwar_general
-	clear_global_event_target = cge_postwar_candidate_1
-	clear_global_event_target = cge_postwar_candidate_2
-	clear_global_event_target = cge_postwar_candidate_3
-	clear_global_event_target = cge_postwar_origin
-
-	if = {
-		limit = { check_variable = { var = cge_postwar_origin_queue^num value = 0 compare = greater_than } }
-		country_event = { id = cge_postwar.1 hours = 1 }
-	}
-	else = {
-		clear_array = cge_postwar_origin_queue
-		clr_country_flag = cge_postwar_queue_active
-	}
-
-
-	if = {
-		limit = {
-			has_country_flag = cge_postwar_watch_active
-		}
-
-		cge_postwar_schedule_event_scan = yes
-	}
-
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_array = cge_postwar_origin_display
+        clr_country_flag = cge_postwar_has_governor_candidate
+        every_possible_country = {
+            limit = {
+                has_country_flag = cge_postwar_origin_match
+            }
+            clr_country_flag = cge_postwar_current_origin
+            clr_country_flag = cge_postwar_was_at_war_with_player
+            clr_country_flag = cge_postwar_governor_ready
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_clear_postwar_flag = yes
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                has_country_flag = cge_postwar_origin_match
+                            }
+                        }
+                        if = {
+                            limit = {
+                                has_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                clr_character_flag = cge_postwar_war_pending
+                            }
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_slot_arg|.0]"
+            }
+        }
+        every_possible_country = {
+            limit = {
+                has_country_flag = cge_postwar_origin_match
+            }
+            clr_country_flag = cge_postwar_origin_match
+        }
+        clr_country_flag = cge_postwar_repatriated_any
+        clr_country_flag = cge_postwar_waiting_for_general_decision
+        clr_country_flag = cge_postwar_governor_not_first_page
+        clr_country_flag = cge_postwar_governor_has_more
+        clear_variable = cge_postwar_selected_slot
+        clear_variable = cge_postwar_governor_cursor
+        clear_variable = cge_postwar_candidate_slot_1
+        clear_variable = cge_postwar_candidate_slot_2
+        clear_variable = cge_postwar_candidate_slot_3
+        clear_global_event_target = cge_postwar_general
+        clear_global_event_target = cge_postwar_candidate_1
+        clear_global_event_target = cge_postwar_candidate_2
+        clear_global_event_target = cge_postwar_candidate_3
+        clear_global_event_target = cge_postwar_origin
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_postwar_origin_queue^num
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            country_event = {
+                id = cge_postwar.1
+                hours = 1
+            }
+        }
+        else = {
+            clear_array = cge_postwar_origin_queue
+            clr_country_flag = cge_postwar_queue_active
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_postwar_watch_active
+            }
+            cge_postwar_schedule_event_scan = yes
+        }
+    }
 }
-
-
 cge_postwar_repatriate = {
-	clr_country_flag = cge_postwar_ordinary_repatriated
-	clr_country_flag = cge_postwar_repatriated_any
-	clr_country_flag = cge_postwar_bulk_removed
-	set_variable = { var = cge_slot value = cge_captured_general_count }
-	while_loop_effect = {
-		limit = { check_variable = { var = cge_slot value = 0 compare = greater_than } }
-		set_variable = { cge_postwar_match = 0 }
-		meta_effect = {
-			text = {
-				if = {
-					limit = {
-						has_country_flag = cge_has_candidate_[CGE_SLOT]
-						var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } }
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_pow_collaborator value = 0 compare = greater_than } }
-					}
-					event_target:cge_slot_[CGE_SLOT]_runtime_leader = {
-						if = { limit = { is_general_captured = yes } release_from_captivity = yes }
-						set_nationality = event_target:cge_postwar_destination
-						clr_character_flag = cge_captured_by_player
-						clr_character_flag = cge_bribed_by_player
-						clr_character_flag = cge_recruited_by_player
-						clr_character_flag = cge_pow_recruitment_unlocked
-					}
-					set_variable = { cge_postwar_match = 1 }
-				}
-			}
-			CGE_SLOT = "[?cge_slot|.0]"
-		}
-		if = {
-			limit = { check_variable = { var = cge_postwar_match value = 0 compare = greater_than } }
-			set_variable = { var = cge_release_slot_to_remove value = cge_slot }
-			cge_release_remove_selected_slot = yes
-			set_country_flag = cge_postwar_ordinary_repatriated
-			set_country_flag = cge_postwar_repatriated_any
-			set_country_flag = cge_postwar_bulk_removed
-		}
-		subtract_from_variable = { cge_slot = 1 }
-	}
-	if = { limit = { has_country_flag = cge_postwar_bulk_removed } cge_refresh_list_after_change = yes }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        event_target:cge_postwar_origin = {
+            save_event_target_as = cge_negotiation_offer_origin
+        }
+        cge_negotiation_prepare_offer = yes
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_negotiation_partner_found
+                }
+            }
+            cge_postwar_repatriate_automatic = yes
+        }
+    }
 }
-
-
+cge_postwar_repatriate_automatic = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_ordinary_repatriated
+        clr_country_flag = cge_postwar_repatriated_any
+        set_variable = {
+            cge_return_batch_pending_count = 0
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_repatriation_scan_index
+            meta_effect = {
+                text = {
+                    clear_variable = cge_slot_[SLOT]_return_pending
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            has_variable = cge_slot_[SLOT]_runtime_leader
+                            var:cge_slot_[SLOT]_origin_country^0 = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_postwar_origin.original_tag
+                                    compare = equals
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = {
+                                NOT = {
+                                    has_character_flag = cge_recruited_by_player
+                                }
+                                NOT = {
+                                    has_character_flag = cge_pow_recruitment_unlocked
+                                }
+                            }
+                            NOT = {
+                                any_enemy_country = {
+                                    check_variable = {
+                                        var = original_tag
+                                        value = event_target:cge_postwar_origin.original_tag
+                                        compare = equals
+                                    }
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_slot_[SLOT]_return_pending = 1
+                        }
+                        add_to_variable = {
+                            cge_return_batch_pending_count = 1
+                        }
+                    }
+                }
+                SLOT = "[?cge_repatriation_scan_index|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_batch_pending_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_return_batch_kind = 1
+            }
+            clear_array = cge_return_batch_origin
+            add_to_array = {
+                array = cge_return_batch_origin
+                value = event_target:cge_postwar_origin
+            }
+            cge_return_begin_batch = yes
+        }
+        clear_variable = cge_return_batch_pending_count
+    }
+}
 cge_postwar_scan_collaborators = {
-	if = {
-		limit = { NOT = { has_country_flag = cge_postwar_waiting_for_general_decision } }
-
-		if = {
-			limit = {
-				has_country_flag = cge_postwar_destination_is_subject
-				NOT = { has_country_flag = cge_postwar_governor_considered }
-				NOT = { has_country_flag = cge_postwar_fate_phase_active }
-			}
-			log = "CGE_POSTWAR governor phase precedes recruited-general fate phase."
-			cge_postwar_offer_governor = yes
-		}
-		else = {
-			cge_postwar_try_autonomy_request = yes
-
-			if = {
-				limit = { NOT = { has_country_flag = cge_postwar_autonomy_request_fired } }
-				cge_postwar_scan_recruited_fates = yes
-			}
-
-			clr_country_flag = cge_postwar_autonomy_request_fired
-		}
-	}
-	else = {
-		log = "CGE_POSTWAR scanner blocked: postwar general decision already pending."
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_postwar_waiting_for_general_decision
+                }
+            }
+            if = {
+                limit = {
+                    has_country_flag = cge_postwar_destination_is_subject
+                    NOT = {
+                        has_country_flag = cge_postwar_governor_considered
+                    }
+                    NOT = {
+                        has_country_flag = cge_postwar_fate_phase_active
+                    }
+                }
+                cge_postwar_offer_governor = yes
+            }
+            else = {
+                cge_postwar_try_autonomy_request = yes
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_postwar_autonomy_request_fired
+                        }
+                    }
+                    cge_postwar_scan_recruited_fates = yes
+                }
+                clr_country_flag = cge_postwar_autonomy_request_fired
+            }
+        }
+        else = {
+        }
+    }
 }
-
 cge_postwar_try_autonomy_request = {
-	clr_country_flag = cge_postwar_autonomy_request_fired
-	clear_array = cge_postwar_autonomy_candidates
-
-	if = {
-		limit = {
-			event_target:cge_postwar_origin = { NOT = { exists = yes } }
-			any_owned_state = {
-				is_core_of = event_target:cge_postwar_origin
-				NOT = { is_core_of = ROOT }
-				NOT = { is_claimed_by = ROOT }
-			}
-		}
-
-		for_loop_effect = {
-			start = 1
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_slot_iter
-			set_variable = { var = cge_slot_arg value = cge_slot_iter }
-			cge_slot_postwar_autonomy_candidate = yes
-		}
-
-		if = {
-			limit = {
-				check_variable = { var = cge_postwar_autonomy_candidates^num value = 0 compare = greater_than }
-			}
-
-			random_scope_in_array = {
-				array = cge_postwar_autonomy_candidates
-				save_global_event_target_as = cge_postwar_general
-
-				ROOT = {
-					set_variable = {
-						var = cge_postwar_selected_slot
-						value = event_target:cge_postwar_general.cge_cge_slot_index
-					}
-					set_country_flag = cge_postwar_waiting_for_general_decision
-					set_country_flag = cge_postwar_autonomy_request_fired
-					log = "CGE_POSTWAR_AUTONOMY randomly selected [event_target:cge_postwar_general.GetName] to request restoration of [event_target:cge_postwar_origin.GetName]."
-					country_event = { id = cge_postwar.4 hours = 1 }
-				}
-			}
-		}
-	}
-
-	clear_array = cge_postwar_autonomy_candidates
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_autonomy_request_fired
+        clear_array = cge_postwar_autonomy_candidates
+        if = {
+            limit = {
+                event_target:cge_postwar_destination = {
+                    NOT = {
+                        exists = yes
+                    }
+                }
+                any_owned_state = {
+                    is_core_of = event_target:cge_postwar_origin
+                    NOT = {
+                        is_core_of = ROOT
+                    }
+                    NOT = {
+                        is_claimed_by = ROOT
+                    }
+                }
+            }
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_slot_iter
+                set_variable = {
+                    var = cge_slot_arg
+                    value = cge_slot_iter
+                }
+                cge_slot_postwar_autonomy_candidate = yes
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_autonomy_candidates^num
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                random_scope_in_array = {
+                    array = cge_postwar_autonomy_candidates
+                    save_global_event_target_as = cge_postwar_general
+                    ROOT = {
+                        set_variable = {
+                            var = cge_postwar_selected_slot
+                            value = event_target:cge_postwar_general.cge_cge_slot_index
+                        }
+                        set_country_flag = cge_postwar_waiting_for_general_decision
+                        set_country_flag = cge_postwar_autonomy_request_fired
+                        country_event = {
+                            id = cge_postwar.4
+                            hours = 1
+                        }
+                    }
+                }
+            }
+        }
+        clear_array = cge_postwar_autonomy_candidates
+    }
 }
-
 cge_postwar_scan_recruited_fates = {
-	clr_country_flag = cge_postwar_fate_found
-
-	if = {
-		limit = { NOT = { has_country_flag = cge_postwar_fate_phase_active } }
-		set_country_flag = cge_postwar_fate_phase_active
-		for_loop_effect = {
-			start = 1
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_slot_iter
-			set_variable = { var = cge_slot_arg value = cge_slot_iter }
-			cge_slot_postwar_init = yes
-		}
-		log = "CGE_POSTWAR_FATE initialized recruited-general fate phase."
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_postwar_fate = yes
-	}
-
-	if = {
-		limit = { NOT = { has_country_flag = cge_postwar_fate_found } }
-		clr_country_flag = cge_postwar_fate_phase_active
-		clr_country_flag = cge_postwar_waiting_for_general_decision
-		for_loop_effect = {
-			start = 1
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_slot_iter
-			set_variable = { var = cge_slot_arg value = cge_slot_iter }
-			cge_slot_postwar_cleanup = yes
-		}
-		log = "CGE_POSTWAR_FATE all recruited generals processed; continuing postwar flow."
-		cge_postwar_finish_origin = yes
-	}
-	clr_country_flag = cge_postwar_fate_found
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_fate_found
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_postwar_fate_phase_active
+                }
+            }
+            set_country_flag = cge_postwar_fate_phase_active
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_slot_iter
+                set_variable = {
+                    var = cge_slot_arg
+                    value = cge_slot_iter
+                }
+                cge_slot_postwar_init = yes
+            }
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_postwar_fate = yes
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_postwar_fate_found
+                }
+            }
+            clr_country_flag = cge_postwar_fate_phase_active
+            clr_country_flag = cge_postwar_waiting_for_general_decision
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_slot_iter
+                set_variable = {
+                    var = cge_slot_arg
+                    value = cge_slot_iter
+                }
+                cge_slot_postwar_cleanup = yes
+            }
+            cge_postwar_finish_origin = yes
+        }
+        clr_country_flag = cge_postwar_fate_found
+    }
 }
-
-
 cge_postwar_send_home = {
-
-	event_target:cge_postwar_general = {
-		clr_character_flag = cge_postwar_fate_processed
-	}
-
-
-	var:cge_postwar_destination_display^0 = {
-		save_global_event_target_as = cge_postwar_destination
-	}
-
-
-	event_target:cge_postwar_general = {
-		set_character_flag = cge_postwar_repatriate_remove
-	}
-
-
-
-	event_target:cge_postwar_general = {
-
-		if = {
-			limit = { is_general_captured = yes }
-			release_from_captivity = yes
-		}
-
-		set_nationality = event_target:cge_postwar_destination
-
-		clr_character_flag = cge_captured_by_player
-		clr_character_flag = cge_bribed_by_player
-		clr_character_flag = cge_recruited_by_player
-		clr_character_flag = cge_pow_recruitment_unlocked
-		clr_character_flag = cge_postwar_processed_this_settlement
-	}
-
-
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-
-
-	cge_postwar_remove_repatriated = yes
-
-	event_target:cge_postwar_general = {
-		clr_character_flag = cge_postwar_repatriate_remove
-	}
-
-	clear_global_event_target = cge_postwar_general
-
-	cge_postwar_scan_collaborators = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_return_batch_pending_count = 0
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                        }
+                        set_variable = {
+                            cge_slot_[SLOT]_return_pending = 1
+                        }
+                        set_variable = {
+                            cge_return_batch_pending_count = 1
+                        }
+                    }
+                }
+                SLOT = "[?cge_postwar_selected_slot|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_batch_pending_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_return_batch_kind = 2
+            }
+            clear_array = cge_return_batch_origin
+            add_to_array = {
+                array = cge_return_batch_origin
+                value = event_target:cge_postwar_origin
+            }
+            cge_return_begin_batch = yes
+        }
+        clear_variable = cge_return_batch_pending_count
+    }
 }
-
 cge_postwar_reimprison = {
-	var:cge_postwar_destination_display^0 = {
-		save_global_event_target_as = cge_postwar_destination
-	}
-
-	meta_effect = {
-		text = {
-			if = {
-				limit = { check_variable = { var = cge_slot_[SLOT]_recruited value = 0 compare = greater_than } }
-				event_target:cge_postwar_general = {
-					set_nationality = event_target:cge_postwar_destination
-					if = { limit = { NOT = { is_general_captured = yes } } capture_by = ROOT }
-				}
-			}
-			event_target:cge_postwar_general = {
-				clr_character_flag = cge_postwar_processed_this_settlement
-				clr_character_flag = cge_recruited_by_player
-				clr_character_flag = cge_pow_recruitment_unlocked
-				set_character_flag = cge_captured_by_player
-			}
-			if = {
-				limit = {
-					check_variable = { var = cge_slot_[SLOT]_pow_collaborator value = 0 compare = greater_than }
-					has_variable = cge_slot_[SLOT]_origin_country
-				}
-				save_event_target_as = cge_postwar_captor_scope
-				var:cge_slot_[SLOT]_origin_country^0 = {
-					if = {
-						limit = {
-							check_variable = {
-								var = cge_pow_recruiter_character_key
-								value = event_target:cge_postwar_captor_scope.cge_slot_[SLOT]_character_key
-								compare = equals
-							}
-						}
-						cge_pow_clear_origin_recruiter_effect = yes
-					}
-				}
-			}
-
-			set_variable = { cge_slot_[SLOT]_recruited = 0 }
-			set_variable = { cge_slot_[SLOT]_pow_collaborator = 0 }
-			clear_array = cge_slot_[SLOT]_captor_country_display
-			add_to_array = { array = cge_slot_[SLOT]_captor_country_display value = ROOT }
-			add_to_variable = { cge_main_window_dirty = 1 }
-		}
-		SLOT = "[?cge_postwar_selected_slot|.0]"
-	}
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-
-
-	cge_postwar_refresh_list = yes
-
-
-
-	cge_refresh_list_after_change = yes
-
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        var:cge_postwar_destination_display^0 = {
+            save_global_event_target_as = cge_postwar_destination
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_slot_[SLOT]_recruited
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    event_target:cge_postwar_general = {
+                        set_nationality = event_target:cge_postwar_destination
+                        if = {
+                            limit = {
+                                NOT = {
+                                    is_general_captured = yes
+                                }
+                            }
+                            capture_by = ROOT
+                            set_variable = {
+                                var = cge_native_captor
+                                value = ROOT
+                            }
+                        }
+                    }
+                }
+                event_target:cge_postwar_general = {
+                    clr_character_flag = cge_postwar_processed_this_settlement
+                    clr_character_flag = cge_recruited_by_player
+                    clr_character_flag = cge_pow_recruitment_unlocked
+                    clr_character_flag = cge_pow_compliance_registered
+                    clr_character_flag = cge_pow_compliance_registered_v2
+                    set_character_flag = cge_captured_by_player
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_slot_[SLOT]_pow_collaborator
+                            value = 0
+                            compare = greater_than
+                        }
+                        has_variable = cge_slot_[SLOT]_origin_country
+                    }
+                    save_event_target_as = cge_postwar_captor_scope
+                    var:cge_slot_[SLOT]_origin_country^0 = {
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_pow_recruiter_character_key
+                                    value = event_target:cge_postwar_captor_scope.cge_slot_[SLOT]_character_key
+                                    compare = equals
+                                }
+                            }
+                            cge_pow_clear_origin_recruiter_effect = yes
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_slot_[SLOT]_recruited = 0
+                }
+                set_variable = {
+                    cge_slot_[SLOT]_pow_collaborator = 0
+                }
+                clear_array = cge_slot_[SLOT]_captor_country_display
+                add_to_array = {
+                    array = cge_slot_[SLOT]_captor_country_display
+                    value = ROOT
+                }
+                add_to_variable = {
+                    cge_main_window_dirty = 1
+                }
+            }
+            SLOT = "[?cge_postwar_selected_slot|.0]"
+        }
+        clr_country_flag = cge_postwar_waiting_for_general_decision
+        cge_postwar_refresh_list = yes
+        cge_refresh_list_after_change = yes
+    }
 }
-
-
 cge_postwar_restore_origin_as_puppet = {
-	every_owned_state = {
-		limit = {
-			is_core_of = event_target:cge_postwar_origin
-			OR = { is_core_of = ROOT is_claimed_by = ROOT }
-		}
-		remove_core_of = event_target:cge_postwar_origin
-		set_state_flag = cge_postwar_restore_origin_core_after_release
-	}
-
-	release_puppet = event_target:cge_postwar_origin
-
-	# release_puppet creates the restored homeland as our subject.  Re-bind the
-	# destination immediately so the next collaborator scan enters the governor path.
-	event_target:cge_postwar_origin = {
-		save_global_event_target_as = cge_postwar_destination
-		if = {
-			limit = { exists = yes }
-			set_country_flag = cge_postwar_governor_ready
-			log = "CGE_POSTWAR restored homeland [THIS.GetName] marked for military-governor selection."
-		}
-	}
-
-	set_country_flag = cge_postwar_destination_found
-	set_country_flag = cge_postwar_destination_is_subject
-	clr_country_flag = cge_postwar_governor_considered
-	clear_array = cge_postwar_destination_display
-	add_to_array = { array = cge_postwar_destination_display value = event_target:cge_postwar_destination }
-	log = "CGE_POSTWAR restored destination rebound to subject [event_target:cge_postwar_destination.GetName]; governor path armed."
-
-	every_state = {
-		limit = { has_state_flag = cge_postwar_restore_origin_core_after_release }
-		add_core_of = event_target:cge_postwar_origin
-		clr_state_flag = cge_postwar_restore_origin_core_after_release
-	}
-
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-
-	clr_country_flag = cge_postwar_repatriated_any
-	cge_postwar_repatriate = yes
-	if = {
-		limit = { has_country_flag = cge_postwar_repatriated_any }
-		country_event = { id = cge_postwar.2 }
-	}
-	else = { cge_postwar_continue_after_ordinary = yes }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        every_owned_state = {
+            limit = {
+                is_core_of = event_target:cge_postwar_origin
+                OR = {
+                    is_core_of = ROOT
+                    is_claimed_by = ROOT
+                }
+            }
+            remove_core_of = event_target:cge_postwar_origin
+            set_state_flag = cge_postwar_restore_origin_core_after_release
+        }
+        release_puppet = event_target:cge_postwar_origin
+        event_target:cge_postwar_origin = {
+            save_global_event_target_as = cge_postwar_destination
+            if = {
+                limit = {
+                    exists = yes
+                }
+                set_country_flag = cge_postwar_governor_ready
+            }
+        }
+        set_country_flag = cge_postwar_destination_found
+        set_country_flag = cge_postwar_destination_is_subject
+        clr_country_flag = cge_postwar_governor_considered
+        clear_array = cge_postwar_destination_display
+        add_to_array = {
+            array = cge_postwar_destination_display
+            value = event_target:cge_postwar_destination
+        }
+        every_state = {
+            limit = {
+                has_state_flag = cge_postwar_restore_origin_core_after_release
+            }
+            add_core_of = event_target:cge_postwar_origin
+            clr_state_flag = cge_postwar_restore_origin_core_after_release
+        }
+        clr_country_flag = cge_postwar_waiting_for_general_decision
+        cge_postwar_repatriate = yes
+        cge_postwar_continue_after_ordinary = yes
+    }
 }
-
-
 cge_postwar_offer_governor = {
-	set_country_flag = cge_postwar_governor_considered
-	clr_country_flag = cge_postwar_has_governor_candidate
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_governor_probe = yes
-	}
-
-	if = {
-		limit = { has_country_flag = cge_postwar_has_governor_candidate }
-		log = "CGE_POSTWAR at least one recruited governor candidate exists for [event_target:cge_postwar_origin.GetName]."
-		set_country_flag = cge_postwar_waiting_for_governor
-		log = "CGE_POSTWAR governor candidate exists; scheduling governor proposal."
-		country_event = { id = cge_postwar.5 hours = 1 }
-	}
-	else = {
-		log = "CGE_POSTWAR no recruited governor candidate exists for [event_target:cge_postwar_origin.GetName]."
-		cge_postwar_scan_collaborators = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_country_flag = cge_postwar_governor_considered
+        clr_country_flag = cge_postwar_has_governor_candidate
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_governor_probe = yes
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_postwar_has_governor_candidate
+            }
+            set_country_flag = cge_postwar_waiting_for_governor
+            country_event = {
+                id = cge_postwar.5
+                hours = 1
+            }
+        }
+        else = {
+            cge_postwar_scan_collaborators = yes
+        }
+    }
 }
-
 cge_postwar_build_governor_page = {
-	clear_variable = cge_postwar_candidate_slot_1
-	clear_variable = cge_postwar_candidate_slot_2
-	clear_variable = cge_postwar_candidate_slot_3
-	clear_global_event_target = cge_postwar_candidate_1
-	clear_global_event_target = cge_postwar_candidate_2
-	clear_global_event_target = cge_postwar_candidate_3
-	clear_array = cge_postwar_candidate_1_display
-	clear_array = cge_postwar_candidate_2_display
-	clear_array = cge_postwar_candidate_3_display
-	clr_country_flag = cge_postwar_governor_has_more
-	set_variable = { cge_page_found = 0 }
-	set_variable = { var = cge_slot value = cge_postwar_governor_cursor }
-	add_to_variable = { cge_slot = 1 }
-	while_loop_effect = {
-		limit = {
-			check_variable = { var = cge_slot value = cge_captured_general_count compare = less_than_or_equals }
-			check_variable = { var = cge_page_found value = 3 compare = less_than }
-		}
-		set_variable = { cge_governor_match = 0 }
-		meta_effect = {
-			text = {
-				if = {
-					limit = {
-						has_country_flag = cge_has_candidate_[CGE_SLOT]
-						var:cge_slot_[CGE_SLOT]_origin_country^0 = { has_country_flag = cge_postwar_current_origin }
-						NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-						OR = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_recruited_by_player } }
-					}
-					set_variable = { cge_governor_match = 1 }
-					if = {
-						limit = { check_variable = { var = cge_page_found value = 0 compare = equals } }
-						set_variable = { cge_postwar_candidate_slot_1 = [CGE_SLOT] }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_global_event_target_as = cge_postwar_candidate_1 }
-						add_to_array = { array = cge_postwar_candidate_1_display value = event_target:cge_slot_[CGE_SLOT]_runtime_leader }
-					}
-					else_if = {
-						limit = { check_variable = { var = cge_page_found value = 1 compare = equals } }
-						set_variable = { cge_postwar_candidate_slot_2 = [CGE_SLOT] }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_global_event_target_as = cge_postwar_candidate_2 }
-						add_to_array = { array = cge_postwar_candidate_2_display value = event_target:cge_slot_[CGE_SLOT]_runtime_leader }
-					}
-					else = {
-						set_variable = { cge_postwar_candidate_slot_3 = [CGE_SLOT] }
-						event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_global_event_target_as = cge_postwar_candidate_3 }
-						add_to_array = { array = cge_postwar_candidate_3_display value = event_target:cge_slot_[CGE_SLOT]_runtime_leader }
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_slot|.0]"
-		}
-		if = { limit = { check_variable = { var = cge_governor_match value = 0 compare = greater_than } } set_variable = { var = cge_postwar_governor_cursor value = cge_slot } add_to_variable = { cge_page_found = 1 } }
-		add_to_variable = { cge_slot = 1 }
-	}
-	set_variable = { var = cge_more_scan value = cge_postwar_governor_cursor }
-	add_to_variable = { cge_more_scan = 1 }
-	while_loop_effect = {
-		limit = { check_variable = { var = cge_more_scan value = cge_captured_general_count compare = less_than_or_equals } NOT = { has_country_flag = cge_postwar_governor_has_more } }
-		set_variable = { var = cge_slot_arg value = cge_more_scan }
-		cge_slot_governor_probe = yes
-		if = { limit = { has_country_flag = cge_postwar_has_governor_candidate } set_country_flag = cge_postwar_governor_has_more clr_country_flag = cge_postwar_has_governor_candidate }
-		add_to_variable = { cge_more_scan = 1 }
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_variable = cge_postwar_candidate_slot_1
+        clear_variable = cge_postwar_candidate_slot_2
+        clear_variable = cge_postwar_candidate_slot_3
+        clear_global_event_target = cge_postwar_candidate_1
+        clear_global_event_target = cge_postwar_candidate_2
+        clear_global_event_target = cge_postwar_candidate_3
+        clear_array = cge_postwar_candidate_1_display
+        clear_array = cge_postwar_candidate_2_display
+        clear_array = cge_postwar_candidate_3_display
+        clr_country_flag = cge_postwar_governor_has_more
+        set_variable = {
+            cge_page_found = 0
+        }
+        set_variable = {
+            var = cge_slot
+            value = cge_postwar_governor_cursor
+        }
+        add_to_variable = {
+            cge_slot = 1
+        }
+        while_loop_effect = {
+            limit = {
+                check_variable = {
+                    var = cge_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+                check_variable = {
+                    var = cge_page_found
+                    value = 3
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_governor_match = 0
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_postwar_origin.original_tag
+                                    compare = equals
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            OR = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                    has_character_flag = cge_recruited_by_player
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_governor_match = 1
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_page_found
+                                    value = 0
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_postwar_candidate_slot_1 = [CGE_SLOT]
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                save_global_event_target_as = cge_postwar_candidate_1
+                            }
+                            add_to_array = {
+                                array = cge_postwar_candidate_1_display
+                                value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_page_found
+                                    value = 1
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_postwar_candidate_slot_2 = [CGE_SLOT]
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                save_global_event_target_as = cge_postwar_candidate_2
+                            }
+                            add_to_array = {
+                                array = cge_postwar_candidate_2_display
+                                value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                            }
+                        }
+                        else = {
+                            set_variable = {
+                                cge_postwar_candidate_slot_3 = [CGE_SLOT]
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                save_global_event_target_as = cge_postwar_candidate_3
+                            }
+                            add_to_array = {
+                                array = cge_postwar_candidate_3_display
+                                value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                            }
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_slot|.0]"
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_governor_match
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                set_variable = {
+                    var = cge_postwar_governor_cursor
+                    value = cge_slot
+                }
+                add_to_variable = {
+                    cge_page_found = 1
+                }
+            }
+            add_to_variable = {
+                cge_slot = 1
+            }
+        }
+        set_variable = {
+            var = cge_more_scan
+            value = cge_postwar_governor_cursor
+        }
+        add_to_variable = {
+            cge_more_scan = 1
+        }
+        while_loop_effect = {
+            limit = {
+                check_variable = {
+                    var = cge_more_scan
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+                NOT = {
+                    has_country_flag = cge_postwar_governor_has_more
+                }
+            }
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_more_scan
+            }
+            cge_slot_governor_probe = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_postwar_has_governor_candidate
+                }
+                set_country_flag = cge_postwar_governor_has_more
+                clr_country_flag = cge_postwar_has_governor_candidate
+            }
+            add_to_variable = {
+                cge_more_scan = 1
+            }
+        }
+    }
 }
-
 cge_postwar_appoint_selected_governor = {
-
-	var:cge_postwar_destination_display^0 = {
-		save_global_event_target_as = cge_postwar_destination
-	}
-
-
-	event_target:cge_postwar_destination = {
-
-		clear_array = cge_postwar_installed_by_country
-
-		add_to_array = {
-			array = cge_postwar_installed_by_country
-			value = ROOT
-		}
-
-		set_country_flag = cge_postwar_has_cge_governor
-	}
-
-	event_target:cge_postwar_general = {
-
-		clr_character_flag = cge_postwar_processed_this_settlement
-
-		if = {
-			limit = {
-				is_general_captured = yes
-			}
-
-			release_from_captivity = yes
-		}
-
-		set_nationality = event_target:cge_postwar_destination
-
-		clr_character_flag = cge_captured_by_player
-		clr_character_flag = cge_bribed_by_player
-		clr_character_flag = cge_recruited_by_player
-		clr_character_flag = cge_pow_recruitment_unlocked
-	}
-
-	event_target:cge_postwar_destination = {
-
-		if = {
-			limit = {
-				has_government = democratic
-			}
-
-			add_country_leader_role = {
-				character = event_target:cge_postwar_general
-				promote_leader = yes
-
-				country_leader = {
-					ideology = conservatism
-					desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
-					traits = { cge_postwar_eager_collaborator }
-				}
-			}
-		}
-
-		else_if = {
-			limit = {
-				has_government = fascism
-			}
-
-			add_country_leader_role = {
-				character = event_target:cge_postwar_general
-				promote_leader = yes
-
-				country_leader = {
-					ideology = fascism_ideology
-					desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
-					traits = { cge_postwar_eager_collaborator }
-				}
-			}
-		}
-
-		else_if = {
-			limit = {
-				has_government = communism
-			}
-
-			add_country_leader_role = {
-				character = event_target:cge_postwar_general
-				promote_leader = yes
-
-				country_leader = {
-					ideology = marxism
-					desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
-					traits = { cge_postwar_eager_collaborator }
-				}
-			}
-		}
-
-		else = {
-
-			add_country_leader_role = {
-				character = event_target:cge_postwar_general
-				promote_leader = yes
-
-				country_leader = {
-					ideology = despotism
-					desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
-					traits = { cge_postwar_eager_collaborator }
-				}
-			}
-		}
-	}
-
-	cge_postwar_remove_selected_slot = yes
-
-	cge_refresh_list_after_change = yes
-
-	log = "CGE_POSTWAR installed custom military governor."
-
-
-	event_target:cge_postwar_origin = {
-
-		if = {
-			limit = {
-				NOT = {
-					is_subject_of = ROOT
-				}
-			}
-
-			remove_country_leader_trait = cge_postwar_eager_collaborator
-			remove_country_leader_trait = cge_eager_collaborator
-			remove_country_leader_trait = eager_collaborator
-
-			clr_country_flag = cge_postwar_has_cge_governor
-
-			clear_array = cge_postwar_installed_by_country
-
-			log = "CGE_POSTWAR cleaned governor state from non-subject historical tag [THIS.GetName]."
-		}
-	}
-
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        var:cge_postwar_destination_display^0 = {
+            save_global_event_target_as = cge_postwar_destination
+        }
+        event_target:cge_postwar_destination = {
+            clear_array = cge_postwar_installed_by_country
+            add_to_array = {
+                array = cge_postwar_installed_by_country
+                value = ROOT
+            }
+            set_country_flag = cge_postwar_has_cge_governor
+        }
+        event_target:cge_postwar_general = {
+            clr_character_flag = cge_postwar_processed_this_settlement
+            if = {
+                limit = {
+                    is_general_captured = yes
+                }
+                release_from_captivity = yes
+            }
+            set_nationality = event_target:cge_postwar_destination
+            clr_character_flag = cge_captured_by_player
+            clr_character_flag = cge_bribed_by_player
+            clr_character_flag = cge_recruited_by_player
+            clr_character_flag = cge_pow_recruitment_unlocked
+            clr_character_flag = cge_pow_compliance_registered
+            clr_character_flag = cge_pow_compliance_registered_v2
+        }
+        event_target:cge_postwar_destination = {
+            if = {
+                limit = {
+                    has_government = democratic
+                }
+                add_country_leader_role = {
+                    character = event_target:cge_postwar_general
+                    promote_leader = yes
+                    country_leader = {
+                        ideology = conservatism
+                        desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
+                        traits = {
+                            cge_postwar_eager_collaborator
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    has_government = fascism
+                }
+                add_country_leader_role = {
+                    character = event_target:cge_postwar_general
+                    promote_leader = yes
+                    country_leader = {
+                        ideology = fascism_ideology
+                        desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
+                        traits = {
+                            cge_postwar_eager_collaborator
+                        }
+                    }
+                }
+            }
+            else_if = {
+                limit = {
+                    has_government = communism
+                }
+                add_country_leader_role = {
+                    character = event_target:cge_postwar_general
+                    promote_leader = yes
+                    country_leader = {
+                        ideology = marxism
+                        desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
+                        traits = {
+                            cge_postwar_eager_collaborator
+                        }
+                    }
+                }
+            }
+            else = {
+                add_country_leader_role = {
+                    character = event_target:cge_postwar_general
+                    promote_leader = yes
+                    country_leader = {
+                        ideology = despotism
+                        desc = CGE_POSTWAR_GOVERNOR_LEADER_DESC
+                        traits = {
+                            cge_postwar_eager_collaborator
+                        }
+                    }
+                }
+            }
+        }
+        cge_postwar_remove_selected_slot = yes
+        cge_refresh_list_after_change = yes
+        event_target:cge_postwar_origin = {
+            if = {
+                limit = {
+                    NOT = {
+                        is_subject_of = ROOT
+                    }
+                }
+                remove_country_leader_trait = cge_postwar_eager_collaborator
+                remove_country_leader_trait = cge_eager_collaborator
+                remove_country_leader_trait = eager_collaborator
+                clr_country_flag = cge_postwar_has_cge_governor
+                clear_array = cge_postwar_installed_by_country
+            }
+        }
+    }
 }
-
-
-
 cge_postwar_watch_tick = {
-	save_global_event_target_as = cge_postwar_watch_captor
-	clr_country_flag = cge_postwar_watch_has_pending_origin
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_postwar_watch = yes
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_postwar_detect = yes
-	}
-
-	if = {
-		limit = {
-			NOT = { has_country_flag = cge_postwar_watch_has_pending_origin }
-			NOT = { has_country_flag = cge_postwar_queue_active }
-		}
-		clr_country_flag = cge_postwar_watch_active
-		log = "CGE_POSTWAR watcher sleeping for [ROOT.GetName]."
-	}
-
-	clear_global_event_target = cge_postwar_watch_captor
-	clear_global_event_target = cge_postwar_detected_origin
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_global_event_target_as = cge_postwar_watch_captor
+        clr_country_flag = cge_postwar_watch_has_pending_origin
+        clr_country_flag = cge_return_stuck_pending_detected
+        cge_return_reconcile_dead_origins = yes
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_postwar_watch = yes
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_stuck_pending_detected
+            }
+            cge_return_retry_pending = yes
+        }
+        clr_country_flag = cge_return_stuck_pending_detected
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_slot_iter
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_slot_iter
+            }
+            cge_slot_postwar_detect = yes
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_postwar_watch_has_pending_origin
+                }
+                NOT = {
+                    has_country_flag = cge_postwar_queue_active
+                }
+            }
+            clr_country_flag = cge_postwar_watch_active
+        }
+        clear_global_event_target = cge_postwar_watch_captor
+        clear_global_event_target = cge_postwar_detected_origin
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 cge_postwar_arm_exact_peace_origin = {
-	clr_country_flag = cge_postwar_exact_origin_matched
-	every_country = { clr_country_flag = cge_postwar_exact_origin_marker }
-	event_target:cge_postwar_detected_origin = { set_country_flag = cge_postwar_exact_origin_marker }
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_slot_iter
-		set_variable = { var = cge_slot_arg value = cge_slot_iter }
-		cge_slot_arm_origin = yes
-	}
-
-	event_target:cge_postwar_detected_origin = { clr_country_flag = cge_postwar_exact_origin_marker }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_exact_origin_matched
+        event_target:cge_postwar_detected_origin = {
+            var:original_tag = {
+                save_global_event_target_as = cge_postwar_detected_origin
+            }
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_peace_arm_slot
+            set_variable = {
+                var = cge_slot_arg
+                value = cge_peace_arm_slot
+            }
+            cge_slot_arm_origin = yes
+        }
+    }
 }
-
 cge_postwar_schedule_event_scan = {
-	if = {
-		limit = { NOT = { has_country_flag = cge_postwar_event_scan_scheduled } }
-		set_country_flag = cge_postwar_event_scan_scheduled
-		country_event = { id = cge_postwar.99 hours = 1 }
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_postwar_event_scan_scheduled
+                }
+            }
+            set_country_flag = cge_postwar_event_scan_scheduled
+            country_event = {
+                id = cge_postwar.99
+                hours = 1
+            }
+        }
+    }
 }
-
-
-
 cge_postwar_refresh_list = {
-	cge_refresh_alive_count = yes
-	cge_list_sync_unsorted = yes
-	add_to_variable = { cge_main_window_dirty = 1 }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_refresh_alive_count = yes
+        cge_list_sync_unsorted = yes
+        add_to_variable = {
+            cge_main_window_dirty = 1
+        }
+    }
 }
-
 cge_postwar_remove_selected_slot = {
-	clr_country_flag = cge_postwar_slot_removed
-	if = {
-		limit = { check_variable = { var = cge_postwar_selected_slot value = 0 compare = greater_than } check_variable = { var = cge_postwar_selected_slot value = cge_captured_general_count compare = less_than_or_equals } }
-		set_variable = { var = cge_release_slot_to_remove value = cge_postwar_selected_slot }
-		cge_release_remove_selected_slot = yes
-		set_country_flag = cge_postwar_slot_removed
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_slot_removed
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_postwar_selected_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            set_variable = {
+                var = cge_release_slot_to_remove
+                value = cge_postwar_selected_slot
+            }
+            cge_release_remove_selected_slot = yes
+            set_country_flag = cge_postwar_slot_removed
+        }
+    }
 }
-
-
-
-cge_postwar_remove_repatriated = {
-	clr_country_flag = cge_postwar_remove_found
-	set_variable = { var = cge_slot value = cge_captured_general_count }
-	while_loop_effect = {
-		limit = { check_variable = { var = cge_slot value = 0 compare = greater_than } NOT = { has_country_flag = cge_postwar_remove_found } }
-		set_variable = { cge_remove_match = 0 }
-		meta_effect = {
-			text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_postwar_repatriate_remove } } set_variable = { cge_remove_match = 1 } } }
-			CGE_SLOT = "[?cge_slot|.0]"
-		}
-		if = { limit = { check_variable = { var = cge_remove_match value = 0 compare = greater_than } } set_variable = { var = cge_release_slot_to_remove value = cge_slot } cge_release_remove_selected_slot = yes set_country_flag = cge_postwar_remove_found cge_refresh_list_after_change = yes }
-		subtract_from_variable = { cge_slot = 1 }
-	}
-}
-
-
-
-
-
 cge_postwar_continue_after_ordinary = {
-
-	if = {
-		limit = {
-			has_country_flag = cge_postwar_repatriated_any
-		}
-
-		clr_country_flag = cge_postwar_repatriated_any
-
-		set_country_flag = cge_postwar_waiting_for_ordinary_info
-
-		log = "CGE_POSTWAR ordinary prisoners repatriated; scheduling information event."
-
-		country_event = {
-			id = cge_postwar.2
-			hours = 1
-		}
-	}
-
-	else = {
-
-		log = "CGE_POSTWAR no ordinary prisoners to repatriate; continuing collaborator scan."
-
-		cge_postwar_scan_collaborators = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_postwar_repatriated_any
+            }
+            clr_country_flag = cge_postwar_repatriated_any
+            clr_country_flag = cge_postwar_ordinary_event_pending
+            cge_postwar_scan_collaborators = yes
+            country_event = {
+                id = cge_postwar.2
+                hours = 1
+            }
+        }
+        else = {
+            cge_postwar_scan_collaborators = yes
+        }
+    }
 }
-
-
-
 cge_postwar_resolve_destination = {
-
-	clr_country_flag = cge_postwar_destination_found
-	clr_country_flag = cge_postwar_destination_is_subject
-	clr_country_flag = cge_postwar_governor_considered
-	clr_country_flag = cge_postwar_ordinary_event_pending
-
-
-	every_country = {
-		clr_country_flag = cge_postwar_current_origin
-		clr_country_flag = cge_postwar_origin_match
-	}
-
-	event_target:cge_postwar_origin = {
-
-		set_country_flag = cge_postwar_current_origin
-		set_country_flag = cge_postwar_origin_match
-
-		save_global_event_target_as = cge_postwar_destination
-	}
-
-
-	event_target:cge_postwar_origin = {
-
-		if = {
-			limit = {
-				is_subject_of = ROOT
-			}
-
-			save_global_event_target_as = cge_postwar_destination
-
-			ROOT = {
-				set_country_flag = cge_postwar_destination_found
-				set_country_flag = cge_postwar_destination_is_subject
-			}
-		}
-	}
-
-
-	if = {
-		limit = {
-			NOT = {
-				has_country_flag = cge_postwar_destination_found
-			}
-		}
-
-		every_state = {
-			clr_state_flag = cge_postwar_origin_core
-		}
-
-		event_target:cge_postwar_origin = {
-
-			every_core_state = {
-				set_state_flag = cge_postwar_origin_core
-			}
-		}
-
-		every_country = {
-			limit = {
-
-				is_subject_of = ROOT
-
-				any_owned_state = {
-					has_state_flag = cge_postwar_origin_core
-				}
-
-				ROOT = {
-					NOT = {
-						has_country_flag = cge_postwar_destination_found
-					}
-				}
-			}
-
-			save_global_event_target_as = cge_postwar_destination
-
-			ROOT = {
-				set_country_flag = cge_postwar_destination_found
-				set_country_flag = cge_postwar_destination_is_subject
-			}
-		}
-
-		every_state = {
-			clr_state_flag = cge_postwar_origin_core
-		}
-	}
-
-
-	clear_array = cge_postwar_destination_display
-
-	add_to_array = {
-		array = cge_postwar_destination_display
-		value = event_target:cge_postwar_destination
-	}
-
-	log = "CGE_POSTWAR destination: historical=[event_target:cge_postwar_origin.GetName] resolved=[event_target:cge_postwar_destination.GetName]."
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_destination_found
+        clr_country_flag = cge_postwar_destination_is_subject
+        clr_country_flag = cge_postwar_governor_considered
+        clr_country_flag = cge_postwar_ordinary_event_pending
+        clr_country_flag = cge_postwar_fate_phase_active
+        cge_postwar_mark_origin_family = yes
+        event_target:cge_postwar_origin = {
+            save_event_target_as = cge_return_origin
+        }
+        cge_resolve_return_country = yes
+        event_target:cge_return_destination = {
+            save_global_event_target_as = cge_postwar_destination
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_found
+            }
+            set_country_flag = cge_postwar_destination_found
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_return_country_is_subject
+            }
+            set_country_flag = cge_postwar_destination_is_subject
+        }
+        clear_array = cge_postwar_destination_display
+        add_to_array = {
+            array = cge_postwar_destination_display
+            value = event_target:cge_postwar_destination
+        }
+    }
 }
-
-
-
-
-
-
 cge_postwar_keep_selected_general = {
-
-	clr_country_flag = cge_postwar_waiting_for_general_decision
-
-	clear_global_event_target = cge_postwar_general
-
-	log = "CGE_POSTWAR_FATE selected general remains in our service."
-
-	cge_postwar_scan_collaborators = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_postwar_waiting_for_general_decision
+        clear_global_event_target = cge_postwar_general
+        cge_postwar_scan_collaborators = yes
+    }
 }
-
-
-
 cge_postwar_clean_governor_traits = {
-
-
-	every_country = {
-
-		if = {
-			limit = {
-
-				OR = {
-
-					NOT = {
-						is_subject_of = ROOT
-					}
-
-					NOT = {
-						has_country_flag = cge_postwar_has_cge_governor
-					}
-				}
-			}
-
-			remove_country_leader_trait = cge_postwar_eager_collaborator
-			remove_country_leader_trait = cge_eager_collaborator
-
-			clr_country_flag = cge_postwar_has_cge_governor
-			clear_array = cge_postwar_installed_by_country
-		}
-	}
-
-	log = "CGE_GOVERNOR_TRAIT one-shot rogue trait cleanup completed."
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        every_country = {
+            if = {
+                limit = {
+                    OR = {
+                        NOT = {
+                            is_subject_of = ROOT
+                        }
+                        NOT = {
+                            has_country_flag = cge_postwar_has_cge_governor
+                        }
+                    }
+                }
+                remove_country_leader_trait = cge_postwar_eager_collaborator
+                remove_country_leader_trait = cge_eager_collaborator
+                clr_country_flag = cge_postwar_has_cge_governor
+                clear_array = cge_postwar_installed_by_country
+            }
+        }
+    }
 }
-
-
-
 cge_postwar_halve_stats = {
-
-	meta_effect = {
-		text = {
-
-			multiply_variable = { cge_slot_[SLOT]_cooperation = 0.5 }
-			multiply_variable = { cge_slot_[SLOT]_patience = 0.5 }
-
-			add_to_variable = { cge_main_window_dirty = 1 }
-		}
-
-		SLOT = "[?cge_postwar_selected_slot|.0]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                multiply_variable = {
+                    cge_slot_[SLOT]_cooperation = 0.5
+                }
+                multiply_variable = {
+                    cge_slot_[SLOT]_patience = 0.5
+                }
+                add_to_variable = {
+                    cge_main_window_dirty = 1
+                }
+            }
+            SLOT = "[?cge_postwar_selected_slot|.0]"
+        }
+    }
 }
-
-
+cge_postwar_mark_origin_family = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        every_possible_country = {
+            clr_country_flag = cge_postwar_current_origin
+            clr_country_flag = cge_postwar_origin_match
+            if = {
+                limit = {
+                    check_variable = {
+                        var = original_tag
+                        value = event_target:cge_postwar_origin.original_tag
+                        compare = equals
+                    }
+                }
+                set_country_flag = cge_postwar_current_origin
+                set_country_flag = cge_postwar_origin_match
+            }
+        }
+    }
+}

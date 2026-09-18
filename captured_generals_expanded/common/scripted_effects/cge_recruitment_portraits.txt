@@ -1,24 +1,42 @@
 cge_apply_static_recruit_portrait = {
-	meta_effect = {
-		text = {
-			event_target:cge_recruited_general = {
-				set_portraits = {
-					army = {
-						small = "[CGE_PORTRAIT]"
-						large = "[CGE_PORTRAIT]"
-					}
-				}
-			}
-		}
-		CGE_PORTRAIT = "[Root.CGEGetRecruitmentStaticPortraitSprite]"
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                event_target:cge_recruited_general = {
+                    set_portraits = {
+                        army = {
+                            large = "[CGE_PORTRAIT]"
+                        }
+                    }
+                }
+            }
+            CGE_PORTRAIT = "[Root.CGEGetRecruitmentStaticPortraitSprite]"
+        }
+    }
 }
-
 cge_apply_recruited_portrait = {
-	if = {
-		limit = { check_variable = { var = cge_recruitment_character_key value = 0 compare = greater_than } }
-		cge_apply_static_recruit_portrait = yes
-	}
-	clear_variable = cge_recruitment_character_key
-	clear_variable = cge_recruitment_runtime_portrait_key
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_recruitment_character_key
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_apply_static_recruit_portrait = yes
+        }
+        clear_variable = cge_recruitment_character_key
+        clear_variable = cge_recruitment_runtime_portrait_key
+    }
 }

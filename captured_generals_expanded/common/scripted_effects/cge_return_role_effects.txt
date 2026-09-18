@@ -1,0 +1,1112 @@
+cge_return_stage_role_from_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+            has_variable = cge_return_role_slot
+        }
+        save_event_target_as = cge_return_role_captor
+        meta_effect = {
+            text = {
+                event_target:cge_return_role_character = {
+                set_variable = {
+                    cge_return_saved_rank = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_rank_key
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_rank
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_rank_key
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_level = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_level
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_level
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_level
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_attack = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_attack
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_attack
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_attack
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_defense = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_defense
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_defense
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_defense
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_planning = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_planning
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_planning
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_planning
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_logistics = 1
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_logistics
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_logistics
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_logistics
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_1 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_1
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_1
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_1
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_2 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_2
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_2
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_2
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_3 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_3
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_3
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_3
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_4 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_4
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_4
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_4
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_5 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_5
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_5
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_5
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_6 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_6
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_6
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_6
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_7 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_7
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_7
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_7
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_return_saved_trait_8 = 0
+                }
+                event_target:cge_return_role_captor = {
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_trait_8
+                        }
+                        event_target:cge_return_role_character = {
+                            set_variable = {
+                                var = cge_return_saved_trait_8
+                                value = event_target:cge_return_role_captor.cge_slot_[SLOT]_trait_8
+                            }
+                        }
+                    }
+                }
+                }
+            }
+            SLOT = "[?cge_return_role_slot|.0]"
+        }
+        clear_variable = cge_return_role_slot
+    }
+}
+cge_return_refresh_saved_role_stats_from_live = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+            is_unit_leader = yes
+        }
+        set_variable = {
+            cge_return_saved_rank = 1
+        }
+        if = {
+            limit = {
+                is_field_marshal = yes
+            }
+            set_variable = {
+                cge_return_saved_rank = 2
+            }
+        }
+        set_variable = {
+            var = cge_return_saved_level
+            value = skill_level
+        }
+        set_variable = {
+            var = cge_return_saved_attack
+            value = attack_skill_level
+        }
+        set_variable = {
+            var = cge_return_saved_defense
+            value = defense_skill_level
+        }
+        set_variable = {
+            var = cge_return_saved_planning
+            value = planning_skill_level
+        }
+        set_variable = {
+            var = cge_return_saved_logistics
+            value = logistics_skill_level
+        }
+    }
+}
+
+cge_return_unlock_if_hidden = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_return_visibility_character
+        if = {
+            limit = {
+                NOT = {
+                    is_unit_leader = yes
+                }
+            }
+            cge_return_rebuild_unrestricted_role = yes
+        }
+        else_if = {
+            limit = {
+                has_event_target = cge_return_destination
+                event_target:cge_return_destination = {
+                    NOT = {
+                        is_leader_visible = event_target:cge_return_visibility_character
+                    }
+                }
+            }
+            cge_return_refresh_saved_role_stats_from_live = yes
+            cge_return_rebuild_unrestricted_role = yes
+        }
+        else_if = {
+            limit = {
+                has_event_target = cge_negotiation_partner_country
+                event_target:cge_negotiation_partner_country = {
+                    NOT = {
+                        is_leader_visible = event_target:cge_return_visibility_character
+                    }
+                }
+            }
+            cge_return_refresh_saved_role_stats_from_live = yes
+            cge_return_rebuild_unrestricted_role = yes
+        }
+        cge_return_clear_saved_role = yes
+    }
+}
+
+cge_return_force_unrestricted_transferred_role = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_character_flag = cge_postwar_force_visible
+        cge_return_unlock_if_hidden = yes
+    }
+}
+
+cge_return_clear_saved_role = {
+    clear_variable = cge_return_saved_rank
+    clear_variable = cge_return_saved_level
+    clear_variable = cge_return_saved_attack
+    clear_variable = cge_return_saved_defense
+    clear_variable = cge_return_saved_planning
+    clear_variable = cge_return_saved_logistics
+    clear_variable = cge_return_saved_trait_1
+    clear_variable = cge_return_saved_trait_2
+    clear_variable = cge_return_saved_trait_3
+    clear_variable = cge_return_saved_trait_4
+    clear_variable = cge_return_saved_trait_5
+    clear_variable = cge_return_saved_trait_6
+    clear_variable = cge_return_saved_trait_7
+    clear_variable = cge_return_saved_trait_8
+}
+cge_return_rebuild_unrestricted_role = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                is_unit_leader = yes
+            }
+            remove_unit_leader_role = yes
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_rank
+                    value = 2
+                    compare = equals
+                }
+            }
+            add_field_marshal_role = {
+                skill = var:cge_return_saved_level
+                attack_skill = var:cge_return_saved_attack
+                defense_skill = var:cge_return_saved_defense
+                planning_skill = var:cge_return_saved_planning
+                logistics_skill = var:cge_return_saved_logistics
+                visible = {
+                    always = yes
+                }
+            }
+        }
+        else = {
+            add_corps_commander_role = {
+                skill = var:cge_return_saved_level
+                attack_skill = var:cge_return_saved_attack
+                defense_skill = var:cge_return_saved_defense
+                planning_skill = var:cge_return_saved_planning
+                logistics_skill = var:cge_return_saved_logistics
+                visible = {
+                    always = yes
+                }
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_1
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_1|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_2
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_2|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_3
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_3|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_4
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_4|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_5
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_5|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_6
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_6|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_7
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_7|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_return_saved_trait_8
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    cge_return_add_trait_[TRAIT] = yes
+                }
+                TRAIT = "[?cge_return_saved_trait_8|.0]"
+            }
+        }
+        cge_return_clear_saved_role = yes
+    }
+}
+cge_return_add_trait_1 = {
+    add_unit_leader_trait = BALTIC_anti_bolshevik
+}
+cge_return_add_trait_2 = {
+    add_unit_leader_trait = INS_loyalty_to_indonesia
+}
+cge_return_add_trait_3 = {
+    add_unit_leader_trait = INS_loyalty_to_netherlands
+}
+cge_return_add_trait_4 = {
+    add_unit_leader_trait = IRQ_golden_square_member
+}
+cge_return_add_trait_5 = {
+    add_unit_leader_trait = JAP_communist_sympathizer
+}
+cge_return_add_trait_6 = {
+    add_unit_leader_trait = JAP_royal_lineage
+}
+cge_return_add_trait_7 = {
+    add_unit_leader_trait = JAP_samurai_lineage
+}
+cge_return_add_trait_8 = {
+    add_unit_leader_trait = POL_sanation_left_leader
+}
+cge_return_add_trait_9 = {
+    add_unit_leader_trait = POL_sanation_right_leader
+}
+cge_return_add_trait_10 = {
+    add_unit_leader_trait = PRC_survivor_of_the_long_march
+}
+cge_return_add_trait_11 = {
+    add_unit_leader_trait = SIC_dubious_loyalty
+}
+cge_return_add_trait_12 = {
+    add_unit_leader_trait = YUN_dubious_loyalty
+}
+cge_return_add_trait_13 = {
+    add_unit_leader_trait = adaptable
+}
+cge_return_add_trait_14 = {
+    add_unit_leader_trait = aggressive_assaulter
+}
+cge_return_add_trait_15 = {
+    add_unit_leader_trait = armor_officer
+}
+cge_return_add_trait_16 = {
+    add_unit_leader_trait = ascari_officer
+}
+cge_return_add_trait_17 = {
+    add_unit_leader_trait = bearer_of_artillery
+}
+cge_return_add_trait_18 = {
+    add_unit_leader_trait = brave
+}
+cge_return_add_trait_19 = {
+    add_unit_leader_trait = brilliant_strategist
+}
+cge_return_add_trait_20 = {
+    add_unit_leader_trait = career_officer
+}
+cge_return_add_trait_21 = {
+    add_unit_leader_trait = cavalry_leader
+}
+cge_return_add_trait_22 = {
+    add_unit_leader_trait = cavalry_officer
+}
+cge_return_add_trait_23 = {
+    add_unit_leader_trait = combined_arms_expert
+}
+cge_return_add_trait_24 = {
+    add_unit_leader_trait = commando
+}
+cge_return_add_trait_25 = {
+    add_unit_leader_trait = defensive_doctrine
+}
+cge_return_add_trait_26 = {
+    add_unit_leader_trait = desert_fox
+}
+cge_return_add_trait_27 = {
+    add_unit_leader_trait = engineer_officer
+}
+cge_return_add_trait_28 = {
+    add_unit_leader_trait = expeditionary_leader_trait
+}
+cge_return_add_trait_29 = {
+    add_unit_leader_trait = expert_delegator
+}
+cge_return_add_trait_30 = {
+    add_unit_leader_trait = expert_improviser
+}
+cge_return_add_trait_31 = {
+    add_unit_leader_trait = fast_planner
+}
+cge_return_add_trait_32 = {
+    add_unit_leader_trait = fortress_buster
+}
+cge_return_add_trait_33 = {
+    add_unit_leader_trait = guerilla_fighter
+}
+cge_return_add_trait_34 = {
+    add_unit_leader_trait = harsh_leader
+}
+cge_return_add_trait_35 = {
+    add_unit_leader_trait = hill_fighter
+}
+cge_return_add_trait_36 = {
+    add_unit_leader_trait = infantry_expert
+}
+cge_return_add_trait_37 = {
+    add_unit_leader_trait = infantry_leader
+}
+cge_return_add_trait_38 = {
+    add_unit_leader_trait = infantry_officer
+}
+cge_return_add_trait_39 = {
+    add_unit_leader_trait = inflexible_strategist
+}
+cge_return_add_trait_40 = {
+    add_unit_leader_trait = inspirational_bagpiper
+}
+cge_return_add_trait_41 = {
+    add_unit_leader_trait = inspirational_leader
+}
+cge_return_add_trait_42 = {
+    add_unit_leader_trait = irregulars_officer
+}
+cge_return_add_trait_43 = {
+    add_unit_leader_trait = jaeger
+}
+cge_return_add_trait_44 = {
+    add_unit_leader_trait = jungle_rat
+}
+cge_return_add_trait_45 = {
+    add_unit_leader_trait = logistics_wizard
+}
+cge_return_add_trait_46 = {
+    add_unit_leader_trait = loyalty_to_britain
+}
+cge_return_add_trait_47 = {
+    add_unit_leader_trait = loyalty_to_india
+}
+cge_return_add_trait_48 = {
+    add_unit_leader_trait = loyalty_to_pakistan
+}
+cge_return_add_trait_49 = {
+    add_unit_leader_trait = media_personality
+}
+cge_return_add_trait_50 = {
+    add_unit_leader_trait = militias_officer
+}
+cge_return_add_trait_51 = {
+    add_unit_leader_trait = naval_invader
+}
+cge_return_add_trait_52 = {
+    add_unit_leader_trait = naval_liason
+}
+cge_return_add_trait_53 = {
+    add_unit_leader_trait = offensive_doctrine
+}
+cge_return_add_trait_54 = {
+    add_unit_leader_trait = old_guard
+}
+cge_return_add_trait_55 = {
+    add_unit_leader_trait = organisational_leader
+}
+cge_return_add_trait_56 = {
+    add_unit_leader_trait = organizer
+}
+cge_return_add_trait_57 = {
+    add_unit_leader_trait = panzer_expert
+}
+cge_return_add_trait_58 = {
+    add_unit_leader_trait = panzer_leader
+}
+cge_return_add_trait_59 = {
+    add_unit_leader_trait = politically_connected
+}
+cge_return_add_trait_60 = {
+    add_unit_leader_trait = ranger
+}
+cge_return_add_trait_61 = {
+    add_unit_leader_trait = scavenger
+}
+cge_return_add_trait_62 = {
+    add_unit_leader_trait = skilled_staffer
+}
+cge_return_add_trait_63 = {
+    add_unit_leader_trait = skirmisher
+}
+cge_return_add_trait_64 = {
+    add_unit_leader_trait = substance_abuser
+}
+cge_return_add_trait_65 = {
+    add_unit_leader_trait = thorough_planner
+}
+cge_return_add_trait_66 = {
+    add_unit_leader_trait = trait_BUL_tsar_loyalist
+}
+cge_return_add_trait_67 = {
+    add_unit_leader_trait = trait_BUL_zveno_member
+}
+cge_return_add_trait_68 = {
+    add_unit_leader_trait = trait_GRE_stauch_monarchist
+}
+cge_return_add_trait_69 = {
+    add_unit_leader_trait = trait_GRE_venezelist_loyalist
+}
+cge_return_add_trait_70 = {
+    add_unit_leader_trait = trait_HUN_fascist_sympathies
+}
+cge_return_add_trait_71 = {
+    add_unit_leader_trait = trait_HUN_vitez
+}
+cge_return_add_trait_72 = {
+    add_unit_leader_trait = trait_JAP_kodoha_sympathizer
+}
+cge_return_add_trait_73 = {
+    add_unit_leader_trait = trait_SOV_determined
+}
+cge_return_add_trait_74 = {
+    add_unit_leader_trait = trait_SPA_nationalist_sympathies
+}
+cge_return_add_trait_75 = {
+    add_unit_leader_trait = trait_TUR_kemalist_champion
+}
+cge_return_add_trait_76 = {
+    add_unit_leader_trait = trait_cautious
+}
+cge_return_add_trait_77 = {
+    add_unit_leader_trait = trait_engineer
+}
+cge_return_add_trait_78 = {
+    add_unit_leader_trait = trait_mountaineer
+}
+cge_return_add_trait_79 = {
+    add_unit_leader_trait = trait_reckless
+}
+cge_return_add_trait_80 = {
+    add_unit_leader_trait = trickster
+}
+cge_return_add_trait_81 = {
+    add_unit_leader_trait = unyielding_defender
+}
+cge_return_add_trait_82 = {
+    add_unit_leader_trait = urban_assault_specialist
+}
+cge_return_add_trait_83 = {
+    add_unit_leader_trait = war_hero
+}
+cge_return_add_trait_84 = {
+    add_unit_leader_trait = winter_expert
+}
+cge_return_add_trait_85 = {
+    add_unit_leader_trait = winter_specialist
+}
+cge_return_add_trait_86 = {
+    add_unit_leader_trait = BALTIC_ex_russian
+}
+cge_return_add_trait_87 = {
+    add_unit_leader_trait = CHI_dubious_loyalty
+}
+cge_return_add_trait_88 = {
+    add_unit_leader_trait = ETH_hero_of_ethiopia
+}
+cge_return_add_trait_89 = {
+    add_unit_leader_trait = INS_secret_commander
+}
+cge_return_add_trait_90 = {
+    add_unit_leader_trait = JAP_IJA_loyalist
+}
+cge_return_add_trait_91 = {
+    add_unit_leader_trait = JAP_government_supporter
+}
+cge_return_add_trait_92 = {
+    add_unit_leader_trait = JAP_kamikaze_proponent
+}
+cge_return_add_trait_93 = {
+    add_unit_leader_trait = JAP_tohokai_sympathies
+}
+cge_return_add_trait_94 = {
+    add_unit_leader_trait = SIA_under_investigation
+}
+cge_return_add_trait_95 = {
+    add_unit_leader_trait = SWE_disillusioned_with_the_government
+}
+cge_return_add_trait_96 = {
+    add_unit_leader_trait = SWE_promoted_away_from_power
+}
+cge_return_add_trait_97 = {
+    add_unit_leader_trait = SWE_wounded_in_protests
+}
+cge_return_add_trait_98 = {
+    add_unit_leader_trait = XSM_dubious_loyalty
+}
+cge_return_add_trait_99 = {
+    add_unit_leader_trait = air_controller
+}
+cge_return_add_trait_100 = {
+    add_unit_leader_trait = ambusher
+}
+cge_return_add_trait_101 = {
+    add_unit_leader_trait = arctic_water_expert
+}
+cge_return_add_trait_102 = {
+    add_unit_leader_trait = aviation_enthusiast
+}
+cge_return_add_trait_103 = {
+    add_unit_leader_trait = battleship_adherent
+}
+cge_return_add_trait_104 = {
+    add_unit_leader_trait = big_guns_expert
+}
+cge_return_add_trait_105 = {
+    add_unit_leader_trait = blockade_runner
+}
+cge_return_add_trait_106 = {
+    add_unit_leader_trait = blue_water_expert
+}
+cge_return_add_trait_107 = {
+    add_unit_leader_trait = bold
+}
+cge_return_add_trait_108 = {
+    add_unit_leader_trait = camouflage_expert
+}
+cge_return_add_trait_109 = {
+    add_unit_leader_trait = carrier_officer
+}
+cge_return_add_trait_110 = {
+    add_unit_leader_trait = caustic_personality
+}
+cge_return_add_trait_111 = {
+    add_unit_leader_trait = cavalry_expert
+}
+cge_return_add_trait_112 = {
+    add_unit_leader_trait = chief_engineer
+}
+cge_return_add_trait_113 = {
+    add_unit_leader_trait = concealment_expert
+}
+cge_return_add_trait_114 = {
+    add_unit_leader_trait = craven
+}
+cge_return_add_trait_115 = {
+    add_unit_leader_trait = crisis_magician
+}
+cge_return_add_trait_116 = {
+    add_unit_leader_trait = cruiser_captain
+}
+cge_return_add_trait_117 = {
+    add_unit_leader_trait = cruiser_officer
+}
+cge_return_add_trait_118 = {
+    add_unit_leader_trait = cuts_corners
+}
+cge_return_add_trait_119 = {
+    add_unit_leader_trait = demoted
+}
+cge_return_add_trait_120 = {
+    add_unit_leader_trait = destroyer_leader
+}
+cge_return_add_trait_121 = {
+    add_unit_leader_trait = destroyer_officer
+}
+cge_return_add_trait_122 = {
+    add_unit_leader_trait = disgruntled
+}
+cge_return_add_trait_123 = {
+    add_unit_leader_trait = dive_bomber
+}
+cge_return_add_trait_124 = {
+    add_unit_leader_trait = exiled_leader
+}
+cge_return_add_trait_125 = {
+    add_unit_leader_trait = fighter_director
+}
+cge_return_add_trait_126 = {
+    add_unit_leader_trait = fleet_protector
+}
+cge_return_add_trait_127 = {
+    add_unit_leader_trait = flight_deck_manager
+}
+cge_return_add_trait_128 = {
+    add_unit_leader_trait = fly_swatter
+}
+cge_return_add_trait_129 = {
+    add_unit_leader_trait = gentlemanly
+}
+cge_return_add_trait_130 = {
+    add_unit_leader_trait = green_water_expert
+}
+cge_return_add_trait_131 = {
+    add_unit_leader_trait = ground_pounder
+}
+cge_return_add_trait_132 = {
+    add_unit_leader_trait = gunnery_expert
+}
+cge_return_add_trait_133 = {
+    add_unit_leader_trait = heavy_ship_officer
+}
+cge_return_add_trait_134 = {
+    add_unit_leader_trait = hidden_sympathies
+}
+cge_return_add_trait_135 = {
+    add_unit_leader_trait = hunter_killer
+}
+cge_return_add_trait_136 = {
+    add_unit_leader_trait = inshore_fighter
+}
+cge_return_add_trait_137 = {
+    add_unit_leader_trait = invader_ii
+}
+cge_return_add_trait_138 = {
+    add_unit_leader_trait = ironside
+}
+cge_return_add_trait_139 = {
+    add_unit_leader_trait = lancer
+}
+cge_return_add_trait_140 = {
+    add_unit_leader_trait = loading_drill_master
+}
+cge_return_add_trait_141 = {
+    add_unit_leader_trait = lone_wolf
+}
+cge_return_add_trait_142 = {
+    add_unit_leader_trait = marksman
+}
+cge_return_add_trait_143 = {
+    add_unit_leader_trait = mine_craft
+}
+cge_return_add_trait_144 = {
+    add_unit_leader_trait = motivated
+}
+cge_return_add_trait_145 = {
+    add_unit_leader_trait = naval_lineage
+}
+cge_return_add_trait_146 = {
+    add_unit_leader_trait = navy_career_officer
+}
+cge_return_add_trait_147 = {
+    add_unit_leader_trait = navy_media_personality
+}
+cge_return_add_trait_148 = {
+    add_unit_leader_trait = new_commander_weight
+}
+cge_return_add_trait_149 = {
+    add_unit_leader_trait = old_guard_navy
+}
+cge_return_add_trait_150 = {
+    add_unit_leader_trait = operative_commando
+}
+cge_return_add_trait_151 = {
+    add_unit_leader_trait = operative_demolition_expert
+}
+cge_return_add_trait_152 = {
+    add_unit_leader_trait = operative_double_agent
+}
+cge_return_add_trait_153 = {
+    add_unit_leader_trait = operative_escape_artist
+}
+cge_return_add_trait_154 = {
+    add_unit_leader_trait = operative_infiltrator
+}
+cge_return_add_trait_155 = {
+    add_unit_leader_trait = operative_linguist
+}
+cge_return_add_trait_156 = {
+    add_unit_leader_trait = operative_master_interrogator
+}
+cge_return_add_trait_157 = {
+    add_unit_leader_trait = operative_natural_orator
+}
+cge_return_add_trait_158 = {
+    add_unit_leader_trait = operative_safe_cracker
+}
+cge_return_add_trait_159 = {
+    add_unit_leader_trait = operative_seducer
+}
+cge_return_add_trait_160 = {
+    add_unit_leader_trait = operative_tough
+}
+cge_return_add_trait_161 = {
+    add_unit_leader_trait = operative_well_groomed
+}
+cge_return_add_trait_162 = {
+    add_unit_leader_trait = paratrooper
+}
+cge_return_add_trait_163 = {
+    add_unit_leader_trait = peasant_sympathiser
+}
+cge_return_add_trait_164 = {
+    add_unit_leader_trait = promoted_from_the_ranks
+}
+cge_return_add_trait_165 = {
+    add_unit_leader_trait = reassigned
+}
+cge_return_add_trait_166 = {
+    add_unit_leader_trait = recently_promoted
+}
+cge_return_add_trait_167 = {
+    add_unit_leader_trait = safety_first
+}
+cge_return_add_trait_168 = {
+    add_unit_leader_trait = search_pattern_expert
+}
+cge_return_add_trait_169 = {
+    add_unit_leader_trait = seawolf
+}
+cge_return_add_trait_170 = {
+    add_unit_leader_trait = sick
+}
+cge_return_add_trait_171 = {
+    add_unit_leader_trait = silent_hunter
+}
+cge_return_add_trait_172 = {
+    add_unit_leader_trait = smoke_screen_expert
+}
+cge_return_add_trait_173 = {
+    add_unit_leader_trait = spotter
+}
+cge_return_add_trait_174 = {
+    add_unit_leader_trait = submarine_officer
+}
+cge_return_add_trait_175 = {
+    add_unit_leader_trait = substance_addict
+}
+cge_return_add_trait_176 = {
+    add_unit_leader_trait = superior_tactician
+}
+cge_return_add_trait_177 = {
+    add_unit_leader_trait = swamp_fox
+}
+cge_return_add_trait_178 = {
+    add_unit_leader_trait = torpedo_bomber
+}
+cge_return_add_trait_179 = {
+    add_unit_leader_trait = torpedo_expert
+}
+cge_return_add_trait_180 = {
+    add_unit_leader_trait = trait_BUL_ff_sympathizer
+}
+cge_return_add_trait_181 = {
+    add_unit_leader_trait = trait_GRE_fascist_sympathizer
+}
+cge_return_add_trait_182 = {
+    add_unit_leader_trait = trait_GRE_marxist_acolyte
+}
+cge_return_add_trait_183 = {
+    add_unit_leader_trait = trait_SOV_bukharinist
+}
+cge_return_add_trait_184 = {
+    add_unit_leader_trait = trait_SOV_cowed_by_stalin_army
+}
+cge_return_add_trait_185 = {
+    add_unit_leader_trait = trait_SOV_cowed_by_stalin_navy
+}
+cge_return_add_trait_186 = {
+    add_unit_leader_trait = trait_SOV_foreign_military_advisor
+}
+cge_return_add_trait_187 = {
+    add_unit_leader_trait = trait_SOV_monarchist_sympathizer
+}
+cge_return_add_trait_188 = {
+    add_unit_leader_trait = trait_SOV_stalinist
+}
+cge_return_add_trait_189 = {
+    add_unit_leader_trait = trait_SOV_trotskyist
+}
+cge_return_add_trait_190 = {
+    add_unit_leader_trait = trait_SPA_carlist_loyalties
+}
+cge_return_add_trait_191 = {
+    add_unit_leader_trait = trait_SPA_falangist_loyalties
+}
+cge_return_add_trait_192 = {
+    add_unit_leader_trait = trait_SPR_anti_stalinist_loyalties
+}
+cge_return_add_trait_193 = {
+    add_unit_leader_trait = trait_SPR_republican_loyalties
+}
+cge_return_add_trait_194 = {
+    add_unit_leader_trait = trait_SPR_stalinist_loyalties
+}
+cge_return_add_trait_195 = {
+    add_unit_leader_trait = unit_type
+}
+cge_return_add_trait_196 = {
+    add_unit_leader_trait = wounded
+}

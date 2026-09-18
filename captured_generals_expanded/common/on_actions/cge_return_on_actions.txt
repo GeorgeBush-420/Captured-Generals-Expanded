@@ -1,0 +1,27 @@
+on_actions = {
+    on_civil_war_end_before_annexation = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                cge_return_record_civil_war_successor = yes
+            }
+        }
+    }
+    on_civil_war_end = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                cge_return_record_civil_war_successor = yes
+                cge_custody_rebind_ended_civil_war = yes
+            }
+        }
+    }
+}

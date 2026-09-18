@@ -1,0 +1,819 @@
+cge_restore_missing_recruited_records = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_roster_captor
+        clr_country_flag = cge_roster_restored_any
+        every_army_leader = {
+            include_invisible = yes
+            limit = {
+                has_character_flag = cge_recruited_by_player
+                NOT = {
+                    has_character_flag = cge_roster_retired
+                }
+                check_variable = {
+                    var = cge_cge_origin_country^num
+                    value = 0
+                    compare = greater_than
+                }
+                var:cge_cge_captor_country^0 = {
+                    tag = event_target:cge_roster_captor
+                }
+            }
+            save_event_target_as = cge_roster_general
+            event_target:cge_roster_captor = {
+                clr_country_flag = cge_roster_general_found
+                for_loop_effect = {
+                    start = 1
+                    end = cge_captured_general_count
+                    compare = less_than_or_equals
+                    value = cge_roster_check_slot
+                    meta_effect = {
+                        text = {
+                            if = {
+                                limit = {
+                                    has_country_flag = cge_has_candidate_[CGE_SLOT]
+                                    check_variable = {
+                                        var = cge_slot_[CGE_SLOT]_runtime_leader
+                                        value = event_target:cge_roster_general
+                                        compare = equals
+                                    }
+                                }
+                                set_country_flag = cge_roster_general_found
+                            }
+                        }
+                        CGE_SLOT = "[?cge_roster_check_slot|.0]"
+                    }
+                }
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_roster_general_found
+                        }
+                    }
+                    cge_restore_recruited_record = yes
+                    set_country_flag = cge_roster_restored_any
+                }
+            }
+        }
+        clr_country_flag = cge_roster_general_found
+        if = {
+            limit = {
+                has_country_flag = cge_roster_restored_any
+            }
+            clr_country_flag = cge_roster_restored_any
+            cge_refresh_list_after_change = yes
+        }
+    }
+}
+cge_restore_recruited_record = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        add_to_variable = {
+            cge_captured_general_count = 1
+        }
+        set_variable = {
+            var = cge_slot
+            value = cge_captured_general_count
+        }
+        cge_clear_slot_data = yes
+        meta_effect = {
+            text = {
+                set_variable = {
+                    var = cge_slot_[CGE_SLOT]_negotiation_state
+                    value = event_target:cge_roster_general.cge_cge_negotiation_state
+                }
+                set_variable = {
+                    var = cge_slot_[CGE_SLOT]_negotiation_group
+                    value = event_target:cge_roster_general.cge_cge_negotiation_group
+                }
+                set_variable = {
+                    var = cge_slot_[CGE_SLOT]_negotiation_refused
+                    value = event_target:cge_roster_general.cge_cge_negotiation_refused
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            check_variable = {
+                                var = cge_cge_domestic_civil_war
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_domestic_civil_war = 1
+                    }
+                }
+                set_variable = {
+                    var = cge_slot_[CGE_SLOT]_runtime_leader
+                    value = event_target:cge_roster_general
+                }
+                set_variable = {
+                    cge_slot_[CGE_SLOT]_binding_version = 1
+                }
+                set_country_flag = cge_has_candidate_[CGE_SLOT]
+                add_to_array = {
+                    array = cge_slot_[CGE_SLOT]_origin_country
+                    value = event_target:cge_roster_general.cge_cge_origin_country^0
+                }
+                add_to_array = {
+                    array = cge_slot_[CGE_SLOT]_captor_country
+                    value = THIS
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_character_key
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_character_key
+                        value = event_target:cge_roster_general.cge_cge_character_key
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_name_order
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_name_order
+                        value = event_target:cge_roster_general.cge_cge_name_order
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_rank_key
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_rank_key
+                        value = event_target:cge_roster_general.cge_cge_rank_key
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_held_state
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_held_state
+                        value = event_target:cge_roster_general.cge_cge_held_state
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_level
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_level
+                        value = event_target:cge_roster_general.cge_cge_level
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_attack
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_attack
+                        value = event_target:cge_roster_general.cge_cge_attack
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_defense
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_defense
+                        value = event_target:cge_roster_general.cge_cge_defense
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_planning
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_planning
+                        value = event_target:cge_roster_general.cge_cge_planning
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_logistics
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_logistics
+                        value = event_target:cge_roster_general.cge_cge_logistics
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_capacity
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_capacity
+                        value = event_target:cge_roster_general.cge_cge_capacity
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_attack_bonus
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_attack_bonus
+                        value = event_target:cge_roster_general.cge_cge_attack_bonus
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_defense_bonus
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_defense_bonus
+                        value = event_target:cge_roster_general.cge_cge_defense_bonus
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_planning_bonus
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_planning_bonus
+                        value = event_target:cge_roster_general.cge_cge_planning_bonus
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_logistics_bonus
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_logistics_bonus
+                        value = event_target:cge_roster_general.cge_cge_logistics_bonus
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_count
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_count
+                        value = event_target:cge_roster_general.cge_cge_trait_count
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_1
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_1
+                        value = event_target:cge_roster_general.cge_cge_trait_1
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_2
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_2
+                        value = event_target:cge_roster_general.cge_cge_trait_2
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_3
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_3
+                        value = event_target:cge_roster_general.cge_cge_trait_3
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_4
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_4
+                        value = event_target:cge_roster_general.cge_cge_trait_4
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_5
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_5
+                        value = event_target:cge_roster_general.cge_cge_trait_5
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_6
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_6
+                        value = event_target:cge_roster_general.cge_cge_trait_6
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_7
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_7
+                        value = event_target:cge_roster_general.cge_cge_trait_7
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trait_8
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_8
+                        value = event_target:cge_roster_general.cge_cge_trait_8
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_capture_order
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_capture_order
+                        value = event_target:cge_roster_general.cge_cge_capture_order
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_runtime_prisoner_id
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_runtime_prisoner_id
+                        value = event_target:cge_roster_general.cge_cge_runtime_prisoner_id
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_runtime_portrait_key
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_runtime_portrait_key
+                        value = event_target:cge_roster_general.cge_cge_runtime_portrait_key
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience
+                        value = event_target:cge_roster_general.cge_cge_patience
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation
+                        value = event_target:cge_roster_general.cge_cge_cooperation
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_executed
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_executed
+                        value = event_target:cge_roster_general.cge_cge_executed
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_recruited
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_recruited
+                        value = event_target:cge_roster_general.cge_cge_recruited
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_pow_collaborator
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_pow_collaborator
+                        value = event_target:cge_roster_general.cge_cge_pow_collaborator
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_death_overlay_frame
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_death_overlay_frame
+                        value = event_target:cge_roster_general.cge_cge_death_overlay_frame
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_death_weapon_frame
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_death_weapon_frame
+                        value = event_target:cge_roster_general.cge_cge_death_weapon_frame
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_execution_date
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_execution_date
+                        value = event_target:cge_roster_general.cge_cge_execution_date
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_recruitment_date
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_recruitment_date
+                        value = event_target:cge_roster_general.cge_cge_recruitment_date
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience_timer_progress
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience_timer_progress
+                        value = event_target:cge_roster_general.cge_cge_patience_timer_progress
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience_timer_days_left
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience_timer_days_left
+                        value = event_target:cge_roster_general.cge_cge_patience_timer_days_left
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience_timer_running
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience_timer_running
+                        value = event_target:cge_roster_general.cge_cge_patience_timer_running
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation_timer_progress
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation_timer_progress
+                        value = event_target:cge_roster_general.cge_cge_cooperation_timer_progress
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation_timer_days_left
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation_timer_days_left
+                        value = event_target:cge_roster_general.cge_cge_cooperation_timer_days_left
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation_timer_running
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation_timer_running
+                        value = event_target:cge_roster_general.cge_cge_cooperation_timer_running
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_stage
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_stage
+                        value = event_target:cge_roster_general.cge_cge_trial_stage
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_route
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_route
+                        value = event_target:cge_roster_general.cge_cge_trial_route
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_reaction
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_reaction
+                        value = event_target:cge_roster_general.cge_cge_trial_reaction
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_severity
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_severity
+                        value = event_target:cge_roster_general.cge_cge_trial_severity
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_credibility
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_credibility
+                        value = event_target:cge_roster_general.cge_cge_trial_credibility
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_negotiation
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_negotiation
+                        value = event_target:cge_roster_general.cge_cge_trial_negotiation
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_publicity
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_publicity
+                        value = event_target:cge_roster_general.cge_cge_trial_publicity
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_completed
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_completed
+                        value = event_target:cge_roster_general.cge_cge_trial_completed
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_condemned
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_condemned
+                        value = event_target:cge_roster_general.cge_cge_trial_condemned
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_trial_plea_days_left
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trial_plea_days_left
+                        value = event_target:cge_roster_general.cge_cge_trial_plea_days_left
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience_operation_pending
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                        value = event_target:cge_roster_general.cge_cge_patience_operation_pending
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_patience_selected_action
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_patience_selected_action
+                        value = event_target:cge_roster_general.cge_cge_patience_selected_action
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation_operation_pending
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation_operation_pending
+                        value = event_target:cge_roster_general.cge_cge_cooperation_operation_pending
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_cooperation_selected_action
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_cooperation_selected_action
+                        value = event_target:cge_roster_general.cge_cge_cooperation_selected_action
+                    }
+                }
+                if = {
+                    limit = {
+                        NOT = {
+                            has_country_flag = cge_custody_importing
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_recruited = 1
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_risk_type
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_risk_type
+                        value = event_target:cge_roster_general.cge_cge_risk_type
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_risk_zero_since
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_risk_zero_since
+                        value = event_target:cge_roster_general.cge_cge_risk_zero_since
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_suicide
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_suicide
+                        value = event_target:cge_roster_general.cge_cge_suicide
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_recovery_state
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_recovery_state
+                        value = event_target:cge_roster_general.cge_cge_recovery_state
+                    }
+                }
+                if = {
+                    limit = {
+                        event_target:cge_roster_general = {
+                            has_variable = cge_cge_recovery_recipient
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_recovery_recipient
+                        value = event_target:cge_roster_general.cge_cge_recovery_recipient
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_custody_importing
+                    }
+                    add_to_variable = {
+                        cge_capture_sequence = 1
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_capture_order
+                        value = cge_capture_sequence
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot|.0]"
+        }
+        cge_mirror_slot_to_character = yes
+        set_country_flag = cge_postwar_watch_active
+    }
+}

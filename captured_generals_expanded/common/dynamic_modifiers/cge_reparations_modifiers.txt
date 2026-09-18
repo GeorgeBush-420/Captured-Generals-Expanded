@@ -1,0 +1,13 @@
+cge_reparations_received = {
+    enable = { always = yes }
+    hidden_modifier = {
+        consumer_goods_factor = cge_reparations_received_factor
+    }
+}
+
+cge_reparations_paid = {
+    enable = { always = yes }
+    hidden_modifier = {
+        consumer_goods_factor = cge_reparations_paid_factor
+    }
+}

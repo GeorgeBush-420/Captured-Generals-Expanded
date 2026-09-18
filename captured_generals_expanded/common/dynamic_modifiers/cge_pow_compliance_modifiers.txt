@@ -1,0 +1,6 @@
+cge_pow_collaboration_growth = {
+    icon = GFX_cge_pow_collaboration_state
+    enable = { cge_pow_compliance_state_active = yes }
+    remove_trigger = { NOT = { cge_pow_compliance_state_active = yes } }
+    compliance_gain = cge_pow_compliance_state_gain
+}

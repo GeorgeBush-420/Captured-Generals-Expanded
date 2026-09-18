@@ -1,1167 +1,2668 @@
-
-
 cge_pow_origin_derive_total_effect = {
-	set_variable = {
-		var = cge_pow_total_thousands
-		value = cge_pow_baseline25_highwater_thousands
-	}
-
-	add_to_variable = {
-		var = cge_pow_total_thousands
-		value = cge_pow_bonus_captured_thousands
-	}
-
-	subtract_from_variable = {
-		var = cge_pow_total_thousands
-		value = cge_pow_spent_thousands
-	}
-
-	if = {
-		limit = {
-			check_variable = {
-				var = cge_pow_total_thousands
-				value = 0
-				compare = less_than
-			}
-		}
-
-		set_variable = {
-			cge_pow_total_thousands = 0
-		}
-	}
-
-	if = {
-		limit = {
-			check_variable = {
-				var = cge_pow_recruitable_thousands
-				value = cge_pow_total_thousands
-				compare = greater_than
-			}
-		}
-
-		set_variable = {
-			var = cge_pow_recruitable_thousands
-			value = cge_pow_total_thousands
-		}
-	}
-
-	if = {
-		limit = {
-			check_variable = {
-				var = cge_pow_recruitable_thousands
-				value = 0
-				compare = less_than
-			}
-		}
-
-		set_variable = {
-			cge_pow_recruitable_thousands = 0
-		}
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_pow_total_thousands
+            value = cge_pow_baseline25_highwater_thousands
+        }
+        add_to_variable = {
+            var = cge_pow_total_thousands
+            value = cge_pow_bonus_captured_thousands
+        }
+        subtract_from_variable = {
+            var = cge_pow_total_thousands
+            value = cge_pow_spent_thousands
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_total_thousands
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_total_thousands = 0
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_recruitable_thousands
+                    value = cge_pow_total_thousands
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_pow_recruitable_thousands
+                value = cge_pow_total_thousands
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_recruitable_thousands
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_recruitable_thousands = 0
+            }
+        }
+    }
 }
-
-
 cge_pow_prepare_template = {
-	save_event_target_as = cge_pow_captor
-	set_variable = { cge_pow_template_key = 0 }
-
-	if = {
-		limit = { check_variable = { var = cge_overview_selected_slot value = 0 compare = greater_than } }
-		meta_effect = {
-			text = {
-				if = {
-					limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-					var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-						save_global_event_target_as = cge_pow_selected_origin
-						cge_pow_select_template = yes
-					}
-				}
-			}
-			CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-		}
-	}
-
-	set_variable = { var = cge_overview_pow_template_key value = cge_pow_template_key }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_pow_captor
+        set_variable = {
+            cge_pow_template_key = 0
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_overview_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            save_global_event_target_as = cge_pow_selected_origin
+                            cge_pow_select_template = yes
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+            }
+        }
+        set_variable = {
+            var = cge_overview_pow_template_key
+            value = cge_pow_template_key
+        }
+    }
 }
-
-
 cge_pow_refresh_selected_ui_effect = {
-	cge_pow_refresh_ui = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_refresh_ui = yes
+    }
 }
-
-
 cge_pow_measure_template = {
-
-	set_variable = { cge_pow_template_manpower_thousands = 0 }
-	set_variable = { cge_pow_probe_state_found = 0 }
-
-	cge_pow_prepare_template = yes
-
-	delete_unit = {
-		id = 990043
-		disband = no
-	}
-
-	random_owned_controlled_state = {
-		limit = {
-			ROOT = {
-				divisions_in_state = {
-					state = PREV
-					size < 1
-				}
-			}
-		}
-
-		save_event_target_as = cge_pow_manpower_probe_state
-
-		ROOT = {
-			set_variable = {
-				cge_pow_probe_state_found = 1
-			}
-		}
-	}
-
-	if = {
-		limit = {
-			check_variable = {
-				var = cge_pow_probe_state_found
-				value = 0
-				compare = greater_than
-			}
-		}
-
-		set_variable = {
-			var = cge_pow_pool_before_k
-			value = manpower_k
-		}
-
-		add_manpower = 1000000
-
-		set_variable = {
-			var = cge_pow_deployed_before_k
-			value = deployed_army_manpower_k
-		}
-		cge_pow_probe_manpower = yes
-
-
-		set_variable = {
-			var = cge_pow_deployed_after_k
-			value = deployed_army_manpower_k
-		}
-
-		set_variable = {
-			var = cge_pow_template_manpower_thousands
-			value = cge_pow_deployed_after_k
-		}
-
-		subtract_from_variable = {
-			var = cge_pow_template_manpower_thousands
-			value = var:cge_pow_deployed_before_k
-		}
-
-		delete_unit = {
-			id = 990043
-			disband = no
-		}
-
-		set_variable = {
-			var = cge_pow_pool_restore_delta_k
-			value = manpower_k
-		}
-
-		subtract_from_variable = {
-			var = cge_pow_pool_restore_delta_k
-			value = var:cge_pow_pool_before_k
-		}
-
-		multiply_variable = {
-			var = cge_pow_pool_restore_delta_k
-			value = -1000
-		}
-
-		add_manpower = var:cge_pow_pool_restore_delta_k
-
-		if = {
-			limit = {
-				NOT = {
-					check_variable = {
-						var = cge_pow_template_manpower_thousands
-						value = 0
-						compare = greater_than
-					}
-				}
-			}
-
-			set_variable = {
-				cge_pow_probe_state_found = 0
-			}
-		}
-
-		clear_variable = cge_pow_pool_before_k
-		clear_variable = cge_pow_deployed_before_k
-		clear_variable = cge_pow_deployed_after_k
-		clear_variable = cge_pow_pool_restore_delta_k
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_pow_template_manpower_thousands = 0
+        }
+        set_variable = {
+            cge_pow_probe_state_found = 0
+        }
+        cge_pow_prepare_template = yes
+        delete_unit = {
+            id = 990043
+            disband = no
+        }
+        random_owned_controlled_state = {
+            limit = {
+                ROOT = {
+                    divisions_in_state = {
+                        state = PREV
+                        size < 1
+                    }
+                }
+            }
+            save_event_target_as = cge_pow_manpower_probe_state
+            ROOT = {
+                set_variable = {
+                    cge_pow_probe_state_found = 1
+                }
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_probe_state_found
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_pow_pool_before_k
+                value = manpower_k
+            }
+            add_manpower = 1000000
+            set_variable = {
+                var = cge_pow_deployed_before_k
+                value = deployed_army_manpower_k
+            }
+            cge_pow_probe_manpower = yes
+            set_variable = {
+                var = cge_pow_deployed_after_k
+                value = deployed_army_manpower_k
+            }
+            set_variable = {
+                var = cge_pow_template_manpower_thousands
+                value = cge_pow_deployed_after_k
+            }
+            subtract_from_variable = {
+                var = cge_pow_template_manpower_thousands
+                value = var:cge_pow_deployed_before_k
+            }
+            delete_unit = {
+                id = 990043
+                disband = no
+            }
+            set_variable = {
+                var = cge_pow_pool_restore_delta_k
+                value = manpower_k
+            }
+            subtract_from_variable = {
+                var = cge_pow_pool_restore_delta_k
+                value = var:cge_pow_pool_before_k
+            }
+            multiply_variable = {
+                var = cge_pow_pool_restore_delta_k
+                value = -1000
+            }
+            add_manpower = var:cge_pow_pool_restore_delta_k
+            if = {
+                limit = {
+                    NOT = {
+                        check_variable = {
+                            var = cge_pow_template_manpower_thousands
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_pow_probe_state_found = 0
+                }
+            }
+            clear_variable = cge_pow_pool_before_k
+            clear_variable = cge_pow_deployed_before_k
+            clear_variable = cge_pow_deployed_after_k
+            clear_variable = cge_pow_pool_restore_delta_k
+        }
+    }
 }
-
-
 cge_pow_raise_division_effect = {
-	set_variable = {
-		cge_overview_pow_failure_code = 0
-	}
-
-	if = {
-		limit = {
-			cge_pow_unlocked = yes
-		}
-
-		cge_pow_refresh_selected_ui_effect = yes
-		cge_pow_measure_template = yes
-
-		if = {
-			limit = {
-				OR = {
-					NOT = {
-						check_variable = {
-							var = cge_pow_probe_state_found
-							value = 0
-							compare = greater_than
-						}
-					}
-
-					NOT = {
-						check_variable = {
-							var = cge_pow_template_manpower_thousands
-							value = 0
-							compare = greater_than
-						}
-					}
-				}
-			}
-
-			set_variable = {
-				cge_overview_pow_failure_code = 2
-			}
-		}
-
-		else_if = {
-			limit = {
-				NOT = {
-					capital_scope = {
-						is_controlled_by = ROOT
-					}
-				}
-			}
-
-			set_variable = {
-				cge_overview_pow_failure_code = 3
-			}
-		}
-
-		else_if = {
-			limit = {
-				OR = {
-					check_variable = {
-						var = cge_overview_pow_recruitable_thousands
-						value = cge_pow_template_manpower_thousands
-						compare = less_than
-					}
-
-					check_variable = {
-						var = cge_overview_pow_total_thousands
-						value = cge_pow_template_manpower_thousands
-						compare = less_than
-					}
-				}
-			}
-
-			set_variable = {
-				cge_overview_pow_failure_code = 1
-			}
-		}
-
-		else = {
-			cge_pow_measure_equipment_need = yes
-
-			set_variable = { var = cge_pow_free_infantry_equipment value = var:cge_pow_template_infantry_equipment_need }
-			multiply_variable = { var = cge_pow_free_infantry_equipment value = var:cge_overview_pow_capture_rate }
-			multiply_variable = { var = cge_pow_free_infantry_equipment value = 0.01 }
-
-			set_variable = { var = cge_pow_free_support_equipment value = var:cge_pow_template_support_equipment_need }
-			multiply_variable = { var = cge_pow_free_support_equipment value = var:cge_overview_pow_capture_rate }
-			multiply_variable = { var = cge_pow_free_support_equipment value = 0.01 }
-
-			set_variable = { var = cge_pow_free_artillery_equipment value = var:cge_pow_template_artillery_equipment_need }
-			multiply_variable = { var = cge_pow_free_artillery_equipment value = var:cge_overview_pow_capture_rate }
-			multiply_variable = { var = cge_pow_free_artillery_equipment value = 0.01 }
-
-			set_variable = {
-				var = cge_pow_template_manpower_actual
-				value = cge_pow_template_manpower_thousands
-			}
-
-			multiply_variable = {
-				cge_pow_template_manpower_actual = 1000
-			}
-
-			add_manpower = var:cge_pow_template_manpower_actual
-
-			save_event_target_as = cge_pow_equipment_captor
-			if = {
-				limit = {
-					has_variable = cge_overview_selected_slot
-					check_variable = { var = cge_overview_selected_slot value = 0 compare = greater_than }
-				}
-				meta_effect = {
-					text = {
-						if = {
-							limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] }
-							var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-								add_to_variable = {
-									var = cge_pow_spent_thousands
-									value = PREV.cge_pow_template_manpower_thousands
-								}
-
-								subtract_from_variable = {
-									var = cge_pow_recruitable_thousands
-									value = PREV.cge_pow_template_manpower_thousands
-								}
-
-								if = {
-									limit = {
-										check_variable = { var = cge_pow_recruitable_thousands value = 0 compare = less_than }
-									}
-									set_variable = { cge_pow_recruitable_thousands = 0 }
-								}
-
-								cge_pow_origin_derive_total_effect = yes
-							}
-						}
-					}
-					CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-				}
-			}
-			cge_pow_spawn_or_fallback_effect = yes
-
-
-cge_pow_spend_pool = yes
-
-			cge_pow_refresh_selected_ui_effect = yes
-		}
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_overview_pow_failure_code = 0
+        }
+        if = {
+            limit = {
+                cge_pow_unlocked = yes
+            }
+            cge_pow_refresh_selected_ui_effect = yes
+            cge_pow_measure_template = yes
+            if = {
+                limit = {
+                    OR = {
+                        NOT = {
+                            check_variable = {
+                                var = cge_pow_probe_state_found
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_pow_template_manpower_thousands
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_overview_pow_failure_code = 2
+                }
+            }
+            else_if = {
+                limit = {
+                    NOT = {
+                        capital_scope = {
+                            is_controlled_by = ROOT
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_overview_pow_failure_code = 3
+                }
+            }
+            else_if = {
+                limit = {
+                    OR = {
+                        check_variable = {
+                            var = cge_overview_pow_recruitable_thousands
+                            value = cge_pow_template_manpower_thousands
+                            compare = less_than
+                        }
+                        check_variable = {
+                            var = cge_overview_pow_total_thousands
+                            value = cge_pow_template_manpower_thousands
+                            compare = less_than
+                        }
+                    }
+                }
+                set_variable = {
+                    cge_overview_pow_failure_code = 1
+                }
+            }
+            else = {
+                cge_pow_measure_equipment_need = yes
+                set_variable = {
+                    var = cge_pow_free_infantry_equipment
+                    value = var:cge_pow_template_infantry_equipment_need
+                }
+                multiply_variable = {
+                    var = cge_pow_free_infantry_equipment
+                    value = var:cge_overview_pow_capture_rate
+                }
+                multiply_variable = {
+                    var = cge_pow_free_infantry_equipment
+                    value = 0.01
+                }
+                set_variable = {
+                    var = cge_pow_free_support_equipment
+                    value = var:cge_pow_template_support_equipment_need
+                }
+                multiply_variable = {
+                    var = cge_pow_free_support_equipment
+                    value = var:cge_overview_pow_capture_rate
+                }
+                multiply_variable = {
+                    var = cge_pow_free_support_equipment
+                    value = 0.01
+                }
+                set_variable = {
+                    var = cge_pow_free_artillery_equipment
+                    value = var:cge_pow_template_artillery_equipment_need
+                }
+                multiply_variable = {
+                    var = cge_pow_free_artillery_equipment
+                    value = var:cge_overview_pow_capture_rate
+                }
+                multiply_variable = {
+                    var = cge_pow_free_artillery_equipment
+                    value = 0.01
+                }
+                set_variable = {
+                    var = cge_pow_template_manpower_actual
+                    value = cge_pow_template_manpower_thousands
+                }
+                multiply_variable = {
+                    cge_pow_template_manpower_actual = 1000
+                }
+                add_manpower = var:cge_pow_template_manpower_actual
+                save_event_target_as = cge_pow_equipment_captor
+                if = {
+                    limit = {
+                        has_variable = cge_overview_selected_slot
+                        check_variable = {
+                            var = cge_overview_selected_slot
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    meta_effect = {
+                        text = {
+                            if = {
+                                limit = {
+                                    has_country_flag = cge_has_candidate_[CGE_SLOT]
+                                }
+                                var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                                    add_to_variable = {
+                                        var = cge_pow_spent_thousands
+                                        value = PREV.cge_pow_template_manpower_thousands
+                                    }
+                                    subtract_from_variable = {
+                                        var = cge_pow_recruitable_thousands
+                                        value = PREV.cge_pow_template_manpower_thousands
+                                    }
+                                    if = {
+                                        limit = {
+                                            check_variable = {
+                                                var = cge_pow_recruitable_thousands
+                                                value = 0
+                                                compare = less_than
+                                            }
+                                        }
+                                        set_variable = {
+                                            cge_pow_recruitable_thousands = 0
+                                        }
+                                    }
+                                    cge_pow_origin_derive_total_effect = yes
+                                }
+                            }
+                        }
+                        CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+                    }
+                }
+                cge_pow_spawn_or_fallback_effect = yes
+                cge_pow_spend_pool = yes
+                cge_pow_refresh_selected_ui_effect = yes
+            }
+        }
+        else = {
+            set_variable = {
+                cge_overview_pow_failure_code = 4
+            }
+        }
+    }
 }
-
-
 cge_pow_clear_origin_recruiter_effect = {
-	set_variable = {
-		cge_pow_recruiter_slot = 0
-	}
-
-	set_variable = {
-		cge_pow_recruiter_bonus = 0
-	}
-
-	clear_variable = cge_pow_recruiter_character_key
-	clear_variable = cge_pow_recruiter_runtime_portrait_key
-	clear_variable = cge_pow_recruiter_level
-	clear_variable = cge_pow_recruiter_rank_key
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_pow_recruiter_slot = 0
+        }
+        set_variable = {
+            cge_pow_recruiter_bonus = 0
+        }
+        clear_variable = cge_pow_recruiter_character_key
+        clear_variable = cge_pow_recruiter_runtime_portrait_key
+        clear_variable = cge_pow_recruiter_level
+        clear_variable = cge_pow_recruiter_rank_key
+    }
 }
-
-
 cge_pow_calc_bonus = {
-	set_variable = {
-		cge_pow_bonus = 0
-	}
-
-	if = {
-		limit = {
-			check_variable = { var = cge_overview_selected_slot value = 0 compare = greater_than }
-			check_variable = { var = cge_overview_selected_slot value = cge_captured_general_count compare = less_than_or_equals }
-		}
-
-		meta_effect = {
-			text = {
-			if = {
-			limit = {
-			check_variable = {
-			var = cge_overview_selected_slot
-			value = [CGE_SLOT]
-			compare = equals
-			}
-			}
-
-			if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 2
-			compare = less_than
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 5
-			}
-			}
-
-			else_if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 2
-			compare = equals
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 9
-			}
-			}
-
-			else_if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 3
-			compare = equals
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 13
-			}
-			}
-
-			else_if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 4
-			compare = equals
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 17
-			}
-			}
-
-			else_if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 5
-			compare = equals
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 21
-			}
-			}
-
-			else_if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_level
-			value = 6
-			compare = equals
-			}
-			}
-
-			set_variable = {
-			cge_pow_bonus = 23
-			}
-			}
-
-			else = {
-			set_variable = {
-			cge_pow_bonus = 25
-			}
-			}
-
-			if = {
-			limit = {
-			check_variable = {
-			var = cge_slot_[CGE_SLOT]_rank_key
-			value = 2
-			compare = equals
-			}
-			}
-
-			add_to_variable = {
-			cge_pow_bonus = 2
-			}
-			}
-			}
-			}
-			CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-		}
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_pow_bonus = 0
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_overview_selected_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_overview_selected_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_overview_selected_slot
+                                value = [CGE_SLOT]
+                                compare = equals
+                            }
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 2
+                                    compare = less_than
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 5
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 2
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 9
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 3
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 13
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 4
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 17
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 5
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 21
+                            }
+                        }
+                        else_if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_level
+                                    value = 6
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_pow_bonus = 23
+                            }
+                        }
+                        else = {
+                            set_variable = {
+                                cge_pow_bonus = 25
+                            }
+                        }
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_rank_key
+                                    value = 2
+                                    compare = equals
+                                }
+                            }
+                            add_to_variable = {
+                                cge_pow_bonus = 2
+                            }
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+            }
+        }
+    }
 }
-
-
 cge_pow_clear_ui = {
-	set_variable = { cge_overview_pow_total_thousands = 0 }
-	set_variable = { cge_overview_pow_recruitable_thousands = 0 }
-	set_variable = { cge_overview_pow_weekly_gain_thousands = 0 }
-	set_variable = { cge_overview_pow_efficiency = 0 }
-	set_variable = { cge_overview_pow_capture_rate = 25 }
-	set_variable = { cge_overview_pow_recruiter_slot = 0 }
-	set_variable = { cge_overview_pow_recruiter_character_key = 0 }
-	set_variable = { cge_overview_pow_failure_code = 0 }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_overview_pow_total_thousands = 0
+        }
+        set_variable = {
+            cge_overview_pow_recruitable_thousands = 0
+        }
+        set_variable = {
+            cge_overview_pow_weekly_gain_thousands = 0
+        }
+        set_variable = {
+            cge_overview_pow_efficiency = 0
+        }
+        set_variable = {
+            cge_overview_pow_capture_rate = 25
+        }
+        set_variable = {
+            cge_overview_pow_recruiter_slot = 0
+        }
+        set_variable = {
+            cge_overview_pow_recruiter_character_key = 0
+        }
+        set_variable = {
+            cge_overview_pow_failure_code = 0
+        }
+    }
 }
 cge_pow_init_pool_state = {
-	if = {
-		limit = {
-			NOT = {
-				has_country_flag =
-					cge_pow_weekly_ready
-			}
-		}
-
-		set_country_flag =
-			cge_pow_weekly_ready
-
-		set_variable = {
-			cge_pow_weekly_tick_days = 0
-		}
-		for_loop_effect = {
-			start = 1
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_slot
-			meta_effect = {
-				text = { clear_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable }
-				CGE_SLOT = "[?cge_slot|.0]"
-			}
-		}
-	}
-
-	if = {
-		limit = {
-			NOT = {
-				has_country_flag =
-					cge_pow_pool_ready
-			}
-		}
-
-		set_country_flag =
-			cge_pow_pool_ready
-		for_loop_effect = {
-			start = 1
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_slot
-			meta_effect = {
-				text = { clear_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable }
-				CGE_SLOT = "[?cge_slot|.0]"
-			}
-		}
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_pow_weekly_ready
+                }
+            }
+            set_country_flag = cge_pow_weekly_ready
+            set_variable = {
+                cge_pow_weekly_tick_days = 0
+            }
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_pool_slot_iterator_1
+                set_variable = {
+                    var = cge_slot
+                    value = cge_pool_slot_iterator_1
+                }
+                meta_effect = {
+                    text = {
+                        clear_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                    }
+                    CGE_SLOT = "[?cge_slot|.0]"
+                }
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_pow_pool_ready
+                }
+            }
+            set_country_flag = cge_pow_pool_ready
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_pool_slot_iterator_2
+                set_variable = {
+                    var = cge_slot
+                    value = cge_pool_slot_iterator_2
+                }
+                meta_effect = {
+                    text = {
+                        clear_variable = cge_slot_[CGE_SLOT]_pow_clean_recruitable
+                    }
+                    CGE_SLOT = "[?cge_slot|.0]"
+                }
+            }
+        }
+    }
 }
-
-
 cge_pow_update_highwater = {
-	set_variable = { var = cge_pow_highwater_delta value = cge_pow_current_baseline }
-	subtract_from_variable = { var = cge_pow_highwater_delta value = cge_pow_work_highwater }
-	if = {
-		limit = { check_variable = { var = cge_pow_highwater_delta value = 0 compare = greater_than } }
-		set_variable = { var = cge_pow_work_highwater value = cge_pow_current_baseline }
-	}
-	clear_variable = cge_pow_highwater_delta
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_pow_highwater_delta
+            value = cge_pow_current_baseline
+        }
+        subtract_from_variable = {
+            var = cge_pow_highwater_delta
+            value = cge_pow_work_highwater
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_highwater_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_pow_work_highwater
+                value = cge_pow_current_baseline
+            }
+        }
+        clear_variable = cge_pow_highwater_delta
+    }
 }
-
 cge_pow_update_baseline = {
-	cge_pow_update_highwater = yes
-	set_variable = { var = cge_pow_baseline_delta value = cge_pow_current_baseline }
-	subtract_from_variable = { var = cge_pow_baseline_delta value = cge_pow_bonus_baseline }
-	if = {
-		limit = { check_variable = { var = cge_pow_baseline_delta value = 0 compare = greater_than } }
-		set_variable = { var = cge_pow_capture_bonus value = cge_pow_baseline_delta }
-		multiply_variable = { var = cge_pow_capture_bonus value = cge_pow_recruiter_bonus }
-		multiply_variable = { cge_pow_capture_bonus = 0.04 }
-		add_to_variable = { var = cge_pow_bonus_captured value = cge_pow_capture_bonus }
-		set_variable = { var = cge_pow_bonus_baseline value = cge_pow_current_baseline }
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_update_highwater = yes
+        set_variable = {
+            var = cge_pow_baseline_delta
+            value = cge_pow_current_baseline
+        }
+        subtract_from_variable = {
+            var = cge_pow_baseline_delta
+            value = cge_pow_bonus_baseline
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_baseline_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_pow_capture_bonus
+                value = cge_pow_baseline_delta
+            }
+            multiply_variable = {
+                var = cge_pow_capture_bonus
+                value = cge_pow_recruiter_bonus
+            }
+            multiply_variable = {
+                cge_pow_capture_bonus = 0.04
+            }
+            add_to_variable = {
+                var = cge_pow_bonus_captured
+                value = cge_pow_capture_bonus
+            }
+            set_variable = {
+                var = cge_pow_bonus_baseline
+                value = cge_pow_current_baseline
+            }
+        }
+    }
 }
-
-
 cge_pow_reset_work = {
-	set_variable = { cge_pow_work_initialized = 0 }
-	set_variable = { cge_pow_work_highwater = 0 }
-	set_variable = { cge_pow_bonus_baseline = 0 }
-	set_variable = { cge_pow_bonus_captured = 0 }
-	set_variable = { cge_pow_work_spent = 0 }
-	set_variable = { cge_pow_work_recruitable = 0 }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_pow_work_initialized = 0
+        }
+        set_variable = {
+            cge_pow_work_highwater = 0
+        }
+        set_variable = {
+            cge_pow_bonus_baseline = 0
+        }
+        set_variable = {
+            cge_pow_bonus_captured = 0
+        }
+        set_variable = {
+            cge_pow_work_spent = 0
+        }
+        set_variable = {
+            cge_pow_work_recruitable = 0
+        }
+    }
 }
 cge_pow_load_pool = {
-	cge_pow_reset_work = yes
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_load_pool = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_reset_work = yes
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_load_pool = yes
+        }
+    }
 }
-
-
 cge_pow_store_pool = {
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_store_pool = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_store_pool = yes
+        }
+    }
 }
 cge_pow_clear_recruiter_marks = {
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_clear_recruiter = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_clear_recruiter = yes
+        }
+    }
 }
 cge_pow_store_recruiter = {
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_store_recruiter = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_store_recruiter = yes
+        }
+    }
 }
 cge_pow_find_recruiter_mark = {
-	set_variable = { cge_pow_recruiter_slot_tmp = 0 }
-	set_variable = { cge_pow_recruiter_key = 0 }
-	set_variable = { cge_pow_recruiter_bonus = 0 }
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_find_marker = yes
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_scan_slot
-		set_variable = { var = cge_pow_slot_arg value = cge_pow_scan_slot }
-		cge_slot_pow_find_recruiter = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_pow_recruiter_slot_tmp = 0
+        }
+        set_variable = {
+            cge_pow_recruiter_key = 0
+        }
+        set_variable = {
+            cge_pow_recruiter_capture_order = 0
+        }
+        set_variable = {
+            cge_pow_recruiter_bonus = 0
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_find_marker = yes
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_scan_slot
+            set_variable = {
+                var = cge_pow_slot_arg
+                value = cge_pow_scan_slot
+            }
+            cge_slot_pow_find_recruiter = yes
+        }
+    }
 }
 cge_pow_calc_work_values = {
-	set_variable = { var = cge_pow_work_total value = cge_pow_work_highwater }
-	add_to_variable = { var = cge_pow_work_total value = cge_pow_bonus_captured }
-	subtract_from_variable = { var = cge_pow_work_total value = cge_pow_work_spent }
-	if = { limit = { check_variable = { var = cge_pow_work_total value = 0 compare = less_than } } set_variable = { cge_pow_work_total = 0 } }
-
-	if = { limit = { check_variable = { var = cge_pow_work_recruitable value = 0 compare = less_than } } set_variable = { cge_pow_work_recruitable = 0 } }
-	set_variable = { var = cge_pow_pool_overflow value = cge_pow_work_recruitable }
-	subtract_from_variable = { var = cge_pow_pool_overflow value = cge_pow_work_total }
-	if = {
-		limit = { check_variable = { var = cge_pow_pool_overflow value = 0 compare = greater_than } }
-		set_variable = { var = cge_pow_work_recruitable value = cge_pow_work_total }
-	}
-	clear_variable = cge_pow_pool_overflow
-
-	set_variable = { var = cge_pow_work_remaining value = cge_pow_work_total }
-	subtract_from_variable = { var = cge_pow_work_remaining value = cge_pow_work_recruitable }
-	if = { limit = { check_variable = { var = cge_pow_work_remaining value = 0 compare = less_than } } set_variable = { cge_pow_work_remaining = 0 } }
-
-	set_variable = { var = cge_pow_work_rate value = cge_pow_recruiter_bonus }
-	multiply_variable = { cge_pow_work_rate = 0.0002 }
-	add_to_variable = { cge_pow_work_rate = 0.005 }
-	set_variable = { var = cge_pow_weekly_gain value = cge_pow_work_remaining }
-	multiply_variable = { var = cge_pow_weekly_gain value = cge_pow_work_rate }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_pow_work_total
+            value = cge_pow_work_highwater
+        }
+        add_to_variable = {
+            var = cge_pow_work_total
+            value = cge_pow_bonus_captured
+        }
+        subtract_from_variable = {
+            var = cge_pow_work_total
+            value = cge_pow_work_spent
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_work_total
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_work_total = 0
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_work_recruitable
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_work_recruitable = 0
+            }
+        }
+        set_variable = {
+            var = cge_pow_pool_overflow
+            value = cge_pow_work_recruitable
+        }
+        subtract_from_variable = {
+            var = cge_pow_pool_overflow
+            value = cge_pow_work_total
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_pool_overflow
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_pow_work_recruitable
+                value = cge_pow_work_total
+            }
+        }
+        clear_variable = cge_pow_pool_overflow
+        set_variable = {
+            var = cge_pow_work_remaining
+            value = cge_pow_work_total
+        }
+        subtract_from_variable = {
+            var = cge_pow_work_remaining
+            value = cge_pow_work_recruitable
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_work_remaining
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_work_remaining = 0
+            }
+        }
+        set_variable = {
+            var = cge_pow_work_rate
+            value = cge_pow_recruiter_bonus
+        }
+        multiply_variable = {
+            cge_pow_work_rate = 0.0002
+        }
+        add_to_variable = {
+            cge_pow_work_rate = 0.005
+        }
+        set_variable = {
+            var = cge_pow_weekly_gain
+            value = cge_pow_work_remaining
+        }
+        multiply_variable = {
+            var = cge_pow_weekly_gain
+            value = cge_pow_work_rate
+        }
+    }
 }
-
-
 cge_pow_refresh_ui = {
-	cge_pow_init_pool_state = yes
-	cge_pow_clear_ui = yes
-	cge_pow_prepare_template = yes
-	meta_effect = {
-		text = {
-		if = {
-		limit = { check_variable = { var = cge_overview_selected_slot value = [CGE_SLOT] compare = equals } has_country_flag = cge_has_candidate_[CGE_SLOT] has_country_flag = cge_has_candidate_[CGE_SLOT] }
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { set_country_flag = cge_pow_work_origin }
-		cge_pow_refresh_selected = yes
-		set_variable = { var = cge_pow_current_baseline value = cge_overview_pow_pool_thousands }
-		cge_pow_load_pool = yes
-		if = {
-		limit = { check_variable = { var = cge_pow_work_initialized value = 1 compare = less_than } }
-		set_variable = { cge_pow_work_initialized = 1 }
-		set_variable = { var = cge_pow_work_highwater value = cge_pow_current_baseline }
-		set_variable = { var = cge_pow_bonus_baseline value = cge_pow_current_baseline }
-		set_variable = { cge_pow_bonus_captured = 0 }
-		set_variable = { cge_pow_work_spent = 0 }
-		set_variable = { cge_pow_work_recruitable = 0 }
-		}
-		else = { cge_pow_update_highwater = yes }
-		cge_pow_find_recruiter_mark = yes
-		cge_pow_calc_work_values = yes
-		cge_pow_store_pool = yes
-		set_variable = { var = cge_overview_pow_total_thousands value = cge_pow_work_total }
-		set_variable = { var = cge_overview_pow_pool_thousands value = cge_pow_work_total }
-		set_variable = { var = cge_overview_pow_recruitable_thousands value = cge_pow_work_recruitable }
-		set_variable = { var = cge_overview_pow_weekly_gain_thousands value = cge_pow_weekly_gain }
-		set_variable = { var = cge_overview_pow_efficiency value = cge_pow_recruiter_bonus }
-		set_variable = { cge_overview_pow_capture_rate = 25 }
-		add_to_variable = { var = cge_overview_pow_capture_rate value = cge_pow_recruiter_bonus }
-		set_variable = { var = cge_overview_pow_recruiter_slot value = cge_pow_recruiter_slot_tmp }
-		meta_effect = { text = { event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_global_event_target_as = cge_pow_recruiter } } CGE_SLOT = "[?cge_pow_recruiter_slot_tmp|.0]" }
-		set_variable = { var = cge_overview_pow_recruiter_character_key value = cge_pow_recruiter_key }
-		set_variable = { var = cge_overview_pow_recruitable_raw value = cge_overview_pow_recruitable_thousands }
-		multiply_variable = { cge_overview_pow_recruitable_raw = 1000 }
-		set_variable = { var = cge_overview_pow_weekly_gain_raw value = cge_overview_pow_weekly_gain_thousands }
-		multiply_variable = { cge_overview_pow_weekly_gain_raw = 1000 }
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { clr_country_flag = cge_pow_work_origin }
-		}
-		}
-		CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-	}
-
-
-	cge_pow_apply_recruiter_status = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_init_pool_state = yes
+        cge_pow_clear_ui = yes
+        cge_pow_prepare_template = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_overview_selected_slot
+                            value = [CGE_SLOT]
+                            compare = equals
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        set_country_flag = cge_pow_work_origin
+                    }
+                    cge_pow_refresh_selected = yes
+                    set_variable = {
+                        var = cge_pow_current_baseline
+                        value = cge_overview_pow_pool_thousands
+                    }
+                    cge_pow_load_pool = yes
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_work_initialized
+                                value = 1
+                                compare = less_than
+                            }
+                        }
+                        set_variable = {
+                            cge_pow_work_initialized = 1
+                        }
+                        set_variable = {
+                            var = cge_pow_work_highwater
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            var = cge_pow_bonus_baseline
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            cge_pow_bonus_captured = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_spent = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_recruitable = 0
+                        }
+                    }
+                    else = {
+                        cge_pow_update_highwater = yes
+                    }
+                    cge_pow_find_recruiter_mark = yes
+                    cge_pow_calc_work_values = yes
+                    cge_pow_store_pool = yes
+                    set_variable = {
+                        var = cge_overview_pow_total_thousands
+                        value = cge_pow_work_total
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_pool_thousands
+                        value = cge_pow_work_total
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruitable_thousands
+                        value = cge_pow_work_recruitable
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_weekly_gain_thousands
+                        value = cge_pow_weekly_gain
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_efficiency
+                        value = cge_pow_recruiter_bonus
+                    }
+                    set_variable = {
+                        cge_overview_pow_capture_rate = 25
+                    }
+                    add_to_variable = {
+                        var = cge_overview_pow_capture_rate
+                        value = cge_pow_recruiter_bonus
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruiter_slot
+                        value = cge_pow_recruiter_slot_tmp
+                    }
+                    cge_pow_cache_recruiter = yes
+                    set_variable = {
+                        var = cge_overview_pow_recruiter_character_key
+                        value = cge_pow_recruiter_key
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruitable_raw
+                        value = cge_overview_pow_recruitable_thousands
+                    }
+                    multiply_variable = {
+                        cge_overview_pow_recruitable_raw = 1000
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_weekly_gain_raw
+                        value = cge_overview_pow_weekly_gain_thousands
+                    }
+                    multiply_variable = {
+                        cge_overview_pow_weekly_gain_raw = 1000
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        clr_country_flag = cge_pow_work_origin
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+        }
+        cge_pow_apply_recruiter_status = yes
+    }
 }
-
-
 cge_pow_assign_recruiter = {
-	cge_pow_clear_recruiter_status = yes
-
-	set_variable = { cge_overview_pow_failure_code = 0 }
-	cge_pow_calc_bonus = yes
-	meta_effect = {
-		text = {
-		if = {
-		limit = {
-		check_variable = { var = cge_overview_selected_slot value = [CGE_SLOT] compare = equals }
-		has_country_flag = cge_has_candidate_[CGE_SLOT]
-		NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } }
-		OR = {
-		check_variable = { var = cge_slot_[CGE_SLOT]_pow_collaborator value = 0 compare = greater_than }
-		event_target:cge_slot_[CGE_SLOT]_runtime_leader = { has_character_flag = cge_pow_recruitment_unlocked }
-		}
-		}
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { set_country_flag = cge_pow_work_origin }
-		cge_pow_clear_recruiter_marks = yes
-
-		set_variable = { cge_pow_recruiter_slot_tmp = [CGE_SLOT] }
-		set_variable = { var = cge_pow_recruiter_key value = cge_slot_[CGE_SLOT]_character_key }
-		set_variable = { var = cge_pow_recruiter_bonus value = cge_pow_bonus }
-		cge_pow_store_recruiter = yes
-
-		set_variable = { cge_overview_pow_recruiter_slot = [CGE_SLOT] }
-		event_target:cge_slot_[CGE_SLOT]_runtime_leader = { save_global_event_target_as = cge_pow_recruiter }
-		set_variable = { var = cge_overview_pow_recruiter_character_key value = cge_slot_[CGE_SLOT]_character_key }
-		set_variable = { var = cge_overview_pow_efficiency value = cge_pow_bonus }
-		set_variable = { cge_overview_pow_capture_rate = 25 }
-		add_to_variable = { var = cge_overview_pow_capture_rate value = cge_pow_bonus }
-
-		cge_pow_refresh_selected = yes
-		set_variable = { var = cge_pow_current_baseline value = cge_overview_pow_pool_thousands }
-		cge_pow_load_pool = yes
-		if = {
-		limit = { check_variable = { var = cge_pow_work_initialized value = 1 compare = less_than } }
-		set_variable = { cge_pow_work_initialized = 1 }
-		set_variable = { var = cge_pow_work_highwater value = cge_pow_current_baseline }
-		set_variable = { var = cge_pow_bonus_baseline value = cge_pow_current_baseline }
-		set_variable = { cge_pow_bonus_captured = 0 }
-		set_variable = { cge_pow_work_spent = 0 }
-		set_variable = { cge_pow_work_recruitable = 0 }
-		}
-		cge_pow_calc_work_values = yes
-		cge_pow_store_pool = yes
-		set_variable = { var = cge_overview_pow_total_thousands value = cge_pow_work_total }
-		set_variable = { var = cge_overview_pow_pool_thousands value = cge_pow_work_total }
-		set_variable = { var = cge_overview_pow_recruitable_thousands value = cge_pow_work_recruitable }
-		set_variable = { var = cge_overview_pow_weekly_gain_thousands value = cge_pow_weekly_gain }
-		set_variable = { var = cge_overview_pow_recruitable_raw value = cge_overview_pow_recruitable_thousands }
-		multiply_variable = { cge_overview_pow_recruitable_raw = 1000 }
-		set_variable = { var = cge_overview_pow_weekly_gain_raw value = cge_overview_pow_weekly_gain_thousands }
-		multiply_variable = { cge_overview_pow_weekly_gain_raw = 1000 }
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { clr_country_flag = cge_pow_work_origin }
-		}
-		}
-		CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-	}
-
-
-	cge_pow_apply_recruiter_status = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_clear_recruiter_status = yes
+        set_variable = {
+            cge_overview_pow_failure_code = 0
+        }
+        cge_pow_calc_bonus = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_overview_selected_slot
+                            value = [CGE_SLOT]
+                            compare = equals
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        OR = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                value = 0
+                                compare = greater_than
+                            }
+                            var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                has_character_flag = cge_pow_recruitment_unlocked
+                            }
+                        }
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        set_country_flag = cge_pow_work_origin
+                    }
+                    cge_pow_clear_recruiter_marks = yes
+                    set_variable = {
+                        cge_pow_recruiter_slot_tmp = [CGE_SLOT]
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter_key
+                        value = cge_slot_[CGE_SLOT]_character_key
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter_capture_order
+                        value = cge_slot_[CGE_SLOT]_capture_order
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter_bonus
+                        value = cge_pow_bonus
+                    }
+                    cge_pow_store_recruiter = yes
+                    set_variable = {
+                        cge_overview_pow_recruiter_slot = [CGE_SLOT]
+                    }
+                    set_variable = {
+                        var = cge_pow_recruiter
+                        value = var:cge_slot_[CGE_SLOT]_runtime_leader
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruiter_character_key
+                        value = cge_slot_[CGE_SLOT]_character_key
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_efficiency
+                        value = cge_pow_bonus
+                    }
+                    set_variable = {
+                        cge_overview_pow_capture_rate = 25
+                    }
+                    add_to_variable = {
+                        var = cge_overview_pow_capture_rate
+                        value = cge_pow_bonus
+                    }
+                    cge_pow_refresh_selected = yes
+                    set_variable = {
+                        var = cge_pow_current_baseline
+                        value = cge_overview_pow_pool_thousands
+                    }
+                    cge_pow_load_pool = yes
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_work_initialized
+                                value = 1
+                                compare = less_than
+                            }
+                        }
+                        set_variable = {
+                            cge_pow_work_initialized = 1
+                        }
+                        set_variable = {
+                            var = cge_pow_work_highwater
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            var = cge_pow_bonus_baseline
+                            value = cge_pow_current_baseline
+                        }
+                        set_variable = {
+                            cge_pow_bonus_captured = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_spent = 0
+                        }
+                        set_variable = {
+                            cge_pow_work_recruitable = 0
+                        }
+                    }
+                    cge_pow_calc_work_values = yes
+                    cge_pow_store_pool = yes
+                    set_variable = {
+                        var = cge_overview_pow_total_thousands
+                        value = cge_pow_work_total
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_pool_thousands
+                        value = cge_pow_work_total
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruitable_thousands
+                        value = cge_pow_work_recruitable
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_weekly_gain_thousands
+                        value = cge_pow_weekly_gain
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_recruitable_raw
+                        value = cge_overview_pow_recruitable_thousands
+                    }
+                    multiply_variable = {
+                        cge_overview_pow_recruitable_raw = 1000
+                    }
+                    set_variable = {
+                        var = cge_overview_pow_weekly_gain_raw
+                        value = cge_overview_pow_weekly_gain_thousands
+                    }
+                    multiply_variable = {
+                        cge_overview_pow_weekly_gain_raw = 1000
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        clr_country_flag = cge_pow_work_origin
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+        }
+        cge_pow_apply_recruiter_status = yes
+    }
 }
 cge_pow_unassign_recruiter = {
-	cge_pow_clear_recruiter_status = yes
-
-	meta_effect = {
-		text = {
-		if = {
-		limit = { check_variable = { var = cge_overview_selected_slot value = [CGE_SLOT] compare = equals } has_country_flag = cge_has_candidate_[CGE_SLOT] }
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { set_country_flag = cge_pow_work_origin }
-		cge_pow_clear_recruiter_marks = yes
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { clr_country_flag = cge_pow_work_origin }
-		}
-		}
-		CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-	}
-
-
-	set_variable = { cge_overview_pow_recruiter_slot = 0 }
-	set_variable = { cge_overview_pow_recruiter_character_key = 0 }
-	set_variable = { cge_overview_pow_efficiency = 0 }
-	set_variable = { cge_overview_pow_capture_rate = 25 }
-
-	cge_pow_apply_recruiter_status = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            cge_overview_pow_failure_code = 0
+        }
+        if = {
+            limit = {
+                NOT = {
+                    cge_pow_unlocked = yes
+                }
+            }
+            set_variable = {
+                cge_overview_pow_failure_code = 4
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = {
+                    check_variable = {
+                        var = cge_overview_pow_recruiter_slot
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+            }
+            set_variable = {
+                cge_overview_pow_failure_code = 5
+            }
+        }
+        else = {
+            cge_pow_clear_recruiter_status = yes
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_overview_selected_slot
+                                value = [CGE_SLOT]
+                                compare = equals
+                            }
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            set_country_flag = cge_pow_work_origin
+                        }
+                        cge_pow_clear_recruiter_marks = yes
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            clr_country_flag = cge_pow_work_origin
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+            }
+            set_variable = {
+                cge_overview_pow_recruiter_slot = 0
+            }
+            set_variable = {
+                cge_overview_pow_recruiter_character_key = 0
+            }
+            set_variable = {
+                cge_overview_pow_efficiency = 0
+            }
+            set_variable = {
+                cge_overview_pow_capture_rate = 25
+            }
+            cge_pow_apply_recruiter_status = yes
+        }
+    }
 }
-
-
 cge_pow_spend_pool = {
-	set_variable = { var = cge_pow_spend_amount value = cge_pow_template_manpower_thousands }
-	meta_effect = {
-		text = {
-		if = {
-		limit = { check_variable = { var = cge_overview_selected_slot value = [CGE_SLOT] compare = equals } has_country_flag = cge_has_candidate_[CGE_SLOT] }
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { set_country_flag = cge_pow_work_origin }
-		cge_pow_load_pool = yes
-		add_to_variable = { var = cge_pow_work_spent value = cge_pow_spend_amount }
-		subtract_from_variable = { var = cge_pow_work_recruitable value = cge_pow_spend_amount }
-		if = { limit = { check_variable = { var = cge_pow_work_recruitable value = 0 compare = less_than } } set_variable = { cge_pow_work_recruitable = 0 } }
-		cge_pow_store_pool = yes
-		var:cge_slot_[CGE_SLOT]_origin_country^0 = { clr_country_flag = cge_pow_work_origin }
-		}
-		}
-		CGE_SLOT = "[?cge_overview_selected_slot|.0]"
-	}
-
-
-	clear_variable = cge_pow_spend_amount
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_pow_spend_amount
+            value = cge_pow_template_manpower_thousands
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_overview_selected_slot
+                            value = [CGE_SLOT]
+                            compare = equals
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        set_country_flag = cge_pow_work_origin
+                    }
+                    cge_pow_load_pool = yes
+                    add_to_variable = {
+                        var = cge_pow_work_spent
+                        value = cge_pow_spend_amount
+                    }
+                    subtract_from_variable = {
+                        var = cge_pow_work_recruitable
+                        value = cge_pow_spend_amount
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_pow_work_recruitable
+                                value = 0
+                                compare = less_than
+                            }
+                        }
+                        set_variable = {
+                            cge_pow_work_recruitable = 0
+                        }
+                    }
+                    cge_pow_store_pool = yes
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        clr_country_flag = cge_pow_work_origin
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_overview_selected_slot|.0]"
+        }
+        clear_variable = cge_pow_spend_amount
+    }
 }
-
 cge_pow_weekly_update = {
-	cge_pow_init_pool_state = yes
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_weekly_slot
-		set_variable = { var = cge_pow_weekly_arg value = cge_pow_weekly_slot }
-		cge_slot_pow_clear_origin = yes
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_weekly_slot
-		set_variable = { var = cge_pow_weekly_arg value = cge_pow_weekly_slot }
-		cge_slot_pow_weekly = yes
-	}
-
-	for_loop_effect = {
-		start = 1
-		end = cge_captured_general_count
-		compare = less_than_or_equals
-		value = cge_pow_weekly_slot
-		set_variable = { var = cge_pow_weekly_arg value = cge_pow_weekly_slot }
-		cge_slot_pow_clear_origin = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_init_pool_state = yes
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_weekly_slot
+            set_variable = {
+                var = cge_pow_weekly_arg
+                value = cge_pow_weekly_slot
+            }
+            cge_slot_pow_clear_origin = yes
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_weekly_slot
+            set_variable = {
+                var = cge_pow_weekly_arg
+                value = cge_pow_weekly_slot
+            }
+            cge_slot_pow_weekly = yes
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_pow_weekly_slot
+            set_variable = {
+                var = cge_pow_weekly_arg
+                value = cge_pow_weekly_slot
+            }
+            cge_slot_pow_clear_origin = yes
+        }
+    }
 }
-
 cge_pow_clear_recruiter_status = {
-	meta_effect = {
-		text = {
-		if = { limit = { check_variable = { var = cge_overview_pow_recruiter_slot value = [CGE_SLOT] compare = equals } has_country_flag = cge_has_candidate_[CGE_SLOT] } event_target:cge_slot_[CGE_SLOT]_runtime_leader = { remove_unit_leader_trait = cge_pow_recruiter_status } }
-		}
-		CGE_SLOT = "[?cge_overview_pow_recruiter_slot|.0]"
-	}
-
-
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_overview_pow_recruiter_slot
+                            value = [CGE_SLOT]
+                            compare = equals
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        remove_unit_leader_trait = cge_pow_recruiter_status
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_overview_pow_recruiter_slot|.0]"
+        }
+    }
 }
-
 cge_pow_apply_recruiter_status = {
-	meta_effect = {
-		text = {
-		if = { limit = { check_variable = { var = cge_overview_pow_recruiter_slot value = [CGE_SLOT] compare = equals } has_country_flag = cge_has_candidate_[CGE_SLOT] } event_target:cge_slot_[CGE_SLOT]_runtime_leader = { add_unit_leader_trait = cge_pow_recruiter_status } }
-		}
-		CGE_SLOT = "[?cge_overview_pow_recruiter_slot|.0]"
-	}
-
-
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_overview_pow_recruiter_slot
+                            value = [CGE_SLOT]
+                            compare = equals
+                        }
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                    }
+                    var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                        add_unit_leader_trait = cge_pow_recruiter_status
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_overview_pow_recruiter_slot|.0]"
+        }
+    }
 }
-
-
 cge_pow_measure_equipment_need = {
-	delete_unit = { id = 990042 disband = no }
-	set_variable = { var = cge_pow_equipment_probe_pool_before_k value = manpower_k }
-	add_manpower = 1000000
-
-	set_variable = { var = cge_pow_probe_inf_before value = num_equipment_in_armies@infantry_equipment }
-	set_variable = { var = cge_pow_probe_support_before value = num_equipment_in_armies@support_equipment }
-	set_variable = { var = cge_pow_probe_artillery_before value = num_equipment_in_armies@artillery_equipment }
-	set_variable = { cge_pow_template_has_disallowed_equipment = 0 }
-	set_variable = { var = cge_pow_disallowed_before_1 value = num_equipment_in_armies@amphibious_mechanized_equipment }
-	set_variable = { var = cge_pow_disallowed_before_2 value = num_equipment_in_armies@amphibious_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_3 value = num_equipment_in_armies@anti_air_equipment }
-	set_variable = { var = cge_pow_disallowed_before_4 value = num_equipment_in_armies@anti_tank_equipment }
-	set_variable = { var = cge_pow_disallowed_before_5 value = num_equipment_in_armies@armored_car_equipment }
-	set_variable = { var = cge_pow_disallowed_before_6 value = num_equipment_in_armies@armored_support_vehicle }
-	set_variable = { var = cge_pow_disallowed_before_7 value = num_equipment_in_armies@heavy_tank_aa_chassis }
-	set_variable = { var = cge_pow_disallowed_before_8 value = num_equipment_in_armies@heavy_tank_amphibious_chassis }
-	set_variable = { var = cge_pow_disallowed_before_9 value = num_equipment_in_armies@heavy_tank_artillery_chassis }
-	set_variable = { var = cge_pow_disallowed_before_10 value = num_equipment_in_armies@heavy_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_11 value = num_equipment_in_armies@heavy_tank_destroyer_chassis }
-	set_variable = { var = cge_pow_disallowed_before_12 value = num_equipment_in_armies@heavy_tank_flame_chassis }
-	set_variable = { var = cge_pow_disallowed_before_13 value = num_equipment_in_armies@helicopter_equipment }
-	set_variable = { var = cge_pow_disallowed_before_14 value = num_equipment_in_armies@land_cruiser_chassis }
-	set_variable = { var = cge_pow_disallowed_before_15 value = num_equipment_in_armies@light_tank_aa_chassis }
-	set_variable = { var = cge_pow_disallowed_before_16 value = num_equipment_in_armies@light_tank_amphibious_chassis }
-	set_variable = { var = cge_pow_disallowed_before_17 value = num_equipment_in_armies@light_tank_artillery_chassis }
-	set_variable = { var = cge_pow_disallowed_before_18 value = num_equipment_in_armies@light_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_19 value = num_equipment_in_armies@light_tank_destroyer_chassis }
-	set_variable = { var = cge_pow_disallowed_before_20 value = num_equipment_in_armies@light_tank_flame_chassis }
-	set_variable = { var = cge_pow_disallowed_before_21 value = num_equipment_in_armies@mechanized_equipment }
-	set_variable = { var = cge_pow_disallowed_before_22 value = num_equipment_in_armies@medium_tank_aa_chassis }
-	set_variable = { var = cge_pow_disallowed_before_23 value = num_equipment_in_armies@medium_tank_amphibious_chassis }
-	set_variable = { var = cge_pow_disallowed_before_24 value = num_equipment_in_armies@medium_tank_artillery_chassis }
-	set_variable = { var = cge_pow_disallowed_before_25 value = num_equipment_in_armies@medium_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_26 value = num_equipment_in_armies@medium_tank_destroyer_chassis }
-	set_variable = { var = cge_pow_disallowed_before_27 value = num_equipment_in_armies@medium_tank_flame_chassis }
-	set_variable = { var = cge_pow_disallowed_before_28 value = num_equipment_in_armies@modern_tank_aa_chassis }
-	set_variable = { var = cge_pow_disallowed_before_29 value = num_equipment_in_armies@modern_tank_artillery_chassis }
-	set_variable = { var = cge_pow_disallowed_before_30 value = num_equipment_in_armies@modern_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_31 value = num_equipment_in_armies@modern_tank_destroyer_chassis }
-	set_variable = { var = cge_pow_disallowed_before_32 value = num_equipment_in_armies@motorbike_equipment }
-	set_variable = { var = cge_pow_disallowed_before_33 value = num_equipment_in_armies@motorized_equipment }
-	set_variable = { var = cge_pow_disallowed_before_34 value = num_equipment_in_armies@motorized_rocket_equipment }
-	set_variable = { var = cge_pow_disallowed_before_35 value = num_equipment_in_armies@rocket_artillery_equipment }
-	set_variable = { var = cge_pow_disallowed_before_36 value = num_equipment_in_armies@self_propelled_super_heavy_artillery_equipment }
-	set_variable = { var = cge_pow_disallowed_before_37 value = num_equipment_in_armies@super_heavy_artillery_equipment }
-	set_variable = { var = cge_pow_disallowed_before_38 value = num_equipment_in_armies@super_heavy_tank_aa_chassis }
-	set_variable = { var = cge_pow_disallowed_before_39 value = num_equipment_in_armies@super_heavy_tank_artillery_chassis }
-	set_variable = { var = cge_pow_disallowed_before_40 value = num_equipment_in_armies@super_heavy_tank_chassis }
-	set_variable = { var = cge_pow_disallowed_before_41 value = num_equipment_in_armies@super_heavy_tank_destroyer_chassis }
-	set_variable = { cge_pow_template_infantry_equipment_need = 0 }
-	set_variable = { cge_pow_template_support_equipment_need = 0 }
-	set_variable = { cge_pow_template_artillery_equipment_need = 0 }
-	cge_pow_measure_equipment = yes
-
-	set_variable = { var = cge_pow_template_infantry_equipment_need value = num_equipment_in_armies@infantry_equipment }
-	subtract_from_variable = { var = cge_pow_template_infantry_equipment_need value = var:cge_pow_probe_inf_before }
-	set_variable = { var = cge_pow_template_support_equipment_need value = num_equipment_in_armies@support_equipment }
-	subtract_from_variable = { var = cge_pow_template_support_equipment_need value = var:cge_pow_probe_support_before }
-	set_variable = { var = cge_pow_template_artillery_equipment_need value = num_equipment_in_armies@artillery_equipment }
-	subtract_from_variable = { var = cge_pow_template_artillery_equipment_need value = var:cge_pow_probe_artillery_before }
-	if = { limit = { check_variable = { var = cge_pow_template_infantry_equipment_need value = 0 compare = less_than } } set_variable = { cge_pow_template_infantry_equipment_need = 0 } }
-	if = { limit = { check_variable = { var = cge_pow_template_support_equipment_need value = 0 compare = less_than } } set_variable = { cge_pow_template_support_equipment_need = 0 } }
-	if = { limit = { check_variable = { var = cge_pow_template_artillery_equipment_need value = 0 compare = less_than } } set_variable = { cge_pow_template_artillery_equipment_need = 0 } }
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@amphibious_mechanized_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_1 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_1
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@amphibious_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_2 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_2
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@anti_air_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_3 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_3
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@anti_tank_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_4 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_4
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@armored_car_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_5 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_5
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@armored_support_vehicle }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_6 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_6
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_aa_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_7 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_7
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_amphibious_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_8 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_8
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_artillery_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_9 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_9
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_10 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_10
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_destroyer_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_11 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_11
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@heavy_tank_flame_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_12 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_12
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@helicopter_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_13 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_13
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@land_cruiser_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_14 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_14
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_aa_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_15 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_15
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_amphibious_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_16 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_16
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_artillery_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_17 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_17
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_18 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_18
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_destroyer_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_19 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_19
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@light_tank_flame_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_20 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_20
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@mechanized_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_21 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_21
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_aa_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_22 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_22
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_amphibious_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_23 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_23
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_artillery_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_24 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_24
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_25 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_25
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_destroyer_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_26 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_26
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@medium_tank_flame_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_27 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_27
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@modern_tank_aa_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_28 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_28
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@modern_tank_artillery_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_29 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_29
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@modern_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_30 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_30
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@modern_tank_destroyer_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_31 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_31
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@motorbike_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_32 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_32
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@motorized_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_33 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_33
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@motorized_rocket_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_34 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_34
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@rocket_artillery_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_35 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_35
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@self_propelled_super_heavy_artillery_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_36 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_36
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@super_heavy_artillery_equipment }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_37 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_37
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@super_heavy_tank_aa_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_38 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_38
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@super_heavy_tank_artillery_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_39 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_39
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@super_heavy_tank_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_40 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_40
-	set_variable = { var = cge_pow_disallowed_delta value = num_equipment_in_armies@super_heavy_tank_destroyer_chassis }
-	subtract_from_variable = { var = cge_pow_disallowed_delta value = var:cge_pow_disallowed_before_41 }
-	if = { limit = { check_variable = { var = cge_pow_disallowed_delta value = 0 compare = greater_than } } set_variable = { cge_pow_template_has_disallowed_equipment = 1 } }
-	clear_variable = cge_pow_disallowed_before_41
-	clear_variable = cge_pow_disallowed_delta
-	delete_unit = { id = 990042 disband = no }
-
-	set_variable = { var = cge_pow_equipment_probe_pool_restore_delta_k value = manpower_k }
-	subtract_from_variable = {
-		var = cge_pow_equipment_probe_pool_restore_delta_k
-		value = var:cge_pow_equipment_probe_pool_before_k
-	}
-	multiply_variable = {
-		var = cge_pow_equipment_probe_pool_restore_delta_k
-		value = -1000
-	}
-	add_manpower = var:cge_pow_equipment_probe_pool_restore_delta_k
-	set_variable = { var = cge_pow_equipment_probe_pool_after_k value = manpower_k }
-
-	clear_variable = cge_pow_equipment_probe_pool_before_k
-	clear_variable = cge_pow_equipment_probe_pool_restore_delta_k
-	clear_variable = cge_pow_equipment_probe_pool_after_k
-	clear_variable = cge_pow_probe_inf_before
-	clear_variable = cge_pow_probe_support_before
-	clear_variable = cge_pow_probe_artillery_before
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        delete_unit = {
+            id = 990042
+            disband = no
+        }
+        set_variable = {
+            var = cge_pow_equipment_probe_pool_before_k
+            value = manpower_k
+        }
+        add_manpower = 1000000
+        set_variable = {
+            var = cge_pow_probe_inf_before
+            value = num_equipment_in_armies@infantry_equipment
+        }
+        set_variable = {
+            var = cge_pow_probe_support_before
+            value = num_equipment_in_armies@support_equipment
+        }
+        set_variable = {
+            var = cge_pow_probe_artillery_before
+            value = num_equipment_in_armies@artillery_equipment
+        }
+        set_variable = {
+            cge_pow_template_has_disallowed_equipment = 0
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_1
+            value = num_equipment_in_armies@amphibious_mechanized_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_2
+            value = num_equipment_in_armies@amphibious_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_3
+            value = num_equipment_in_armies@anti_air_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_4
+            value = num_equipment_in_armies@anti_tank_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_5
+            value = num_equipment_in_armies@armored_car_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_6
+            value = num_equipment_in_armies@armored_support_vehicle
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_7
+            value = num_equipment_in_armies@heavy_tank_aa_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_8
+            value = num_equipment_in_armies@heavy_tank_amphibious_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_9
+            value = num_equipment_in_armies@heavy_tank_artillery_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_10
+            value = num_equipment_in_armies@heavy_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_11
+            value = num_equipment_in_armies@heavy_tank_destroyer_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_12
+            value = num_equipment_in_armies@heavy_tank_flame_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_13
+            value = num_equipment_in_armies@helicopter_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_14
+            value = num_equipment_in_armies@land_cruiser_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_15
+            value = num_equipment_in_armies@light_tank_aa_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_16
+            value = num_equipment_in_armies@light_tank_amphibious_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_17
+            value = num_equipment_in_armies@light_tank_artillery_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_18
+            value = num_equipment_in_armies@light_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_19
+            value = num_equipment_in_armies@light_tank_destroyer_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_20
+            value = num_equipment_in_armies@light_tank_flame_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_21
+            value = num_equipment_in_armies@mechanized_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_22
+            value = num_equipment_in_armies@medium_tank_aa_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_23
+            value = num_equipment_in_armies@medium_tank_amphibious_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_24
+            value = num_equipment_in_armies@medium_tank_artillery_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_25
+            value = num_equipment_in_armies@medium_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_26
+            value = num_equipment_in_armies@medium_tank_destroyer_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_27
+            value = num_equipment_in_armies@medium_tank_flame_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_28
+            value = num_equipment_in_armies@modern_tank_aa_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_29
+            value = num_equipment_in_armies@modern_tank_artillery_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_30
+            value = num_equipment_in_armies@modern_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_31
+            value = num_equipment_in_armies@modern_tank_destroyer_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_32
+            value = num_equipment_in_armies@motorbike_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_33
+            value = num_equipment_in_armies@motorized_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_34
+            value = num_equipment_in_armies@motorized_rocket_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_35
+            value = num_equipment_in_armies@rocket_artillery_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_36
+            value = num_equipment_in_armies@self_propelled_super_heavy_artillery_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_37
+            value = num_equipment_in_armies@super_heavy_artillery_equipment
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_38
+            value = num_equipment_in_armies@super_heavy_tank_aa_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_39
+            value = num_equipment_in_armies@super_heavy_tank_artillery_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_40
+            value = num_equipment_in_armies@super_heavy_tank_chassis
+        }
+        set_variable = {
+            var = cge_pow_disallowed_before_41
+            value = num_equipment_in_armies@super_heavy_tank_destroyer_chassis
+        }
+        set_variable = {
+            cge_pow_template_infantry_equipment_need = 0
+        }
+        set_variable = {
+            cge_pow_template_support_equipment_need = 0
+        }
+        set_variable = {
+            cge_pow_template_artillery_equipment_need = 0
+        }
+        cge_pow_measure_equipment = yes
+        set_variable = {
+            var = cge_pow_template_infantry_equipment_need
+            value = num_equipment_in_armies@infantry_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_template_infantry_equipment_need
+            value = var:cge_pow_probe_inf_before
+        }
+        set_variable = {
+            var = cge_pow_template_support_equipment_need
+            value = num_equipment_in_armies@support_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_template_support_equipment_need
+            value = var:cge_pow_probe_support_before
+        }
+        set_variable = {
+            var = cge_pow_template_artillery_equipment_need
+            value = num_equipment_in_armies@artillery_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_template_artillery_equipment_need
+            value = var:cge_pow_probe_artillery_before
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_template_infantry_equipment_need
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_infantry_equipment_need = 0
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_template_support_equipment_need
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_support_equipment_need = 0
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_template_artillery_equipment_need
+                    value = 0
+                    compare = less_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_artillery_equipment_need = 0
+            }
+        }
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@amphibious_mechanized_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_1
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_1
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@amphibious_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_2
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_2
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@anti_air_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_3
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_3
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@anti_tank_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_4
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_4
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@armored_car_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_5
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_5
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@armored_support_vehicle
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_6
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_6
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_aa_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_7
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_7
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_amphibious_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_8
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_8
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_artillery_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_9
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_9
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_10
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_10
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_destroyer_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_11
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_11
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@heavy_tank_flame_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_12
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_12
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@helicopter_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_13
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_13
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@land_cruiser_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_14
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_14
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_aa_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_15
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_15
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_amphibious_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_16
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_16
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_artillery_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_17
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_17
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_18
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_18
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_destroyer_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_19
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_19
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@light_tank_flame_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_20
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_20
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@mechanized_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_21
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_21
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_aa_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_22
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_22
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_amphibious_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_23
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_23
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_artillery_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_24
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_24
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_25
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_25
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_destroyer_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_26
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_26
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@medium_tank_flame_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_27
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_27
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@modern_tank_aa_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_28
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_28
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@modern_tank_artillery_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_29
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_29
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@modern_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_30
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_30
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@modern_tank_destroyer_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_31
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_31
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@motorbike_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_32
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_32
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@motorized_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_33
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_33
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@motorized_rocket_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_34
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_34
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@rocket_artillery_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_35
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_35
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@self_propelled_super_heavy_artillery_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_36
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_36
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@super_heavy_artillery_equipment
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_37
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_37
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@super_heavy_tank_aa_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_38
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_38
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@super_heavy_tank_artillery_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_39
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_39
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@super_heavy_tank_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_40
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_40
+        set_variable = {
+            var = cge_pow_disallowed_delta
+            value = num_equipment_in_armies@super_heavy_tank_destroyer_chassis
+        }
+        subtract_from_variable = {
+            var = cge_pow_disallowed_delta
+            value = var:cge_pow_disallowed_before_41
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_disallowed_delta
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                cge_pow_template_has_disallowed_equipment = 1
+            }
+        }
+        clear_variable = cge_pow_disallowed_before_41
+        clear_variable = cge_pow_disallowed_delta
+        delete_unit = {
+            id = 990042
+            disband = no
+        }
+        set_variable = {
+            var = cge_pow_equipment_probe_pool_restore_delta_k
+            value = manpower_k
+        }
+        subtract_from_variable = {
+            var = cge_pow_equipment_probe_pool_restore_delta_k
+            value = var:cge_pow_equipment_probe_pool_before_k
+        }
+        multiply_variable = {
+            var = cge_pow_equipment_probe_pool_restore_delta_k
+            value = -1000
+        }
+        add_manpower = var:cge_pow_equipment_probe_pool_restore_delta_k
+        set_variable = {
+            var = cge_pow_equipment_probe_pool_after_k
+            value = manpower_k
+        }
+        clear_variable = cge_pow_equipment_probe_pool_before_k
+        clear_variable = cge_pow_equipment_probe_pool_restore_delta_k
+        clear_variable = cge_pow_equipment_probe_pool_after_k
+        clear_variable = cge_pow_probe_inf_before
+        clear_variable = cge_pow_probe_support_before
+        clear_variable = cge_pow_probe_artillery_before
+    }
 }
-
-
 cge_pow_spawn_or_fallback_effect = {
-	cge_pow_spawn_template = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_pow_spawn_template = yes
+    }
 }
-
-
-
-
-
-
-
-
+cge_pow_cache_recruiter = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clear_variable = cge_pow_recruiter
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_pow_recruiter_slot_tmp
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            meta_effect = {
+                text = {
+                    set_variable = {
+                        var = cge_pow_recruiter
+                        value = var:cge_slot_[CGE_RECRUITER_SLOT]_runtime_leader
+                    }
+                }
+                CGE_RECRUITER_SLOT = "[?cge_pow_recruiter_slot_tmp|.0]"
+            }
+        }
+    }
+}

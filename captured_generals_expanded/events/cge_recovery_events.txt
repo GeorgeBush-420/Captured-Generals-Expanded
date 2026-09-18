@@ -1,0 +1,135 @@
+add_namespace = cge_recovery
+country_event = {
+    id = cge_recovery.10
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            cge_recovery_begin_next = yes
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_recovery_10
+        }
+    }
+}
+country_event = {
+    id = cge_recovery.1
+    title = CGE_RECOVERY_TITLE
+    desc = CGE_RECOVERY_DESC
+    picture = GFX_cge_negotiation_correspondence
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            hidden_effect = {
+                cge_recovery_refresh_terms = yes
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_recovery_1
+        }
+    }
+    option = {
+        name = CGE_RECOVERY_PAY
+        trigger = {
+            cge_recovery_terms_valid = yes
+        }
+        ai_chance = {
+            factor = 75
+        }
+        custom_effect_tooltip = CGE_RECOVERY_PAY_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_recovery_pay = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_RECOVERY_EXCHANGE
+        trigger = {
+            cge_recovery_terms_valid = yes
+            check_variable = {
+                var = cge_recovery_exchange_count
+                value = 0
+                compare = greater_than
+            }
+        }
+        ai_chance = {
+            factor = 500
+        }
+        custom_effect_tooltip = CGE_RECOVERY_EXCHANGE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_recovery_exchange = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_RECOVERY_REFUSE
+        trigger = {
+            cge_recovery_terms_valid = yes
+        }
+        ai_chance = {
+            factor = 5
+        }
+        custom_effect_tooltip = CGE_RECOVERY_REFUSE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_recovery_refuse = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_RECOVERY_LAPSED
+        trigger = {
+            NOT = {
+                cge_recovery_terms_valid = yes
+            }
+        }
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_recovery_finish = yes
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1602 @@
+cge_negotiation_resolve_partner = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_return_captor
+        clr_country_flag = cge_return_country_found
+        clr_country_flag = cge_return_country_is_subject
+        set_variable = {
+            cge_negotiation_partner_best_score = -1
+        }
+        every_country = {
+            limit = {
+                is_subject_of = event_target:cge_return_captor
+                any_owned_state = {
+                    always = yes
+                }
+                NOT = {
+                    has_war_with = event_target:cge_return_captor
+                }
+                NOT = {
+                    tag = event_target:cge_return_captor
+                }
+                check_variable = {
+                    var = original_tag
+                    value = event_target:cge_return_origin.original_tag
+                    compare = equals
+                }
+            }
+            set_variable = {
+                var = cge_negotiation_partner_candidate_score
+                value = num_owned_states
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_negotiation_partner_candidate_score
+                        value = event_target:cge_return_captor.cge_negotiation_partner_best_score
+                        compare = greater_than
+                    }
+                }
+                save_event_target_as = cge_return_destination
+                event_target:cge_return_captor = {
+                    set_variable = {
+                        var = cge_negotiation_partner_best_score
+                        value = PREV.cge_negotiation_partner_candidate_score
+                    }
+                    set_country_flag = cge_return_country_found
+                    set_country_flag = cge_return_country_is_subject
+                }
+            }
+            clear_variable = cge_negotiation_partner_candidate_score
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            set_variable = {
+                cge_negotiation_partner_best_score = -1
+            }
+            every_country = {
+                limit = {
+                    is_subject_of = event_target:cge_return_captor
+                    is_dynamic_country = yes
+                    any_owned_state = {
+                        is_core_of = event_target:cge_return_origin
+                    }
+                    NOT = {
+                        has_war_with = event_target:cge_return_captor
+                    }
+                    NOT = {
+                        tag = event_target:cge_return_captor
+                    }
+                }
+                set_variable = {
+                    var = cge_negotiation_partner_candidate_score
+                    value = num_owned_states
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_partner_candidate_score
+                            value = event_target:cge_return_captor.cge_negotiation_partner_best_score
+                            compare = greater_than
+                        }
+                    }
+                    save_event_target_as = cge_return_destination
+                    event_target:cge_return_captor = {
+                        set_variable = {
+                            var = cge_negotiation_partner_best_score
+                            value = PREV.cge_negotiation_partner_candidate_score
+                        }
+                        set_country_flag = cge_return_country_found
+                        set_country_flag = cge_return_country_is_subject
+                    }
+                }
+                clear_variable = cge_negotiation_partner_candidate_score
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            event_target:cge_return_origin = {
+                var:original_tag = {
+                    if = {
+                        limit = {
+                            any_owned_state = {
+                                always = yes
+                            }
+                            NOT = {
+                                has_war_with = event_target:cge_return_captor
+                            }
+                            NOT = {
+                                tag = event_target:cge_return_captor
+                            }
+                        }
+                        save_event_target_as = cge_return_destination
+                        event_target:cge_return_captor = {
+                            set_country_flag = cge_return_country_found
+                        }
+                    }
+                }
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            set_variable = {
+                cge_negotiation_partner_best_score = -1
+            }
+            every_country = {
+                limit = {
+                    any_owned_state = {
+                        always = yes
+                    }
+                    NOT = {
+                        has_war_with = event_target:cge_return_captor
+                    }
+                    NOT = {
+                        tag = event_target:cge_return_captor
+                    }
+                    check_variable = {
+                        var = original_tag
+                        value = event_target:cge_return_origin.original_tag
+                        compare = equals
+                    }
+                }
+                set_variable = {
+                    var = cge_negotiation_partner_candidate_score
+                    value = num_owned_states
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_partner_candidate_score
+                            value = event_target:cge_return_captor.cge_negotiation_partner_best_score
+                            compare = greater_than
+                        }
+                    }
+                    save_event_target_as = cge_return_destination
+                    event_target:cge_return_captor = {
+                        set_variable = {
+                            var = cge_negotiation_partner_best_score
+                            value = PREV.cge_negotiation_partner_candidate_score
+                        }
+                        set_country_flag = cge_return_country_found
+                    }
+                }
+                clear_variable = cge_negotiation_partner_candidate_score
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            set_variable = {
+                cge_negotiation_partner_best_score = -1
+            }
+            every_country = {
+                limit = {
+                    is_dynamic_country = yes
+                    any_owned_state = {
+                        is_core_of = event_target:cge_return_origin
+                    }
+                    NOT = {
+                        has_war_with = event_target:cge_return_captor
+                    }
+                    NOT = {
+                        tag = event_target:cge_return_captor
+                    }
+                }
+                set_variable = {
+                    var = cge_negotiation_partner_candidate_score
+                    value = num_owned_states
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_partner_candidate_score
+                            value = event_target:cge_return_captor.cge_negotiation_partner_best_score
+                            compare = greater_than
+                        }
+                    }
+                    save_event_target_as = cge_return_destination
+                    event_target:cge_return_captor = {
+                        set_variable = {
+                            var = cge_negotiation_partner_best_score
+                            value = PREV.cge_negotiation_partner_candidate_score
+                        }
+                        set_country_flag = cge_return_country_found
+                    }
+                }
+                clear_variable = cge_negotiation_partner_candidate_score
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_return_country_found
+                }
+            }
+            cge_resolve_return_country = yes
+        }
+        clear_variable = cge_negotiation_partner_best_score
+    }
+}
+
+cge_negotiation_prepare_offer = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_negotiation_captor
+        clr_country_flag = cge_negotiation_partner_found
+        set_variable = {
+            cge_negotiation_offer_count = 0
+        }
+        event_target:cge_negotiation_offer_origin = {
+            save_event_target_as = cge_return_origin
+        }
+        for_loop_effect = {
+            start = 1
+            end = cge_captured_general_count
+            compare = less_than_or_equals
+            value = cge_negotiation_probe
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_origin_country^0 = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_negotiation_offer_origin.original_tag
+                                    compare = equals
+                                }
+                            }
+                        }
+                        add_to_variable = {
+                            cge_negotiation_offer_count = 1
+                        }
+                    }
+                }
+                SLOT = "[?cge_negotiation_probe|.0]"
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_negotiation_offer_count
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = {
+                    any_enemy_country = {
+                        check_variable = {
+                            var = original_tag
+                            value = event_target:cge_negotiation_offer_origin.original_tag
+                            compare = equals
+                        }
+                    }
+                }
+            }
+            cge_negotiation_resolve_partner = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_return_country_found
+                    event_target:cge_return_destination = {
+                        NOT = {
+                            tag = event_target:cge_negotiation_captor
+                        }
+                        NOT = {
+                            has_war_with = event_target:cge_negotiation_captor
+                        }
+                    }
+                }
+                set_country_flag = cge_negotiation_partner_found
+                event_target:cge_return_destination = {
+                    save_event_target_as = cge_negotiation_offer_partner
+                    save_event_target_as = cge_negotiation_partner_country
+                }
+                clear_array = cge_general_display_characters
+                clr_country_flag = cge_show_overview_window
+                add_to_variable = {
+                    cge_negotiation_sequence = 1
+                }
+                meta_effect = {
+                    text = {
+                        clear_array = cge_negotiation_[GROUP]_origin
+                        clear_array = cge_negotiation_[GROUP]_partner
+                        add_to_array = {
+                            array = cge_negotiation_[GROUP]_origin
+                            value = event_target:cge_negotiation_offer_origin
+                        }
+                        add_to_array = {
+                            array = cge_negotiation_[GROUP]_partner
+                            value = event_target:cge_negotiation_offer_partner
+                        }
+                    }
+                    GROUP = "[?cge_negotiation_sequence|.0]"
+                }
+                for_loop_effect = {
+                    start = 1
+                    end = cge_captured_general_count
+                    compare = less_than_or_equals
+                    value = cge_negotiation_mark_slot
+                    meta_effect = {
+                        text = {
+                            if = {
+                                limit = {
+                                    has_country_flag = cge_has_candidate_[SLOT]
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_negotiation_state
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_executed
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_recruited
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_pow_collaborator
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    var:cge_slot_[SLOT]_origin_country^0 = {
+                                        check_variable = {
+                                            var = original_tag
+                                            value = event_target:cge_negotiation_offer_origin.original_tag
+                                            compare = equals
+                                        }
+                                    }
+                                }
+                                set_variable = {
+                                    cge_slot_[SLOT]_negotiation_state = 1
+                                }
+                                set_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_group
+                                    value = cge_negotiation_sequence
+                                }
+                                clear_variable = cge_slot_[SLOT]_return_pending
+                                clear_variable = cge_slot_[SLOT]_return_ready
+                                set_variable = {
+                                    cge_negotiation_work_slot = [SLOT]
+                                }
+                                cge_negotiation_hold_slot = yes
+                            }
+                        }
+                        SLOT = "[?cge_negotiation_mark_slot|.0]"
+                    }
+                }
+                add_to_array = {
+                    array = cge_negotiation_queue
+                    value = cge_negotiation_sequence
+                }
+                cge_negotiation_schedule_next = yes
+                cge_refresh_list_after_change = yes
+            }
+        }
+        clear_variable = cge_negotiation_offer_count
+    }
+}
+cge_negotiation_bind_alias_character = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        event_target:cge_return_captor = {
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_return_native_bound
+                        value = 0
+                        compare = equals
+                    }
+                }
+                add_to_array = {
+                    array = cge_return_native_general
+                    value = PREV
+                }
+                set_variable = {
+                    cge_return_native_bound = 1
+                }
+            }
+        }
+    }
+}
+
+cge_negotiation_bind_partner_alias = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+            check_variable = {
+                var = cge_return_native_bound
+                value = 0
+                compare = equals
+            }
+        }
+        if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 198 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ITA_abba_jofir_doppleganger }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 340 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ETH_abba_jofir }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 203 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ITA_hailu_tekle_haymanot_doppleganger }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 360 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ETH_hailu_tekle_haymanot }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 212 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ITA_seyoum_mengesha_doppleganger }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+        else_if = {
+            limit = {
+                check_variable = { var = cge_return_identity_key value = 381 compare = equals }
+            }
+            event_target:cge_negotiation_partner_country = {
+                every_character = {
+                    limit = { is_character = ETH_seyoum_mengesha }
+                    cge_negotiation_bind_alias_character = yes
+                }
+            }
+        }
+    }
+}
+
+
+cge_negotiation_hold_slot = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_negotiation_captor
+        save_event_target_as = cge_return_captor
+        set_variable = {
+            cge_negotiation_custody_bound = 0
+        }
+        set_variable = {
+            cge_negotiation_duplicate_found = 0
+        }
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        set_variable = {
+            cge_return_identity_key = 0
+        }
+        set_variable = {
+            cge_return_lookup_prisoner_id = 0
+        }
+        clear_array = cge_return_native_general
+        meta_effect = {
+            text = {
+                set_variable = {
+                    var = cge_return_identity_key
+                    value = cge_slot_[SLOT]_character_key
+                }
+                set_variable = {
+                    var = cge_return_lookup_prisoner_id
+                    value = cge_slot_[SLOT]_runtime_prisoner_id
+                }
+                event_target:cge_negotiation_partner_country = {
+                    save_event_target_as = cge_return_destination
+                }
+                set_country_flag = cge_return_country_found
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_identity_key
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    cge_return_bind_native_identity = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 0
+                            compare = equals
+                        }
+                        check_variable = {
+                            var = cge_return_lookup_prisoner_id
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    cge_return_bind_native_prisoner_id = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 0
+                            compare = equals
+                        }
+                    }
+                    cge_negotiation_bind_partner_alias = yes
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 0
+                            compare = equals
+                        }
+                        has_variable = cge_slot_[SLOT]_runtime_leader
+                    }
+                    var:cge_slot_[SLOT]_runtime_leader = {
+                        if = {
+                            limit = {
+                                is_character = ETH_haile_selassie_gugsa
+                            }
+                            event_target:cge_negotiation_partner_country = {
+                                every_character = {
+                                    limit = { is_character = ITA_haile_selassie_gugsa_doppleganger }
+                                    cge_negotiation_bind_alias_character = yes
+                                }
+                            }
+                        }
+                    }
+                }
+                clr_country_flag = cge_return_country_found
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_return_native_bound
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    var:cge_return_native_general^0 = {
+                        save_event_target_as = cge_negotiation_custody_general
+                    }
+                    set_variable = {
+                        cge_negotiation_custody_bound = 1
+                    }
+                    if = {
+                        limit = {
+                            has_variable = cge_slot_[SLOT]_runtime_leader
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_runtime_leader
+                                    value = event_target:cge_negotiation_custody_general
+                                    compare = equals
+                                }
+                            }
+                        }
+                        var:cge_slot_[SLOT]_runtime_leader = {
+                            save_event_target_as = cge_negotiation_duplicate
+                        }
+                        set_variable = {
+                            cge_negotiation_duplicate_found = 1
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_variable = cge_slot_[SLOT]_runtime_leader
+                    }
+                    var:cge_slot_[SLOT]_runtime_leader = {
+                        save_event_target_as = cge_negotiation_custody_general
+                    }
+                    set_variable = {
+                        cge_negotiation_custody_bound = 1
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_custody_bound
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[SLOT]_runtime_leader
+                        value = event_target:cge_negotiation_custody_general
+                    }
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_negotiation_duplicate_found
+                                value = 1
+                                compare = equals
+                            }
+                        }
+                        event_target:cge_negotiation_duplicate = {
+                            cge_return_clear_character_status = yes
+                            clear_variable = cge_native_captor
+                            retire = yes
+                        }
+                    }
+                    event_target:cge_negotiation_custody_general = {
+                        set_character_flag = cge_captured_by_player
+                        clr_character_flag = cge_roster_retired
+                        if = {
+                            limit = {
+                                is_general_captured = no
+                            }
+                            capture_by = event_target:cge_negotiation_captor
+                            set_variable = {
+                                var = cge_native_captor
+                                value = event_target:cge_negotiation_captor
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_slot = [SLOT]
+                    }
+                    cge_mirror_slot_to_character = yes
+                }
+            }
+            SLOT = "[?cge_negotiation_work_slot|.0]"
+        }
+        clear_variable = cge_negotiation_custody_bound
+        clear_variable = cge_negotiation_duplicate_found
+        clear_variable = cge_return_identity_key
+        clear_variable = cge_return_lookup_prisoner_id
+        set_variable = {
+            cge_return_native_bound = 0
+        }
+        clear_array = cge_return_native_general
+        clr_country_flag = cge_return_country_found
+    }
+}
+cge_negotiation_offer_before_reconcile = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_negotiation_binding_custody
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            check_variable = {
+                                var = cge_slot_[SLOT]_civil_war_successor^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            var = cge_negotiation_resume_dead_slot
+                            value = cge_return_dead_scan_slot
+                        }
+                        var:cge_slot_[SLOT]_origin_country^0 = {
+                            save_event_target_as = cge_negotiation_offer_origin
+                        }
+                        cge_negotiation_prepare_offer = yes
+                        set_variable = {
+                            var = cge_return_dead_scan_slot
+                            value = cge_negotiation_resume_dead_slot
+                        }
+                        clear_variable = cge_negotiation_resume_dead_slot
+                    }
+                }
+                SLOT = "[?cge_return_dead_scan_slot|.0]"
+            }
+        }
+    }
+}
+cge_negotiation_schedule_next = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = cge_negotiation_active_group
+                }
+                NOT = {
+                    has_country_flag = cge_negotiation_event_scheduled
+                }
+                check_variable = {
+                    var = cge_negotiation_queue^num
+                    value = 0
+                    compare = greater_than
+                }
+                NOT = {
+                    has_global_flag = cge_custody_sync_pending
+                }
+                NOT = {
+                    has_global_flag = cge_custody_settlement_pending
+                }
+            }
+            set_country_flag = cge_negotiation_event_scheduled
+            country_event = {
+                id = cge_negotiations.10
+                hours = 1
+            }
+        }
+    }
+}
+cge_negotiation_begin_next = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_negotiation_event_scheduled
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = cge_negotiation_active_group
+                }
+                check_variable = {
+                    var = cge_negotiation_queue^num
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            set_variable = {
+                var = cge_negotiation_active_group
+                value = cge_negotiation_queue^0
+            }
+            remove_from_array = {
+                array = cge_negotiation_queue
+                index = 0
+            }
+            clear_array = cge_negotiation_origin
+            clear_array = cge_negotiation_partner
+            meta_effect = {
+                text = {
+                    add_to_array = {
+                        array = cge_negotiation_origin
+                        value = cge_negotiation_[GROUP]_origin^0
+                    }
+                    add_to_array = {
+                        array = cge_negotiation_partner
+                        value = cge_negotiation_[GROUP]_partner^0
+                    }
+                }
+                GROUP = "[?cge_negotiation_active_group|.0]"
+            }
+            set_variable = {
+                cge_negotiation_stage = 1
+            }
+            if = {
+                limit = {
+                    OR = {
+                        has_country_flag = cge_recovery_active
+                        check_variable = {
+                            var = cge_recovery_queue^num
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                }
+                set_country_flag = cge_negotiation_waiting_for_recovery
+            }
+            else = {
+                cge_negotiation_refresh_terms = yes
+                if = {
+                    limit = {
+                        has_country_flag = cge_negotiation_terms_valid
+                    }
+                    country_event = {
+                        id = cge_negotiations.1
+                    }
+                }
+                else = {
+                    cge_negotiation_finish = yes
+                }
+            }
+        }
+    }
+}
+cge_negotiation_resume_after_recovery = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+            has_country_flag = cge_negotiation_waiting_for_recovery
+        }
+        if = {
+            limit = {
+                has_variable = cge_negotiation_active_group
+                NOT = {
+                    OR = {
+                        has_country_flag = cge_recovery_active
+                        check_variable = {
+                            var = cge_recovery_queue^num
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                }
+            }
+            clr_country_flag = cge_negotiation_waiting_for_recovery
+            cge_negotiation_refresh_terms = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_negotiation_terms_valid
+                }
+                country_event = {
+                    id = cge_negotiations.1
+                }
+            }
+            else = {
+                cge_negotiation_finish = yes
+            }
+        }
+        else_if = {
+            limit = {
+                NOT = {
+                    has_variable = cge_negotiation_active_group
+                }
+            }
+            clr_country_flag = cge_negotiation_waiting_for_recovery
+            cge_negotiation_schedule_next = yes
+        }
+    }
+}
+cge_negotiation_refresh_terms = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_negotiation_captor
+        clr_country_flag = cge_negotiation_terms_valid
+        set_variable = {
+            cge_negotiation_general_count = 0
+        }
+        set_variable = {
+            cge_negotiation_highest_level = 0
+        }
+        set_variable = {
+            cge_negotiation_claim_strength = 0
+        }
+        set_variable = {
+            cge_negotiation_reparations_percent = 0
+        }
+        set_variable = {
+            cge_negotiation_reparations_payer_percent = 0
+        }
+        set_variable = {
+            cge_negotiation_acceptance_percent = 25
+        }
+        set_variable = {
+            cge_reparations_highest_level = 0
+        }
+        set_variable = {
+            cge_reparations_claim_strength = 0
+        }
+        if = {
+            limit = {
+                has_variable = cge_negotiation_active_group
+            }
+            var:cge_negotiation_origin^0 = {
+                save_event_target_as = cge_negotiation_origin_country
+            }
+            event_target:cge_negotiation_origin_country = {
+                save_event_target_as = cge_return_origin
+            }
+            cge_negotiation_resolve_partner = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_return_country_found
+                    event_target:cge_return_destination = {
+                        NOT = {
+                            tag = event_target:cge_negotiation_captor
+                        }
+                    }
+                }
+                clear_array = cge_negotiation_partner
+                add_to_array = {
+                    array = cge_negotiation_partner
+                    value = event_target:cge_return_destination
+                }
+                event_target:cge_return_destination = {
+                    save_event_target_as = cge_negotiation_partner_country
+                    save_event_target_as = cge_reparations_payer
+                }
+                for_loop_effect = {
+                    start = 1
+                    end = cge_captured_general_count
+                    compare = less_than_or_equals
+                    value = cge_negotiation_terms_slot
+                    meta_effect = {
+                        text = {
+                            if = {
+                                limit = {
+                                    has_country_flag = cge_has_candidate_[SLOT]
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_negotiation_group
+                                        value = cge_negotiation_active_group
+                                        compare = equals
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_executed
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_recruited
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                    NOT = {
+                                        check_variable = {
+                                            var = cge_slot_[SLOT]_pow_collaborator
+                                            value = 0
+                                            compare = greater_than
+                                        }
+                                    }
+                                }
+                                add_to_variable = {
+                                    cge_negotiation_general_count = 1
+                                }
+                                set_variable = {
+                                    var = cge_reparations_candidate_level
+                                    value = cge_slot_[SLOT]_level
+                                }
+                                cge_reparations_add_claim_value = yes
+                            }
+                        }
+                        SLOT = "[?cge_negotiation_terms_slot|.0]"
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_general_count
+                            value = 0
+                            compare = greater_than
+                        }
+                    }
+                    cge_reparations_finalize_claim = yes
+                    set_variable = {
+                        var = cge_negotiation_highest_level
+                        value = cge_reparations_highest_level
+                    }
+                    set_variable = {
+                        var = cge_negotiation_claim_strength
+                        value = cge_reparations_claim_strength
+                    }
+                    cge_reparations_calculate_terms = yes
+                    set_variable = {
+                        var = cge_negotiation_reparations_percent
+                        value = cge_reparations_receiver_percent
+                    }
+                    set_variable = {
+                        var = cge_negotiation_reparations_payer_percent
+                        value = cge_reparations_payer_percent
+                    }
+                }
+                if = {
+                    limit = {
+                        OR = {
+                            event_target:cge_negotiation_partner_country = {
+                                is_subject_of = event_target:cge_negotiation_captor
+                            }
+                            check_variable = {
+                                var = cge_negotiation_highest_level
+                                value = 3
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_negotiation_acceptance_percent = 100
+                    }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_highest_level
+                            value = 3
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        cge_negotiation_acceptance_percent = 75
+                    }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_highest_level
+                            value = 2
+                            compare = equals
+                        }
+                    }
+                    set_variable = {
+                        cge_negotiation_acceptance_percent = 50
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_general_count
+                            value = 0
+                            compare = greater_than
+                        }
+                        NOT = {
+                            any_enemy_country = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_negotiation_origin_country.original_tag
+                                    compare = equals
+                                }
+                            }
+                        }
+                    }
+                    set_country_flag = cge_negotiation_terms_valid
+                }
+            }
+        }
+        cge_reparations_clear_calculation = yes
+    }
+}
+cge_negotiation_demand_reparations = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_negotiation_refresh_terms = yes
+        if = {
+            limit = {
+                has_country_flag = cge_negotiation_terms_valid
+            }
+            set_variable = {
+                cge_negotiation_stage = 2
+            }
+            country_event = {
+                id = cge_negotiations.11
+                days = 1
+            }
+        }
+        else = {
+            cge_negotiation_finish = yes
+        }
+    }
+}
+cge_negotiation_receive_response = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_negotiation_stage
+                    value = 2
+                    compare = equals
+                }
+            }
+            cge_negotiation_refresh_terms = yes
+            if = {
+                limit = {
+                    has_country_flag = cge_negotiation_terms_valid
+                }
+                clr_country_flag = cge_negotiation_reparations_accepted
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_acceptance_percent
+                            value = 100
+                            compare = equals
+                        }
+                    }
+                    set_country_flag = cge_negotiation_reparations_accepted
+                }
+                else_if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_acceptance_percent
+                            value = 75
+                            compare = equals
+                        }
+                    }
+                    random_list = {
+                        75 = {
+                            set_country_flag = cge_negotiation_reparations_accepted
+                        }
+                        25 = {
+                        }
+                    }
+                }
+                else_if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_negotiation_acceptance_percent
+                            value = 50
+                            compare = equals
+                        }
+                    }
+                    random_list = {
+                        50 = {
+                            set_country_flag = cge_negotiation_reparations_accepted
+                        }
+                        50 = {
+                        }
+                    }
+                }
+                else = {
+                    random_list = {
+                        25 = {
+                            set_country_flag = cge_negotiation_reparations_accepted
+                        }
+                        75 = {
+                        }
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_negotiation_reparations_accepted
+                    }
+                    set_variable = {
+                        cge_negotiation_stage = 4
+                    }
+                    country_event = {
+                        id = cge_negotiations.2
+                    }
+                }
+                else = {
+                    set_variable = {
+                        cge_negotiation_stage = 3
+                    }
+                    country_event = {
+                        id = cge_negotiations.3
+                    }
+                }
+            }
+            else = {
+                cge_negotiation_finish = yes
+            }
+        }
+    }
+}
+cge_negotiation_return_unconditionally = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_negotiation_refresh_terms = yes
+        if = {
+            limit = {
+                has_country_flag = cge_negotiation_terms_valid
+            }
+            event_target:cge_negotiation_partner_country = {
+                add_opinion_modifier = {
+                    target = event_target:cge_negotiation_captor
+                    modifier = cge_generals_returned
+                }
+            }
+            cge_negotiation_release_active = yes
+        }
+        cge_negotiation_finish = yes
+    }
+}
+cge_negotiation_sign_agreement = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_negotiation_refresh_terms = yes
+        if = {
+            limit = {
+                has_country_flag = cge_negotiation_terms_valid
+            }
+            cge_reparations_grant = yes
+            cge_negotiation_release_active = yes
+        }
+        cge_negotiation_finish = yes
+    }
+}
+cge_negotiation_refuse_return = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_negotiation_refresh_terms = yes
+        if = {
+            limit = {
+                has_country_flag = cge_negotiation_terms_valid
+            }
+            event_target:cge_negotiation_partner_country = {
+                if = {
+                    limit = {
+                        is_subject_of = event_target:cge_negotiation_captor
+                    }
+                    add_opinion_modifier = {
+                        target = event_target:cge_negotiation_captor
+                        modifier = cge_subject_generals_detained
+                    }
+                }
+                else = {
+                    add_opinion_modifier = {
+                        target = event_target:cge_negotiation_captor
+                        modifier = cge_generals_detained
+                    }
+                    send_embargo = event_target:cge_negotiation_captor
+                }
+            }
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_negotiation_refusal_slot
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                has_country_flag = cge_has_candidate_[SLOT]
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_group
+                                    value = cge_negotiation_active_group
+                                    compare = equals
+                                }
+                                NOT = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_executed
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                }
+                                NOT = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_recruited
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                }
+                                NOT = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_pow_collaborator
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                }
+                            }
+                            multiply_variable = {
+                                cge_slot_[SLOT]_patience = 0.5
+                            }
+                            multiply_variable = {
+                                cge_slot_[SLOT]_cooperation = 0.5
+                            }
+                            set_variable = {
+                                cge_slot_[SLOT]_negotiation_refused = 1
+                            }
+                            set_variable = {
+                                cge_slot_[SLOT]_negotiation_state = 2
+                            }
+                            set_variable = {
+                                cge_slot = [SLOT]
+                            }
+                            cge_mirror_slot_to_character = yes
+                        }
+                    }
+                    SLOT = "[?cge_negotiation_refusal_slot|.0]"
+                }
+            }
+            cge_refresh_list_after_change = yes
+        }
+        cge_negotiation_finish = yes
+    }
+}
+cge_negotiation_release_active = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_negotiation_captor
+        clear_array = cge_general_display_characters
+        clr_country_flag = cge_show_overview_window
+        set_country_flag = cge_roster_batch_removal
+        set_country_flag = cge_return_metadata_only_cleanup
+        for_loop_effect = {
+            start = cge_captured_general_count
+            end = 1
+            add = -1
+            compare = greater_than_or_equals
+            value = cge_negotiation_release_slot
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            check_variable = {
+                                var = cge_slot_[SLOT]_negotiation_group
+                                value = cge_negotiation_active_group
+                                compare = equals
+                            }
+                            has_variable = cge_slot_[SLOT]_runtime_leader
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_negotiation_work_slot = [SLOT]
+                        }
+                        cge_negotiation_hold_slot = yes
+                        var:cge_slot_[SLOT]_runtime_leader = {
+                            save_event_target_as = cge_negotiation_returning_general
+                        }
+                        event_target:cge_negotiation_returning_general = {
+                            save_event_target_as = cge_return_role_character
+                        }
+                        set_variable = {
+                            cge_return_role_slot = [SLOT]
+                        }
+                        cge_return_stage_role_from_slot = yes
+                        set_variable = {
+                            cge_release_slot_to_remove = [SLOT]
+                        }
+                        cge_release_remove_selected_slot = yes
+                        event_target:cge_negotiation_returning_general = {
+                            cge_return_clear_character_status = yes
+                            set_variable = {
+                                cge_cge_slot_index = 0
+                            }
+                            set_character_flag = cge_roster_retired
+                            if = {
+                                limit = { is_general_captured = yes }
+                                release_from_captivity = yes
+                            }
+                            if = {
+                                limit = {
+                                    event_target:cge_negotiation_partner_country = {
+                                        NOT = {
+                                            has_character = event_target:cge_negotiation_returning_general
+                                        }
+                                    }
+                                }
+                                set_nationality = event_target:cge_negotiation_partner_country
+                            }
+                            clear_variable = cge_native_captor
+                            cge_return_force_unrestricted_transferred_role = yes
+                        }
+                    }
+                }
+                SLOT = "[?cge_negotiation_release_slot|.0]"
+            }
+        }
+        clr_country_flag = cge_return_metadata_only_cleanup
+        clr_country_flag = cge_roster_batch_removal
+        cge_refresh_list_after_change = yes
+    }
+}
+cge_negotiation_finish = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                has_variable = cge_negotiation_active_group
+            }
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_negotiation_finish_slot
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_negotiation_group
+                                    value = cge_negotiation_active_group
+                                    compare = equals
+                                }
+                            }
+                            set_variable = {
+                                cge_slot_[SLOT]_negotiation_state = 2
+                            }
+                            clear_variable = cge_slot_[SLOT]_negotiation_group
+                            clear_variable = cge_slot_[SLOT]_return_pending
+                            clear_variable = cge_slot_[SLOT]_return_ready
+                        }
+                    }
+                    SLOT = "[?cge_negotiation_finish_slot|.0]"
+                }
+            }
+            meta_effect = {
+                text = {
+                    clear_array = cge_negotiation_[GROUP]_origin
+                    clear_array = cge_negotiation_[GROUP]_partner
+                }
+                GROUP = "[?cge_negotiation_active_group|.0]"
+            }
+        }
+        clr_country_flag = cge_negotiation_waiting_for_recovery
+        clear_variable = cge_negotiation_active_group
+        clear_variable = cge_negotiation_stage
+        clear_array = cge_negotiation_origin
+        clear_array = cge_negotiation_partner
+        clr_country_flag = cge_negotiation_terms_valid
+        clr_country_flag = cge_negotiation_reparations_accepted
+        clear_variable = cge_negotiation_general_count
+        clear_variable = cge_negotiation_highest_level
+        clear_variable = cge_negotiation_claim_strength
+        clear_variable = cge_negotiation_reparations_percent
+        clear_variable = cge_negotiation_reparations_payer_percent
+        clear_variable = cge_negotiation_acceptance_percent
+        cge_negotiation_schedule_next = yes
+    }
+}

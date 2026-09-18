@@ -1,199 +1,706 @@
-
 add_namespace = cge
-
 country_event = {
-	id = cge.1
-	hidden = yes
-	is_triggered_only = yes
-
-	immediate = {
-		set_country_flag = cge_show_main_window
-	}
+    id = cge.1
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            set_country_flag = cge_show_main_window
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_1
+        }
+    }
 }
-
 country_event = {
-	id = cge.2
-	hidden = yes
-	is_triggered_only = yes
-
-	immediate = {
-		clr_country_flag = cge_show_main_window
-	}
+    id = cge.2
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            clr_country_flag = cge_show_main_window
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_2
+        }
+    }
 }
-
 add_namespace = cge_execution
 add_namespace = cge_execution_news
-
 country_event = {
-	id = cge_execution.1
-	title = CGE_EXECUTION_EVENT_TITLE
-	desc = CGE_EXECUTION_EVENT_DESC
-	picture = GFX_report_event_generic_soldiers_surrendering
-	is_triggered_only = yes
-
-	option = {
-		name = CGE_EXECUTION_EVENT_OPTION
-		custom_effect_tooltip = CGE_EXECUTION_EVENT_OPTION_TT
-		ai_chance = { factor = 1 }
-	}
+    id = cge_execution.1
+    title = CGE_EXECUTION_EVENT_TITLE
+    desc = CGE_EXECUTION_EVENT_DESC
+    picture = GFX_report_event_generic_soldiers_surrendering
+    is_triggered_only = yes
+    option = {
+        name = CGE_EXECUTION_EVENT_OPTION
+        custom_effect_tooltip = CGE_EXECUTION_EVENT_OPTION_TT
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_execution_1
+        }
+    }
 }
-
 news_event = {
-	id = cge_execution_news.1
-	title = CGE_EXECUTION_NEWS_TITLE
-	desc = CGE_EXECUTION_NEWS_DESC
-	picture = GFX_news_event_ITA_mussolini_execution
-	major = yes
-	is_triggered_only = yes
-
-	option = {
-		trigger = { has_country_flag = cge_execution_news_executor }
-		name = CGE_EXECUTION_NEWS_OPTION_EXECUTOR
-		clr_country_flag = cge_execution_news_executor
-		clr_country_flag = cge_execution_news_origin
-		ai_chance = { factor = 1 }
-	}
-
-	option = {
-		trigger = { has_country_flag = cge_execution_news_origin NOT = { has_country_flag = cge_execution_news_executor } }
-		name = CGE_EXECUTION_NEWS_OPTION_ORIGIN
-		clr_country_flag = cge_execution_news_origin
-		ai_chance = { factor = 1 }
-	}
-
-	option = {
-		trigger = { NOT = { has_country_flag = cge_execution_news_executor } NOT = { has_country_flag = cge_execution_news_origin } }
-		name = CGE_EXECUTION_NEWS_OPTION_THIRD
-		ai_chance = { factor = 1 }
-	}
+    id = cge_execution_news.1
+    title = CGE_EXECUTION_NEWS_TITLE
+    desc = CGE_EXECUTION_NEWS_DESC
+    picture = GFX_news_event_ITA_mussolini_execution
+    major = yes
+    is_triggered_only = yes
+    option = {
+        trigger = {
+            has_country_flag = cge_execution_news_executor
+        }
+        name = CGE_EXECUTION_NEWS_OPTION_EXECUTOR
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                clr_country_flag = cge_execution_news_executor
+                clr_country_flag = cge_execution_news_origin
+            }
+        }
+    }
+    option = {
+        trigger = {
+            has_country_flag = cge_execution_news_origin
+            NOT = {
+                has_country_flag = cge_execution_news_executor
+            }
+        }
+        name = CGE_EXECUTION_NEWS_OPTION_ORIGIN
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                clr_country_flag = cge_execution_news_origin
+            }
+        }
+    }
+    option = {
+        trigger = {
+            NOT = {
+                has_country_flag = cge_execution_news_executor
+            }
+            NOT = {
+                has_country_flag = cge_execution_news_origin
+            }
+        }
+        name = CGE_EXECUTION_NEWS_OPTION_THIRD
+        ai_chance = {
+            factor = 1
+        }
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+            }
+        }
+    }
 }
-
 add_namespace = cge_recruitment
-
 unit_leader_event = {
-	id = cge_recruitment.1
-	title = CGE_RECRUITMENT_EVENT_TITLE
-	desc = CGE_RECRUITMENT_EVENT_DESC
-	is_triggered_only = yes
-
-	immediate = {
-		if = {
-			limit = { NOT = { has_variable = cge_cge_recruitment_date } }
-			set_variable = { var = cge_cge_recruitment_date value = global.date }
-			set_character_flag = cge_recruitment_event_date_fallback
-		}
-	}
-
-	option = {
-		name = CGE_RECRUITMENT_EVENT_OPTION
-		ai_chance = { factor = 1 }
-		custom_effect_tooltip = CGE_RECRUITMENT_EVENT_OPTION_TT
-		hidden_effect = {
-			FROM = {
-				add_war_support = 0.05
-				if = { limit = { has_government = democratic } add_popularity = { ideology = democratic popularity = 0.05 } }
-				else_if = { limit = { has_government = fascism } add_popularity = { ideology = fascism popularity = 0.05 } }
-				else_if = { limit = { has_government = communism } add_popularity = { ideology = communism popularity = 0.05 } }
-				else = { add_popularity = { ideology = neutrality popularity = 0.05 } }
-			}
-			if = {
-				limit = { has_character_flag = cge_recruitment_event_date_fallback }
-				clear_variable = cge_cge_recruitment_date
-				clr_character_flag = cge_recruitment_event_date_fallback
-			}
-		}
-	}
+    id = cge_recruitment.1
+    title = CGE_RECRUITMENT_EVENT_TITLE
+    desc = CGE_RECRUITMENT_EVENT_DESC
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_variable = cge_cge_recruitment_date
+                }
+            }
+            set_variable = {
+                var = cge_cge_recruitment_date
+                value = global.date
+            }
+            set_character_flag = cge_recruitment_event_date_fallback
+        }
+    }
+    option = {
+        name = CGE_RECRUITMENT_EVENT_OPTION
+        ai_chance = {
+            factor = 1
+        }
+        custom_effect_tooltip = CGE_RECRUITMENT_EVENT_OPTION_TT
+        hidden_effect = {
+            FROM = {
+                add_war_support = 0.05
+                if = {
+                    limit = {
+                        has_government = democratic
+                    }
+                    add_popularity = {
+                        ideology = democratic
+                        popularity = 0.05
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_government = fascism
+                    }
+                    add_popularity = {
+                        ideology = fascism
+                        popularity = 0.05
+                    }
+                }
+                else_if = {
+                    limit = {
+                        has_government = communism
+                    }
+                    add_popularity = {
+                        ideology = communism
+                        popularity = 0.05
+                    }
+                }
+                else = {
+                    add_popularity = {
+                        ideology = neutrality
+                        popularity = 0.05
+                    }
+                }
+            }
+            if = {
+                limit = {
+                    has_character_flag = cge_recruitment_event_date_fallback
+                }
+                clear_variable = cge_cge_recruitment_date
+                clr_character_flag = cge_recruitment_event_date_fallback
+            }
+        }
+    }
 }
-
 add_namespace = cge_trial
-
 country_event = {
-	id = cge_trial.1
-	title = CGE_TRIAL_STAGE1_TITLE
-	desc = CGE_TRIAL_STAGE1_DESC
-	picture = GFX_report_event_soviet_purge_trial
-	is_triggered_only = yes
-	option = { name = CGE_TRIAL_STAGE1_PUBLIC custom_effect_tooltip = CGE_TRIAL_STAGE1_PUBLIC_TT hidden_effect = { cge_trial_stage1_public = yes } }
-	option = { name = CGE_TRIAL_STAGE1_MILITARY custom_effect_tooltip = CGE_TRIAL_STAGE1_MILITARY_TT hidden_effect = { cge_trial_stage1_military = yes } }
-	option = { name = CGE_TRIAL_STAGE1_PLEA custom_effect_tooltip = CGE_TRIAL_STAGE1_PLEA_TT hidden_effect = { cge_trial_stage1_plea = yes } }
+    id = cge_trial.1
+    title = CGE_TRIAL_STAGE1_TITLE
+    desc = CGE_TRIAL_STAGE1_DESC
+    picture = GFX_report_event_soviet_purge_trial
+    is_triggered_only = yes
+    option = {
+        name = CGE_TRIAL_STAGE1_PUBLIC
+        custom_effect_tooltip = CGE_TRIAL_STAGE1_PUBLIC_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage1_public = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE1_MILITARY
+        custom_effect_tooltip = CGE_TRIAL_STAGE1_MILITARY_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage1_military = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE1_PLEA
+        custom_effect_tooltip = CGE_TRIAL_STAGE1_PLEA_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage1_plea = yes
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_trial_1
+        }
+    }
 }
-
 country_event = {
-	id = cge_trial.2
-	title = CGE_TRIAL_STAGE2_TITLE
-	desc = { trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_reaction value = 1 compare = equals } } } text = CGE_TRIAL_STAGE2_CONFESSION_DESC }
-	desc = { text = CGE_TRIAL_STAGE2_DEFIANCE_DESC }
-	picture = GFX_report_event_soviet_purge_trial
-	is_triggered_only = yes
-	option = { name = CGE_TRIAL_STAGE2_PRESS custom_effect_tooltip = CGE_TRIAL_STAGE2_PRESS_TT hidden_effect = { cge_trial_stage2_press = yes } }
-	option = { name = CGE_TRIAL_STAGE2_CREDIBLE custom_effect_tooltip = CGE_TRIAL_STAGE2_CREDIBLE_TT hidden_effect = { cge_trial_stage2_credible = yes } }
-	option = { name = CGE_TRIAL_STAGE2_LENIENCY custom_effect_tooltip = CGE_TRIAL_STAGE2_LENIENCY_TT hidden_effect = { cge_trial_stage2_leniency = yes } }
+    id = cge_trial.2
+    title = CGE_TRIAL_STAGE2_TITLE
+    desc = {
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_reaction
+                    value = 1
+                    compare = equals
+                }
+            }
+        }
+        text = CGE_TRIAL_STAGE2_CONFESSION_DESC
+    }
+    desc = {
+        text = CGE_TRIAL_STAGE2_DEFIANCE_DESC
+    }
+    picture = GFX_report_event_soviet_purge_trial
+    is_triggered_only = yes
+    option = {
+        name = CGE_TRIAL_STAGE2_PRESS
+        custom_effect_tooltip = CGE_TRIAL_STAGE2_PRESS_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage2_press = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE2_CREDIBLE
+        custom_effect_tooltip = CGE_TRIAL_STAGE2_CREDIBLE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage2_credible = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE2_LENIENCY
+        custom_effect_tooltip = CGE_TRIAL_STAGE2_LENIENCY_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage2_leniency = yes
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_trial_2
+        }
+    }
 }
-
 country_event = {
-	id = cge_trial.3
-	title = CGE_TRIAL_STAGE3_TITLE
-	desc = { trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 1 compare = equals } } } text = CGE_TRIAL_STAGE3_PUBLIC_DESC }
-	desc = { trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 2 compare = equals } } } text = CGE_TRIAL_STAGE3_MILITARY_DESC }
-	desc = { text = CGE_TRIAL_STAGE3_PLEA_DESC }
-	picture = GFX_report_event_soviet_purge_trial
-	is_triggered_only = yes
-	option = { name = CGE_TRIAL_STAGE3_PUBLIC_BROADCAST trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 1 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_PUBLIC_BROADCAST_TT hidden_effect = { cge_trial_stage3_public_broadcast = yes } }
-	option = { name = CGE_TRIAL_STAGE3_PUBLIC_CONTROL trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 1 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_PUBLIC_CONTROL_TT hidden_effect = { cge_trial_stage3_public_control = yes } }
-	option = { name = CGE_TRIAL_STAGE3_MILITARY_EXAMPLE trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 2 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_MILITARY_EXAMPLE_TT hidden_effect = { cge_trial_stage3_military_example = yes } }
-	option = { name = CGE_TRIAL_STAGE3_MILITARY_LAW trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 2 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_MILITARY_LAW_TT hidden_effect = { cge_trial_stage3_military_law = yes } }
-	option = { name = CGE_TRIAL_STAGE3_PLEA_FORMAL trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 3 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_PLEA_FORMAL_TT hidden_effect = { cge_trial_stage3_plea_formal = yes } }
-	option = { name = CGE_TRIAL_STAGE3_PLEA_HOLD trigger = { event_target:cge_trial_general = { check_variable = { var = cge_cge_trial_route value = 3 compare = equals } } } custom_effect_tooltip = CGE_TRIAL_STAGE3_PLEA_HOLD_TT hidden_effect = { cge_trial_stage3_plea_hold = yes } }
+    id = cge_trial.3
+    title = CGE_TRIAL_STAGE3_TITLE
+    desc = {
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 1
+                    compare = equals
+                }
+            }
+        }
+        text = CGE_TRIAL_STAGE3_PUBLIC_DESC
+    }
+    desc = {
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 2
+                    compare = equals
+                }
+            }
+        }
+        text = CGE_TRIAL_STAGE3_MILITARY_DESC
+    }
+    desc = {
+        text = CGE_TRIAL_STAGE3_PLEA_DESC
+    }
+    picture = GFX_report_event_soviet_purge_trial
+    is_triggered_only = yes
+    option = {
+        name = CGE_TRIAL_STAGE3_PUBLIC_BROADCAST
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 1
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_PUBLIC_BROADCAST_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_public_broadcast = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE3_PUBLIC_CONTROL
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 1
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_PUBLIC_CONTROL_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_public_control = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE3_MILITARY_EXAMPLE
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 2
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_MILITARY_EXAMPLE_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_military_example = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE3_MILITARY_LAW
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 2
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_MILITARY_LAW_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_military_law = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE3_PLEA_FORMAL
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 3
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_PLEA_FORMAL_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_plea_formal = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE3_PLEA_HOLD
+        trigger = {
+            event_target:cge_trial_general = {
+                check_variable = {
+                    var = cge_cge_trial_route
+                    value = 3
+                    compare = equals
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE3_PLEA_HOLD_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage3_plea_hold = yes
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_trial_3
+        }
+    }
 }
-
 country_event = {
-	id = cge_trial.4
-	title = CGE_TRIAL_STAGE4_TITLE
-	desc = CGE_TRIAL_STAGE4_DESC
-	picture = GFX_report_event_soviet_purge_trial
-	is_triggered_only = yes
-	option = {
-		name = CGE_TRIAL_STAGE4_CONDEMN
-		trigger = { event_target:cge_trial_general = { OR = { check_variable = { var = cge_cge_trial_severity value = 9.999 compare = greater_than } check_variable = { var = cge_cge_trial_reaction value = 2 compare = equals } check_variable = { var = cge_cge_trial_route value = 2 compare = equals } } } }
-		custom_effect_tooltip = CGE_TRIAL_STAGE4_CONDEMN_TT
-		hidden_effect = { cge_trial_stage4_condemn = yes }
-	}
-	option = { name = CGE_TRIAL_STAGE4_CONVICT custom_effect_tooltip = CGE_TRIAL_STAGE4_CONVICT_TT hidden_effect = { cge_trial_stage4_convict = yes } }
-	option = {
-		name = CGE_TRIAL_STAGE4_PLEA
-		trigger = { event_target:cge_trial_general = { OR = { check_variable = { var = cge_cge_trial_negotiation value = 9.999 compare = greater_than } check_variable = { var = cge_cge_cooperation value = 59.999 compare = greater_than } check_variable = { var = cge_cge_trial_route value = 3 compare = equals } } } }
-		custom_effect_tooltip = CGE_TRIAL_STAGE4_PLEA_TT
-		hidden_effect = { cge_trial_stage4_plea = yes }
-	}
+    id = cge_trial.4
+    title = CGE_TRIAL_STAGE4_TITLE
+    desc = CGE_TRIAL_STAGE4_DESC
+    picture = GFX_report_event_soviet_purge_trial
+    is_triggered_only = yes
+    option = {
+        name = CGE_TRIAL_STAGE4_CONDEMN
+        trigger = {
+            event_target:cge_trial_general = {
+                OR = {
+                    check_variable = {
+                        var = cge_cge_trial_severity
+                        value = 9.999
+                        compare = greater_than
+                    }
+                    check_variable = {
+                        var = cge_cge_trial_reaction
+                        value = 2
+                        compare = equals
+                    }
+                    check_variable = {
+                        var = cge_cge_trial_route
+                        value = 2
+                        compare = equals
+                    }
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE4_CONDEMN_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage4_condemn = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE4_CONVICT
+        custom_effect_tooltip = CGE_TRIAL_STAGE4_CONVICT_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage4_convict = yes
+                }
+            }
+        }
+    }
+    option = {
+        name = CGE_TRIAL_STAGE4_PLEA
+        trigger = {
+            event_target:cge_trial_general = {
+                OR = {
+                    check_variable = {
+                        var = cge_cge_trial_negotiation
+                        value = 9.999
+                        compare = greater_than
+                    }
+                    check_variable = {
+                        var = cge_cge_cooperation
+                        value = 59.999
+                        compare = greater_than
+                    }
+                    check_variable = {
+                        var = cge_cge_trial_route
+                        value = 3
+                        compare = equals
+                    }
+                }
+            }
+        }
+        custom_effect_tooltip = CGE_TRIAL_STAGE4_PLEA_TT
+        hidden_effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                hidden_effect = {
+                    cge_trial_stage4_plea = yes
+                }
+            }
+        }
+    }
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_trial_4
+        }
+    }
 }
-
 add_namespace = cge_state_rescue_refresh
-
 country_event = {
-	id = cge_state_rescue_refresh.1
-	hidden = yes
-	is_triggered_only = yes
-
-	immediate = {
-		clr_country_flag = cge_state_rescue_refresh_pending
-
-		if = {
-			limit = {
-				check_variable = {
-					var = cge_captured_general_count
-					value = 0
-					compare = greater_than
-				}
-			}
-
-			set_temp_variable = {
-				var = cge_rescue_refresh_count_before
-				value = cge_captured_general_count
-			}
-
-			cge_remove_released_generals = yes
-
-			log = "CGE STATE RESCUE REFRESH: before=[?cge_rescue_refresh_count_before|0] after=[?cge_captured_general_count|0]"
-		}
-	}
+    id = cge_state_rescue_refresh.1
+    hidden = yes
+    is_triggered_only = yes
+    immediate = {
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_logic_disabled
+                }
+            }
+            clr_country_flag = cge_state_rescue_refresh_pending
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_captured_general_count
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                set_temp_variable = {
+                    var = cge_rescue_refresh_count_before
+                    value = cge_captured_general_count
+                }
+                cge_remove_released_generals = yes
+            }
+        }
+        else = {
+            set_country_flag = cge_profile_deferred_cge_state_rescue_refresh_1
+        }
+    }
 }

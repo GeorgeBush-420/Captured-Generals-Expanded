@@ -1,0 +1,10 @@
+cge_profile_disable = {
+    set_global_flag = cge_logic_disabled
+}
+
+cge_profile_enable = {
+    clr_global_flag = cge_logic_disabled
+    cge_profile_resume_events = yes
+    clr_global_flag = cge_custody_sync_pending
+    cge_custody_schedule_sync = yes
+}

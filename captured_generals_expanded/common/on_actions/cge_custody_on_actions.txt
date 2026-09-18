@@ -1,0 +1,161 @@
+on_actions = {
+    on_startup = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                cge_custody_bootstrap = yes
+            }
+        }
+    }
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                ROOT = {
+                    save_event_target_as = cge_settlement_victor
+                }
+                FROM = {
+                    cge_custody_drop_defeated_slots = yes
+                }
+                set_global_flag = cge_custody_settlement_pending
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_peace = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                set_global_flag = cge_custody_settlement_pending
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_war_relation_added = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                ROOT = {
+                    remove_from_array = {
+                        array = cge_custody_victors
+                        value = FROM
+                    }
+                }
+                FROM = {
+                    remove_from_array = {
+                        array = cge_custody_victors
+                        value = ROOT
+                    }
+                }
+                set_global_flag = cge_custody_settlement_pending
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_state_control_changed = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_captured_general_count
+                            value = 0
+                            compare = greater_than
+                        }
+                        NOT = { has_country_flag = cge_state_rescue_refresh_pending }
+                    }
+                    set_country_flag = cge_state_rescue_refresh_pending
+                    country_event = {
+                        id = cge_state_rescue_refresh.1
+                        hours = 1
+                    }
+                }
+                FROM = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_captured_general_count
+                                value = 0
+                                compare = greater_than
+                            }
+                            NOT = { has_country_flag = cge_state_rescue_refresh_pending }
+                        }
+                        set_country_flag = cge_state_rescue_refresh_pending
+                        country_event = {
+                            id = cge_state_rescue_refresh.1
+                            hours = 1
+                        }
+                    }
+                }
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_civil_war_end_before_annexation = {
+        effect = {
+            if = {
+                limit = { NOT = { has_global_flag = cge_logic_disabled } }
+                cge_custody_inherit_civil_war_prisoners = yes
+            }
+        }
+    }
+    on_civil_war_end = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                set_global_flag = cge_custody_settlement_pending
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_annex = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                set_global_flag = cge_custody_settlement_pending
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+    on_liberate = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                cge_custody_schedule_sync = yes
+            }
+        }
+    }
+}

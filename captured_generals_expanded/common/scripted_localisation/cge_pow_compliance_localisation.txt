@@ -1,0 +1,1304 @@
+defined_text = {
+    name = CGEGetPOWComplianceRow1
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_1_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_1
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow2
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_2_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_2
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow3
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_3_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_3
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow4
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_4_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_4
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow5
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_5_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_5
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow6
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_6_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_6
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow7
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_7_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_7
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow8
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_8_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_8
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow9
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_9_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_9
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow10
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_10_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_10
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow11
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_11_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_11
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow12
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_12_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_12
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow13
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_13_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_13
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow14
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_14_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_14
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow15
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_15_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_15
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow16
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_16_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_16
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow17
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_17_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_17
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow18
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_18_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_18
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow19
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_19_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_19
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow20
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_20_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_20
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow21
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_21_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_21
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow22
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_22_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_22
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow23
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_23_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_23
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow24
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_24_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_24
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow25
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_25_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_25
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow26
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_26_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_26
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow27
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_27_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_27
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow28
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_28_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_28
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow29
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_29_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_29
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow30
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_30_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_30
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow31
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_31_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_31
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow32
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_32_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_32
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow33
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_33_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_33
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow34
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_34_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_34
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow35
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_35_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_35
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow36
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_36_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_36
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow37
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_37_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_37
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow38
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_38_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_38
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow39
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_39_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_39
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow40
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_40_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_40
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow41
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_41_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_41
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow42
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_42_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_42
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow43
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_43_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_43
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow44
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_44_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_44
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow45
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_45_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_45
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow46
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_46_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_46
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow47
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_47_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_47
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow48
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_48_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_48
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow49
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_49_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_49
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow50
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_50_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_50
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow51
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_51_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_51
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow52
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_52_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_52
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow53
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_53_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_53
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow54
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_54_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_54
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow55
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_55_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_55
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow56
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_56_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_56
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow57
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_57_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_57
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow58
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_58_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_58
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow59
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_59_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_59
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow60
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_60_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_60
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow61
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_61_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_61
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow62
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_62_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_62
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow63
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_63_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_63
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow64
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_64_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_64
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow65
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_65_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_65
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow66
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_66_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_66
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow67
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_67_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_67
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow68
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_68_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_68
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow69
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_69_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_69
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow70
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_70_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_70
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow71
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_71_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_71
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow72
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_72_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_72
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow73
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_73_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_73
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow74
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_74_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_74
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow75
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_75_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_75
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow76
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_76_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_76
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow77
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_77_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_77
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow78
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_78_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_78
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow79
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_79_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_79
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow80
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_80_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_80
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow81
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_81_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_81
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow82
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_82_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_82
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow83
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_83_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_83
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow84
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_84_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_84
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow85
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_85_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_85
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow86
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_86_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_86
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow87
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_87_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_87
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow88
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_88_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_88
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow89
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_89_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_89
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow90
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_90_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_90
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow91
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_91_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_91
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow92
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_92_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_92
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow93
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_93_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_93
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow94
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_94_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_94
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow95
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_95_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_95
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow96
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_96_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_96
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow97
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_97_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_97
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow98
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_98_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_98
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow99
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_99_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_99
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow100
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_100_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_100
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow101
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_101_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_101
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow102
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_102_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_102
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow103
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_103_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_103
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow104
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_104_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_104
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow105
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_105_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_105
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow106
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_106_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_106
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow107
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_107_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_107
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow108
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_108_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_108
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow109
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_109_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_109
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow110
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_110_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_110
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow111
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_111_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_111
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow112
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_112_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_112
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow113
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_113_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_113
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow114
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_114_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_114
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow115
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_115_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_115
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow116
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_116_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_116
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow117
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_117_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_117
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow118
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_118_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_118
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow119
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_119_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_119
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow120
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_120_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_120
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow121
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_121_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_121
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow122
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_122_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_122
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow123
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_123_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_123
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow124
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_124_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_124
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow125
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_125_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_125
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow126
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_126_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_126
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow127
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_127_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_127
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceRow128
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_128_stacks value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_ROW_128
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup1
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 1 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_1
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup2
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 9 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_2
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup3
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 17 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_3
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup4
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 25 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_4
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup5
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 33 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_5
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup6
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 41 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_6
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup7
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 49 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_7
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup8
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 57 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_8
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup9
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 65 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_9
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup10
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 73 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_10
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup11
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 81 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_11
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup12
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 89 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_12
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup13
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 97 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_13
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup14
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 105 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_14
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup15
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 113 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_15
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceGroup16
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_rows value = 121 compare = greater_than_or_equals } }
+        localization_key = CGE_POW_COMPLIANCE_GROUP_16
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}
+
+defined_text = {
+    name = CGEGetPOWComplianceOverflow
+    text = {
+        trigger = { check_variable = { var = cge_pow_compliance_overflow_countries value = 0 compare = greater_than } }
+        localization_key = CGE_POW_COMPLIANCE_OVERFLOW
+    }
+    text = { localization_key = CGE_POW_COMPLIANCE_EMPTY }
+}

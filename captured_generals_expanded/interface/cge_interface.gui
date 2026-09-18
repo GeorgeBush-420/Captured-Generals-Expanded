@@ -421,6 +421,14 @@ guiTypes = {
 			}
 
 			iconType = {
+                name = "cge_native_row_suicide_pills"
+                position = { x = 103 y = 65 }
+                spriteType = "GFX_cge_suicide_pills"
+                scale = 0.35
+                alwaysTransparent = yes
+            }
+
+			iconType = {
 				name = "cge_native_row_executed_skull"
 				position = { x = 103 y = 65 }
 				spriteType = "GFX_cge_executed_skull"
@@ -1409,7 +1417,7 @@ guiTypes = {
 
 				instantTextboxType = {
 					name = "cge_overview_profile_title"
-					position = { x = 15 y = 12 }
+					position = { x = 15 y = -5 }
 					font = "hoi_20b"
 					text = "CGE_OVERVIEW_SELECTED_GENERAL"
 					maxWidth = 200
@@ -1429,55 +1437,76 @@ guiTypes = {
 
 				instantTextboxType = {
 					name = "cge_overview_name_selected_slot1"
-					position = { x = 10 y = 320 }
+					position = { x = 10 y = 257 }
 					font = "hoi_18mbs"
 					text_color_code = W
 					text = "CGE_OVERVIEW_SELECTED_NAME"
 					maxWidth = 210
-					maxHeight = 46
+					maxHeight = 28
 					fixedsize = yes
 					format = center
 					alwaysTransparent = yes
 				}
 				instantTextboxType = {
 					name = "cge_overview_rank_selected_slot1"
-					position = { x = 10 y = 270 }
+					position = { x = 10 y = 286 }
 					font = "hoi_18mbs"
 					text = "CGE_OVERVIEW_SELECTED_RANK"
 					maxWidth = 210
-					maxHeight = 28
+					maxHeight = 24
 					fixedsize = yes
 					format = center
 					alwaysTransparent = yes
 				}
 				instantTextboxType = {
 					name = "cge_overview_name_selected"
-					position = { x = 10 y = 270 }
+					position = { x = 10 y = 257 }
 					font = "hoi_18mbs"
 					text_color_code = W
 					text = "CGE_OVERVIEW_SELECTED_NAME"
-					maxWidth = 210
-					maxHeight = 46
-					fixedsize = yes
-					format = center
-					alwaysTransparent = yes
-				}
-				instantTextboxType = {
-					name = "cge_overview_rank_selected"
-					position = { x = 10 y = 320 }
-					font = "hoi_18mbs"
-					text = "CGE_OVERVIEW_SELECTED_RANK"
 					maxWidth = 210
 					maxHeight = 28
 					fixedsize = yes
 					format = center
 					alwaysTransparent = yes
 				}
-
+				instantTextboxType = {
+					name = "cge_overview_rank_selected"
+					position = { x = 10 y = 286 }
+					font = "hoi_18mbs"
+					text = "CGE_OVERVIEW_SELECTED_RANK"
+					maxWidth = 210
+					maxHeight = 24
+					fixedsize = yes
+					format = center
+					alwaysTransparent = yes
+				}
+				instantTextboxType = {
+					name = "cge_overview_country_selected"
+					position = { x = 10 y = 310 }
+					font = "hoi_18mbs"
+					text = "CGE_OVERVIEW_SELECTED_COUNTRY"
+					maxWidth = 210
+					maxHeight = 24
+					fixedsize = yes
+					format = center
+					alwaysTransparent = yes
+				}
+				instantTextboxType = {
+					name = "cge_overview_level_selected"
+					position = { x = 10 y = 334 }
+					font = "hoi_18mbs"
+					text = "CGE_OVERVIEW_SELECTED_LEVEL"
+					maxWidth = 210
+					maxHeight = 24
+					fixedsize = yes
+					format = center
+					alwaysTransparent = yes
+				}
 
 				instantTextboxType = {
 					name = "cge_overview_status_alive"
-					position = { x = 0 y = 350 }
+					position = { x = 0 y = 362 }
 					font = "hoi_18mbs"
 					text = "CGE_OVERVIEW_STATUS_IMPRISONED_FINAL"
 					text_color_code = W
@@ -1490,7 +1519,7 @@ guiTypes = {
 
 				instantTextboxType = {
 					name = "cge_overview_status_executed"
-					position = { x = 0 y = 350 }
+					position = { x = 0 y = 362 }
 					font = "hoi_18mbs"
 					text = "CGE_OVERVIEW_STATUS_EXECUTED_FINAL"
 					text_color_code = W
@@ -1503,7 +1532,7 @@ guiTypes = {
 
 				instantTextboxType = {
 					name = "cge_overview_status_recruited"
-					position = { x = 0 y = 350 }
+					position = { x = 0 y = 362 }
 					font = "hoi_18mbs"
 					text = "CGE_OVERVIEW_STATUS_RECRUITED_FINAL"
 					text_color_code = G
@@ -1515,7 +1544,7 @@ guiTypes = {
 				}
 				instantTextboxType = {
 					name = "cge_overview_status_collaborator"
-					position = { x = 0 y = 350 }
+					position = { x = 0 y = 362 }
 					font = "hoi_18mbs"
 					text = "CGE_OVERVIEW_STATUS_COLLABORATOR_FINAL"
 					text_color_code = Y
@@ -1524,6 +1553,16 @@ guiTypes = {
 					fixedsize = yes
 					format = center
 					alwaysTransparent = yes
+				}
+
+				buttonType = {
+					name = "cge_overview_exchange_pow"
+					position = { x = 55 y = 405 }
+					spriteType = "GFX_cge_menu_button_vanilla"
+					buttonText = CGE_EXCHANGE_BUTTON
+					buttonFont = "hoi_16mbs"
+					clicksound = click_default
+					pdx_tooltip = "CGE_EXCHANGE_BUTTON_TT"
 				}
 
 	}
@@ -1977,7 +2016,7 @@ guiTypes = {
 					font = "hoi_14mbs"
 					text = "CGE_POW_FAILURE_NOT_ENOUGH"
 					text_color_code = R
-					maxWidth = 285
+					maxWidth = 524
 					maxHeight = 20
 					fixedsize = yes
 					alwaysTransparent = yes
@@ -1989,7 +2028,7 @@ guiTypes = {
 					font = "hoi_14mbs"
 					text = "CGE_POW_FAILURE_TEMPLATE"
 					text_color_code = R
-					maxWidth = 285
+					maxWidth = 524
 					maxHeight = 20
 					fixedsize = yes
 					alwaysTransparent = yes
@@ -2001,7 +2040,31 @@ guiTypes = {
 					font = "hoi_14mbs"
 					text = "CGE_POW_FAILURE_CAPITAL"
 					text_color_code = R
-					maxWidth = 285
+					maxWidth = 524
+					maxHeight = 20
+					fixedsize = yes
+					alwaysTransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "cge_overview_pow_failure_locked"
+					position = { x = 18 y = 134 }
+					font = "hoi_14mbs"
+					text = "CGE_POW_FAILURE_LOCKED"
+					text_color_code = R
+					maxWidth = 524
+					maxHeight = 20
+					fixedsize = yes
+					alwaysTransparent = yes
+				}
+
+				instantTextboxType = {
+					name = "cge_overview_pow_failure_no_recruiter"
+					position = { x = 18 y = 134 }
+					font = "hoi_14mbs"
+					text = "CGE_POW_FAILURE_NO_RECRUITER"
+					text_color_code = R
+					maxWidth = 524
 					maxHeight = 20
 					fixedsize = yes
 					alwaysTransparent = yes

@@ -1,365 +1,587 @@
-
-
 cge_register_capture = {
-	FROM = {
-		set_country_flag = cge_postwar_watch_active
-	}
-
-	log = "[GetDateText]: CGE numeric register started for [THIS.GetName]."
-	set_variable = { cge_cooperation = 0 }
-	set_character_flag = cge_captured_by_player
-	FROM = {
-		set_variable = {
-			var = cge_event_capture_count_before
-			value = cge_captured_general_count
-		}
-	}
-	cge_prepare_capture_snapshot_on_from = yes
-
-	FROM = {
-		add_to_variable = { cge_captured_general_count = 1 }
-		set_variable = { var = cge_slot value = cge_captured_general_count }
-		meta_effect = {
-			text = {
-
-			set_variable = { var = cge_slot value = cge_captured_general_count }
-			cge_clear_slot_data = yes
-			clear_array = cge_slot_[CGE_SLOT]_origin_country
-			clear_array = cge_slot_[CGE_SLOT]_captor_country
-			set_variable = { var = cge_slot_[CGE_SLOT]_character_key value = cge_cap_char_key }
-			set_variable = { var = cge_slot_[CGE_SLOT]_name_order value = cge_cap_name_order }
-			set_variable = { var = cge_slot_[CGE_SLOT]_rank_key value = cge_cap_rank }
-			set_variable = { var = cge_slot_[CGE_SLOT]_held_state value = cge_cap_state }
-			set_variable = { var = cge_slot_[CGE_SLOT]_level value = cge_cap_level }
-			set_variable = { var = cge_slot_[CGE_SLOT]_attack value = cge_cap_attack }
-			set_variable = { var = cge_slot_[CGE_SLOT]_defense value = cge_cap_defense }
-			set_variable = { var = cge_slot_[CGE_SLOT]_planning value = cge_cap_planning }
-			set_variable = { var = cge_slot_[CGE_SLOT]_logistics value = cge_cap_logistics }
-			set_variable = { var = cge_slot_[CGE_SLOT]_capacity value = cge_cap_capacity }
-			set_variable = { var = cge_slot_[CGE_SLOT]_attack_bonus value = cge_cap_attack_bonus }
-			set_variable = { var = cge_slot_[CGE_SLOT]_defense_bonus value = cge_cap_defense_bonus }
-			set_variable = { var = cge_slot_[CGE_SLOT]_planning_bonus value = cge_cap_planning_bonus }
-			set_variable = { var = cge_slot_[CGE_SLOT]_logistics_bonus value = cge_cap_logistics_bonus }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_count value = cge_cap_trait_count }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_1 value = cge_tmp_trait_1 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_2 value = cge_tmp_trait_2 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_3 value = cge_tmp_trait_3 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_4 value = cge_tmp_trait_4 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_5 value = cge_tmp_trait_5 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_6 value = cge_tmp_trait_6 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_7 value = cge_tmp_trait_7 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_trait_8 value = cge_tmp_trait_8 }
-			add_to_variable = { cge_capture_sequence = 1 }
-			set_variable = { var = cge_slot_[CGE_SLOT]_capture_order value = cge_capture_sequence }
-			add_to_array = { array = cge_slot_[CGE_SLOT]_origin_country value = PREV }
-			add_to_array = { array = cge_slot_[CGE_SLOT]_captor_country value = THIS }
-			set_variable = {
-				var = cge_slot_[CGE_SLOT]_runtime_prisoner_id
-				value = cge_cap_prisoner_id
-			}
-			clear_global_event_target = cge_slot_[CGE_SLOT]_runtime_leader
-			if = {
-				limit = {
-					has_country_flag = cge_capture_actual_leader_found
-				}
-				event_target:cge_capture_actual_leader = {
-					save_global_event_target_as = cge_slot_[CGE_SLOT]_runtime_leader
-				}
-			}
-			clear_variable = cge_slot_[CGE_SLOT]_runtime_portrait_key
-
-			if = {
-				limit = { has_variable = cge_cap_portrait_key }
-				set_variable = { var = cge_slot_[CGE_SLOT]_runtime_portrait_key value = cge_cap_portrait_key }
-			}
-			set_country_flag = cge_has_candidate_[CGE_SLOT]
-			var:cge_slot_[CGE_SLOT]_origin_country^0 = {
-				set_country_flag = cge_postwar_was_at_war_with_player
-			}
-			add_to_array = { array = cge_captured_general_display_slot_[CGE_SLOT] value = THIS }
-			
-			add_to_variable = { cge_main_window_dirty = 1 }
-log = "[GetDateText]: CGE stored captured general in dynamic slot [CGE_SLOT]."
-		
-			}
-			CGE_SLOT = "[?cge_slot|.0]"
-		}
-		cge_mirror_slot_to_character = yes
-	}
-
-	FROM = { cge_refresh_list_after_change = yes }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        FROM = {
+            set_country_flag = cge_postwar_watch_active
+        }
+        set_variable = {
+            cge_cooperation = 0
+        }
+        set_character_flag = cge_captured_by_player
+        clr_character_flag = cge_roster_retired
+        set_character_flag = cge_postwar_tracking_initialized
+        set_character_flag = cge_postwar_war_pending
+        FROM = {
+            set_variable = {
+                var = cge_event_capture_count_before
+                value = cge_captured_general_count
+            }
+        }
+        cge_prepare_capture_snapshot_on_from = yes
+        FROM = {
+            add_to_variable = {
+                cge_captured_general_count = 1
+            }
+            set_variable = {
+                var = cge_slot
+                value = cge_captured_general_count
+            }
+            meta_effect = {
+                text = {
+                    set_variable = {
+                        var = cge_slot
+                        value = cge_captured_general_count
+                    }
+                    cge_clear_slot_data = yes
+                    clear_array = cge_slot_[CGE_SLOT]_origin_country
+                    clear_array = cge_slot_[CGE_SLOT]_captor_country
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_cap_domestic_civil_war
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        set_variable = {
+                            cge_slot_[CGE_SLOT]_domestic_civil_war = 1
+                        }
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_character_key
+                        value = cge_cap_char_key
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_name_order
+                        value = cge_cap_name_order
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_rank_key
+                        value = cge_cap_rank
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_held_state
+                        value = cge_cap_state
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_level
+                        value = cge_cap_level
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_attack
+                        value = cge_cap_attack
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_defense
+                        value = cge_cap_defense
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_planning
+                        value = cge_cap_planning
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_logistics
+                        value = cge_cap_logistics
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_capacity
+                        value = cge_cap_capacity
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_attack_bonus
+                        value = cge_cap_attack_bonus
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_defense_bonus
+                        value = cge_cap_defense_bonus
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_planning_bonus
+                        value = cge_cap_planning_bonus
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_logistics_bonus
+                        value = cge_cap_logistics_bonus
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_count
+                        value = cge_cap_trait_count
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_1
+                        value = cge_tmp_trait_1
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_2
+                        value = cge_tmp_trait_2
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_3
+                        value = cge_tmp_trait_3
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_4
+                        value = cge_tmp_trait_4
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_5
+                        value = cge_tmp_trait_5
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_6
+                        value = cge_tmp_trait_6
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_7
+                        value = cge_tmp_trait_7
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_trait_8
+                        value = cge_tmp_trait_8
+                    }
+                    add_to_variable = {
+                        cge_capture_sequence = 1
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_capture_order
+                        value = cge_capture_sequence
+                    }
+                    add_to_array = {
+                        array = cge_slot_[CGE_SLOT]_origin_country
+                        value = event_target:cge_capture_origin_country
+                    }
+                    add_to_array = {
+                        array = cge_slot_[CGE_SLOT]_captor_country
+                        value = THIS
+                    }
+                    set_variable = {
+                        var = cge_slot_[CGE_SLOT]_runtime_prisoner_id
+                        value = cge_cap_prisoner_id
+                    }
+                    clear_variable = cge_slot_[CGE_SLOT]_runtime_leader
+                    if = {
+                        limit = {
+                            has_country_flag = cge_capture_actual_leader_found
+                        }
+                        set_variable = {
+                            var = cge_slot_[CGE_SLOT]_runtime_leader
+                            value = event_target:cge_capture_actual_leader
+                        }
+                    }
+                    clear_variable = cge_slot_[CGE_SLOT]_runtime_portrait_key
+                    if = {
+                        limit = {
+                            has_variable = cge_cap_portrait_key
+                        }
+                        set_variable = {
+                            var = cge_slot_[CGE_SLOT]_runtime_portrait_key
+                            value = cge_cap_portrait_key
+                        }
+                    }
+                    set_country_flag = cge_has_candidate_[CGE_SLOT]
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_binding_version = 1
+                    }
+                    var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                        set_country_flag = cge_postwar_was_at_war_with_player
+                    }
+                    add_to_array = {
+                        array = cge_captured_general_display_slot_[CGE_SLOT]
+                        value = THIS
+                    }
+                    add_to_variable = {
+                        cge_main_window_dirty = 1
+                    }
+                }
+                CGE_SLOT = "[?cge_slot|.0]"
+            }
+            set_variable = {
+                var = cge_risk_slot
+                value = cge_slot
+            }
+            cge_risk_initialize_slot = yes
+            cge_mirror_slot_to_character = yes
+        }
+        FROM = {
+            cge_refresh_list_after_change = yes
+        }
+    }
 }
-
-
 cge_refresh_alive_count = {
-	cge_calc_alive_count = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_calc_alive_count = yes
+    }
 }
-
 cge_refresh_list_state = {
-	cge_refresh_alive_count = yes
-	cge_update_list_scroll = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_refresh_alive_count = yes
+        cge_update_list_scroll = yes
+    }
 }
-
-
-
-
 cge_release_remove_selected_slot = {
-	set_variable = { var = cge_remove_slot value = cge_release_slot_to_remove }
-	if = {
-		limit = { check_variable = { var = cge_remove_slot value = 0 compare = greater_than } check_variable = { var = cge_remove_slot value = cge_captured_general_count compare = less_than_or_equals } }
-		meta_effect = {
-			text = {
-				if = { limit = { has_variable = cge_slot_[CGE_SLOT]_origin_country } save_event_target_as = cge_pow_captor var:cge_slot_[CGE_SLOT]_origin_country^0 = { if = { limit = { check_variable = { var = cge_pow_recruiter_character_key value = event_target:cge_pow_captor.cge_slot_[CGE_SLOT]_character_key compare = equals } } cge_pow_clear_origin_recruiter_effect = yes } } }
-			}
-			CGE_SLOT = "[?cge_remove_slot|.0]"
-		}
-		set_variable = { var = cge_copy_dst value = cge_remove_slot }
-		set_variable = { var = cge_copy_src value = cge_remove_slot }
-		add_to_variable = { cge_copy_src = 1 }
-		for_loop_effect = {
-			start = cge_copy_src
-			end = cge_captured_general_count
-			compare = less_than_or_equals
-			value = cge_copy_src
-			cge_copy_slot_data = yes
-			add_to_variable = { cge_copy_dst = 1 }
-		}
-		set_variable = { var = cge_slot value = cge_captured_general_count }
-		cge_clear_slot_data = yes
-		subtract_from_variable = { cge_captured_general_count = 1 }
-		if = { limit = { check_variable = { var = cge_captured_general_count value = 0 compare = less_than } } set_variable = { cge_captured_general_count = 0 } }
-		add_to_variable = { cge_main_window_dirty = 1 }
-		cge_list_sync_unsorted = yes
-	}
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_remove_slot
+            value = cge_release_slot_to_remove
+        }
+        clear_variable = cge_risk_ready_slot
+        clear_variable = cge_risk_ready_order
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_remove_slot
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_remove_slot
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_overview_selected_slot
+                        value = cge_remove_slot
+                        compare = equals
+                    }
+                }
+                clr_country_flag = cge_show_overview_window
+                set_variable = {
+                    cge_overview_pow_failure_code = 0
+                }
+                set_variable = {
+                    cge_overview_selected_slot = 1
+                }
+                if = {
+                    limit = {
+                        check_variable = {
+                            var = cge_captured_general_count
+                            value = 1
+                            compare = equals
+                        }
+                    }
+                    clear_variable = cge_overview_selected_slot
+                }
+            }
+            else_if = {
+                limit = {
+                    check_variable = {
+                        var = cge_overview_selected_slot
+                        value = cge_remove_slot
+                        compare = greater_than
+                    }
+                }
+                subtract_from_variable = {
+                    cge_overview_selected_slot = 1
+                }
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_origin_country^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        save_event_target_as = cge_pow_captor
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            if = {
+                                limit = {
+                                    check_variable = {
+                                        var = cge_pow_recruiter_capture_order
+                                        value = event_target:cge_pow_captor.cge_slot_[CGE_SLOT]_capture_order
+                                        compare = equals
+                                    }
+                                }
+                                cge_pow_clear_origin_recruiter_effect = yes
+                            }
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_remove_slot|.0]"
+            }
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_flag = cge_return_metadata_only_cleanup
+                    }
+                }
+                meta_effect = {
+                    text = {
+                        var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                            set_character_flag = cge_roster_retired
+                        }
+                    }
+                    CGE_SLOT = "[?cge_remove_slot|.0]"
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_selected_slot
+                        value = cge_remove_slot
+                        compare = equals
+                    }
+                }
+                clear_variable = cge_postwar_selected_slot
+            }
+            else_if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_selected_slot
+                        value = cge_remove_slot
+                        compare = greater_than
+                    }
+                }
+                subtract_from_variable = {
+                    cge_postwar_selected_slot = 1
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_1
+                        value = cge_remove_slot
+                        compare = equals
+                    }
+                }
+                clear_variable = cge_postwar_candidate_slot_1
+            }
+            else_if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_1
+                        value = cge_remove_slot
+                        compare = greater_than
+                    }
+                }
+                subtract_from_variable = {
+                    cge_postwar_candidate_slot_1 = 1
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_2
+                        value = cge_remove_slot
+                        compare = equals
+                    }
+                }
+                clear_variable = cge_postwar_candidate_slot_2
+            }
+            else_if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_2
+                        value = cge_remove_slot
+                        compare = greater_than
+                    }
+                }
+                subtract_from_variable = {
+                    cge_postwar_candidate_slot_2 = 1
+                }
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_3
+                        value = cge_remove_slot
+                        compare = equals
+                    }
+                }
+                clear_variable = cge_postwar_candidate_slot_3
+            }
+            else_if = {
+                limit = {
+                    check_variable = {
+                        var = cge_postwar_candidate_slot_3
+                        value = cge_remove_slot
+                        compare = greater_than
+                    }
+                }
+                subtract_from_variable = {
+                    cge_postwar_candidate_slot_3 = 1
+                }
+            }
+            set_variable = {
+                var = cge_copy_dst
+                value = cge_remove_slot
+            }
+            set_variable = {
+                var = cge_copy_src
+                value = cge_remove_slot
+            }
+            add_to_variable = {
+                cge_copy_src = 1
+            }
+            for_loop_effect = {
+                start = cge_copy_src
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_compaction_source_index
+                set_variable = {
+                    var = cge_copy_src
+                    value = cge_compaction_source_index
+                }
+                cge_copy_slot_data = yes
+                add_to_variable = {
+                    cge_copy_dst = 1
+                }
+            }
+            set_variable = {
+                var = cge_slot
+                value = cge_captured_general_count
+            }
+            cge_clear_slot_data = yes
+            subtract_from_variable = {
+                cge_captured_general_count = 1
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_captured_general_count
+                        value = 0
+                        compare = less_than
+                    }
+                }
+                set_variable = {
+                    cge_captured_general_count = 0
+                }
+            }
+            add_to_variable = {
+                cge_main_window_dirty = 1
+            }
+            if = {
+                limit = {
+                    NOT = {
+                        has_country_flag = cge_roster_batch_removal
+                    }
+                }
+                cge_refresh_list_after_change = yes
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 cge_remove_released_generals = {
-	add_to_variable = { cge_capture_epoch = 1 }
-	save_event_target_as = cge_cleanup_captor
-	every_country = {
-		every_army_leader = {
-			include_invisible = yes
-			limit = { has_character_flag = cge_captured_by_player }
-			set_variable = { var = cge_cge_seen_epoch value = event_target:cge_cleanup_captor.cge_capture_epoch }
-		}
-	}
-	set_variable = { var = cge_slot value = cge_captured_general_count }
-	while_loop_effect = {
-		limit = { check_variable = { var = cge_slot value = 0 compare = greater_than } }
-		set_variable = { cge_keep_slot = 0 }
-		meta_effect = {
-			text = { if = { limit = { has_event_target = cge_slot_[CGE_SLOT]_runtime_leader event_target:cge_slot_[CGE_SLOT]_runtime_leader = { check_variable = { var = cge_cge_seen_epoch value = ROOT.cge_capture_epoch compare = equals } } } set_variable = { cge_keep_slot = 1 } } }
-			CGE_SLOT = "[?cge_slot|.0]"
-		}
-		if = { limit = { check_variable = { var = cge_keep_slot value = 0 compare = equals } } set_variable = { var = cge_release_slot_to_remove value = cge_slot } cge_release_remove_selected_slot = yes }
-		subtract_from_variable = { cge_slot = 1 }
-	}
-	cge_list_sync_unsorted = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_restore_missing_recruited_records = yes
+        save_event_target_as = cge_cleanup_captor
+        for_loop_effect = {
+            start = cge_captured_general_count
+            end = 1
+            add = -1
+            compare = greater_than_or_equals
+            value = cge_cleanup_slot
+            set_variable = {
+                cge_keep_slot = 0
+            }
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            OR = {
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_pow_collaborator
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                check_variable = {
+                                    var = cge_slot_[CGE_SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                var:cge_slot_[CGE_SLOT]_runtime_leader = {
+                                    OR = {
+                                        is_general_captured = yes
+                                        has_character_flag = cge_recruited_by_player
+                                    }
+                                }
+                            }
+                        }
+                        set_variable = {
+                            cge_keep_slot = 1
+                        }
+                    }
+                    else_if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[CGE_SLOT]
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_origin_country^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        var:cge_slot_[CGE_SLOT]_origin_country^0 = {
+                            var:original_tag = {
+                                save_event_target_as = cge_cleanup_origin
+                            }
+                        }
+                        if = {
+                            limit = {
+                                NOT = {
+                                    any_enemy_country = {
+                                        original_tag = event_target:cge_cleanup_origin
+                                    }
+                                }
+                            }
+                            set_variable = {
+                                cge_keep_slot = 1
+                            }
+                            set_country_flag = cge_postwar_watch_active
+                        }
+                    }
+                }
+                CGE_SLOT = "[?cge_cleanup_slot|.0]"
+            }
+            if = {
+                limit = {
+                    check_variable = {
+                        var = cge_keep_slot
+                        value = 0
+                        compare = equals
+                    }
+                }
+                set_variable = {
+                    var = cge_release_slot_to_remove
+                    value = cge_cleanup_slot
+                }
+                cge_release_remove_selected_slot = yes
+            }
+        }
+        cge_refresh_list_after_change = yes
+    }
 }
-
-
-
-
-

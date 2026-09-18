@@ -1,0 +1,367 @@
+cge_profile_resume_events = {
+    every_country = {
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_1
+            country_event = {
+                id = cge.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_2
+            country_event = {
+                id = cge.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_execution_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_execution_1
+            country_event = {
+                id = cge_execution.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_trial_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_trial_1
+            country_event = {
+                id = cge_trial.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_trial_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_trial_2
+            country_event = {
+                id = cge_trial.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_trial_3
+            }
+            clr_country_flag = cge_profile_deferred_cge_trial_3
+            country_event = {
+                id = cge_trial.3
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_trial_4
+            }
+            clr_country_flag = cge_profile_deferred_cge_trial_4
+            country_event = {
+                id = cge_trial.4
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_state_rescue_refresh_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_state_rescue_refresh_1
+            country_event = {
+                id = cge_state_rescue_refresh.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_risk_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_risk_1
+            country_event = {
+                id = cge_risk.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_risk_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_risk_2
+            country_event = {
+                id = cge_risk.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_debug_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_debug_1
+            country_event = {
+                id = cge_debug.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_debug_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_debug_2
+            country_event = {
+                id = cge_debug.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_debug_3
+            }
+            clr_country_flag = cge_profile_deferred_cge_debug_3
+            country_event = {
+                id = cge_debug.3
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_debug_4
+            }
+            clr_country_flag = cge_profile_deferred_cge_debug_4
+            country_event = {
+                id = cge_debug.4
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_recovery_10
+            }
+            clr_country_flag = cge_profile_deferred_cge_recovery_10
+            country_event = {
+                id = cge_recovery.10
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_recovery_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_recovery_1
+            country_event = {
+                id = cge_recovery.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_custody_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_custody_1
+            country_event = {
+                id = cge_custody.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_1
+            country_event = {
+                id = cge_negotiations.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_2
+            country_event = {
+                id = cge_negotiations.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_3
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_3
+            country_event = {
+                id = cge_negotiations.3
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_10
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_10
+            country_event = {
+                id = cge_negotiations.10
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_11
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_11
+            country_event = {
+                id = cge_negotiations.11
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_12
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_12
+            country_event = {
+                id = cge_negotiations.12
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_20
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_20
+            clamp_variable = { var = cge_profile_receipts_deferred min = 1 }
+            for_loop_effect = {
+                start = 0
+                end = cge_profile_receipts_deferred
+                compare = less_than
+                value = cge_profile_receipt_resume_index
+                country_event = { id = cge_negotiations.20 }
+            }
+            clear_variable = cge_profile_receipts_deferred
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_negotiations_21
+            }
+            clr_country_flag = cge_profile_deferred_cge_negotiations_21
+            clamp_variable = { var = cge_profile_payments_deferred min = 1 }
+            for_loop_effect = {
+                start = 0
+                end = cge_profile_payments_deferred
+                compare = less_than
+                value = cge_profile_payment_resume_index
+                country_event = { id = cge_negotiations.21 }
+            }
+            clear_variable = cge_profile_payments_deferred
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_exchange_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_exchange_1
+            country_event = {
+                id = cge_exchange.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_exchange_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_exchange_2
+            country_event = {
+                id = cge_exchange.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_exchange_3
+            }
+            clr_country_flag = cge_profile_deferred_cge_exchange_3
+            country_event = {
+                id = cge_exchange.3
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_exchange_4
+            }
+            clr_country_flag = cge_profile_deferred_cge_exchange_4
+            country_event = {
+                id = cge_exchange.4
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_exchange_5
+            }
+            clr_country_flag = cge_profile_deferred_cge_exchange_5
+            country_event = {
+                id = cge_exchange.5
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_1
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_1
+            country_event = {
+                id = cge_postwar.1
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_2
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_2
+            country_event = {
+                id = cge_postwar.2
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_3
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_3
+            country_event = {
+                id = cge_postwar.3
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_4
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_4
+            country_event = {
+                id = cge_postwar.4
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_5
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_5
+            country_event = {
+                id = cge_postwar.5
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_6
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_6
+            country_event = {
+                id = cge_postwar.6
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_99
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_99
+            country_event = {
+                id = cge_postwar.99
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_7
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_7
+            country_event = {
+                id = cge_postwar.7
+            }
+        }
+        if = {
+            limit = {
+                has_country_flag = cge_profile_deferred_cge_postwar_8
+            }
+            clr_country_flag = cge_profile_deferred_cge_postwar_8
+            country_event = {
+                id = cge_postwar.8
+            }
+        }
+    }
+}

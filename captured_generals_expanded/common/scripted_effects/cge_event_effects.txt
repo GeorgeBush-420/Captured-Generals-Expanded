@@ -1,167 +1,721 @@
-
 cge_trial_prepare_slot = {
-	set_variable = { var = cge_slot_ctx value = event_target:cge_trial_general.cge_cge_slot_index }
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        set_variable = {
+            var = cge_slot_ctx
+            value = event_target:cge_trial_general.cge_cge_slot_index
+        }
+    }
 }
-
 cge_trial_finish_slot_refresh = {
-	if = {
-		limit = {
-			check_variable = { var = cge_slot_ctx value = 0 compare = greater_than }
-			check_variable = { var = cge_slot_ctx value = cge_captured_general_count compare = less_than_or_equals }
-		}
-		set_variable = { var = cge_slot value = cge_slot_ctx }
-		cge_mirror_slot_to_character = yes
-		clear_variable = cge_slot
-	}
-	clear_variable = cge_slot_ctx
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                check_variable = {
+                    var = cge_slot_ctx
+                    value = 0
+                    compare = greater_than
+                }
+                check_variable = {
+                    var = cge_slot_ctx
+                    value = cge_captured_general_count
+                    compare = less_than_or_equals
+                }
+            }
+            set_variable = {
+                var = cge_slot
+                value = cge_slot_ctx
+            }
+            cge_mirror_slot_to_character = yes
+            clear_variable = cge_slot
+        }
+        clear_variable = cge_slot_ctx
+    }
 }
-
 cge_trial_stage1_public = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_route = 1 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_publicity = 10 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 1 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_route = 1
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_publicity = 10
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 1
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage1_military = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_route = 2 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_severity = 10 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 1 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_route = 2
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_severity = 10
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 1
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage1_plea = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_route = 3 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_negotiation = 10 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 1 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_route = 3
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_negotiation = 10
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 1
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage2_press = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				add_to_variable = { cge_slot_[CGE_SLOT]_trial_severity = 10 }
-				add_to_variable = { cge_slot_[CGE_SLOT]_trial_publicity = 5 }
-				subtract_from_variable = { cge_slot_[CGE_SLOT]_patience = 5 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 2 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_severity = 10
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_publicity = 5
+                    }
+                    subtract_from_variable = {
+                        cge_slot_[CGE_SLOT]_patience = 5
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 2
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage2_credible = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				add_to_variable = { cge_slot_[CGE_SLOT]_trial_credibility = 10 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 2 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_credibility = 10
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 2
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage2_leniency = {
-	cge_trial_prepare_slot = yes
-	meta_effect = {
-		text = {
-			if = {
-				limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } }
-				add_to_variable = { cge_slot_[CGE_SLOT]_trial_negotiation = 10 }
-				add_to_variable = { cge_slot_[CGE_SLOT]_cooperation = 5 }
-				set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 2 }
-			}
-		}
-		CGE_SLOT = "[?cge_slot_ctx|.0]"
-	}
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_negotiation = 10
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_cooperation = 5
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 2
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_public_broadcast = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_publicity = 15 } add_to_variable = { cge_slot_[CGE_SLOT]_trial_severity = 5 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_publicity = 15
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_severity = 5
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_public_control = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_credibility = 15 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_credibility = 15
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_military_example = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_severity = 15 } subtract_from_variable = { cge_slot_[CGE_SLOT]_patience = 5 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_severity = 15
+                    }
+                    subtract_from_variable = {
+                        cge_slot_[CGE_SLOT]_patience = 5
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_military_law = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_credibility = 15 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_credibility = 15
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_plea_formal = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_negotiation = 15 } add_to_variable = { cge_slot_[CGE_SLOT]_cooperation = 10 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_negotiation = 15
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_cooperation = 10
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage3_plea_hold = {
-	cge_trial_prepare_slot = yes
-	meta_effect = { text = { if = { limit = { has_country_flag = cge_has_candidate_[CGE_SLOT] check_variable = { var = cge_slot_[CGE_SLOT]_patience_operation_pending value = 0 compare = greater_than } check_variable = { var = cge_slot_[CGE_SLOT]_patience_selected_action value = 5 compare = equals } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_executed value = 0 compare = greater_than } } NOT = { check_variable = { var = cge_slot_[CGE_SLOT]_recruited value = 0 compare = greater_than } } } add_to_variable = { cge_slot_[CGE_SLOT]_trial_negotiation = 5 } add_to_variable = { cge_slot_[CGE_SLOT]_trial_severity = 5 } set_variable = { cge_slot_[CGE_SLOT]_trial_stage = 3 } } } CGE_SLOT = "[?cge_slot_ctx|.0]" }
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        meta_effect = {
+            text = {
+                if = {
+                    limit = {
+                        has_country_flag = cge_has_candidate_[CGE_SLOT]
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_operation_pending
+                            value = 0
+                            compare = greater_than
+                        }
+                        check_variable = {
+                            var = cge_slot_[CGE_SLOT]_patience_selected_action
+                            value = 5
+                            compare = equals
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_executed
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                        NOT = {
+                            check_variable = {
+                                var = cge_slot_[CGE_SLOT]_recruited
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_negotiation = 5
+                    }
+                    add_to_variable = {
+                        cge_slot_[CGE_SLOT]_trial_severity = 5
+                    }
+                    set_variable = {
+                        cge_slot_[CGE_SLOT]_trial_stage = 3
+                    }
+                }
+            }
+            CGE_SLOT = "[?cge_slot_ctx|.0]"
+        }
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage4_condemn = {
-	cge_trial_prepare_slot = yes
-	cge_trial_finish_condemn = yes
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        cge_trial_finish_condemn = yes
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage4_convict = {
-	cge_trial_prepare_slot = yes
-	cge_trial_finish_convict = yes
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        cge_trial_finish_convict = yes
+        cge_trial_finish_slot_refresh = yes
+    }
 }
-
 cge_trial_stage4_plea = {
-	cge_trial_prepare_slot = yes
-	cge_trial_finish_plea = yes
-	cge_trial_finish_slot_refresh = yes
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        cge_trial_prepare_slot = yes
+        cge_trial_finish_plea = yes
+        cge_trial_finish_slot_refresh = yes
+    }
 }

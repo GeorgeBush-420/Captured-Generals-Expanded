@@ -641,7 +641,7 @@ defined_text = {
 	text = { trigger = { NOT = { check_variable = { var = cge_cge_character_key value = 640 compare = greater_than } } } localization_key = CGE_BR_PR_S_B20 }
 	text = { trigger = { NOT = { check_variable = { var = cge_cge_character_key value = 672 compare = greater_than } } } localization_key = CGE_BR_PR_S_B21 }
 	text = { trigger = { NOT = { check_variable = { var = cge_cge_character_key value = 704 compare = greater_than } } } localization_key = CGE_BR_PR_S_B22 }
-	text = { trigger = { NOT = { check_variable = { var = cge_cge_character_key value = 724 compare = greater_than } } } localization_key = CGE_BR_PR_S_B23 }
+	text = { trigger = { NOT = { check_variable = { var = cge_cge_character_key value = 725 compare = greater_than } } } localization_key = CGE_BR_PR_S_B23 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }
 
@@ -1481,6 +1481,7 @@ defined_text = {
 	text = { trigger = { check_variable = { var = cge_cge_character_key value = 722 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_722 }
 	text = { trigger = { check_variable = { var = cge_cge_character_key value = 723 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_723 }
 	text = { trigger = { check_variable = { var = cge_cge_character_key value = 724 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_724 }
+	text = { trigger = { check_variable = { var = cge_cge_character_key value = 725 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_725 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }
 
@@ -1513,7 +1514,7 @@ defined_text = {
 	text = { trigger = { NOT = { check_variable = { var = cge_recruitment_character_key value = 640 compare = greater_than } } } localization_key = CGE_BR_REC_S_B20 }
 	text = { trigger = { NOT = { check_variable = { var = cge_recruitment_character_key value = 672 compare = greater_than } } } localization_key = CGE_BR_REC_S_B21 }
 	text = { trigger = { NOT = { check_variable = { var = cge_recruitment_character_key value = 704 compare = greater_than } } } localization_key = CGE_BR_REC_S_B22 }
-	text = { trigger = { NOT = { check_variable = { var = cge_recruitment_character_key value = 724 compare = greater_than } } } localization_key = CGE_BR_REC_S_B23 }
+	text = { trigger = { NOT = { check_variable = { var = cge_recruitment_character_key value = 725 compare = greater_than } } } localization_key = CGE_BR_REC_S_B23 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }
 
@@ -2353,6 +2354,7 @@ defined_text = {
 	text = { trigger = { check_variable = { var = cge_recruitment_character_key value = 722 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_722 }
 	text = { trigger = { check_variable = { var = cge_recruitment_character_key value = 723 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_723 }
 	text = { trigger = { check_variable = { var = cge_recruitment_character_key value = 724 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_724 }
+	text = { trigger = { check_variable = { var = cge_recruitment_character_key value = 725 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_725 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }
 
@@ -2993,7 +2995,7 @@ defined_text = {
 	text = { trigger = { NOT = { check_variable = { var = cge_overview_selected_character_key value = 640 compare = greater_than } } } localization_key = CGE_BR_OV_S_B20 }
 	text = { trigger = { NOT = { check_variable = { var = cge_overview_selected_character_key value = 672 compare = greater_than } } } localization_key = CGE_BR_OV_S_B21 }
 	text = { trigger = { NOT = { check_variable = { var = cge_overview_selected_character_key value = 704 compare = greater_than } } } localization_key = CGE_BR_OV_S_B22 }
-	text = { trigger = { NOT = { check_variable = { var = cge_overview_selected_character_key value = 724 compare = greater_than } } } localization_key = CGE_BR_OV_S_B23 }
+	text = { trigger = { NOT = { check_variable = { var = cge_overview_selected_character_key value = 725 compare = greater_than } } } localization_key = CGE_BR_OV_S_B23 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }
 
@@ -3833,5 +3835,6 @@ defined_text = {
 	text = { trigger = { check_variable = { var = cge_overview_selected_character_key value = 722 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_722 }
 	text = { trigger = { check_variable = { var = cge_overview_selected_character_key value = 723 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_723 }
 	text = { trigger = { check_variable = { var = cge_overview_selected_character_key value = 724 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_724 }
+	text = { trigger = { check_variable = { var = cge_overview_selected_character_key value = 725 compare = equals } } localization_key = CGE_STATIC_PORTRAIT_725 }
 	text = { localization_key = CGE_SPRITE_GFX_leader_unknown }
 }

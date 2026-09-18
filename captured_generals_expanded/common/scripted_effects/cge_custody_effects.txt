@@ -1,0 +1,718 @@
+cge_custody_schedule_sync = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_custody_sync_pending
+                }
+            }
+            set_global_flag = cge_custody_sync_pending
+            country_event = {
+                id = cge_custody.1
+                hours = 2
+            }
+        }
+    }
+}
+cge_custody_sync_world = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_global_flag = cge_custody_sync_pending
+        if = {
+            limit = {
+                has_global_flag = cge_custody_settlement_pending
+            }
+            every_country = {
+                limit = {
+                    is_ai = yes
+                    check_variable = {
+                        var = cge_captured_general_count
+                        value = 0
+                        compare = greater_than
+                    }
+                }
+                cge_recovery_offer_peacetime_prisoners = yes
+            }
+        }
+        clr_global_flag = cge_custody_settlement_pending
+        every_country = {
+            limit = {
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_custody_sync_country = yes
+        }
+        every_country = {
+            limit = {
+                is_ai = yes
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_recovery_offer_peacetime_prisoners = yes
+        }
+        every_country = {
+            limit = {
+                is_ai = no
+                check_variable = {
+                    var = cge_captured_general_count
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_postwar_watch_tick = yes
+        }
+        every_country = {
+            limit = {
+                check_variable = {
+                    var = cge_negotiation_queue^num
+                    value = 0
+                    compare = greater_than
+                }
+            }
+            cge_negotiation_schedule_next = yes
+        }
+    }
+}
+cge_custody_sync_country = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_custody_holder
+        set_country_flag = cge_roster_batch_removal
+        for_loop_effect = {
+            start = cge_captured_general_count
+            end = 1
+            add = -1
+            compare = greater_than_or_equals
+            value = cge_custody_index
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            has_variable = cge_slot_[SLOT]_runtime_leader
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                        }
+                        var:cge_slot_[SLOT]_runtime_leader = {
+                            save_event_target_as = cge_custody_general
+                            OWNER = { save_event_target_as = cge_custody_owner }
+                        }
+                        if = {
+                            limit = {
+                                NOT = {
+                                    check_variable = {
+                                        var = cge_slot_[SLOT]_held_state
+                                        value = 0
+                                        compare = greater_than
+                                    }
+                                }
+                                event_target:cge_custody_general = {
+                                    has_variable = cge_capture_site_state
+                                }
+                            }
+                            set_variable = {
+                                var = cge_slot_[SLOT]_held_state
+                                value = event_target:cge_custody_general.cge_capture_site_state
+                            }
+                        }
+                        var:cge_slot_[SLOT]_origin_country^0 = {
+                            var:original_tag = {
+                                save_event_target_as = cge_custody_origin_tag
+                            }
+                        }
+                        if = {
+                            limit = {
+                                OR = {
+                                    var:cge_slot_[SLOT]_origin_country^0 = {
+                                        has_country_flag = cge_postwar_was_at_war_with_player
+                                    }
+                                    var:cge_slot_[SLOT]_origin_country^0 = {
+                                        var:original_tag = {
+                                            has_country_flag = cge_postwar_was_at_war_with_player
+                                        }
+                                    }
+                                }
+                            }
+                            event_target:cge_custody_general = {
+                                set_character_flag = cge_postwar_tracking_initialized
+                                set_character_flag = cge_postwar_war_pending
+                            }
+                            set_country_flag = cge_postwar_watch_active
+                        }
+                        if = {
+                            limit = {
+                                event_target:cge_custody_general = {
+                                    NOT = { is_general_captured = yes }
+                                    has_character_flag = cge_postwar_war_pending
+                                    OR = {
+                                        NOT = { has_variable = cge_native_captor }
+                                        check_variable = {
+                                            var = cge_native_captor
+                                            value = event_target:cge_custody_holder
+                                            compare = equals
+                                        }
+                                    }
+                                }
+                                NOT = {
+                                    any_enemy_country = {
+                                        original_tag = event_target:cge_custody_origin_tag
+                                    }
+                                }
+                            }
+                            event_target:cge_custody_general = {
+                                capture_by = event_target:cge_custody_holder
+                                set_variable = {
+                                    var = cge_native_captor
+                                    value = event_target:cge_custody_holder
+                                }
+                            }
+                        }
+                        if = {
+                            limit = {
+                                event_target:cge_custody_general = {
+                                    has_variable = cge_native_captor
+                                    var:cge_native_captor = {
+                                        NOT = {
+                                            tag = event_target:cge_custody_holder
+                                        }
+                                    }
+                                }
+                            }
+                            set_country_flag = cge_return_metadata_only_cleanup
+                            set_variable = {
+                                cge_release_slot_to_remove = [SLOT]
+                            }
+                            cge_release_remove_selected_slot = yes
+                            clr_country_flag = cge_return_metadata_only_cleanup
+                        }
+                        else_if = {
+                            limit = {
+                                event_target:cge_custody_general = {
+                                    NOT = { has_character_flag = cge_recruited_by_player }
+                                    OR = {
+                                        is_general_captured = yes
+                                        has_variable = cge_native_captor
+                                    }
+                                }
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_held_state
+                                    value = 0
+                                    compare = greater_than
+                                }
+                                var:cge_slot_[SLOT]_held_state = {
+                                    CONTROLLER = {
+                                        exists = yes
+                                        NOT = {
+                                            tag = event_target:cge_custody_holder
+                                        }
+                                        NOT = { tag = event_target:cge_custody_owner }
+                                        check_variable = {
+                                            var = original_tag
+                                            value = event_target:cge_custody_holder.original_tag
+                                            compare = equals
+                                        }
+                                    }
+                                }
+                            }
+                            var:cge_slot_[SLOT]_held_state = {
+                                CONTROLLER = {
+                                    save_event_target_as = cge_custody_destination
+                                }
+                            }
+                            set_variable = {
+                                cge_custody_transfer_slot = [SLOT]
+                            }
+                            cge_custody_transfer_record = yes
+                        }
+                        else_if = {
+                            limit = {
+                                event_target:cge_custody_general = {
+                                    NOT = { is_general_captured = yes }
+                                    NOT = { has_character_flag = cge_postwar_war_pending }
+                                }
+                            }
+                            if = {
+                                limit = {
+                                    event_target:cge_custody_general = {
+                                        has_character_flag = cge_recruited_by_player
+                                    }
+                                }
+                                set_country_flag = cge_return_metadata_only_cleanup
+                            }
+                            else = {
+                                event_target:cge_custody_general = {
+                                    cge_return_clear_character_status = yes
+                                    clear_variable = cge_native_captor
+                                }
+                            }
+                            set_variable = { cge_release_slot_to_remove = [SLOT] }
+                            cge_release_remove_selected_slot = yes
+                            clr_country_flag = cge_return_metadata_only_cleanup
+                        }
+                    }
+                }
+                SLOT = "[?cge_custody_index|.0]"
+            }
+        }
+        clr_country_flag = cge_roster_batch_removal
+        cge_refresh_list_after_change = yes
+    }
+}
+cge_custody_transfer_record = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_custody_source
+        set_variable = {
+            var = cge_slot
+            value = cge_custody_transfer_slot
+        }
+        meta_effect = {
+            text = {
+                set_variable = { cge_slot_[SLOT]_recovery_state = 0 }
+                clear_variable = cge_slot_[SLOT]_recovery_recipient
+                set_variable = { cge_slot_[SLOT]_negotiation_state = 0 }
+                set_variable = { cge_slot_[SLOT]_negotiation_group = 0 }
+            }
+            SLOT = "[?cge_custody_transfer_slot|.0]"
+        }
+        cge_mirror_slot_to_character = yes
+        event_target:cge_custody_general = {
+            save_event_target_as = cge_roster_general
+        }
+        set_country_flag = cge_return_metadata_only_cleanup
+        set_variable = {
+            var = cge_release_slot_to_remove
+            value = cge_custody_transfer_slot
+        }
+        cge_release_remove_selected_slot = yes
+        clr_country_flag = cge_return_metadata_only_cleanup
+        event_target:cge_custody_general = {
+            set_variable = {
+                var = cge_native_captor
+                value = event_target:cge_custody_destination
+            }
+            clear_variable = cge_recovery_refused_captor
+            clr_character_flag = cge_roster_retired
+            capture_by = event_target:cge_custody_destination
+        }
+        event_target:cge_custody_destination = {
+            cge_custody_import_record = yes
+            cge_refresh_list_after_change = yes
+        }
+        event_target:cge_custody_source = {
+            save_event_target_as = cge_custody_holder
+        }
+    }
+}
+cge_custody_import_record = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        clr_country_flag = cge_custody_already_present
+        for_loop_effect = {
+            start = cge_captured_general_count
+            end = 1
+            add = -1
+            compare = greater_than_or_equals
+            value = cge_custody_import_index
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            check_variable = {
+                                var = cge_slot_[SLOT]_runtime_leader
+                                value = event_target:cge_roster_general
+                                compare = equals
+                            }
+                        }
+                        if = {
+                            limit = {
+                                var:cge_slot_[SLOT]_captor_country^0 = { tag = PREV }
+                            }
+                            set_country_flag = cge_custody_already_present
+                            set_variable = { cge_slot = [SLOT] }
+                            cge_mirror_slot_to_character = yes
+                        }
+                        else = {
+                            set_country_flag = cge_roster_batch_removal
+                            set_country_flag = cge_return_metadata_only_cleanup
+                            set_variable = { cge_release_slot_to_remove = [SLOT] }
+                            cge_release_remove_selected_slot = yes
+                            clr_country_flag = cge_return_metadata_only_cleanup
+                            clr_country_flag = cge_roster_batch_removal
+                        }
+                    }
+                }
+                SLOT = "[?cge_custody_import_index|.0]"
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_country_flag = cge_custody_already_present
+                }
+            }
+            event_target:cge_roster_general = {
+                if = {
+                    limit = {
+                        NOT = {
+                            check_variable = {
+                                var = cge_cge_origin_country^num
+                                value = 0
+                                compare = greater_than
+                            }
+                        }
+                    }
+                    OWNER = {
+                        save_event_target_as = cge_custody_import_origin
+                    }
+                    clear_array = cge_cge_origin_country
+                    add_to_array = {
+                        array = cge_cge_origin_country
+                        value = event_target:cge_custody_import_origin
+                    }
+                    set_variable = {
+                        var = cge_cge_level
+                        value = skill_level
+                    }
+                    set_variable = {
+                        cge_cge_rank_key = 1
+                    }
+                    if = {
+                        limit = {
+                            is_field_marshal = yes
+                        }
+                        set_variable = {
+                            cge_cge_rank_key = 2
+                        }
+                    }
+                    set_variable = {
+                        cge_cge_patience = 75
+                    }
+                    set_variable = {
+                        cge_cge_cooperation = 25
+                    }
+                    if = {
+                        limit = {
+                            has_variable = cge_capture_site_state
+                        }
+                        set_variable = {
+                            var = cge_cge_held_state
+                            value = cge_capture_site_state
+                        }
+                    }
+                }
+                clr_character_flag = cge_roster_retired
+            }
+            set_country_flag = cge_custody_importing
+            cge_restore_recruited_record = yes
+            clr_country_flag = cge_custody_importing
+        }
+        clr_country_flag = cge_custody_already_present
+    }
+}
+cge_custody_inherit_civil_war_prisoners = {
+    if = {
+        limit = { NOT = { has_global_flag = cge_logic_disabled } }
+        ROOT = { save_event_target_as = cge_custody_destination }
+        FROM = {
+            save_event_target_as = cge_custody_holder
+            set_country_flag = cge_roster_batch_removal
+            for_loop_effect = {
+                start = cge_captured_general_count
+                end = 1
+                add = -1
+                compare = greater_than_or_equals
+                value = cge_custody_inherit_index
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                has_country_flag = cge_has_candidate_[SLOT]
+                                has_variable = cge_slot_[SLOT]_runtime_leader
+                                NOT = { check_variable = { var = cge_slot_[SLOT]_executed value = 0 compare = greater_than } }
+                                NOT = { check_variable = { var = cge_slot_[SLOT]_recruited value = 0 compare = greater_than } }
+                                var:cge_slot_[SLOT]_runtime_leader = {
+                                    is_general_captured = yes
+                                    check_variable = { var = cge_native_captor value = PREV compare = equals }
+                                }
+                            }
+                            var:cge_slot_[SLOT]_runtime_leader = { save_event_target_as = cge_custody_general }
+                            if = {
+                                limit = {
+                                    event_target:cge_custody_general = {
+                                        OWNER = {
+                                            NOT = {
+                                                check_variable = {
+                                                    var = original_tag
+                                                    value = event_target:cge_custody_destination.original_tag
+                                                    compare = equals
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                set_variable = { cge_custody_transfer_slot = [SLOT] }
+                                cge_custody_transfer_record = yes
+                            }
+                            else = {
+                                event_target:cge_custody_general = {
+                                    cge_return_clear_character_status = yes
+                                    clear_variable = cge_native_captor
+                                }
+                                set_variable = { cge_release_slot_to_remove = [SLOT] }
+                                cge_release_remove_selected_slot = yes
+                            }
+                        }
+                    }
+                    SLOT = "[?cge_custody_inherit_index|.0]"
+                }
+            }
+            clr_country_flag = cge_roster_batch_removal
+        }
+    }
+}
+cge_custody_drop_defeated_slots = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        save_event_target_as = cge_defeated_holder
+        if = {
+            limit = {
+                NOT = {
+                    is_in_array = {
+                        array = cge_custody_victors
+                        value = event_target:cge_settlement_victor
+                    }
+                }
+            }
+            add_to_array = {
+                array = cge_custody_victors
+                value = event_target:cge_settlement_victor
+            }
+        }
+        set_country_flag = cge_roster_batch_removal
+        for_loop_effect = {
+            start = cge_captured_general_count
+            end = 1
+            add = -1
+            compare = greater_than_or_equals
+            value = cge_defeat_index
+            meta_effect = {
+                text = {
+                    if = {
+                        limit = {
+                            has_country_flag = cge_has_candidate_[SLOT]
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_executed
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            NOT = {
+                                check_variable = {
+                                    var = cge_slot_[SLOT]_recruited
+                                    value = 0
+                                    compare = greater_than
+                                }
+                            }
+                            var:cge_slot_[SLOT]_origin_country^0 = {
+                                check_variable = {
+                                    var = original_tag
+                                    value = event_target:cge_settlement_victor.original_tag
+                                    compare = equals
+                                }
+                            }
+                            NOT = {
+                                has_war_with = event_target:cge_settlement_victor
+                            }
+                        }
+                        set_variable = {
+                            cge_release_slot_to_remove = [SLOT]
+                        }
+                        cge_release_remove_selected_slot = yes
+                    }
+                }
+                SLOT = "[?cge_defeat_index|.0]"
+            }
+        }
+        clr_country_flag = cge_roster_batch_removal
+        cge_refresh_list_after_change = yes
+    }
+}
+cge_custody_rebind_ended_civil_war = {
+    if = {
+        limit = { NOT = { has_global_flag = cge_logic_disabled } }
+        every_country = {
+            limit = {
+                is_ai = yes
+                check_variable = { var = cge_captured_general_count value = 0 compare = greater_than }
+            }
+            save_event_target_as = cge_custody_rebind_holder
+            for_loop_effect = {
+                start = 1
+                end = cge_captured_general_count
+                compare = less_than_or_equals
+                value = cge_custody_rebind_index
+                meta_effect = {
+                    text = {
+                        if = {
+                            limit = {
+                                has_country_flag = cge_has_candidate_[SLOT]
+                                NOT = { check_variable = { var = cge_slot_[SLOT]_recruited value = 0 compare = greater_than } }
+                                NOT = { check_variable = { var = cge_slot_[SLOT]_executed value = 0 compare = greater_than } }
+                                check_variable = { var = cge_slot_[SLOT]_civil_war_successor^num value = 0 compare = greater_than }
+                                var:cge_slot_[SLOT]_civil_war_successor^0 = { tag = event_target:cge_return_civil_war_winner }
+                                var:cge_slot_[SLOT]_runtime_leader = {
+                                    OWNER = {
+                                        OR = {
+                                            tag = event_target:cge_return_civil_war_loser
+                                            tag = event_target:cge_custody_rebind_holder
+                                        }
+                                    }
+                                    check_variable = { var = cge_native_captor value = PREV compare = equals }
+                                }
+                            }
+                            clear_array = cge_general_display_characters
+                            save_event_target_as = cge_return_captor
+                            event_target:cge_return_civil_war_winner = { save_event_target_as = cge_return_destination }
+                            set_country_flag = cge_return_country_found
+                            set_variable = { var = cge_return_identity_key value = cge_slot_[SLOT]_character_key }
+                            set_variable = { var = cge_return_lookup_prisoner_id value = cge_slot_[SLOT]_runtime_prisoner_id }
+                            cge_return_bind_native_identity = yes
+                            if = {
+                                limit = { check_variable = { var = cge_return_native_bound value = 0 compare = equals } }
+                                cge_return_bind_native_prisoner_id = yes
+                            }
+                            if = {
+                                limit = {
+                                    check_variable = { var = cge_return_native_bound value = 1 compare = equals }
+                                    NOT = {
+                                        check_variable = { var = cge_slot_[SLOT]_runtime_leader value = cge_return_native_general^0 compare = equals }
+                                    }
+                                }
+                                var:cge_slot_[SLOT]_runtime_leader = { save_event_target_as = cge_custody_old_copy }
+                                var:cge_return_native_general^0 = { save_event_target_as = cge_custody_surviving_copy }
+                                set_variable = { var = cge_slot_[SLOT]_runtime_leader value = event_target:cge_custody_surviving_copy }
+                                event_target:cge_custody_old_copy = {
+                                    cge_return_clear_character_status = yes
+                                    clear_variable = cge_native_captor
+                                    if = {
+                                        limit = { is_unit_leader = yes OWNER = { exists = yes } }
+                                        retire = yes
+                                    }
+                                }
+                                event_target:cge_custody_surviving_copy = {
+                                    set_character_flag = cge_captured_by_player
+                                    clr_character_flag = cge_roster_retired
+                                    if = {
+                                        limit = { NOT = { is_general_captured = yes } }
+                                        capture_by = event_target:cge_custody_rebind_holder
+                                        set_variable = { var = cge_native_captor value = event_target:cge_custody_rebind_holder }
+                                    }
+                                    else_if = {
+                                        limit = { NOT = { has_variable = cge_native_captor } }
+                                        set_variable = { var = cge_native_captor value = event_target:cge_custody_rebind_holder }
+                                    }
+                                }
+                                set_variable = { cge_slot = [SLOT] }
+                                cge_mirror_slot_to_character = yes
+                            }
+                            if = {
+                                limit = {
+                                    has_variable = cge_slot_[SLOT]_recovery_recipient
+                                    var:cge_slot_[SLOT]_recovery_recipient = { exists = no }
+                                }
+                                set_variable = { cge_slot_[SLOT]_recovery_state = 0 }
+                                clear_variable = cge_slot_[SLOT]_recovery_recipient
+                            }
+                            clr_country_flag = cge_return_country_found
+                        }
+                    }
+                    SLOT = "[?cge_custody_rebind_index|.0]"
+                }
+            }
+        }
+    }
+}
+cge_custody_bootstrap = {
+    if = {
+        limit = {
+            NOT = {
+                has_global_flag = cge_logic_disabled
+            }
+        }
+        if = {
+            limit = {
+                NOT = {
+                    has_global_flag = cge_megapatch_custody_initialized
+                }
+            }
+            set_global_flag = cge_megapatch_custody_initialized
+            every_country = {
+                limit = {
+                    has_any_captured_general = yes
+                }
+                every_army_leader = {
+                    include_invisible = yes
+                    limit = {
+                        is_general_captured = yes
+                        has_variable = cge_native_captor
+                    }
+                    save_event_target_as = cge_roster_general
+                    var:cge_native_captor = {
+                        if = {
+                            limit = {
+                                exists = yes
+                            }
+                            cge_custody_import_record = yes
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

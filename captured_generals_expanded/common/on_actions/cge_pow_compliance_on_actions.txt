@@ -1,0 +1,95 @@
+on_actions = {
+    on_peace = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                every_country = {
+                    limit = {
+                        has_country_flag = cge_pow_compliance_active
+                    }
+                    cge_pow_compliance_refresh = yes
+                }
+            }
+        }
+    }
+    on_peaceconference_ended = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                every_country = {
+                    limit = {
+                        has_country_flag = cge_pow_compliance_active
+                    }
+                    cge_pow_compliance_refresh = yes
+                }
+            }
+        }
+    }
+    on_state_control_changed = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                FROM.FROM = {
+                    if = {
+                        limit = {
+                            has_state_flag = cge_pow_compliance_managed_state
+                        }
+                        cge_pow_compliance_clear_state = yes
+                    }
+                }
+                if = {
+                    limit = {
+                        has_country_flag = cge_pow_compliance_active
+                    }
+                    cge_pow_compliance_refresh = yes
+                }
+            }
+        }
+    }
+    on_civil_war_end = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                every_country = {
+                    limit = {
+                        has_country_flag = cge_pow_compliance_active
+                    }
+                    cge_pow_compliance_refresh = yes
+                }
+            }
+        }
+    }
+    on_annex = {
+        effect = {
+            if = {
+                limit = {
+                    NOT = {
+                        has_global_flag = cge_logic_disabled
+                    }
+                }
+                every_country = {
+                    limit = {
+                        has_country_flag = cge_pow_compliance_active
+                    }
+                    cge_pow_compliance_refresh = yes
+                }
+            }
+        }
+    }
+}

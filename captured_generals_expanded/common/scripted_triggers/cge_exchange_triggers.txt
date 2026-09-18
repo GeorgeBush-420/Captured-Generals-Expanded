@@ -1,0 +1,58 @@
+cge_exchange_selected_is_prisoner = {
+    cge_is_selected_actionable = yes
+    has_variable = cge_selected_general
+    var:cge_selected_general = {
+        is_unit_leader = yes
+        is_general_captured = yes
+        OR = {
+            NOT = { has_variable = cge_native_captor }
+            check_variable = { var = cge_native_captor value = PREV compare = equals }
+        }
+    }
+    has_variable = cge_exchange_ui_partner
+    var:cge_exchange_ui_partner = {
+        exists = yes
+        NOT = { tag = PREV }
+    }
+}
+
+cge_can_exchange_selected = {
+    NOT = { has_country_flag = cge_exchange_active }
+    cge_exchange_selected_is_prisoner = yes
+    var:cge_selected_general = {
+        NOT = { has_character_flag = cge_exchange_cooldown }
+    }
+    has_any_general_captured_by = var:cge_exchange_ui_partner
+}
+
+cge_exchange_candidate_is_eligible = {
+    is_unit_leader = yes
+    is_general_captured = yes
+    OWNER = { tag = event_target:cge_exchange_player }
+    has_variable = cge_native_captor
+    var:cge_native_captor = { tag = event_target:cge_exchange_enemy }
+}
+
+cge_exchange_offer_is_valid = {
+    has_country_flag = cge_exchange_active
+    check_variable = { var = cge_exchange_offer_slot value = 0 compare = greater_than }
+    event_target:cge_exchange_enemy = {
+        exists = yes
+        NOT = { tag = event_target:cge_exchange_player }
+    }
+    event_target:cge_exchange_offered_general = {
+        is_unit_leader = yes
+        is_general_captured = yes
+        NOT = { has_character_flag = cge_recruited_by_player }
+        OWNER = {
+            OR = {
+                tag = event_target:cge_exchange_enemy
+                tag = event_target:cge_exchange_player
+            }
+        }
+        OR = {
+            NOT = { has_variable = cge_native_captor }
+            var:cge_native_captor = { tag = event_target:cge_exchange_player }
+        }
+    }
+}
